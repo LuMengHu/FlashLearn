@@ -19,7 +19,7 @@ export default function PoetryCard({ question, isAnswerVisible }: Props) {
         {/* 将两句诗放在一个容器内，统一居中 */}
         <div className="text-center">
           {/* 【修复】对诗句应用悬挂缩进样式 */}
-          <p className="text-2xl sm:text-3xl font-serif leading-loose text-slate-200 indent-[-2.8em] pl-[2em]">
+          <p className="text-2xl sm:text-3xl font-serif leading-loose text-slate-200 indent-[-0.75em]">
             {question.content},
           </p>
           <p className={cn(

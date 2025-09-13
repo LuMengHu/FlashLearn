@@ -129,12 +129,16 @@
 /* Swiper 导航按钮 */
 .swiper-button-prev,
 .swiper-button-next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 20;
-  width: 48px;
-  height: 48px;
+  /* 移动端默认样式: 相对定位，尺寸适中 */
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+  width: 52px;
+  height: 52px;
+  margin-top: 0;
+  
+  /* 外观样式 (保持不变) */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -148,28 +152,30 @@
 
 .swiper-button-prev:hover,
 .swiper-button-next:hover {
-  transform: translateY(-50%) scale(1.1);
+  /* 移动端 hover 效果: 只改变背景色 */
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.swiper-button-prev { left: 10%; }
-.swiper-button-next { right: 10%; }
+/* 桌面端 (md: 768px 及以上) 的样式覆盖 */
+@media (min-width: 768px) {
+  .swiper-button-prev,
+  .swiper-button-next {
+    /* 恢复绝对定位 */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+  }
+  
+  .swiper-button-prev:hover,
+  .swiper-button-next:hover {
+    /* 恢复桌面端的放大效果 */
+    transform: translateY(-50%) scale(1.1);
+    background-color: rgba(0, 0, 0, 0.5);
+  }
 
-.swiper-button-prev::after,
-.swiper-button-next::after {
-  content: '';
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  display: inline-block;
-  padding: 6px;
+  .swiper-button-prev { left: 10%; }
+  .swiper-button-next { right: 10%; }
 }
 
-.swiper-button-prev::after {
-  transform: rotate(135deg);
-  margin-left: -4px;
-}
 
-.swiper-button-next::after {
-  transform: rotate(-45deg);
-  margin-right: -4px;
-}
