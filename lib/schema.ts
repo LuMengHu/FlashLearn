@@ -18,7 +18,8 @@ export const questionBanks = pgTable('QuestionBanks', {
   name: text('name').notNull(),
   description: text('description'),
   cover_image_url: text('cover_image_url'),
-  mode: text('mode', { enum: ['qa', 'mcq', 'poetry'] }).notNull(),
+  // 【修改】添加 'poetry_pair' 和 'poetry_completion'
+  mode: text('mode', { enum: ['qa', 'mcq', 'poetry_pair', 'poetry_completion'] }).notNull(),
   createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
 });
 

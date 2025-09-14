@@ -16,7 +16,7 @@ export default async function HomePage() {
     <main className="flex min-h-screen flex-col items-center justify-center bg-gray-900 text-white overflow-hidden">
       <div className="text-center mb-10 px-4">
         <h1 className="text-5xl font-extrabold tracking-tight">FlashLearn</h1>
-        <p className="text-lg text-gray-400 mt-2">选择一个题库，开始你的学习之旅</p>
+        <p className="text-lg text-gray-400 mt-2">科学高效地记忆题目</p>
       </div>
       
       {/* 【关键改动】: 将原始数据和加倍后的数据都传递给客户端组件 */}

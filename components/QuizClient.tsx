@@ -8,8 +8,9 @@ import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import QACard from './QACard';
 import MCQCard from './MCQCard';
-import PoetryCard from './PoetryCard';
 import { Undo2 } from 'lucide-react';
+import PoetryPairCard from './PoetryPairCard'; // <-- 导入新组件
+import PoetryCompletionCard from './PoetryCompletionCard';
 
 function shuffle<T>(array: T[]): T[] {
     let currentIndex = array.length, randomIndex;
@@ -111,16 +112,18 @@ export default function QuizClient({ bank, initialQuestions }: Props) {
     return null;
   }
 
-  const renderCard = () => {
-    switch (bank.mode) {
-      case 'mcq':
-        return <MCQCard question={currentQuestion} isAnswerVisible={isAnswerVisible} onOptionSelected={handleMcqOptionSelected} />;
-      case 'poetry':
-        return <PoetryCard question={currentQuestion} isAnswerVisible={isAnswerVisible} />;
-      case 'qa':
-      default:
-        return <QACard question={currentQuestion} isAnswerVisible={isAnswerVisible} />;
-    }
+const renderCard = () => {
+  switch (bank.mode) {
+    case 'mcq':
+      return <MCQCard question={currentQuestion} isAnswerVisible={isAnswerVisible} onOptionSelected={handleMcqOptionSelected} />;
+    case 'poetry_pair': // <-- 使用新组件
+      return <PoetryPairCard question={currentQuestion} isAnswerVisible={isAnswerVisible} />;
+    case 'poetry_completion': // <-- 使用新组件
+      return <PoetryCompletionCard question={currentQuestion} isAnswerVisible={isAnswerVisible} />;
+    case 'qa':
+    default:
+      return <QACard question={currentQuestion} isAnswerVisible={isAnswerVisible} />;
+  }
   };
 
   return (
