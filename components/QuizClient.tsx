@@ -1,5 +1,3 @@
-// components/QuizClient.tsx
-
 'use client';
 
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
@@ -8,10 +6,12 @@ import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import QACard from './QACard';
 import MCQCard from './MCQCard';
-import { Undo2 } from 'lucide-react';
-import PoetryPairCard from './PoetryPairCard'; // <-- 导入新组件
+import PoetryPairCard from './PoetryPairCard'; 
 import PoetryCompletionCard from './PoetryCompletionCard';
+import LayeredRevealCard from './LayeredRevealCard';
+import { Undo2 } from 'lucide-react';
 
+// 辅助函数：洗牌算法
 function shuffle<T>(array: T[]): T[] {
     let currentIndex = array.length, randomIndex;
     const newArray = [...array];
@@ -23,50 +23,56 @@ function shuffle<T>(array: T[]): T[] {
     return newArray;
 }
 
+// 定义组件的 Props 类型
 interface Props {
   bank: QuestionBank;
   initialQuestions: Question[];
 }
 
+// 定义已回答问题的类型
 type AnsweredQuestion = {
   question: Question;
   wasCorrect: boolean;
 };
 
 export default function QuizClient({ bank, initialQuestions }: Props) {
+  // --- 状态管理 ---
   const [unanswered, setUnanswered] = useState<Question[]>([]);
   const [answered, setAnswered] = useState<AnsweredQuestion[]>([]);
-  // 【新】用一个 state 来追踪当前这一轮的总题数
   const [currentTotal, setCurrentTotal] = useState(0);
-  
-  const [isAnswerVisible, setIsAnswerVisible] = useState(false);
+  const [isAnswerVisible, setIsAnswerVisible] = useState(false); // 仅用于 qa, poetry 模式
   const [isMcqAnswered, setIsMcqAnswered] = useState(false);
+  const [canMarkLayeredReveal, setCanMarkLayeredReveal] = useState(false);
 
+  // --- 核心逻辑函数 ---
   const startQuiz = useCallback((questionSet: Question[]) => {
-    // 【修改】每次开始新一轮时，都更新当前的总题数
     setCurrentTotal(questionSet.length);
     setUnanswered(shuffle(questionSet));
     setAnswered([]);
-    setIsAnswerVisible(false);
+    setIsAnswerVisible(false); // 重置
     setIsMcqAnswered(false);
+    setCanMarkLayeredReveal(false);
   }, []);
 
   useEffect(() => {
     startQuiz(initialQuestions);
   }, [initialQuestions, startQuiz]);
 
+  // --- 派生状态 ---
   const currentQuestion = useMemo(() => unanswered[0], [unanswered]);
   const correctCount = useMemo(() => answered.filter(a => a.wasCorrect).length, [answered]);
   const incorrectCount = useMemo(() => answered.filter(a => !a.wasCorrect).length, [answered]);
   const answeredCount = answered.length;
   
+  // --- 事件处理函数 ---
   const handleUndo = () => {
     if (answered.length === 0) return;
     const lastAnswered = answered[answered.length - 1];
     setUnanswered(prev => [lastAnswered.question, ...prev]);
     setAnswered(prev => prev.slice(0, -1));
-    setIsAnswerVisible(false);
+    setIsAnswerVisible(false); // 重置
     setIsMcqAnswered(false);
+    setCanMarkLayeredReveal(false);
   };
   
   const handleShowAnswer = () => setIsAnswerVisible(true);
@@ -75,28 +81,31 @@ export default function QuizClient({ bank, initialQuestions }: Props) {
     if (!currentQuestion) return;
     setAnswered(prev => [...prev, { question: currentQuestion, wasCorrect: isCorrect }]);
     setUnanswered(prev => prev.slice(1));
-    setIsAnswerVisible(false);
+    setIsAnswerVisible(false); // 重置
+    setCanMarkLayeredReveal(false);
   };
   
   const handleMcqOptionSelected = (isCorrect: boolean) => {
     if(!currentQuestion) return;
-    setIsAnswerVisible(true);
     setIsMcqAnswered(true);
     setAnswered(prev => [...prev, { question: currentQuestion, wasCorrect: isCorrect }]);
   };
   
   const handleNextMcq = () => {
     setUnanswered(prev => prev.slice(1));
-    setIsAnswerVisible(false);
     setIsMcqAnswered(false);
   };
+  
+  const handleAllLayersRevealed = () => {
+    setCanMarkLayeredReveal(true);
+  };
 
+  // --- 完成界面渲染 ---
   if (!currentQuestion && answeredCount > 0) {
     return (
       <div className="text-center p-6 sm:p-10 bg-slate-900/50 border border-slate-800 rounded-lg shadow-xl">
         <h2 className="text-3xl font-bold mb-4 text-slate-100">🎉 恭喜你，完成了一轮！</h2>
         <p className="text-lg text-slate-300 mb-8">
-          {/* 【修改】使用 currentTotal */}
           总题数: {currentTotal} | <span className="text-brand-green-500">答对: {correctCount}</span> | <span className="text-brand-red-500">答错: {incorrectCount}</span>
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
@@ -112,25 +121,30 @@ export default function QuizClient({ bank, initialQuestions }: Props) {
     return null;
   }
 
-const renderCard = () => {
-  switch (bank.mode) {
-    case 'mcq':
-      return <MCQCard question={currentQuestion} isAnswerVisible={isAnswerVisible} onOptionSelected={handleMcqOptionSelected} />;
-    case 'poetry_pair': // <-- 使用新组件
-      return <PoetryPairCard question={currentQuestion} isAnswerVisible={isAnswerVisible} />;
-    case 'poetry_completion': // <-- 使用新组件
-      return <PoetryCompletionCard question={currentQuestion} isAnswerVisible={isAnswerVisible} />;
-    case 'qa':
-    default:
-      return <QACard question={currentQuestion} isAnswerVisible={isAnswerVisible} />;
-  }
+  // --- 卡片渲染调度 ---
+  const renderCard = () => {
+    switch (bank.mode) {
+      case 'mcq':
+        // 【修复】isAnswerVisible 在 MCQ 模式下不再需要，由其内部状态管理
+        return <MCQCard question={currentQuestion} onOptionSelected={handleMcqOptionSelected} />;
+      case 'P_pair':
+        return <PoetryPairCard question={currentQuestion} isAnswerVisible={isAnswerVisible} />;
+      case 'P_completion':
+        return <PoetryCompletionCard question={currentQuestion} isAnswerVisible={isAnswerVisible} />;
+      case 'lr':
+        // 【修复】不再传递 isAnswerVisible
+        return <LayeredRevealCard question={currentQuestion} onAllLayersRevealed={handleAllLayersRevealed} />;
+      case 'qa':
+      default:
+        return <QACard question={currentQuestion} isAnswerVisible={isAnswerVisible} />;
+    }
   };
 
+  // --- 主界面渲染 ---
   return (
     <div>
       <div className="mb-8">
         <div className="flex justify-between items-center text-sm text-slate-400 mb-2">
-          {/* 【修改】使用 currentTotal */}
           <span>进度: {answeredCount} / {currentTotal}</span>
           <div className="flex items-center gap-4">
             <span className="text-brand-green-500">答对: {correctCount}</span>
@@ -148,15 +162,23 @@ const renderCard = () => {
             </Button>
           </div>
         </div>
-        {/* 【修改】使用 currentTotal */}
-        <Progress value={(answeredCount / currentTotal) * 100} className="w-full h-2 bg-slate-800" />
+        <Progress value={currentTotal > 0 ? (answeredCount / currentTotal) * 100 : 0} className="w-full h-2 bg-slate-800" />
       </div>
 
-      <div className="min-h-[350px] flex flex-col justify-between">
+      {/* 【修复】增加高度，以适应 LayeredRevealCard 内部的按钮 */}
+      <div className="min-h-[500px] flex flex-col justify-between">
         {renderCard()}
         
+        {/* 【修复】将按钮区域移动到 Card 外部，并简化渲染逻辑 */}
         <div className="mt-8 text-center h-12">
-          {bank.mode === 'mcq' ? (
+          {bank.mode === 'lr' ? (
+            canMarkLayeredReveal && (
+              <div className="flex justify-center space-x-4">
+                <Button onClick={() => handleMark(true)} className="bg-green-600 hover:bg-green-700 text-white" size="lg">我答对了</Button>
+                <Button onClick={() => handleMark(false)} variant="destructive" size="lg">我答错了</Button>
+              </div>
+            )
+          ) : bank.mode === 'mcq' ? (
             isMcqAnswered && <Button onClick={handleNextMcq} size="lg" className="bg-brand-cyan-600 hover:bg-brand-cyan-700 text-white">下一题</Button>
           ) : (
             isAnswerVisible ? (
@@ -173,3 +195,4 @@ const renderCard = () => {
     </div>
   );
 }
+

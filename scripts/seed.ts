@@ -43,13 +43,15 @@ async function main() {
       const questions = JSON.parse(jsonData);
 
       if (questions && questions.length > 0) {
-        const questionsToInsert = questions.map((q: any) => ({
-          ...q,
-          bankId: bankId,
-        }));
+    const questionsToInsert = questions.map((q: any) => ({
+      ...q,
+      // 【新】如果 answer 是一个数组或对象，就将其转换为 JSON 字符串
+      answer: typeof q.answer === 'object' ? JSON.stringify(q.answer) : q.answer,
+      bankId: bankId,
+    }));
 
-        await db.insert(schema.questions).values(questionsToInsert);
-        console.log(`  - Inserted ${questions.length} questions from ${bankMeta.dataFile}.`);
+    await db.insert(schema.questions).values(questionsToInsert);
+    console.log(`  - Inserted ${questions.length} questions from ${bankMeta.dataFile}.`);
       }
     } catch (error) {
       console.error(`❌ Error reading or parsing file ${bankMeta.dataFile}:`, error);

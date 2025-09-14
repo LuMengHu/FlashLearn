@@ -8,12 +8,14 @@ import type { Question } from '@/lib/schema';
 
 interface Props {
   question: Question;
-  isAnswerVisible: boolean;
+  // 【修复】移除 isAnswerVisible
   onOptionSelected: (isCorrect: boolean) => void;
 }
 
-export default function MCQCard({ question, isAnswerVisible, onOptionSelected }: Props) {
+export default function MCQCard({ question, onOptionSelected }: Props) {
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
+  // 【新】添加一个内部状态来控制答案是否可见
+  const [isRevealed, setIsRevealed] = useState(false);
 
   if (!question.options || !Array.isArray(question.options)) {
     return (
@@ -28,8 +30,11 @@ export default function MCQCard({ question, isAnswerVisible, onOptionSelected }:
   const correctIndex = question.correctOptionIndex;
 
   const handleSelect = (index: number) => {
-    if (isAnswerVisible) return;
+    // 答案揭示后不再响应点击
+    if (isRevealed) return;
+    
     setSelectedOption(index);
+    setIsRevealed(true); // 【新】点击选项后，立即揭示答案
     onOptionSelected(index === correctIndex);
   };
 
@@ -46,18 +51,15 @@ export default function MCQCard({ question, isAnswerVisible, onOptionSelected }:
               variant="outline"
               className={cn(
                 "w-full justify-start text-left h-auto whitespace-normal py-3 px-4 transition-all duration-300",
-                // 【修复】当答案可见时，禁用鼠标事件，而不是使用 disabled 属性
-                isAnswerVisible && "pointer-events-none",
-                // 默认状态
+                // 【修复】使用内部状态 isRevealed
+                isRevealed && "pointer-events-none",
                 "border-slate-700 bg-slate-800/50 text-slate-300 hover:bg-slate-700/50 hover:border-slate-500 hover:text-white",
-                // 正确答案样式
-                isAnswerVisible && index === correctIndex && 
+                // 【修复】使用内部状态 isRevealed
+                isRevealed && index === correctIndex && 
                   "bg-brand-green-800 border-brand-green-500 text-slate-100 hover:bg-brand-green-800",
-                // 选错样式
-                isAnswerVisible && selectedOption === index && index !== correctIndex && 
+                isRevealed && selectedOption === index && index !== correctIndex && 
                   "bg-brand-red-800 border-brand-red-500 text-slate-100 hover:bg-brand-red-800"
               )}
-              // 【修复】移除 disabled 属性
               onClick={() => handleSelect(index)}
             >
               {option}
