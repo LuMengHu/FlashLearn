@@ -1,5 +1,4 @@
 // lib/schema.ts
-
 import {
   pgTable,
   bigserial,
@@ -9,20 +8,19 @@ import {
   integer,
   bigint,
 } from 'drizzle-orm/pg-core';
-// 【新】导入 relations 相关的函数
 import { relations } from 'drizzle-orm';
 
-// 1. QuestionBanks 表 (题库表)
 export const questionBanks = pgTable('QuestionBanks', {
   id: bigserial('id', { mode: 'number' }).primaryKey(),
   name: text('name').notNull(),
   description: text('description'),
   cover_image_url: text('cover_image_url'),
   mode: text('mode', { enum: ['qa', 'mcq', 'P_pair', 'P_completion', 'lr'] }).notNull(),
+  category: text('category').notNull().default('General'),
   createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
+  parentId: bigint('parent_id', { mode: 'number' }).references((): any => questionBanks.id),
 });
 
-// 2. Questions 表 (题目表)
 export const questions = pgTable('Questions', {
   id: bigserial('id', { mode: 'number' }).primaryKey(),
   bankId: bigint('bank_id', { mode: 'number' })
@@ -36,27 +34,32 @@ export const questions = pgTable('Questions', {
   createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
 });
 
-
-// --- 【新】关系定义 (RELATIONS) ---
-// 这部分代码是解决问题的关键
-
-// 定义 'questionBanks' 表的关系
-export const questionBanksRelations = relations(questionBanks, ({ many }) => ({
-  // 一个题库 (questionBank) 可以有多个题目 (questions)
-  questions: many(questions),
-}));
-
-// 定义 'questions' 表的关系
-export const questionsRelations = relations(questions, ({ one }) => ({
-  // 一个题目 (question) 只属于一个题库 (bank)
-  bank: one(questionBanks, {
-    fields: [questions.bankId], // 'questions' 表中的外键字段
-    references: [questionBanks.id], // 'questionBanks' 表中被引用的主键字段
+// --- 关系定义 (RELATIONS) ---
+export const questionBanksRelations = relations(questionBanks, ({ one, many }) => ({
+  // 【修复】为关系添加唯一的 relationName，并明确关联字段
+  questions: many(questions, {
+    relationName: 'bankToQuestions'
+  }),
+  parent: one(questionBanks, {
+    fields: [questionBanks.parentId],
+    references: [questionBanks.id],
+    relationName: 'subBanks',
+  }),
+  subBanks: many(questionBanks, {
+    relationName: 'subBanks',
   }),
 }));
 
+export const questionsRelations = relations(questions, ({ one }) => ({
+  // 【修复】使用与上面匹配的 relationName
+  bank: one(questionBanks, {
+    fields: [questions.bankId],
+    references: [questionBanks.id],
+    relationName: 'bankToQuestions'
+  }),
+}));
 
-// --- 类型定义 (保持不变) ---
+// --- 类型定义 ---
 export type QuestionBank = typeof questionBanks.$inferSelect;
 export type NewQuestionBank = typeof questionBanks.$inferInsert;
 export type Question = typeof questions.$inferSelect;

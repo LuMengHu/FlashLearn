@@ -1,3 +1,4 @@
+// components/quiz/QuizClient.tsx
 'use client';
 
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
@@ -10,8 +11,10 @@ import PoetryPairCard from './PoetryPairCard';
 import PoetryCompletionCard from './PoetryCompletionCard';
 import LayeredRevealCard from './LayeredRevealCard';
 import { Undo2 } from 'lucide-react';
+import SubBankSelector from '@/components/SubBankSelector';
+import Link from 'next/link';
 
-// 辅助函数：洗牌算法
+// ... (shuffle function) ...
 function shuffle<T>(array: T[]): T[] {
     let currentIndex = array.length, randomIndex;
     const newArray = [...array];
@@ -23,33 +26,33 @@ function shuffle<T>(array: T[]): T[] {
     return newArray;
 }
 
-// 定义组件的 Props 类型
+
 interface Props {
   bank: QuestionBank;
   initialQuestions: Question[];
+  siblingBanks: (QuestionBank & { questions: Question[] })[] | null;
 }
 
-// 定义已回答问题的类型
 type AnsweredQuestion = {
   question: Question;
   wasCorrect: boolean;
 };
 
-export default function QuizClient({ bank, initialQuestions }: Props) {
-  // --- 状态管理 ---
+export default function QuizClient({ bank, initialQuestions, siblingBanks }: Props) {
+  // ... (state management) ...
   const [unanswered, setUnanswered] = useState<Question[]>([]);
   const [answered, setAnswered] = useState<AnsweredQuestion[]>([]);
   const [currentTotal, setCurrentTotal] = useState(0);
-  const [isAnswerVisible, setIsAnswerVisible] = useState(false); // 仅用于 qa, poetry 模式
+  const [isAnswerVisible, setIsAnswerVisible] = useState(false);
   const [isMcqAnswered, setIsMcqAnswered] = useState(false);
   const [canMarkLayeredReveal, setCanMarkLayeredReveal] = useState(false);
 
-  // --- 核心逻辑函数 ---
+  // ... (logic functions) ...
   const startQuiz = useCallback((questionSet: Question[]) => {
     setCurrentTotal(questionSet.length);
     setUnanswered(shuffle(questionSet));
     setAnswered([]);
-    setIsAnswerVisible(false); // 重置
+    setIsAnswerVisible(false);
     setIsMcqAnswered(false);
     setCanMarkLayeredReveal(false);
   }, []);
@@ -58,19 +61,17 @@ export default function QuizClient({ bank, initialQuestions }: Props) {
     startQuiz(initialQuestions);
   }, [initialQuestions, startQuiz]);
 
-  // --- 派生状态 ---
   const currentQuestion = useMemo(() => unanswered[0], [unanswered]);
   const correctCount = useMemo(() => answered.filter(a => a.wasCorrect).length, [answered]);
   const incorrectCount = useMemo(() => answered.filter(a => !a.wasCorrect).length, [answered]);
   const answeredCount = answered.length;
   
-  // --- 事件处理函数 ---
   const handleUndo = () => {
     if (answered.length === 0) return;
     const lastAnswered = answered[answered.length - 1];
     setUnanswered(prev => [lastAnswered.question, ...prev]);
     setAnswered(prev => prev.slice(0, -1));
-    setIsAnswerVisible(false); // 重置
+    setIsAnswerVisible(false);
     setIsMcqAnswered(false);
     setCanMarkLayeredReveal(false);
   };
@@ -81,7 +82,7 @@ export default function QuizClient({ bank, initialQuestions }: Props) {
     if (!currentQuestion) return;
     setAnswered(prev => [...prev, { question: currentQuestion, wasCorrect: isCorrect }]);
     setUnanswered(prev => prev.slice(1));
-    setIsAnswerVisible(false); // 重置
+    setIsAnswerVisible(false);
     setCanMarkLayeredReveal(false);
   };
   
@@ -100,7 +101,12 @@ export default function QuizClient({ bank, initialQuestions }: Props) {
     setCanMarkLayeredReveal(true);
   };
 
-  // --- 完成界面渲染 ---
+  const handleSelectSubBank = (questions: Question[]) => {
+    startQuiz(questions);
+  };
+  
+
+  // ... (completion UI) ...
   if (!currentQuestion && answeredCount > 0) {
     return (
       <div className="text-center p-6 sm:p-10 bg-slate-900/50 border border-slate-800 rounded-lg shadow-xl">
@@ -116,23 +122,21 @@ export default function QuizClient({ bank, initialQuestions }: Props) {
       </div>
     );
   }
-  
+
   if (!currentQuestion) {
     return null;
   }
 
-  // --- 卡片渲染调度 ---
+  // ... (renderCard function) ...
   const renderCard = () => {
     switch (bank.mode) {
       case 'mcq':
-        // 【修复】isAnswerVisible 在 MCQ 模式下不再需要，由其内部状态管理
         return <MCQCard question={currentQuestion} onOptionSelected={handleMcqOptionSelected} />;
       case 'P_pair':
         return <PoetryPairCard question={currentQuestion} isAnswerVisible={isAnswerVisible} />;
       case 'P_completion':
         return <PoetryCompletionCard question={currentQuestion} isAnswerVisible={isAnswerVisible} />;
       case 'lr':
-        // 【修复】不再传递 isAnswerVisible
         return <LayeredRevealCard question={currentQuestion} onAllLayersRevealed={handleAllLayersRevealed} />;
       case 'qa':
       default:
@@ -140,36 +144,59 @@ export default function QuizClient({ bank, initialQuestions }: Props) {
     }
   };
 
-  // --- 主界面渲染 ---
   return (
     <div>
-      <div className="mb-8">
-        <div className="flex justify-between items-center text-sm text-slate-400 mb-2">
-          <span>进度: {answeredCount} / {currentTotal}</span>
-          <div className="flex items-center gap-4">
-            <span className="text-brand-green-500">答对: {correctCount}</span>
-            <span className="text-slate-600">|</span>
-            <span className="text-brand-red-500">答错: {incorrectCount}</span>
-            <Button 
-              onClick={handleUndo} 
-              disabled={answeredCount === 0} 
-              variant="ghost" 
-              size="icon"
-              className="h-8 w-8 disabled:opacity-30"
-            >
-              <Undo2 size={18} />
-              <span className="sr-only">撤销上一题</span>
-            </Button>
+      {/* 头部区域 */}
+      <div className="mb-8 space-y-4">
+        {/* 第一行：返回、标题、子题库 */}
+        <div className="grid grid-cols-[auto_1fr_auto] items-center gap-4">
+          {/* 【解决问题3】返回按钮 */}
+          <Button asChild variant="ghost" size="lg" className="p-2">
+            <Link href="/" className="flex items-center gap-1 text-slate-400 hover:text-back">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+              返回
+            </Link>
+          </Button>
+          
+          {/* 【解决问题2】带边框的标题 */}
+          <h1 className="text-xl sm:text-2xl font-bold text-center text-gray-200 bg-slate-800/70 border border-slate-700 px-6 py-2 rounded-lg truncate">
+            {bank.name}
+          </h1>
+
+          {/* 子题库选择器 */}
+          <div className="justify-self-end">
+            {siblingBanks && (
+              <SubBankSelector
+                currentBankId={bank.id}
+                siblingBanks={siblingBanks}
+                onSelectSubBank={handleSelectSubBank}
+              />
+            )}
           </div>
         </div>
-        <Progress value={currentTotal > 0 ? (answeredCount / currentTotal) * 100 : 0} className="w-full h-2 bg-slate-800" />
+
+        {/* 第二行：进度条和统计 */}
+        <div className="w-full">
+          <div className="flex justify-between items-center text-sm text-slate-400 mb-2">
+            <span>进度: {answeredCount} / {currentTotal}</span>
+            {/* 【解决问题1】将撤销按钮和统计信息放在一起 */}
+            <div className="flex items-center gap-4">
+              <span className="text-brand-green-500">答对: {correctCount}</span>
+              <span className="text-slate-600">|</span>
+              <span className="text-brand-red-500">答错: {incorrectCount}</span>
+              <Button onClick={handleUndo} disabled={answeredCount === 0} variant="ghost" size="icon" className="h-8 w-8 disabled:opacity-30">
+                <Undo2 size={18} />
+                <span className="sr-only">撤销上一题</span>
+              </Button>
+            </div>
+          </div>
+          <Progress value={currentTotal > 0 ? (answeredCount / currentTotal) * 100 : 0} className="w-full h-2 bg-slate-800" />
+        </div>
       </div>
 
-      {/* 【修复】增加高度，以适应 LayeredRevealCard 内部的按钮 */}
+      {/* 答题卡片和控制按钮区域 */}
       <div className="min-h-[500px] flex flex-col justify-between">
         {renderCard()}
-        
-        {/* 【修复】将按钮区域移动到 Card 外部，并简化渲染逻辑 */}
         <div className="mt-8 text-center h-12">
           {bank.mode === 'lr' ? (
             canMarkLayeredReveal && (
@@ -195,4 +222,3 @@ export default function QuizClient({ bank, initialQuestions }: Props) {
     </div>
   );
 }
-

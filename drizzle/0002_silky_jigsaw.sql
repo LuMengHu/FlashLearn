@@ -1,0 +1,2 @@
+ALTER TABLE "QuestionBanks" ADD COLUMN "parent_id" bigint;--> statement-breakpoint
+ALTER TABLE "QuestionBanks" ADD CONSTRAINT "QuestionBanks_parent_id_QuestionBanks_id_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."QuestionBanks"("id") ON DELETE no action ON UPDATE no action;

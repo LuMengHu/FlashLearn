@@ -1,0 +1,1 @@
+ALTER TABLE "QuestionBanks" ADD COLUMN "category" text DEFAULT 'General' NOT NULL;

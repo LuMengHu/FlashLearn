@@ -129,7 +129,6 @@
 /* Swiper 导航按钮 */
 .swiper-button-prev,
 .swiper-button-next {
-  /* 移动端默认样式: 相对定位，尺寸适中 */
   position: relative;
   top: auto;
   left: auto;
@@ -138,7 +137,6 @@
   height: 52px;
   margin-top: 0;
   
-  /* 外观样式 (保持不变) */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -152,30 +150,21 @@
 
 .swiper-button-prev:hover,
 .swiper-button-next:hover {
-  /* 移动端 hover 效果: 只改变背景色 */
   background-color: rgba(0, 0, 0, 0.5);
+  transform: scale(1.1); /* 在所有设备上都保留 hover 放大效果 */
 }
 
-/* 桌面端 (md: 768px 及以上) 的样式覆盖 */
-@media (min-width: 768px) {
-  .swiper-button-prev,
-  .swiper-button-next {
-    /* 恢复绝对定位 */
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 20;
-  }
-  
-  .swiper-button-prev:hover,
-  .swiper-button-next:hover {
-    /* 恢复桌面端的放大效果 */
-    transform: translateY(-50%) scale(1.1);
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-
-  .swiper-button-prev { left: 10%; }
-  .swiper-button-next { right: 10%; }
+.swiper-slide {
+  transition: transform 0.5s ease-in-out; /* 确保缩放有平滑过渡 */
 }
 
+/* 默认（侧边）卡片的样式 */
+.swiper-slide:not(.swiper-slide-active) {
+  transform: scale(0.85);
+}
+
+/* 当前激活（中间）卡片的样式 */
+.swiper-slide.swiper-slide-active {
+  transform: scale(1.05); /* 放大到 105% */
+}
 

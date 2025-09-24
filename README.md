@@ -1,36 +1,18 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 本地运行
+    npm run dev
+    yarn dev
+    pnpm dev
+    bun dev**
 
-## Getting Started
+# 运行种子脚本
+    npm run db:seed
 
-First, run the development server:
+  **npx drizzle-kit generate**
+预期输出: drizzle-kit 会连接到你的 Neon 数据库，进行比较，然后你会看到类似 ✔ Migration generated successfully! 的提示。同时，在你的项目根目录下会出现一个新的文件夹 drizzle，里面包含了一个 .sql 文件，文件的内容大致如下：
+  **ALTER TABLE "QuestionBanks" ADD COLUMN "category" text DEFAULT 'General' NOT NULL;**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+最后一步，我们将这个生成的 SQL 文件推送到 Neon 数据库执行。
+  **npx drizzle-kit push**
+预期输出: drizzle-kit 会将 drizzle 文件夹下的 SQL 推送到 Neon 执行。你会看到类似 ✔ Schema pushed successfully! 的提示。
+验证: 此时，如果你登录 Neon 控制台，查看 QuestionBanks 表的结构，你会惊喜地发现 category 这一列已经被成功添加了！
+    

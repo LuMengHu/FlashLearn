@@ -2,7 +2,6 @@
 import type { Config } from "tailwindcss"
 
 const config = {
-  // 【修复】将数组 ["class"] 修改为字符串 'class'
   darkMode: "class",
   content: [
     './pages/**/*.{ts,tsx}',
@@ -83,7 +82,10 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    require("tailwind-scrollbar-hide") // 添加插件
+  ],
 } satisfies Config
 
 export default config

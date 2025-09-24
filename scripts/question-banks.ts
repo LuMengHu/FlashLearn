@@ -6,6 +6,8 @@ export type BankMeta = { // <-- 类型名为 BankMeta
   cover_image_url: string;
   mode: 'qa' | 'mcq' | 'P_pair' | 'P_completion'| 'lr';
   dataFile: string;
+  category: string;
+  subBanks?: Omit<BankMeta, 'subBanks'>[];
 };
 
 // 【修复】将 BankData 修改为 BankMeta
@@ -16,6 +18,17 @@ export const banksToSeed: BankMeta[] = [
     cover_image_url: '/covers/7000.png', 
     mode: 'lr',
     dataFile: 'E_7000_lr.json',
+    category: '英文',
+    subBanks: [
+      {
+        name: 'U7 & U8',
+        description: '',
+        cover_image_url: '',
+        mode: 'lr',
+        dataFile: 'E_7000_lr.json',
+        category: '7000 Words',
+      },
+    ]
   },
   {
     name: '名句背诵',
@@ -23,6 +36,7 @@ export const banksToSeed: BankMeta[] = [
     cover_image_url: '/covers/P_pair.png',
     mode: 'P_pair',
     dataFile: 'P_pair.json',
+    category: '诗句',
   },
   {
     name: '中国文化常识',
@@ -30,13 +44,15 @@ export const banksToSeed: BankMeta[] = [
     cover_image_url: '/covers/C_knowledge_qa.png',
     mode: 'qa',
     dataFile: 'C_knowledge_qa.json',
+    category: '常识',
   },
   {
-    name: '前端开发基础',
-    description: 'HTML, CSS, JavaScript 基础面试题。',
-    cover_image_url: '/covers/frontend.png',
+    name: '历史知识选择',
+    description: '',
+    cover_image_url: '/covers/history.png',
     mode: 'mcq',
-    dataFile: 'frontend_mcq.json',
+    dataFile: 'diplomatic_mcq.json',
+    category: '历史',
   },
   {
     name: '古诗补全',
@@ -44,6 +60,7 @@ export const banksToSeed: BankMeta[] = [
     cover_image_url: '/covers/P_completion.png',
     mode: 'P_completion',
     dataFile: 'P_completion.json',
+    category: '诗句',
   },
 ];
 
