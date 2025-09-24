@@ -14,7 +14,7 @@ import { Undo2 } from 'lucide-react';
 import SubBankSelector from '@/components/SubBankSelector';
 import Link from 'next/link';
 
-// ... (shuffle function) ...
+// ... (shuffle function is fine)
 function shuffle<T>(array: T[]): T[] {
     let currentIndex = array.length, randomIndex;
     const newArray = [...array];
@@ -71,6 +71,7 @@ export default function QuizClient({ bank, initialQuestions, siblingBanks }: Pro
     const lastAnswered = answered[answered.length - 1];
     setUnanswered(prev => [lastAnswered.question, ...prev]);
     setAnswered(prev => prev.slice(0, -1));
+    // 【修复】撤销时确保所有相关状态都被重置
     setIsAnswerVisible(false);
     setIsMcqAnswered(false);
     setCanMarkLayeredReveal(false);
@@ -82,18 +83,25 @@ export default function QuizClient({ bank, initialQuestions, siblingBanks }: Pro
     if (!currentQuestion) return;
     setAnswered(prev => [...prev, { question: currentQuestion, wasCorrect: isCorrect }]);
     setUnanswered(prev => prev.slice(1));
+    // 【修复】进入下一题时，重置所有相关UI状态
     setIsAnswerVisible(false);
     setCanMarkLayeredReveal(false);
+    setIsMcqAnswered(false);
   };
   
+  // 【重构】简化MCQ处理逻辑
   const handleMcqOptionSelected = (isCorrect: boolean) => {
     if(!currentQuestion) return;
-    setIsMcqAnswered(true);
+    // 标记为已回答，这会立即让 "下一题" 按钮出现 [7]
+    setIsMcqAnswered(true); 
+    // 记录答案
     setAnswered(prev => [...prev, { question: currentQuestion, wasCorrect: isCorrect }]);
   };
   
   const handleNextMcq = () => {
+    // 从未答题列表中移除当前题目
     setUnanswered(prev => prev.slice(1));
+    // 重置MCQ状态，为下一题做准备 [5]
     setIsMcqAnswered(false);
   };
   
@@ -105,8 +113,7 @@ export default function QuizClient({ bank, initialQuestions, siblingBanks }: Pro
     startQuiz(questions);
   };
   
-
-  // ... (completion UI) ...
+  // ... (completion UI is fine) ...
   if (!currentQuestion && answeredCount > 0) {
     return (
       <div className="text-center p-6 sm:p-10 bg-slate-900/50 border border-slate-800 rounded-lg shadow-xl">
@@ -127,7 +134,7 @@ export default function QuizClient({ bank, initialQuestions, siblingBanks }: Pro
     return null;
   }
 
-  // ... (renderCard function) ...
+  // ... (renderCard function is fine) ...
   const renderCard = () => {
     switch (bank.mode) {
       case 'mcq':
@@ -148,22 +155,19 @@ export default function QuizClient({ bank, initialQuestions, siblingBanks }: Pro
     <div>
       {/* 头部区域 */}
       <div className="mb-8 space-y-4">
-        {/* 第一行：返回、标题、子题库 */}
+        {/* ... (第一行: 返回、标题、子题库) ... */}
         <div className="grid grid-cols-[auto_1fr_auto] items-center gap-4">
-          {/* 【解决问题3】返回按钮 */}
           <Button asChild variant="ghost" size="lg" className="p-2">
-            <Link href="/" className="flex items-center gap-1 text-slate-400 hover:text-back">
-              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            <Link href="/" className="flex items-center gap-1 text-slate-400 hover:text-white">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
               返回
             </Link>
           </Button>
           
-          {/* 【解决问题2】带边框的标题 */}
           <h1 className="text-xl sm:text-2xl font-bold text-center text-gray-200 bg-slate-800/70 border border-slate-700 px-6 py-2 rounded-lg truncate">
             {bank.name}
           </h1>
 
-          {/* 子题库选择器 */}
           <div className="justify-self-end">
             {siblingBanks && (
               <SubBankSelector
@@ -174,12 +178,10 @@ export default function QuizClient({ bank, initialQuestions, siblingBanks }: Pro
             )}
           </div>
         </div>
-
-        {/* 第二行：进度条和统计 */}
+        {/* ... (第二行: 进度条和统计) ... */}
         <div className="w-full">
           <div className="flex justify-between items-center text-sm text-slate-400 mb-2">
             <span>进度: {answeredCount} / {currentTotal}</span>
-            {/* 【解决问题1】将撤销按钮和统计信息放在一起 */}
             <div className="flex items-center gap-4">
               <span className="text-brand-green-500">答对: {correctCount}</span>
               <span className="text-slate-600">|</span>
