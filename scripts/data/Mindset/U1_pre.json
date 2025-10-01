@@ -1,0 +1,27 @@
+
+[
+  {
+    "content": "satisfaction",
+    "answer": "词性变换",
+    "metadata": {
+      "pos_forms": {
+        "N.": { "word": "satisfaction", "meaning": "满意；满足" },
+        "V.": { "word": "satisfy", "meaning": "使满意；满足" },
+        "ADJ.": { "word": "satisfying", "meaning": "令人满意的" },
+        "ADV.": { "word": "satisfactorily", "meaning": "圆满地" }
+      }
+    }
+  },
+  {
+    "content": "achievement",
+    "answer": "词性变换",
+    "metadata": {
+      "pos_forms": {
+        "N.": { "word": "achievement", "meaning": "成就" },
+        "V.": { "word": "achieve", "meaning": "取得；实现" },
+        "ADJ.": { "word": "achievable", "meaning": "可完成的" },
+        "ADV.": { "word": "", "meaning": "" }
+      }
+    }
+  }
+]

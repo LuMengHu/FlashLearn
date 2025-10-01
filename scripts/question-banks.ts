@@ -1,11 +1,11 @@
 // scripts/question-banks.ts
 
-export type BankMeta = { // <-- 类型名为 BankMeta
+export type BankMeta = {
   name: string;
   description: string;
   cover_image_url: string;
-  mode: 'qa' | 'mcq' | 'P_pair' | 'P_completion'| 'lr';
-  dataFile: string;
+  mode: 'qa' | 'mcq' | 'pos' | 'sbs' | 'verb_forms' |'poetry_pair' | 'poetry_completion'| 'layered_reveal'| 'initial_hint' | 'contextual_cloze';
+  dataFile?: string; // <-- 改为可选
   category: string;
   subBanks?: Omit<BankMeta, 'subBanks'>[];
 };
@@ -15,52 +15,143 @@ export const banksToSeed: BankMeta[] = [
   {
     name: '7000 Words',
     description: '逐层揭示单词的多个释义和例句',
-    cover_image_url: '/covers/7000.png', 
-    mode: 'lr',
-    dataFile: 'E_7000_lr.json',
+    cover_image_url: '/covers/7000_Words.png', 
+    mode: 'layered_reveal',
+    dataFile: '/7000_Words/U7&U8.json',
     category: '英文',
     subBanks: [
       {
         name: 'U7 & U8',
         description: '',
         cover_image_url: '',
-        mode: 'lr',
-        dataFile: 'E_7000_lr.json',
+        mode: 'layered_reveal',
+        dataFile: '/7000_Words/U7&U8.json',
         category: '7000 Words',
       },
     ]
   },
   {
-    name: '名句背诵',
-    description: '给出半句，对出另外半句。',
-    cover_image_url: '/covers/P_pair.png',
-    mode: 'P_pair',
-    dataFile: 'P_pair.json',
-    category: '诗句',
+    name: 'Word Skill',
+    description: '',
+    cover_image_url: '/covers/word_skill.png', 
+    mode: 'initial_hint',
+    dataFile: '/word_skill/U19&U21.json',
+    category: '英文',
+    subBanks: [
+      {
+        name: 'U19 & U21',
+        description: '',
+        cover_image_url: '',
+        mode: 'initial_hint',
+        dataFile: '/word_skill/U19&U21.json',
+        category: 'Word Skill',
+      },
+    ]
   },
   {
-    name: '中国文化常识',
-    description: '中国文化常识达标考试读本',
-    cover_image_url: '/covers/C_knowledge_qa.png',
+    name: 'Mindset',
+    description: '',
+    cover_image_url: '/covers/Mindset.png', 
+    mode: 'pos',
+    dataFile: '/Mindset/U1_pre.json',
+    category: '英文',
+    subBanks: [
+      {
+        name: 'U1',
+        description: '',
+        cover_image_url: '',
+        mode: 'contextual_cloze',
+        dataFile: '/Mindset/U1.json',
+        category: 'Mindset',
+      },
+      {
+        name: 'U1_pre',
+        description: '',
+        cover_image_url: '',
+        mode: 'pos',
+        dataFile: '/Mindset/U1_pre.json',
+        category: 'Mindset',
+      },
+    ]
+  },
+{
+    name: 'Decoding',
+    description: '',
+    cover_image_url: '/covers/decoding.png', 
+    mode: 'verb_forms',
+    dataFile: '/decoding/U1-12.json',
+    category: '英文',
+    subBanks: [
+      {
+        name: 'U1-12',
+        description: '',
+        cover_image_url: '',
+        mode: 'verb_forms',
+        dataFile: '/decoding/U1-12.json',
+        category: 'Decoding',
+      },
+    ]
+  }, 
+  
+  {
+    name: '名句',
+    description: '给出半句，对出另外半句。',
+    cover_image_url: '/covers/poetry_pair.png',
+    mode: 'poetry_pair',
+    dataFile: '/poetry_pair/T1.json',
+    category: '诗词',
+    subBanks: [
+      {
+        name: 'T1',
+        description: '',
+        cover_image_url: '',
+        mode: 'poetry_pair',
+        dataFile: '/poetry_pair/T1.json',
+        category: '名句',
+      },
+    ]
+  },
+  {
+    name: '中国文化常识达标',
+    description: '',
+    cover_image_url: '/covers/china_knowledge.png',
     mode: 'qa',
-    dataFile: 'C_knowledge_qa.json',
+    dataFile: '/knowledge/china_knowledge.json',
     category: '常识',
   },
   {
-    name: '历史知识选择',
+    name: '外交常识',
     description: '',
-    cover_image_url: '/covers/history.png',
+    cover_image_url: '/covers/diplomatic.png',
     mode: 'mcq',
-    dataFile: 'diplomatic_mcq.json',
+    dataFile: '/mcq/diplomatic.json',
     category: '历史',
   },
   {
+    name: '问答题',
+    description: '',
+    cover_image_url: '/covers/Q&A.png',
+    mode: 'sbs',
+    dataFile: '/Q&A/T1.json',
+    category: '历史',
+    subBanks: [
+      {
+        name: 'T1',
+        description: '',
+        cover_image_url: '',
+        mode: 'sbs',
+        dataFile: '/Q&A/T1.json',
+        category: 'Q&A',
+      },
+    ]
+  },
+  {
     name: '古诗补全',
-    description: '补全诗词中的缺失部分。',
-    cover_image_url: '/covers/P_completion.png',
-    mode: 'P_completion',
-    dataFile: 'P_completion.json',
-    category: '诗句',
+    description: '补全古诗中的缺失部分。',
+    cover_image_url: '/covers/poetry_completion.png',
+    mode: 'poetry_completion',
+    dataFile: '/poetry_completion/poetry_completion.json',
+    category: '诗词',
   },
 ];
 

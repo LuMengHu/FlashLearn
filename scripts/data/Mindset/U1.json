@@ -1,0 +1,353 @@
+[
+  {
+    "content": "Would you be so kind as to do me a (___) and lend me your car for the weekend?",
+    "answer": "favour",
+    "metadata": {
+      "familyKey": "favour",
+      "forms": [
+        "favour",
+        "favour",
+        "favourite",
+        "favourable",
+        "favourably"
+      ]
+    }
+  },
+  {
+    "content": "The company decided to expand its operations in the region due to the (___) business environment, including low taxes and supportive government policies.",
+    "answer": "favourable",
+    "metadata": {
+      "familyKey": "favour",
+      "forms": [
+        "favour",
+        "favour",
+        "favourite",
+        "favourable",
+        "favourably"
+      ]
+    }
+  },
+  {
+    "content": "Despite facing tough competition, our product was (___) reviewed by industry experts, solidifying our position in the market.",
+    "answer": "favourably",
+    "metadata": {
+      "familyKey": "favour",
+      "forms": [
+        "favour",
+        "favour",
+        "favourite",
+        "favourable",
+        "favourably"
+      ]
+    }
+  },
+  {
+    "content": "Can you do me a (___)?",
+    "answer": "favour",
+    "metadata": {
+      "familyKey": "favour",
+      "forms": [
+        "favour",
+        "favour",
+        "favourite",
+        "favourable",
+        "favourably"
+      ]
+    }
+  },
+  {
+    "content": "The weather is (___) for outdoor activities.",
+    "answer": "favourable",
+    "metadata": {
+      "familyKey": "favour",
+      "forms": [
+        "favour",
+        "favour",
+        "favourite",
+        "favourable",
+        "favourably"
+      ]
+    }
+  },
+  {
+    "content": "The company had a (___) financial year with increased profits.",
+    "answer": "favourable",
+    "metadata": {
+      "familyKey": "favour",
+      "forms": [
+        "favour",
+        "favour",
+        "favourite",
+        "favourable",
+        "favourably"
+      ]
+    }
+  },
+  {
+    "content": "The candidate was received (___) by the audiences.",
+    "answer": "favourably",
+    "metadata": {
+      "familyKey": "favour",
+      "forms": [
+        "favour",
+        "favour",
+        "favourite",
+        "favourable",
+        "favourably"
+      ]
+    }
+  },
+  {
+    "content": "Despite facing numerous setbacks and challenges, she continued to (___) in herself and her abilities to overcome any obstacles in her path.",
+    "answer": "believe",
+    "metadata": {
+      "familyKey": "belief",
+      "forms": [
+        "belief",
+        "believe",
+        "(un)believable",
+        "(un)believably"
+      ]
+    }
+  },
+  {
+    "content": "The special effects in the new movie are (___)– the explosions and fight scenes look so realistic that you won’t think they are fabricated.",
+    "answer": "unbelievable",
+    "metadata": {
+      "familyKey": "belief",
+      "forms": [
+        "belief",
+        "believe",
+        "(un)believable",
+        "(un)believably"
+      ]
+    }
+  },
+  {
+    "content": "(___) speaking, the prices of organic produce at the farmer's market are higher than those at the supermarket, but the quality and nutritional value make it a worthwhile investment for health-conscious consumers.",
+    "answer": "Comparatively",
+    "metadata": {
+      "familyKey": "cooperation",
+      "forms": [
+        "cooperation",
+        "compare",
+        "comparative",
+        "comparatively"
+      ]
+    }
+  },
+  {
+    "content": "The elaborate birthday party organized by her friends was a delightful (___) that left her speechless and filled with joy.",
+    "answer": "surprise",
+    "metadata": {
+      "familyKey": "surprise",
+      "forms": [
+        "surprise",
+        "surprise",
+        "surprising",
+        "surprisingly"
+      ]
+    }
+  },
+  {
+    "content": "Police said the thieves were obviously well (___) with the alarm system at the department store.",
+    "answer": "acquainted",
+    "metadata": {
+      "familyKey": "acquaintance",
+      "forms": [
+        "acquaintance",
+        "acquaint",
+        "acquainted"
+      ]
+    }
+  },
+  {
+    "content": "The documentary shed light on the (___) reality of child labor in developing countries, prompting viewers to take action and advocate for change.",
+    "answer": "disturbing",
+    "metadata": {
+      "familyKey": "disturbance",
+      "forms": [
+        "disturbance",
+        "disturb",
+        "disturbing"
+      ]
+    }
+  },
+  {
+    "content": "The rise of generative AI has (___) the authenticity of digital content, as it becomes increasingly challenging to distinguish between real and artificially generated images, videos, and text.",
+    "answer": "threatened",
+    "metadata": {
+      "familyKey": "threat",
+      "forms": [
+        "threat",
+        "threaten",
+        "threatening"
+      ]
+    }
+  },
+  {
+    "content": "Indulging in a warm cup of hot chocolate on a chilly winter evening can (___) both your taste buds and your soul.",
+    "answer": "satisfy",
+    "metadata": {
+      "familyKey": "satisfaction",
+      "forms": [
+        "satisfaction",
+        "satisfy",
+        "satisfying"
+      ]
+    }
+  },
+  {
+    "content": "The customer expressed a high level of (___) with the quality of the product and the helpful service provided by the staff.",
+    "answer": "satisfaction",
+    "metadata": {
+      "familyKey": "satisfaction",
+      "forms": [
+        "satisfaction",
+        "satisfy",
+        "satisfying"
+      ]
+    }
+  },
+  {
+    "content": "After years of hard work and dedication, she finally (___) her dream of becoming a published author.",
+    "answer": "achieved",
+    "metadata": {
+      "familyKey": "achievement",
+      "forms": [
+        "achievement",
+        "achieve",
+        "achievable"
+      ]
+    }
+  },
+  {
+    "content": "The team is working diligently to (___) a user-friendly interface for the new application, ensuring a seamless experience for the end-users.",
+    "answer": "develop",
+    "metadata": {
+      "familyKey": "development",
+      "forms": [
+        "development",
+        "develop",
+        "developing",
+        "developed",
+        "developmental"
+      ]
+    }
+  },
+  {
+    "content": "The architect proposed a (___) to the building's layout, aiming to optimize the use of space and enhance functionality.",
+    "answer": "modification",
+    "metadata": {
+      "familyKey": "modification",
+      "forms": [
+        "modification",
+        "modify",
+        "modified"
+      ]
+    }
+  },
+  {
+    "content": "The invention of the internet (___) the way people communicate and access information, transforming various aspects of daily life.",
+    "answer": "revolutionized",
+    "metadata": {
+      "familyKey": "revolution",
+      "forms": [
+        "revolution",
+        "revolutionize",
+        "revolutionary"
+      ]
+    }
+  },
+  {
+    "content": "The young musician struggled with his drug (___). He has been in and out of rehab for years.",
+    "answer": "addiction",
+    "metadata": {
+      "familyKey": "addiction",
+      "forms": [
+        "addiction",
+        "addict",
+        "addict",
+        "addictive",
+        "addicted",
+        "addictively"
+      ]
+    }
+  },
+  {
+    "content": "The partnership between the two companies proved to be mutually (___), as they both gained increased market share and access to new customer segments.",
+    "answer": "beneficial",
+    "metadata": {
+      "familyKey": "benefit",
+      "forms": [
+        "benefit",
+        "benefit",
+        "beneficial"
+      ]
+    }
+  },
+  {
+    "content": "Doing moderate exercise is (___) for decreasing stress among students, especially during periods when they are applying for university admission.",
+    "answer": "beneficial",
+    "metadata": {
+      "familyKey": "benefit",
+      "forms": [
+        "benefit",
+        "benefit",
+        "beneficial"
+      ]
+    }
+  },
+  {
+    "content": "The company's quarterly profits (___) expectations, demonstrating its strong performance in the market.",
+    "answer": "exceeded",
+    "metadata": {
+      "familyKey": "excess",
+      "forms": [
+        "excess",
+        "exceed",
+        "excess",
+        "excessive"
+      ]
+    }
+  },
+  {
+    "content": "His (___) spending on luxury items left him in significant debt and financial hardship.",
+    "answer": "excessive",
+    "metadata": {
+      "familyKey": "excess",
+      "forms": [
+        "excess",
+        "exceed",
+        "excess",
+        "excessive"
+      ]
+    }
+  },
+  {
+    "content": "(___) sugar is stored as fat.",
+    "answer": "Excess",
+    "metadata": {
+      "familyKey": "excess",
+      "forms": [
+        "excess",
+        "exceed",
+        "excess",
+        "excessive"
+      ]
+    }
+  },
+  {
+    "content": "Her (___) spending on clothes and accessories was getting out of control.",
+    "answer": "excessive",
+    "metadata": {
+      "familyKey": "excess",
+      "forms": [
+        "excess",
+        "exceed",
+        "excess",
+        "excessive"
+      ]
+    }
+  }
+]

@@ -15,10 +15,11 @@ export const questionBanks = pgTable('QuestionBanks', {
   name: text('name').notNull(),
   description: text('description'),
   cover_image_url: text('cover_image_url'),
-  mode: text('mode', { enum: ['qa', 'mcq', 'P_pair', 'P_completion', 'lr'] }).notNull(),
+  mode: text('mode', { enum: ['qa', 'mcq', 'pos', 'sbs', 'verb_forms', 'poetry_pair', 'poetry_completion', 'layered_reveal', 'initial_hint', 'contextual_cloze'] }).notNull(),
   category: text('category').notNull().default('General'),
   createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
   parentId: bigint('parent_id', { mode: 'number' }).references((): any => questionBanks.id),
+  metadata: jsonb("metadata").default({}), 
 });
 
 export const questions = pgTable('Questions', {
@@ -36,22 +37,22 @@ export const questions = pgTable('Questions', {
 
 // --- 关系定义 (RELATIONS) ---
 export const questionBanksRelations = relations(questionBanks, ({ one, many }) => ({
-  // 【修复】为关系添加唯一的 relationName，并明确关联字段
   questions: many(questions, {
     relationName: 'bankToQuestions'
   }),
+
+  // 【核心修复】parent 和 subBanks 是同一关系的两面，必须使用同一个 relationName
   parent: one(questionBanks, {
     fields: [questionBanks.parentId],
     references: [questionBanks.id],
-    relationName: 'subBanks',
+    relationName: 'parentSubBankRelationship', // <-- 使用一个统一的、描述性的名称
   }),
   subBanks: many(questionBanks, {
-    relationName: 'subBanks',
+    relationName: 'parentSubBankRelationship', // <-- 使用与上面完全相同的名称
   }),
 }));
 
 export const questionsRelations = relations(questions, ({ one }) => ({
-  // 【修复】使用与上面匹配的 relationName
   bank: one(questionBanks, {
     fields: [questions.bankId],
     references: [questionBanks.id],
@@ -60,7 +61,10 @@ export const questionsRelations = relations(questions, ({ one }) => ({
 }));
 
 // --- 类型定义 ---
-export type QuestionBank = typeof questionBanks.$inferSelect;
+export type QuestionBank = typeof questionBanks.$inferSelect & {
+  questions?: Question[];
+  subBanks?: (QuestionBank & { questions?: Question[] })[];
+};
 export type NewQuestionBank = typeof questionBanks.$inferInsert;
 export type Question = typeof questions.$inferSelect;
 export type NewQuestion = typeof questions.$inferInsert;

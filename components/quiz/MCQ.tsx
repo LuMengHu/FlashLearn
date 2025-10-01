@@ -1,4 +1,4 @@
-// components/MCQCard.tsx
+// components/MCQ.tsx
 
 import { useState, useMemo, useEffect } from 'react'; // 导入 useEffect
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';

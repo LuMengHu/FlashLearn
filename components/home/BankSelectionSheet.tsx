@@ -18,10 +18,12 @@ interface Props {
 }
 
 export default function BankSelectionSheet({ banks }: Props) {
+  // 【新增】在渲染前，先筛选出所有父题库（即没有 parentId 的题库）
+  const parentBanks = banks.filter(bank => !bank.parentId);
+
   return (
     <Sheet>
       <SheetTrigger asChild>
-        {/* 【解决问题4】增大图标按钮尺寸和图标大小 */}
         <Button variant="ghost" size="icon" className="text-slate-300 hover:bg-slate-800 hover:text-white h-10 w-10 sm:h-12 sm:w-12">
           <Menu className="h-10 w-10 sm:h-7 sm:w-7" />
           <span className="sr-only">选择题库</span>
@@ -32,7 +34,8 @@ export default function BankSelectionSheet({ banks }: Props) {
           <SheetTitle className="text-2xl text-slate-100">所有题库</SheetTitle>
         </SheetHeader>
         <div className="mt-8 flex flex-col space-y-2">
-          {banks.map((bank) => (
+          {/* 【修改】现在只遍历筛选后的父题库列表 */}
+          {parentBanks.map((bank) => (
             <Button
               key={bank.id}
               asChild

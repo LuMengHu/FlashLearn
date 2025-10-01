@@ -1,0 +1,1 @@
+ALTER TABLE "QuestionBanks" ADD COLUMN "metadata" jsonb DEFAULT '{}'::jsonb;

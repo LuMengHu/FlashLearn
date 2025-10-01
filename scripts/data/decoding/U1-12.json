@@ -1,0 +1,29 @@
+
+[
+  {
+    "content": "do",
+    "answer": "动词形态",
+    "metadata": {
+      "verb_forms": {
+        "Present": "do / does",
+        "Present participle": "doing",
+        "Past": "did",
+        "P.P": "done",
+        "Chinese meaning": "做"
+      }
+    }
+  },
+  {
+    "content": "go",
+    "answer": "动词形态",
+    "metadata": {
+      "verb_forms": {
+        "Present": "go / goes",
+        "Present participle": "going",
+        "Past": "went",
+        "P.P": "gone",
+        "Chinese meaning": "去"
+      }
+    }
+  }
+]

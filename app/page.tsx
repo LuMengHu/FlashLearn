@@ -10,6 +10,21 @@ import Link from 'next/link';
 import type { QuestionBank } from '@/lib/schema';
 import type { Swiper as SwiperCore } from 'swiper/types';
 
+const HomePageLoader = () => {
+  const loadingMessages = [ "正在连接神经元网络...", "编译知识矩阵...", "解密数据流...", "启动学习协议...", "校准记忆回路...", "正在从知识库中提取数据..." ];
+  const [message, setMessage] = useState('');
+  const [dots, setDots] = useState('');
+  useEffect(() => { setMessage(loadingMessages[Math.floor(Math.random() * loadingMessages.length)]); }, []);
+  useEffect(() => { const interval = setInterval(() => { setDots(prev => (prev.length >= 3 ? '' : prev + '.')); }, 400); return () => clearInterval(interval); }, []);
+  return (
+    <div className="bg-gray-900 min-h-screen flex items-center justify-center text-white">
+      <div className="text-center font-mono">
+        <p className="text-xl md:text-2xl text-cyan-300 animate-pulse">{message}{dots}</p>
+      </div>
+    </div>
+  );
+};
+
 async function getBanks(): Promise<QuestionBank[]> {
   const res = await fetch('/api/banks');
   if (!res.ok) { throw new Error('Failed to fetch banks'); }
@@ -23,28 +38,11 @@ export default function HomePage() {
   const [categories, setCategories] = useState<string[]>([]);
   const [activeBank, setActiveBank] = useState<QuestionBank | null>(null);
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
   const swiperRef = useRef<SwiperCore | null>(null);
+  const initialSlideIndex = useRef<number>(0);
 
-  // 【修改】这个 useEffect 现在只负责在分类变化时更新轮播内容
   useEffect(() => {
-    if (originalBanks.length > 0 && activeCategory) {
-      const filtered = originalBanks.filter(bank => (bank.category || '未分类') === activeCategory);
-      setFilteredBanks(filtered);
-
-      if (filtered.length > 0) {
-        // 如果有筛选结果，立即更新 activeBank 为第一个
-        setActiveBank(filtered[0]);
-      }
-
-      if (filtered.length > 2) {
-        setDisplayBanks([...filtered, ...filtered, ...filtered]);
-      } else {
-        setDisplayBanks(filtered);
-      }
-    }
-  }, [originalBanks, activeCategory]);
-
- useEffect(() => {
     async function loadData() {
       try {
         const fetchedBanks = await getBanks();
@@ -53,29 +51,66 @@ export default function HomePage() {
         
         setOriginalBanks(fetchedBanks);
         setCategories(uniqueCategories);
+        
+        const lastBankId = sessionStorage.getItem('lastParentBankId');
+        const lastBankCategory = sessionStorage.getItem('lastParentBankCategory');
+        
+        let targetCategory = uniqueCategories[0] || null;
 
-        if (topLevelBanks.length > 0) {
-          const initialCategory = topLevelBanks[0].category || '未分类';
-          setActiveCategory(initialCategory); // 这将触发上面的 useEffect 来设置初始的 filteredBanks 和 activeBank
+        if (lastBankCategory && uniqueCategories.includes(lastBankCategory)) {
+          targetCategory = lastBankCategory;
         }
-      } catch (error) { console.error("数据加载失败:", error); }
+        
+        if (lastBankId && targetCategory) {
+            const banksInTargetCategory = topLevelBanks.filter(b => (b.category || '未分类') === targetCategory);
+            const targetIndex = banksInTargetCategory.findIndex(b => b.id === parseInt(lastBankId, 10));
+            if (targetIndex !== -1) {
+                initialSlideIndex.current = targetIndex;
+            }
+        }
+        
+        setActiveCategory(targetCategory);
+      } catch (error) { 
+        console.error("数据加载失败:", error); 
+      } finally {
+        setIsLoading(false);
+        sessionStorage.removeItem('lastParentBankId');
+        sessionStorage.removeItem('lastParentBankCategory');
+      }
     }
     loadData();
   }, []);
+  
+  useEffect(() => {
+    if (activeCategory && originalBanks.length > 0) {
+      const filtered = originalBanks.filter(bank => !bank.parentId && (bank.category || '未分类') === activeCategory);
+      setFilteredBanks(filtered);
+      
+      const activeIndex = initialSlideIndex.current < filtered.length ? initialSlideIndex.current : 0;
+      setActiveBank(filtered[activeIndex] || null);
+
+      if (filtered.length > 2) {
+        setDisplayBanks([...filtered, ...filtered, ...filtered]);
+      } else {
+        setDisplayBanks(filtered);
+      }
+      
+      const targetSlide = filtered.length > 2 ? filtered.length + activeIndex : activeIndex;
+      swiperRef.current?.slideTo(targetSlide, 0);
+    }
+  }, [activeCategory, originalBanks]);
 
   const handleSelectCategory = (category: string) => {
+    initialSlideIndex.current = 0;
     setActiveCategory(category);
-    // 切换后，自动将轮播重置到第一个
-    swiperRef.current?.slideTo(filteredBanks.length > 2 ? filteredBanks.length : 0, 0);
   };
   
   const handleActiveBankChange = (bank: QuestionBank) => {
-    // 这个函数现在只在用户手动滑动时起作用
     setActiveBank(bank);
   };
-
-  if (originalBanks.length === 0) {
-    return <div className="bg-gray-900 min-h-screen flex items-center justify-center text-white">加载中...</div>;
+  
+  if (isLoading) {
+    return <HomePageLoader />;
   }
 
   return (
@@ -103,14 +138,16 @@ export default function HomePage() {
           
           <div className="mt-8">
             <BankCarousel 
+              key={activeCategory}
               originalBanks={filteredBanks}
               displayBanks={displayBanks}
               onSwiper={(swiper) => { swiperRef.current = swiper; }}
               onActiveBankChange={handleActiveBankChange}
+              initialSlideIndex={initialSlideIndex.current}
             />
           </div>
           
-          {activeBank && (
+          {activeBank && activeBank.id && (
             <div className="w-full flex justify-center mt-8">
               <Button asChild size="lg" className="bg-white text-black hover:bg-gray-200 rounded-xl px-8 h-12 text-lg font-bold shadow-2xl">
                 <Link href={`/bank/${activeBank.id}`}>开始学习: {activeBank.name}</Link>

@@ -1,4 +1,4 @@
-// components/LayeredRevealCard.tsx
+// components/LayeredReveal.tsx
 
 'use client';
 
