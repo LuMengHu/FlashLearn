@@ -109,6 +109,46 @@ export const banksToSeed: BankMeta[] = [
         dataFile: '/poetry_pair/T1.json',
         category: '名句',
       },
+      {
+        name: 'T2',
+        description: '',
+        cover_image_url: '',
+        mode: 'poetry_pair',
+        dataFile: '/poetry_pair/T1.json',
+        category: '名句',
+      },
+      {
+        name: 'T3',
+        description: '',
+        cover_image_url: '',
+        mode: 'poetry_pair',
+        dataFile: '/poetry_pair/T1.json',
+        category: '名句',
+      },
+      {
+        name: 'T4',
+        description: '',
+        cover_image_url: '',
+        mode: 'poetry_pair',
+        dataFile: '/poetry_pair/T1.json',
+        category: '名句',
+      },
+      {
+        name: 'E1',
+        description: '',
+        cover_image_url: '',
+        mode: 'poetry_pair',
+        dataFile: '/poetry_pair/T1.json',
+        category: '名句',
+      },
+      {
+        name: 'E2',
+        description: '',
+        cover_image_url: '',
+        mode: 'poetry_pair',
+        dataFile: '/poetry_pair/T1.json',
+        category: '名句',
+      }
     ]
   },
   {
