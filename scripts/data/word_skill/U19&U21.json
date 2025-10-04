@@ -1,23 +1,304 @@
 [
   {
-    "content": "resilience",
-    "answer": "the capacity to recover quickly from difficulties; toughness.",
+    "content": "take an instant/immediate dislike to sb",
+    "answer": "dislike sb as soon as you meet them",
     "metadata": {
-      "chineseMeaning": "韧性；恢复力；弹力"
+      "chineseMeaning": "即時不喜歡"
     }
   },
   {
-    "content": "ubiquitous",
-    "answer": "present, appearing, or found everywhere.",
+    "content": "blame",
+    "answer": "think or say that sb is responsible for sth bad",
     "metadata": {
-      "chineseMeaning": "无所不在的；普遍存在的"
+      "chineseMeaning": "責備/歸咎於 \n sb (for sth)"
     }
   },
   {
-    "content": "ephemeral",
-    "answer": "lasting for a very short time.",
+    "content": "respect",
+    "answer": "polite behaviour towards sb/sth that you think is important",
     "metadata": {
-      "chineseMeaning": "短暂的；瞬息的"
+      "chineseMeaning": "敬重；尊重"
+    }
+  },
+  {
+    "content": "forgive",
+    "answer": "stop feeling angry towards sb for sth that they have done wrong",
+    "metadata": {
+      "chineseMeaning": "原諒；寬恕 \n sb (for sth/for doing sth)"
+    }
+  },
+  {
+    "content": "stare",
+    "answer": "look at sb/sth for a long time",
+    "metadata": {
+      "chineseMeaning": "盯著看 \n (at sb/sth)"
+    }
+  },
+  {
+    "content": "aggressive",
+    "answer": "angry and ready to attack sb",
+    "metadata": {
+      "chineseMeaning": "挑釁的"
+    }
+  },
+  {
+    "content": "inevitable",
+    "answer": "that you cannot avoid or prevent",
+    "metadata": {
+      "chineseMeaning": "不可避免的 \n inevitably adv."
+    }
+  },
+  {
+    "content": "strain",
+    "answer": "create pressure and anxiety for sb/sth",
+    "metadata": {
+      "chineseMeaning": "施加壓力 \n put a ~ on sb/sth"
+    }
+  },
+  {
+    "content": "regret",
+    "answer": "feel sorry about sth you have done",
+    "metadata": {
+      "chineseMeaning": "後悔 \n sth / doing sth"
+    }
+  },
+  {
+    "content": "stick up for sb/yourself",
+    "answer": "support and defend sb/yourself when they/you are criticized",
+    "metadata": {
+      "chineseMeaning": "支持，維護"
+    }
+  },
+  {
+    "content": "settle down",
+    "answer": "become calmer, more relaxed and less excited",
+    "metadata": {
+      "chineseMeaning": "安頓下來"
+    }
+  },
+  {
+    "content": "look up inf",
+    "answer": "(of sb’s situation or business) start to become better after a difficult period",
+    "metadata": {
+      "chineseMeaning": "好轉"
+    }
+  },
+  {
+    "content": "initially",
+    "answer": "in the beginning (initial adj)",
+    "metadata": {
+      "chineseMeaning": "最初"
+    }
+  },
+  {
+    "content": "nasty",
+    "answer": "unkind; unpleasant (SYN mean)",
+    "metadata": {
+      "chineseMeaning": "令人討厭的"
+    }
+  },
+  {
+    "content": "reluctant",
+    "answer": "not wanting to do sth (SYN unwilling; reluctance n)",
+    "metadata": {
+      "chineseMeaning": "不願意 \n to do sth"
+    }
+  },
+  {
+    "content": "bond",
+    "answer": "a connection between people based on shared feelings or experiences",
+    "metadata": {
+      "chineseMeaning": "聯繫"
+    }
+  },
+  {
+    "content": "strict",
+    "answer": "If you are strict, you make people do what you want and do not allow them to behave badly.",
+    "metadata": {
+      "chineseMeaning": "嚴格的"
+    }
+  },
+  {
+    "content": "caring",
+    "answer": "kind and showing that you care about people",
+    "metadata": {
+      "chineseMeaning": "關心別人的"
+    }
+  },
+  {
+    "content": "sensitive (to sth)",
+    "answer": "understanding other people’s feelings and being careful about them",
+    "metadata": {
+      "chineseMeaning": "神經過敏的"
+    }
+  },
+  {
+    "content": "fault",
+    "answer": "If sth bad is your fault, you made it happen.",
+    "metadata": {
+      "chineseMeaning": "過錯"
+    }
+  },
+  {
+    "content": "patience",
+    "answer": "the ability to stay calm and not get angry when waiting for sth (patient adj)",
+    "metadata": {
+      "chineseMeaning": "耐心"
+    }
+  },
+  {
+    "content": "nature",
+    "answer": "the basic character of a person: Violence isn’t in his nature.",
+    "metadata": {
+      "chineseMeaning": "天性"
+    }
+  },
+  {
+    "content": "nurture",
+    "answer": "the care and attention given to help sb develop nurture v",
+    "metadata": {
+      "chineseMeaning": "後天培養"
+    }
+  },
+  {
+    "content": "impact (on sth)",
+    "answer": "an effect or influence (on sth)",
+    "metadata": {
+      "chineseMeaning": "巨大作用"
+    }
+  },
+  {
+    "content": "play a part (in sth)",
+    "answer": "be involved and influential in developing sth",
+    "metadata": {
+      "chineseMeaning": "起關鍵作用"
+    }
+  },
+  {
+    "content": "crucial",
+    "answer": "extremely important because it will affect other things",
+    "metadata": {
+      "chineseMeaning": null
+    }
+  },
+  {
+    "content": "role model",
+    "answer": "a person you admire and learn from",
+    "metadata": {
+      "chineseMeaning": "模範"
+    }
+  },
+  {
+    "content": "influential",
+    "answer": "able to influence the way other people think or behave",
+    "metadata": {
+      "chineseMeaning": "具影響力"
+    }
+  },
+  {
+    "content": "peer pressure",
+    "answer": "the influence on your behaviour of people around you of the same age",
+    "metadata": {
+      "chineseMeaning": "同儕壓力"
+    }
+  },
+  {
+    "content": "incentive (to do sth)",
+    "answer": "sth that encourages you to do sth, work harder, etc.",
+    "metadata": {
+      "chineseMeaning": "激勵"
+    }
+  },
+  {
+    "content": "broken home",
+    "answer": "a family in which the parents are divorced or separated",
+    "metadata": {
+      "chineseMeaning": "破碎家庭"
+    }
+  },
+  {
+    "content": "deprived",
+    "answer": "without sufficient food, education or money deprive v; deprivation n",
+    "metadata": {
+      "chineseMeaning": "被剝奪的"
+    }
+  },
+  {
+    "content": "damaging",
+    "answer": "having a bad effect on sb/sth: a damaging effect OPP beneficial",
+    "metadata": {
+      "chineseMeaning": "有害的影響"
+    }
+  },
+  {
+    "content": "cope (with sth)",
+    "answer": "deal successfully with sth difficult",
+    "metadata": {
+      "chineseMeaning": "處理"
+    }
+  },
+  {
+    "content": "transition (from sth to sth)",
+    "answer": "a change from one state or form to another",
+    "metadata": {
+      "chineseMeaning": "過渡"
+    }
+  },
+  {
+    "content": "conduct",
+    "answer": "a person’s behaviour in a particular place or situation",
+    "metadata": {
+      "chineseMeaning": "言行"
+    }
+  },
+  {
+    "content": "supportive",
+    "answer": "giving help or support to sb in a difficult situation",
+    "metadata": {
+      "chineseMeaning": "支持的"
+    }
+  },
+  {
+    "content": "sympathetic (to/towards sb)",
+    "answer": "showing that you understand other people’s feelings, especially their problems sympathy n",
+    "metadata": {
+      "chineseMeaning": "有同情心的"
+    }
+  },
+  {
+    "content": "in your own time",
+    "answer": "when you are ready",
+    "metadata": {
+      "chineseMeaning": "當你準備好"
+    }
+  },
+  {
+    "content": "pace",
+    "answer": "the speed at which sth happens: at your own pace (= as fast or as slowly as you like)",
+    "metadata": {
+      "chineseMeaning": "步伐"
+    }
+  },
+  {
+    "content": "wise",
+    "answer": "able to make sensible decisions or give good advice because of your experience or knowledge wisdom n; gain wisdom become wiser",
+    "metadata": {
+      "chineseMeaning": "理智的"
+    }
+  },
+  {
+    "content": "consistent",
+    "answer": "always having the same opinions, standards, etc. and not changing them",
+    "metadata": {
+      "chineseMeaning": "一貫的"
+    }
+  },
+  {
+    "content": "phase",
+    "answer": "a stage in the development of sth: go through a phase",
+    "metadata": {
+      "chineseMeaning": "階段"
     }
   }
 ]
+
