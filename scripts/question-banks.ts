@@ -114,7 +114,7 @@ export const banksToSeed: BankMeta[] = [
         description: '',
         cover_image_url: '',
         mode: 'poetry_pair',
-        dataFile: '/poetry_pair/T1.json',
+        dataFile: '/poetry_pair/T2.json',
         category: '名句',
       },
       {
@@ -122,7 +122,7 @@ export const banksToSeed: BankMeta[] = [
         description: '',
         cover_image_url: '',
         mode: 'poetry_pair',
-        dataFile: '/poetry_pair/T1.json',
+        dataFile: '/poetry_pair/T3.json',
         category: '名句',
       },
       {
@@ -130,7 +130,7 @@ export const banksToSeed: BankMeta[] = [
         description: '',
         cover_image_url: '',
         mode: 'poetry_pair',
-        dataFile: '/poetry_pair/T1.json',
+        dataFile: '/poetry_pair/T4.json',
         category: '名句',
       },
       {
@@ -138,7 +138,7 @@ export const banksToSeed: BankMeta[] = [
         description: '',
         cover_image_url: '',
         mode: 'poetry_pair',
-        dataFile: '/poetry_pair/T1.json',
+        dataFile: '/poetry_pair/E1.json',
         category: '名句',
       },
       {
@@ -146,7 +146,7 @@ export const banksToSeed: BankMeta[] = [
         description: '',
         cover_image_url: '',
         mode: 'poetry_pair',
-        dataFile: '/poetry_pair/T1.json',
+        dataFile: '/poetry_pair/E2.json',
         category: '名句',
       }
     ]
