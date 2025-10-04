@@ -13,24 +13,6 @@ export type BankMeta = {
 // 【修复】将 BankData 修改为 BankMeta
 export const banksToSeed: BankMeta[] = [ 
   {
-    name: '7000 Words',
-    description: '逐层揭示单词的多个释义和例句',
-    cover_image_url: '/covers/7000_Words.png', 
-    mode: 'layered_reveal',
-    dataFile: '/7000_Words/U7&U8.json',
-    category: '英文',
-    subBanks: [
-      {
-        name: 'U7 & U8',
-        description: '',
-        cover_image_url: '',
-        mode: 'layered_reveal',
-        dataFile: '/7000_Words/U7&U8.json',
-        category: '7000 Words',
-      },
-    ]
-  },
-  {
     name: 'Word Skill',
     description: '',
     cover_image_url: '/covers/word_skill.png', 
@@ -92,14 +74,31 @@ export const banksToSeed: BankMeta[] = [
       },
     ]
   }, 
-  
+  {
+    name: '7000 Words',
+    description: '逐层揭示单词的多个释义和例句',
+    cover_image_url: '/covers/7000_Words.png', 
+    mode: 'layered_reveal',
+    dataFile: '/7000_Words/U7&U8.json',
+    category: '英文',
+    subBanks: [
+      {
+        name: 'U7 & U8',
+        description: '',
+        cover_image_url: '',
+        mode: 'layered_reveal',
+        dataFile: '/7000_Words/U7&U8.json',
+        category: '7000 Words',
+      },
+    ]
+  },
   {
     name: '名句',
     description: '给出半句，对出另外半句。',
     cover_image_url: '/covers/poetry_pair.png',
     mode: 'poetry_pair',
     dataFile: '/poetry_pair/T1.json',
-    category: '诗词',
+    category: '中文',
     subBanks: [
       {
         name: 'T1',
@@ -152,12 +151,22 @@ export const banksToSeed: BankMeta[] = [
     ]
   },
   {
-    name: '中国文化常识达标',
+    name: '思考题',
     description: '',
-    cover_image_url: '/covers/china_knowledge.png',
-    mode: 'qa',
-    dataFile: '/knowledge/china_knowledge.json',
-    category: '常识',
+    cover_image_url: '/covers/Q&A.png', 
+    mode: 'sbs',
+    dataFile: '/Q&A/C1_T1.json',
+    category: '中文',
+    subBanks: [
+      {
+        name: 'C1_T1',
+        description: '',
+        cover_image_url: '',
+        mode: 'sbs',
+        dataFile: '/Q&A/C1_T1.json',
+        category: '思考题',
+      },
+    ]
   },
   {
     name: '外交常识',
@@ -182,48 +191,16 @@ export const banksToSeed: BankMeta[] = [
         mode: 'sbs',
         dataFile: '/Q&A/T1.json',
         category: 'Q&A',
-      },
-      {
-        name: 'T2',
-        description: '',
-        cover_image_url: '',
-        mode: 'sbs',
-        dataFile: '/Q&A/T2.json',
-        category: 'Q&A',
-      },
-      {
-        name: 'E1',
-        description: '',
-        cover_image_url: '',
-        mode: 'sbs',
-        dataFile: '/Q&A/E1.json',
-        category: 'Q&A',
-      },
-      {
-        name: 'T3',
-        description: '',
-        cover_image_url: '',
-        mode: 'sbs',
-        dataFile: '/Q&A/T3.json',
-        category: 'Q&A',
-      },
-      {
-        name: 'T4',
-        description: '',
-        cover_image_url: '',
-        mode: 'sbs',
-        dataFile: '/Q&A/T4.json',
-        category: 'Q&A',
-      },
-      {
-        name: 'E2',
-        description: '',
-        cover_image_url: '',
-        mode: 'sbs',
-        dataFile: '/Q&A/E2.json',
-        category: 'Q&A',
-      },
+      }
     ]
+  },
+   {
+    name: '中国文化常识达标',
+    description: '',
+    cover_image_url: '/covers/china_knowledge.png',
+    mode: 'qa',
+    dataFile: '/knowledge/china_knowledge.json',
+    category: '常识',
   },
   {
     name: '古诗补全',
