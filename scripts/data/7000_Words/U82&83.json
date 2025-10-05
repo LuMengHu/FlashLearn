@@ -1,0 +1,667 @@
+[
+  {
+    "content": "advantage",
+    "answer": [
+      {
+        "meaning": "利益，好處",
+        "example": "More and more people are aware of the [advantage] of wind power and believe it can benefit mankind.",
+        "translation": "越來越多人意識到風力發電的好處，並相信它可以造福全人類。" 
+      },
+      {
+        "meaning": "優點，優勢",
+        "example": "Can you describe some of the [advantages] of this computer?",
+        "translation": "可以請你說明一下這台電腦的優點嗎？" 
+      },
+      {
+        "meaning": "利用",
+        "example": "Last week, we [took advantage of] the good weather and went picnicking in the woods.",
+        "translation": "上個星期，我們趁著天氣好去樹林裡野餐。" 
+      },
+      {
+        "meaning": "占……的便宜",
+        "example": "The bully is always [taking advantage of] the younger kids, making them to do things for him.",
+        "translation": "那個惡霸老是占小朋友的便宜，要他們替他做事情。" 
+      }
+    ]
+  },
+  {
+    "content": "affect",
+    "answer": [
+      {
+        "meaning": "影響，對……發生作用",
+        "example": "The coming typhoon will probably [affect] our trip to Japan.",
+        "translation": "即將來襲的颱風可能會影響我們到日本的行程。" 
+      },
+      {
+        "meaning": "(病)侵襲，罹患(病)",
+        "example": "The disease mainly [affects] the lungs, but it sometimes also attacks the liver.",
+        "translation": "這種疾病主要侵襲肺部，有時也損害肝臟。" 
+      }
+    ]
+  },
+  {
+    "content": "badly",
+    "answer": [
+      {
+        "meaning": "壞地，惡劣地",
+        "example": "Nicholas behaved [badly] in front of the guests and was sent to his room.",
+        "translation": "尼可拉斯在賓客面前放無禮，被帶回房間了。" 
+      },
+      {
+        "meaning": "很，非常",
+        "example": "Those refugees need food [badly]; they are starving.",
+        "translation": "那些難民非常需要食物，他們快餓死了。" 
+      }
+    ]
+  },
+  {
+    "content": "benefit",
+    "answer": [
+      {
+        "meaning": "利益，好處",
+        "example": "The field trip to the national forest that Mr. Ramos organized was a great [benefit] for all his students.",
+        "translation": "雷蒙斯老師籌畫的國家森林田野旅行，讓他所有的學生獲益良多。" 
+      },
+      {
+        "meaning": "有益於",
+        "example": "Acting on his doctor's advice, the elderly gentleman is moving to the country, where the fresh air will [benefit] his health.",
+        "translation": "按照醫生的建議，那名老人即將搬去鄉下，因為那裡的新鮮空氣對他的健康有益。" 
+      },
+      {
+        "meaning": "得益，受惠",
+        "example": "The students [benefited] greatly from Dr. Lee's lecture, which contained a lot of new information.",
+        "translation": "李博士的演講使學生們獲益匪淺，他們學到很多新資訊。" 
+      }
+    ]
+  },
+  {
+    "content": "consequence",
+    "answer": [
+      {
+        "meaning": "結果，後果",
+        "example": "Besides lung cancer, another [consequence] of smoking is wrinkles, a premature sign of aging.",
+        "translation": "除了肺癌之外，抽菸的另一個後果是長皺紋，是提早老化的跡象。" 
+      }
+    ]
+  },
+  {
+    "content": "deserve",
+    "answer": [
+      {
+        "meaning": "應受，該得",
+        "example": "Bob's boss finally recognized that he [deserved] a promotion after all these years.",
+        "translation": "鮑伯的老闆在鮑伯工作多年後，終於認可他該獲得升遷了。" 
+      }
+    ]
+  },
+  {
+    "content": "destroy",
+    "answer": [
+      {
+        "meaning": "毀壞，破壞",
+        "example": "Ian believes that too much money can [destroy] a person, just as surely as too little money can.",
+        "translation": "伊恩認為，錢太多就像錢太少一樣可以毀了一個人。" 
+      },
+      {
+        "meaning": "殺死",
+        "example": "The horse has a broken leg and will be [destroyed].",
+        "translation": "那匹馬的腿斷了，很快牠就要被處死了。" 
+      },
+      {
+        "meaning": "打破(希望、計劃)，使失敗",
+        "example": "The news that the wreckage was found in the mountains [destroyed] their last bit of hope.",
+        "translation": "在山區發現飛機殘骸的消息，摧毀了他們最後的一絲希望。" 
+      }
+    ]
+  },
+  {
+    "content": "destruction",
+    "answer": [
+      {
+        "meaning": "毀滅，破壞",
+        "example": "Weapons that can cause the [destruction] of humankind should be prohibited.",
+        "translation": "造成人類毀滅的武器應該被禁止。" 
+      }
+    ]
+  },
+  {
+    "content": "disadvantage",
+    "answer": [
+      {
+        "meaning": "不利(條件)",
+        "example": "The thunderstorm is a [disadvantage] for the rescue team.",
+        "translation": "那場雷雨對救援隊來說很不利。" 
+      }
+    ]
+  },
+  {
+    "content": "disaster",
+    "answer": [
+      {
+        "meaning": "災難，災害",
+        "example": "Ignorant exploitation of the environment will eventually invite terrible [disasters].",
+        "translation": "盲目開發環境最終會招致嚴重的災難。" 
+      }
+    ]
+  },
+  {
+    "content": "endanger",
+    "answer": [
+      {
+        "meaning": "危及，使遭到危險",
+        "example": "Illegal hunting in Southeast Asia has [endangered] many of the jungle species.",
+        "translation": "東南亞的非法狩獵活動，危及了許多的叢林動物。" 
+      },
+      {
+        "meaning": "濒临绝种的",
+        "example": "The Formosan black bear has been classified as an endangered species; soon, it may be extinct.",
+        "translation": "台湾黑熊已经被列为濒临绝种的动物，他们可能很快就不复存在了。" 
+      }
+    ]
+  },
+  {
+    "content": "evil",
+    "answer": [
+      {
+        "meaning": "邪惡的，壞的",
+        "example": "Cindy has an [evil] tongue, so no one wants to be her friend.",
+        "translation": "欣蒂的嘴巴很壞，所以沒有人想和她交朋友。" 
+      },
+      {
+        "meaning": "邪惡，罪惡",
+        "example": "The movie is about the eternal struggle between good and [evil], and its ending shows that evil never prevails over good.",
+        "translation": "這部電影是關於正邪之間永恆的交戰，電影的結尾揭示了邪不勝正。" 
+      }
+    ]
+  },
+  {
+    "content": "excellence",
+    "answer": [
+      {
+        "meaning": "優秀，傑出",
+        "example": "Darlene's [excellence] as a painter was discovered when she was very young.",
+        "translation": "達蓮娜很小的時候就展現出優秀繪畫天分了。" 
+      }
+    ]
+  },
+  {
+    "content": "factor",
+    "answer": [
+      {
+        "meaning": "因素，要素",
+        "example": "Conrad's positive attitude is the primary [factor] in his success as a salesman.",
+        "translation": "康拉德的積極態度是他能成為一位成功銷售員的主因。" 
+      }
+    ]
+  },
+  {
+    "content": "fake",
+    "answer": [
+      {
+        "meaning": "假的，冒充的",
+        "example": "Do you have any [fake] teeth?",
+        "translation": "你有假牙嗎？" 
+      },
+      {
+        "meaning": "冒牌貨，冒充者",
+        "example": "The diamond was judged to be a [fake]; it was not genuine, but it had been made to look real.",
+        "translation": "這顆鑽石被判定為假貨；它不是真的，只是被仿製成像真的一般。" 
+      },
+      {
+        "meaning": "假裝",
+        "example": "The boy didn't want to go to school, so he [faked] an illness.",
+        "translation": "那個男孩不想去上學，所以他假裝生病了。" 
+      },
+      {
+        "meaning": "冒充",
+        "example": "The man used someone else's credit card and [faked] the signature in order to pay for the products.",
+        "translation": "那名男子冒充某人的簽名，使用那張信用卡刷他買的東西。" 
+      }
+    ]
+  },
+  {
+    "content": "fantastic",
+    "answer": [
+      {
+        "meaning": "極好的",
+        "example": "Vivien looks [fantastic] in the ivory wedding gown.",
+        "translation": "薇薇安穿著象牙色的結婚禮服看起來美極了。" 
+      }
+    ]
+  },
+  {
+    "content": "fortunate",
+    "answer": [
+      {
+        "meaning": "幸運的，僥倖的",
+        "example": "Clara made a [fortunate] decision to buy this house before its value doubled.",
+        "translation": "這棟屋子的房價要漲雙倍前，卡拉做了一個幸運的決定將它買下了。"
+      },
+      {
+        "meaning": "幸運地",
+        "example": "The car crashed into the wall. [Fortunately], the driver wasn't hurt.",
+        "translation": "那輛車撞上了牆。幸運的是，司機沒有受傷。"
+      }
+    ]
+  },
+  {
+    "content": "glorious",
+    "answer": [
+      {
+        "meaning": "光榮的，榮耀的",
+        "example": "Our team won a [glorious] victory and returned with the championship trophy.",
+        "translation": "我們隊贏得了光榮的勝利，帶著冠軍獎品凱旋而歸。"
+      },
+      {
+        "meaning": "壯觀的，壯麗的",
+        "example": "Early in the morning, the climbers watched the [glorious] sunrise from the mountaintop; the sky was very beautiful.",
+        "translation": "一大早，那些登山客從山頂看到壯麗的日出，那片天空真是美極了。"
+      }
+    ]
+  },
+  {
+    "content": "glory",
+    "answer": [
+      {
+        "meaning": "光榮，榮譽",
+        "example": "The Oscar winner stood on the stage, enjoying his moment of [glory].",
+        "translation": "那位奧斯卡得主站在台上，享受這榮耀時刻。"
+      },
+      {
+        "meaning": "壯麗，壯觀",
+        "example": "Every morning, Wilma enjoys the [glory] of the sunrise, which she watches from her bedroom window.",
+        "translation": "威瑪喜歡在早上起床後，望著臥室窗外的壯麗晨曦。"
+      }
+    ]
+  },
+  {
+    "content": "harm",
+    "answer": [
+      {
+        "meaning": "損害，傷害（動詞）",
+        "example": "The chemicals that farmers use to kill insects can [harm] the environment.",
+        "translation": "農夫用來撲殺害蟲的農藥會損害環境。"
+      },
+      {
+        "meaning": "損害，傷害（名詞）",
+        "example": "Studies have shown that smoking causes [harm] to your health.",
+        "translation": "研究已經證明了，吸菸對健康有害。"
+      }
+    ]
+  },
+  {
+    "content": "harmful",
+    "answer": [
+      {
+        "meaning": "有害的",
+        "example": "Eating too much candy can be [harmful] to your teeth.",
+        "translation": "吃太多糖果可能對牙齒有害。"
+      }
+    ]
+  },
+  {
+    "content": "honor",
+    "answer": [
+      {
+        "meaning": "榮譽，名譽（不可數名詞）",
+        "example": "Last week, the police officer was awarded a badge of [honor] for pulling a woman from her burning van.",
+        "translation": "那位警官上個星期獲頒一枚榮譽勳章，因為他將一名女子從起火的貨車中救出。"
+      },
+      {
+        "meaning": "光榮的事或人（可數名詞）",
+        "example": "Chien - Ming Wang's accomplishments are considered an [honor] to Taiwan; many Taiwanese people are proud of his Major League Baseball career.",
+        "translation": "王建民被認為是台灣之光，許多台灣人欽佩他在大聯盟的表現。"
+      },
+      {
+        "meaning": "（大學的）優等成績（復數名詞）",
+        "example": "Ricardo was awarded his bachelor's degree with [honors] last year.",
+        "translation": "瑞卡多去年以優等成績獲頒學士學位。"
+      }
+    ]
+  },
+  {
+    "content": "ideal",
+    "answer": [
+      {
+        "meaning": "理想的，完美的，適合的",
+        "example": "The weather today is [ideal] for outdoor activities.",
+        "translation": "今天的天氣很適合戶外活動。"
+      }
+    ]
+  },
+  {
+    "content": "impact",
+    "answer": [
+      {
+        "meaning": "衝擊，影響（名詞）",
+        "example": "Once the war ended, the government faced the [impact] of thousands of wounded veterans.",
+        "translation": "政府在戰爭結束後，面臨數以千計返鄉傷兵帶來的衝擊。"
+      },
+      {
+        "meaning": "撞擊（名詞）",
+        "example": "The car crashed into the wall; the force of the [impact] caused the driver to lose consciousness.",
+        "translation": "那輛車撞上牆壁，撞擊的力道讓駕駛人失去了意識。"
+      },
+      {
+        "meaning": "衝擊，影響（動詞）",
+        "example": "Barton's mother abandoned him when he was five years old, which greatly [impacted] his childhood.",
+        "translation": "在巴頓五歲的時候，媽媽遺棄了他，這對他的童年衝擊很大。"
+      }
+    ]
+  },
+  {
+    "content": "inferior",
+    "answer": [
+      {
+        "meaning": "次等的，較差的",
+        "example": "Nathan feels [inferior] to his elder brother in both sports and academic performance.",
+        "translation": "納森覺得自己在運動和課業上的表現不如哥哥。"
+      },
+      {
+        "meaning": "（地位等）低等的，下級的",
+        "example": "The [inferior] officer doesn't have the power to make decisions; you need to talk to someone with a higher rank.",
+        "translation": "這名低階公務員沒有權權做決定，你得跟更高階的人談。"
+      },
+      {
+        "meaning": "部屬，部下（名詞）",
+        "example": "Although Mr. Collins has a very high position in the company, he is friendly to his [inferiors].",
+        "translation": "雖然柯林斯先生在公司的階級很高，但是他對下屬都很友善。"
+      }
+    ]
+  },
+  {
+    "content": "lousy",
+    "answer": [
+      {
+        "meaning": "差勁的",
+        "example": "Sebastian thinks most of the soap operas on TV are [lousy] plays.",
+        "translation": "賽巴斯欽認為，大部分的電視連續劇都是爛戲。"
+      }
+    ]
+  },
+  {
+    "content": "marvelous",
+    "answer": [
+      {
+        "meaning": "非凡的，令人驚嘆的，極佳的",
+        "example": "Lou gave a [marvelous] presentation; his boss was very satisfied with it.",
+        "translation": "路的簡報表現傑出，他的老闆覺得很滿意。"
+      }
+    ]
+  },
+  {
+    "content": "merit",
+    "answer": [
+      {
+        "meaning": "長處，優點",
+        "example": "One [merit] of the book is that it is easy to read; it also has other advantages.",
+        "translation": "這本書容易閱讀是它的長處，它還有其他的優點。"
+      },
+      {
+        "meaning": "功績，功勞",
+        "example": "Mr. Skinner always judges people according to their [merits].",
+        "translation": "史金納先生一向以功勞來評論他人。"
+      }
+    ]
+  },
+  {
+    "content": "misery",
+    "answer": [
+      {
+        "meaning": "痛苦，不幸，悲慘，窮困",
+        "example": "Neal refused to admit that he was in [misery].",
+        "translation": "尼爾不承認自己處境悲慘。"
+      }
+    ]
+  },
+  {
+    "content": "moral",
+    "answer": [
+      {
+        "meaning": "道德上的（形容詞）",
+        "example": "Ruben had the [moral] courage to stand up for justice.",
+        "translation": "魯本有道德勇氣為正義挺身而出。"
+      },
+      {
+        "meaning": "道德上的教訓，寓意（名詞）",
+        "example": "The [moral] of the fable \"The Lion and the Three Bulls\" is that union is strength.",
+        "translation": "寓言故事《獅子和三隻公牛》的寓意是「團結就是力量」。"
+      },
+      {
+        "meaning": "道德，品行（名詞，復數）",
+        "example": "Owners of fast - food restaurants that don't change their frying oil regularly have no business [morals].",
+        "translation": "那些不定期更換炸油的速食店沒有商業道德。"
+      }
+    ]
+  },
+  {
+    "content": "nightmare",
+    "answer": [
+      {
+        "meaning": "惡夢",
+        "example": "Mr. Mason's sleeping disorder has given him terrible [nightmares] for many years.",
+        "translation": "麥森先生多年來，因睡眠失調而惡夢連連。" 
+      },
+      {
+        "meaning": "夢魘般的經歷",
+        "example": "The boy was kidnapped, which was an absolute [nightmare] for his parents.",
+        "translation": "那名男孩被綁架了，這對他的父母而言完全是一場惡夢。" 
+      }
+    ]
+  },
+  {
+    "content": "obstacle",
+    "answer": [
+      {
+        "meaning": "障礙（物），妨礙",
+        "example": "Stage fright is an [obstacle] to Pam's dream of becoming a professional singer.",
+        "translation": "潘姆會怯場，這是她實現歌手夢的一大阻礙。" 
+      }
+    ]
+  },
+  {
+    "content": "outcome",
+    "answer": [
+      {
+        "meaning": "結果，成果",
+        "example": "Jay was satisfied with the [outcome] of his dieting program.",
+        "translation": "傑很滿意自己努力節食的成果。" 
+      }
+    ]
+  },
+  {
+    "content": "outstanding",
+    "answer": [
+      {
+        "meaning": "顯著的，傑出的",
+        "example": "Mr. Briggs' [outstanding] speech was quoted in the newspapers this week.",
+        "translation": "本週的報紙新聞引用布格斯先生發表的精彩演說。" 
+      }
+    ]
+  },
+  {
+    "content": "perfection",
+    "answer": [
+      {
+        "meaning": "完美，盡善盡美",
+        "example": "Leona has achieved [perfection] in figure skating.",
+        "translation": "里歐娜的花式溜冰技巧已臻完美。" 
+      }
+    ]
+  },
+  {
+    "content": "pollute",
+    "answer": [
+      {
+        "meaning": "汙染，弄髒",
+        "example": "Bella did not want to [pollute] the environment, so she cleaned up the leftovers and plastic plates from the picnic.",
+        "translation": "野餐過後，貝拉把剩餘和塑膠碗盤清理了一下，以免汙染環境。" 
+      }
+    ]
+  },
+  {
+    "content": "pollution",
+    "answer": [
+      {
+        "meaning": "汙染",
+        "example": "Angie and Nora helped take samples of the West River to measure the [pollution] levels.",
+        "translation": "安姬和諾拉幫忙採集西河的樣本，以測量汙染的程度。" 
+      }
+    ]
+  },
+  {
+    "content": "proper",
+    "answer": [
+      {
+        "meaning": "適合的，恰當的",
+        "example": "Phyllis wondered if it would be [proper] to ask her boss for a promotion.",
+        "translation": "菲麗絲想知道，請求上司讓她升官是否恰當。" 
+      },
+      {
+        "meaning": "恰當地，正确地",
+        "example": "Your computer isn;t working [properly]; you need to have it repaired.",
+        "translation": "你的电脑无法正确运作，你得送修了。" 
+      }
+    ]
+  },
+  {
+    "content": "risk",
+    "answer": [
+      {
+        "meaning": "危險，風險",
+        "example": "Unsupervised children are considered at [risk] for dropping out of school.",
+        "translation": "大家都認為，未受管教的孩子會有輟學的風險。" 
+      },
+      {
+        "meaning": "使遭受危險，以（生命）作為賭注",
+        "example": "It was brave of the young woman to [risk] her life to save the drowning boy.",
+        "translation": "那名年輕女子很勇敢，冒著生命危險試圖拯救快淹死的小男孩。" 
+      },
+      {
+        "meaning": "冒……的風險",
+        "example": "People [risked] being arrested by throwing eggs at the presidential palace to protest the war.",
+        "translation": "為了抗議戰爭，人們冒著被逮捕的風險，朝總統府丟雞蛋。" 
+      },
+      {
+        "meaning": "危险的，冒险的",
+        "example": "It will be [risky] to go out once the typhoon hits land.",
+        "translation": "台风登陆后，外出是很危险的。" 
+      },
+      {
+        "meaning": "冒险",
+        "example": "Firefighters have to [take lots of risks] in their work; they can get hurt or even killed while putting out a fire.",
+        "translation": "消防队员工作时要冒很多风险，他们在灭火时可能会受伤、甚至死亡。" 
+      }
+    ]
+  },
+  {
+    "content": "ruin",
+    "answer": [
+      {
+        "meaning": "毀滅，毀壞",
+        "example": "A violent hurricane [ruined] Samuel's apple orchard.",
+        "translation": "一次強烈的颶風摧毀了塞繆爾的蘋果園。" 
+      },
+      {
+        "meaning": "毀滅，毀壞",
+        "example": "The severe earthquake left the little town in a state of [ruin]; all the buildings were destroyed.",
+        "translation": "大地震毀滅了那座小鎮，所有的建築物都被摧毀了。" 
+      },
+      {
+        "meaning": "廢墟，遺跡",
+        "example": "They are going to visit the [ruins] of the school, as parts of the building remain standing after it was severely damaged in the flood.",
+        "translation": "他們將去參觀這所學校的遺跡。在經過洪水嚴重沖刷後，部分建築仍未倒塌。" 
+      }
+    ]
+  },
+  {
+    "content": "superior",
+    "answer": [
+      {
+        "meaning": "（在品質方面）較好的，優秀的",
+        "example": "This new computer is obviously [superior] to the old one because it has many new functions.",
+        "translation": "這一台新電腦很明顯比舊的好，因為它有許多新功能。" 
+      },
+      {
+        "meaning": "（在職位等）較高的，上級的",
+        "example": "To solve the problem, you need to talk to a [superior] officer or someone with a higher rank than mine.",
+        "translation": "要解決這個問題，你得跟上級或者比我職位更高的人說。" 
+      },
+      {
+        "meaning": "上司，長官",
+        "example": "Mr. Brown is my [superior]. It is certainly an honor to work under him.",
+        "translation": "布朗先生是我的上司，在他手下工作無疑是一種榮幸。" 
+      }
+    ]
+  },
+  {
+    "content": "wicked",
+    "answer": [
+      {
+        "meaning": "壞的，缺德的",
+        "example": "Lizzie denied that she had ever done anything [wicked], but nobody believed her.",
+        "translation": "麗茲否認做過壞事，但沒人相信她。" 
+      }
+    ]
+  },
+  {
+    "content": "splendid",
+    "answer": [
+      {
+        "meaning": "顯著的，傑出的",
+        "example": "Gabrielle's [splendid] performance has attracted many viewers.",
+        "translation": "嘉貝麗的精彩演出吸引了許多觀眾。" 
+      },
+      {
+        "meaning": "壯麗的，輝煌的",
+        "example": "In England, we visited a [splendid] cathedral that was very beautiful and impressive.",
+        "translation": "在英國，我們參觀了一座壯麗的大教堂，它很漂亮、令人印象深刻。" 
+      }
+    ]
+  },
+  {
+    "content": "triumph",
+    "answer": [
+      {
+        "meaning": "勝利，成功",
+        "example": "The agreement to ban racial discrimination was a [triumph] for human rights.",
+        "translation": "禁止種族歧視的協議是在人權保障上的一大勝利。" 
+      },
+      {
+        "meaning": "獲得勝利或成功",
+        "example": "In the end, Taiwan [triumphed] 5 to 2 in the baseball game.",
+        "translation": "最後，台灣以5比2贏得那場棒球比賽。" 
+      }
+    ]
+  },
+  {
+    "content": "virtue",
+    "answer": [
+      {
+        "meaning": "美德",
+        "example": "My grandma always says, \"Patience is a [virtue].\"",
+        "translation": "我奶奶總是跟我說：「有耐心是一種美德」。" 
+      },
+      {
+        "meaning": "長處，優點",
+        "example": "Miranda always praises the [virtues] of practicality in solving problems.",
+        "translation": "米蘭達很欣賞務實解決問題的長處。" 
+      }
+    ]
+  },
+  {
+    "content": "welfare",
+    "answer": [
+      {
+        "meaning": "福利，幸福，健康安樂",
+        "example": "The volunteer cares about the [welfare] of children from poor families; she wants the boys and girls to be healthy and happy.",
+        "translation": "這名志工很在乎貧窮家庭兒童的幸福，她希望他們健康、快樂。" 
+      },
+      {
+        "meaning": "社會救濟（制度）",
+        "example": "Joshua lost his job recently and is now living on [welfare].",
+        "translation": "約書亞最近失業了，現在靠社會救濟過活。" 
+      }
+    ]
+  }
+]

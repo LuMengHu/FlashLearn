@@ -1,26 +1,121 @@
-
 [
   {
-    "content": "satisfaction",
+    "content": "spacious",
     "answer": "词性变换",
     "metadata": {
       "pos_forms": {
-        "N.": { "word": "satisfaction", "meaning": "满意；满足" },
-        "V.": { "word": "satisfy", "meaning": "使满意；满足" },
-        "ADJ.": { "word": "satisfying", "meaning": "令人满意的" },
-        "ADV.": { "word": "satisfactorily", "meaning": "圆满地" }
+        "N.": { "word": "space", "meaning": "空间；太空" },
+        "V.": { "word": "", "meaning": "" },
+        "ADJ.": { "word": "spacious", "meaning": "宽敞的，空间大的" },
+        "ADV.": { "word": "spaciously", "meaning": "宽敞地；广阔地" }
       }
     }
   },
   {
-    "content": "achievement",
+    "content": "glamorous",
     "answer": "词性变换",
     "metadata": {
       "pos_forms": {
-        "N.": { "word": "achievement", "meaning": "成就" },
-        "V.": { "word": "achieve", "meaning": "取得；实现" },
-        "ADJ.": { "word": "achievable", "meaning": "可完成的" },
+        "N.": { "word": "glamour", "meaning": "魅力；吸引力" },
+        "V.": { "word": "", "meaning": "" },
+        "ADJ.": { "word": "glamorous", "meaning": "有魅力的" },
+        "ADV.": { "word": "glamorously", "meaning": "有魅力地；迷人地" }
+      }
+    }
+  },
+  {
+    "content": "feature",
+    "answer": "词性变换",
+    "metadata": {
+      "pos_forms": {
+        "N.": { "word": "feature", "meaning": "特色，特征" },
+        "V.": { "word": "feature", "meaning": "以…为特色" },
+        "ADJ.": { "word": "", "meaning": "" },
         "ADV.": { "word": "", "meaning": "" }
+      }
+    }
+  },
+  {
+    "content": "extravagant",
+    "answer": "词性变换",
+    "metadata": {
+      "pos_forms": {
+        "N.": { "word": "extravagance", "meaning": "奢侈；浪费" },
+        "V.": { "word": "", "meaning": "" },
+        "ADJ.": { "word": "extravagant", "meaning": "奢侈的" },
+        "ADV.": { "word": "extravagantly", "meaning": "奢侈地；过度地" }
+      }
+    }
+  },
+  {
+    "content": "throughout",
+    "answer": "词性变换",
+    "metadata": {
+      "pos_forms": {
+        "N.": { "word": "", "meaning": "" },
+        "V.": { "word": "", "meaning": "" },
+        "ADJ.": { "word": "", "meaning": "" },
+        "ADV.": { "word": "throughout", "meaning": "在各处；自始至终" }
+      }
+    }
+  },
+  {
+    "content": "alternatively",
+    "answer": "词性变换",
+    "metadata": {
+      "pos_forms": {
+        "N.": { "word": "alternation\nalternative", "meaning": "轮流，交替\n可替代的选择" },
+        "V.": { "word": "", "meaning": "" },
+        "ADJ.": { "word": "alternative", "meaning": "可替代的；选择" },
+        "ADV.": { "word": "alternatively", "meaning": "要不，或者" }
+      }
+    }
+  },
+  {
+    "content": "helipad",
+    "answer": "词性变换",
+    "metadata": {
+      "pos_forms": {
+        "N.": { "word": "helipad", "meaning": "直升机起降场" },
+        "V.": { "word": "", "meaning": "" },
+        "ADJ.": { "word": "", "meaning": "" },
+        "ADV.": { "word": "", "meaning": "" }
+      }
+    }
+  },
+  {
+    "content": "numerous",
+    "answer": "词性变换",
+    "metadata": {
+      "pos_forms": {
+        "N.": { "word": "", "meaning": "" },
+        "V.": { "word": "", "meaning": "" },
+        "ADJ.": { "word": "numerous", "meaning": "许多的，大量的" },
+        "ADV.": { "word": "", "meaning": "" }
+      }
+    }
+  },
+  {
+    "content": "criticise",
+    "answer": "词性变换",
+    "metadata": {
+      "pos_forms": {
+        "N.": { "word": "criticism", "meaning": "批评；评论" },
+        "V.": { "word": "criticise", "meaning": "批评；指责" },
+        "ADJ.": { "word": "critical", "meaning": "批评的；关键的" },
+        "ADV.": { "word": "", "meaning": "" }
+      }
+    }
+  },
+  {
+    "content": "unstable",
+    "answer": "词性变换",
+    "metadata": {
+      "pos_forms": {
+        "N.": { "word": "(in)stability", "meaning": "（不）稳定性" },
+        "V.": { "word": "stabilize", "meaning": "使稳定；稳固" },
+        "ADJ.": { "word": "(un)stable", "meaning": "不稳定的" },
+        "ADV.": { "word": "stably", "meaning": "稳定地；稳固地" }
       }
     }
   }

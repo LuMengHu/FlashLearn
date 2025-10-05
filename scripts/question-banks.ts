@@ -21,7 +21,7 @@ export const banksToSeed: BankMeta[] = [
     category: '英文',
     subBanks: [
       {
-        name: 'U19 & U21',
+        name: 'U82 & U83',
         description: '',
         cover_image_url: '',
         mode: 'initial_hint',
@@ -79,15 +79,15 @@ export const banksToSeed: BankMeta[] = [
     description: '逐层揭示单词的多个释义和例句',
     cover_image_url: '/covers/7000_Words.png', 
     mode: 'layered_reveal',
-    dataFile: '/7000_Words/U7&U8.json',
+    dataFile: '/7000_Words/U82&83.json',
     category: '英文',
     subBanks: [
       {
-        name: 'U7 & U8',
+        name: 'U82 & U83',
         description: '',
         cover_image_url: '',
         mode: 'layered_reveal',
-        dataFile: '/7000_Words/U7&U8.json',
+        dataFile: '/7000_Words/U82&83.json',
         category: '7000 Words',
       },
     ]

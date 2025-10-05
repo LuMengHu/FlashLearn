@@ -25,7 +25,7 @@ interface Props {
   bank: QuestionBank;
   initialQuestions: any[];
   siblingBanks: QuestionBank[] | null;
-  allBanks: QuestionBank[]; // 接收所有题库列表
+  allBanks: QuestionBank[];
 }
 
 export default function QuizClient({ bank, initialQuestions, siblingBanks, allBanks }: Props) {
@@ -39,24 +39,17 @@ export default function QuizClient({ bank, initialQuestions, siblingBanks, allBa
     handleSelectSubBank, startQuiz,
   } = useQuizEngine({ bank, initialQuestions });
 
-  // 【核心修复】重写 handleReturn，现在它会存储 category
   const handleReturn = () => {
-    // 确定父题库的 ID (如果是顶级题库，则为其本身)
     const parentId = currentBank.parentId || bank.id;
-    // 从所有题库列表中找到这个父题库的完整信息
     const parentBank = allBanks.find(b => b.id === parentId);
-
     if (parentBank) {
-      // 存储ID和Category
       sessionStorage.setItem('lastParentBankId', String(parentBank.id));
       sessionStorage.setItem('lastParentBankCategory', parentBank.category || '未分类');
     }
-    
     window.location.href = '/';
   };
   
   if (isCompleted) {
-    // ... 完成界面 JSX 保持不变
     return (
         <div className="flex-grow flex items-center justify-center">
             <div className="w-full max-w-md text-center p-6 sm:p-10 bg-slate-900/50 border border-slate-800 rounded-lg shadow-xl">
@@ -106,13 +99,46 @@ export default function QuizClient({ bank, initialQuestions, siblingBanks, allBa
       </div>
       <div className="min-h-[500px] flex flex-col justify-between">
         {renderCard()}
-        <div className="mt-8 text-center h-12">
+        <div className="mt-8 text-center h-16"> {/* 确保按钮容器有固定高度 */}
+          
+          {/* 【核心修复】针对不同模式，渲染不同的按钮组 */}
+
+          {/* 1. 批量处理模式 (sbs, pos, 等) */}
           {isBatchMode ? (
-            currentBank.mode === 'sbs' ? (isSbsReadingCompleted && (<Button onClick={handleNextBatch} size="lg" className="bg-green-600 hover:bg-green-700 text-white">完成阅读</Button>)) 
-            : (isAnswerVisible ? (<Button onClick={handleNextBatch} size="lg" className="bg-brand-cyan-600 hover:bg-brand-cyan-700 text-white">下一组</Button>) : (<Button onClick={handleShowAnswer} size="lg" className="bg-green-600 hover:bg-green-700 text-white">确认答案</Button>))
-          ) : isAnswerVisible ? (
-            <div className="flex justify-center space-x-4"><Button onClick={() => handleMark(true)} className="bg-green-600 hover:bg-green-700 text-white" size="lg">我答对了</Button><Button onClick={() => handleMark(false)} variant="destructive" size="lg">我答错了</Button></div>
-          ) : (<Button onClick={handleShowAnswer} size="lg" className="bg-brand-cyan-600 hover:bg-brand-cyan-700 text-white">显示答案</Button>)}
+            currentBank.mode === 'sbs' 
+              ? (isSbsReadingCompleted && <Button onClick={handleNextBatch} size="lg" className="bg-green-600 hover:bg-green-700 text-white">完成阅读</Button>)
+              : (isAnswerVisible 
+                  ? <Button onClick={handleNextBatch} size="lg" className="bg-brand-cyan-600 hover:bg-brand-cyan-700 text-white">下一组</Button> 
+                  : <Button onClick={handleShowAnswer} size="lg" className="bg-green-600 hover:bg-green-700 text-white">确认答案</Button>)
+          
+          /* 2. Layered Reveal 模式 (特殊处理) */
+          ) : currentBank.mode === 'layered_reveal' ? (
+            canMarkLayeredReveal && (
+              <div className="flex justify-center space-x-4">
+                <Button onClick={() => handleMark(true)} className="bg-green-600 hover:bg-green-700 text-white" size="lg">我答对了</Button>
+                <Button onClick={() => handleMark(false)} variant="destructive" size="lg">我答错了</Button>
+              </div>
+            )
+            // 当 canMarkLayeredReveal 为 false 时，不渲染任何按钮，因为按钮在子组件内部
+
+          /* 3. MCQ 模式 (特殊处理) */
+          ) : currentBank.mode === 'mcq' ? (
+              isMcqAnswered && (
+                  <Button onClick={handleNextMcq} size="lg" className="bg-brand-cyan-600 hover:bg-brand-cyan-700 text-white">下一题</Button>
+              )
+              // isMcqAnswered 为 false 时不渲染任何按钮，因为按钮是选项本身
+
+          /* 4. 其他所有标准模式 (qa, poetry_pair, 等) */
+          ) : (
+            isAnswerVisible ? (
+              <div className="flex justify-center space-x-4">
+                <Button onClick={() => handleMark(true)} className="bg-green-600 hover:bg-green-700 text-white" size="lg">我答对了</Button>
+                <Button onClick={() => handleMark(false)} variant="destructive" size="lg">我答错了</Button>
+              </div>
+            ) : (
+              <Button onClick={handleShowAnswer} size="lg" className="bg-brand-cyan-600 hover:bg-brand-cyan-700 text-white">显示答案</Button>
+            )
+          )}
         </div>
       </div>
     </div>

@@ -1,5 +1,4 @@
-// components/LayeredReveal.tsx
-
+// components/quiz/LayeredReveal.tsx
 'use client';
 
 import { useState, useMemo, useEffect } from 'react';
@@ -7,12 +6,12 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Button } from '@/components/ui/button';
 import type { Question } from '@/lib/schema';
+import React from 'react'; // 确保导入 React
 
-// 【新】更新类型定义，加入翻译和可见性状态
 type MeaningExamplePair = {
   meaning: string;
   example: string;
-  translation?: string; // 翻译是可选的
+  translation?: string;
 };
 
 interface Props {
@@ -20,23 +19,50 @@ interface Props {
   onAllLayersRevealed: () => void;
 }
 
+// 【新功能】创建一个辅助组件来处理高亮逻辑
+const HighlightedText = ({ text }: { text: string }) => {
+  if (!text) {
+    return null;
+  }
+  // 正则表达式查找 [单词] 格式
+  const parts = text.split(/(\[[^\]]+\])/g);
+
+  return (
+    <>
+      {parts.map((part, index) => {
+        if (part.startsWith('[') && part.endsWith(']')) {
+          // 如果匹配，则渲染为高亮，并去除括号
+          return (
+            <span key={index} className="text-brand-green-500 font-bold">
+              {part.substring(1, part.length - 1)}
+            </span>
+          );
+        }
+        // 否则直接返回文本部分
+        return part;
+      })}
+    </>
+  );
+};
+
+
 export default function LayeredRevealCard({ question, onAllLayersRevealed }: Props) {
   const meanings = useMemo(() => {
     try {
       const parsed = JSON.parse(question.answer);
       return Array.isArray(parsed) ? (parsed as MeaningExamplePair[]) : [];
     } catch (e) {
+      console.error("Failed to parse question answer JSON:", e);
       return [];
     }
   }, [question]);
 
   const [revealedIndex, setRevealedIndex] = useState(0);
-  // 【新】用一个Map来追踪每个例句的翻译是否显示
   const [translationVisibility, setTranslationVisibility] = useState<Map<number, boolean>>(new Map());
 
   useEffect(() => {
     setRevealedIndex(0);
-    setTranslationVisibility(new Map()); // 题目切换时重置翻译可见性
+    setTranslationVisibility(new Map());
   }, [question]);
 
   useEffect(() => {
@@ -53,7 +79,7 @@ export default function LayeredRevealCard({ question, onAllLayersRevealed }: Pro
   
   const handlePronounce = (text: string) => {
     if (typeof window !== 'undefined' && window.speechSynthesis) {
-      const utterance = new SpeechSynthesisUtterance(text);
+      const utterance = new SpeechSynthesisUtterance(text.replace(/\[|\]/g, '')); // 发音时去除括号
       utterance.lang = 'en-US';
       utterance.rate = 0.8; 
       window.speechSynthesis.speak(utterance);
@@ -62,15 +88,12 @@ export default function LayeredRevealCard({ question, onAllLayersRevealed }: Pro
     }
   };
 
-  // 【新】处理例句点击事件的函数
   const handleExampleClick = (index: number, exampleText: string) => {
     const isVisible = translationVisibility.get(index) || false;
     
     if (isVisible) {
-      // 如果翻译已显示，则朗读例句
       handlePronounce(exampleText);
     } else {
-      // 如果翻译未显示，则显示翻译
       setTranslationVisibility(new Map(translationVisibility.set(index, true)));
     }
   };
@@ -89,7 +112,6 @@ export default function LayeredRevealCard({ question, onAllLayersRevealed }: Pro
           <CardTitle className="text-4xl sm:text-5xl font-bold tracking-wider text-slate-100 group-hover:text-brand-cyan-400 transition-colors">
             {question.content}
           </CardTitle>
-          {/* 【修复】去除音量图标 */}
         </div>
       </CardHeader>
       <CardContent className="flex-grow flex flex-col p-4 overflow-hidden">
@@ -104,13 +126,14 @@ export default function LayeredRevealCard({ question, onAllLayersRevealed }: Pro
               <p className="text-base font-semibold text-brand-cyan-500">
                 {hasMultipleMeanings && `【${index + 1}】`}{item.meaning}
               </p>
-              {/* 【修改】将例句变为可点击 */}
               <div 
-                className="text-base text-slate-300 pl-4 border-l-2 border-slate-600 mt-1 cursor-pointer hover:bg-slate-800/50 p-2 rounded-r-md"
+                className="text-base text-slate-300 pl-4 border-l-2 border-slate-600 mt-1 cursor-pointer hover:bg-slate-800/50 p-2 rounded-r-md transition-colors"
                 onClick={() => handleExampleClick(index, item.example)}
               >
-                <p>{item.example}</p>
-                {/* 【新】条件渲染翻译 */}
+                {/* 【新功能】使用新的高亮组件渲染例句 */}
+                <p>
+                  <HighlightedText text={item.example} />
+                </p>
                 {item.translation && translationVisibility.get(index) && (
                   <p className="mt-2 text-brand-cyan-400/80 text-sm">{item.translation}</p>
                 )}
@@ -120,7 +143,7 @@ export default function LayeredRevealCard({ question, onAllLayersRevealed }: Pro
         </ScrollArea>
       </CardContent>
       
-      <div className="flex-shrink-0 text-center py-4">
+      <div className="flex-shrink-0 text-center py-4 h-16"> {/* 确保按钮容器有固定高度 */}
         {!allRevealed && (
           <Button onClick={handleRevealNext} size="lg" className="bg-brand-cyan-600 hover:bg-brand-cyan-700 text-white">
             {revealedIndex === 0 ? '显示答案' : `显示下一条 (${revealedIndex}/${meanings.length})`}
