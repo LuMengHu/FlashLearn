@@ -1,4 +1,4 @@
-// lib/actions.ts
+// lib/queries.ts
 import { db } from '@/lib/db';
 import { questionBanks, questions } from '@/lib/schema';
 import { eq, isNull, sql, and, desc, ne } from 'drizzle-orm';
