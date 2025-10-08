@@ -1,13 +1,14 @@
 // components/quiz/QuizClient.tsx
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import type { QuestionBank } from '@/lib/schema';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
-import { Undo2 } from 'lucide-react';
+import { Undo2, Volume2, VolumeX } from 'lucide-react';
 import SubBankSelector from '@/components/SubBankSelector';
 import { useQuizEngine } from '../hooks/useQuizEngine';
+import { cn } from '@/lib/utils';
 
 // 导入所有模式组件
 import QA from './QA';
@@ -39,6 +40,10 @@ export default function QuizClient({ bank, initialQuestions, siblingBanks, allBa
     handleSelectSubBank, startQuiz,
   } = useQuizEngine({ bank, initialQuestions });
 
+  // 【核心修复 1】重新加入自动播放状态和切换函数
+  const [isAutoPlayOn, setIsAutoPlayOn] = useState(false);
+  const toggleAutoPlay = () => setIsAutoPlayOn(prev => !prev);
+  
   const handleReturn = () => {
     const parentId = currentBank.parentId || bank.id;
     const parentBank = allBanks.find(b => b.id === parentId);
@@ -75,7 +80,8 @@ export default function QuizClient({ bank, initialQuestions, siblingBanks, allBa
       case 'poetry_pair': return <PoetryPair question={currentQuestion} isAnswerVisible={isAnswerVisible} />;
       case 'poetry_completion': return <PoetryCompletion question={currentQuestion} isAnswerVisible={isAnswerVisible} />;
       case 'layered_reveal': return <LayeredReveal question={currentQuestion} onAllLayersRevealed={handleAllLayersRevealed} />;
-      case 'initial_hint': return <InitialHint question={currentQuestion} isAnswerVisible={isAnswerVisible} />;
+      // 【核心修复 2】确保在渲染 InitialHint 时传递 isAutoPlayOn prop
+      case 'initial_hint': return <InitialHint question={currentQuestion} isAnswerVisible={isAnswerVisible} isAutoPlayOn={isAutoPlayOn} />;
       case 'qa':
       default: return <QA question={currentQuestion} isAnswerVisible={isAnswerVisible} />;
     }
@@ -92,26 +98,51 @@ export default function QuizClient({ bank, initialQuestions, siblingBanks, allBa
         <div className="w-full">
           <div className="flex justify-between items-center text-sm text-slate-400 mb-2">
             <span>{isBatchMode ? `进度: ${batchesCompleted} / ${totalBatches}` : `进度: ${answeredCount} / ${currentTotal}`}</span>
-            {!isBatchMode && (<div className="flex items-center gap-4"><span className="text-brand-green-500">答对: {correctCount}</span><span className="text-slate-600">|</span><span className="text-brand-red-500">答错: {incorrectCount}</span><Button onClick={handleUndo} disabled={answered.length === 0} variant="ghost" size="icon" className="h-8 w-8 disabled:opacity-30"><Undo2 size={18} /><span className="sr-only">撤销上一题</span></Button></div>)}
+            
+            {/* 【核心修复 3】重新加入包含自动播放按钮的控制区域 */}
+            <div className="flex items-center gap-4">
+              {!isBatchMode && (
+                <>
+                  <span className="text-brand-green-500">答对: {correctCount}</span>
+                  <span className="text-slate-600">|</span>
+                  <span className="text-brand-red-500">答错: {incorrectCount}</span>
+                </>
+              )}
+              {/* 自动播放开关，只在 initial_hint 模式下显示 */}
+              {currentBank.mode === 'initial_hint' && (
+                <Button 
+                  onClick={toggleAutoPlay}
+                  variant="ghost" 
+                  size="icon" 
+                  className={cn(
+                    "h-8 w-8 transition-colors",
+                    isAutoPlayOn ? 'text-brand-cyan-400 hover:text-brand-cyan-300' : 'text-slate-500 hover:text-slate-300'
+                  )}
+                  title={isAutoPlayOn ? '关闭自动播放' : '开启自动播放'}
+                >
+                  {isAutoPlayOn ? <Volume2 size={20} /> : <VolumeX size={20} />}
+                </Button>
+              )}
+              {!isBatchMode && (
+                <Button onClick={handleUndo} disabled={answered.length === 0} variant="ghost" size="icon" className="h-8 w-8 disabled:opacity-30">
+                  <Undo2 size={18} />
+                  <span className="sr-only">撤销上一题</span>
+                </Button>
+              )}
+            </div>
           </div>
           <Progress value={isBatchMode ? (totalBatches > 0 ? (batchesCompleted / totalBatches) * 100 : 0) : (currentTotal > 0 ? (answeredCount / currentTotal) * 100 : 0)} className="w-full h-2 bg-slate-800" />
         </div>
       </div>
       <div className="min-h-[500px] flex flex-col justify-between">
         {renderCard()}
-        <div className="mt-8 text-center h-16"> {/* 确保按钮容器有固定高度 */}
-          
-          {/* 【核心修复】针对不同模式，渲染不同的按钮组 */}
-
-          {/* 1. 批量处理模式 (sbs, pos, 等) */}
+        <div className="mt-8 text-center h-16">
           {isBatchMode ? (
             currentBank.mode === 'sbs' 
               ? (isSbsReadingCompleted && <Button onClick={handleNextBatch} size="lg" className="bg-green-600 hover:bg-green-700 text-white">完成阅读</Button>)
               : (isAnswerVisible 
                   ? <Button onClick={handleNextBatch} size="lg" className="bg-brand-cyan-600 hover:bg-brand-cyan-700 text-white">下一组</Button> 
                   : <Button onClick={handleShowAnswer} size="lg" className="bg-green-600 hover:bg-green-700 text-white">确认答案</Button>)
-          
-          /* 2. Layered Reveal 模式 (特殊处理) */
           ) : currentBank.mode === 'layered_reveal' ? (
             canMarkLayeredReveal && (
               <div className="flex justify-center space-x-4">
@@ -119,16 +150,10 @@ export default function QuizClient({ bank, initialQuestions, siblingBanks, allBa
                 <Button onClick={() => handleMark(false)} variant="destructive" size="lg">我答错了</Button>
               </div>
             )
-            // 当 canMarkLayeredReveal 为 false 时，不渲染任何按钮，因为按钮在子组件内部
-
-          /* 3. MCQ 模式 (特殊处理) */
           ) : currentBank.mode === 'mcq' ? (
               isMcqAnswered && (
                   <Button onClick={handleNextMcq} size="lg" className="bg-brand-cyan-600 hover:bg-brand-cyan-700 text-white">下一题</Button>
               )
-              // isMcqAnswered 为 false 时不渲染任何按钮，因为按钮是选项本身
-
-          /* 4. 其他所有标准模式 (qa, poetry_pair, 等) */
           ) : (
             isAnswerVisible ? (
               <div className="flex justify-center space-x-4">

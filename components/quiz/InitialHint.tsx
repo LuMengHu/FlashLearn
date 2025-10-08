@@ -1,9 +1,11 @@
 // components/quiz/InitialHintCard.tsx
 'use client';
 
+import { useEffect } from 'react'; // 导入 useEffect
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import type { Question } from '@/lib/schema';
+import React from 'react'; // 导入 React
 
 type InitialHintMetadata = {
   chineseMeaning?: string;
@@ -12,18 +14,40 @@ type InitialHintMetadata = {
 interface Props {
   question: Question;
   isAnswerVisible: boolean;
+  isAutoPlayOn: boolean; // 【新】接收自动播放状态
 }
 
-export default function InitialHintCard({ question, isAnswerVisible }: Props) {
+// 【新功能】处理换行符的组件
+const MultilineText = ({ text }: { text?: string }) => {
+  if (!text) return null;
+  return (
+    <>
+      {text.split('\\n').map((line, index) => (
+        <React.Fragment key={index}>
+          {line}
+          {index < text.split('\\n').length - 1 && <br />}
+        </React.Fragment>
+      ))}
+    </>
+  );
+};
+
+export default function InitialHintCard({ question, isAnswerVisible, isAutoPlayOn }: Props) {
   const word = question.content;
   const meaning = question.answer;
   const metadata = question.metadata as InitialHintMetadata | null;
   const chineseMeaning = metadata?.chineseMeaning;
 
-  const initialHint = word ? `${word.charAt(0).toLowerCase()}` : '';
+  // 【功能 1 优化】处理多单词首字母提示
+  const initialHint = word
+    .split(' ')
+    .map(part => part.charAt(0).toLowerCase() + '______')
+    .join(' ');
 
   const handlePronounce = (text: string) => {
     if (typeof window !== 'undefined' && window.speechSynthesis) {
+      // 停止任何正在播放的语音，防止重叠
+      window.speechSynthesis.cancel();
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.lang = 'en-US';
       utterance.rate = 0.9;
@@ -33,10 +57,16 @@ export default function InitialHintCard({ question, isAnswerVisible }: Props) {
     }
   };
 
+  // 【功能 3 实现】自动播放逻辑
+  useEffect(() => {
+    if (isAnswerVisible && isAutoPlayOn) {
+      handlePronounce(word);
+    }
+  }, [isAnswerVisible, isAutoPlayOn, word]); // 依赖项确保在这些值变化时正确触发
+
   return (
-    // 【间距控制点 A】使用 `gap-y-4` 控制单词和释义两大块之间的垂直间距
     <Card className="bg-slate-900/50 border-slate-800 text-white shadow-lg flex flex-col min-h-[350px] justify-center gap-y-0">
-      <CardHeader className="text-center pt-6"> {/* pt-6 确保顶部有足够空间 */}
+      <CardHeader className="text-center pt-6">
         <div 
           onClick={() => handlePronounce(word)} 
           className="group inline-flex items-center justify-center cursor-pointer"
@@ -46,32 +76,25 @@ export default function InitialHintCard({ question, isAnswerVisible }: Props) {
             {isAnswerVisible ? (
               <span className="text-brand-green-500">{word}</span>
             ) : (
-              <span>
-                {initialHint}
-                <span className="text-slate-600 tracking-normal">{' ______'}</span>
-              </span>
+              <span className="tracking-normal">{initialHint}</span> // 移除多余的 slate-600 span
             )}
           </CardTitle>
         </div>
       </CardHeader>
       
       <CardContent className="p-6 flex flex-col items-center justify-center text-center mt-[-20px]">
-        {/* 英文释义 */}
         <p className="text-xl sm:text-3xl text-slate-300 leading-relaxed">
           {meaning}
         </p>
-
-        {/* 【核心修复】使用 opacity 控制可见性，而不是条件渲染 */}
-        <p className={cn(
+        <div className={cn(
           "text-xl sm:text-2xl text-blue-400 transition-opacity duration-300",
-  
           "mt-4", 
-          // 答案可见时，完全不透明；否则，完全透明
           isAnswerVisible && chineseMeaning ? "opacity-100" : "opacity-0"
         )}>
-          {/* 使用占位符 `&nbsp;` 或真实内容，确保元素高度 */}
-          {chineseMeaning || '\u00A0'}
-        </p>
+          {/* 【功能 2 实现】使用新组件渲染中文含义 */}
+          <MultilineText text={chineseMeaning} />
+          {!chineseMeaning && '\u00A0'} {/* 占位符 */}
+        </div>
       </CardContent>
     </Card>
   );

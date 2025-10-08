@@ -99,9 +99,9 @@
   },
   {
     "content": "reluctant",
-    "answer": "not wanting to do sth (SYN unwilling; reluctance n)",
+    "answer": "not wanting to do sth (SYN unwilling; )",
     "metadata": {
-      "chineseMeaning": "不願意 \n to do sth"
+      "chineseMeaning": "不願意 \n to do sth \n reluctance n."
     }
   },
   {
@@ -134,7 +134,7 @@
   },
   {
     "content": "fault",
-    "answer": "If sth bad is your fault, you made it happen.",
+    "answer": "If sth bad is your ~, you made it happen.",
     "metadata": {
       "chineseMeaning": "過錯"
     }
