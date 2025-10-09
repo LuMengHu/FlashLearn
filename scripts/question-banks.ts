@@ -17,15 +17,23 @@ export const banksToSeed: BankMeta[] = [
     description: '',
     cover_image_url: '/covers/word_skill.png', 
     mode: 'initial_hint',
-    dataFile: '/word_skill/U19&U21.json',
+    dataFile: '/word_skill/U19.json',
     category: '英文',
     subBanks: [
       {
-        name: 'U82 & U83',
+        name: 'U19',
         description: '',
         cover_image_url: '',
         mode: 'initial_hint',
-        dataFile: '/word_skill/U19&U21.json',
+        dataFile: '/word_skill/U19.json',
+        category: 'Word Skill',
+      },
+      {
+        name: 'U21',
+        description: '',
+        cover_image_url: '',
+        mode: 'initial_hint',
+        dataFile: '/word_skill/U21.json',
         category: 'Word Skill',
       },
     ]

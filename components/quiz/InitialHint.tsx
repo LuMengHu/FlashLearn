@@ -22,10 +22,10 @@ const MultilineText = ({ text }: { text?: string }) => {
   if (!text) return null;
   return (
     <>
-      {text.split('\\n').map((line, index) => (
+      {text.split('\n').map((line, index) => (
         <React.Fragment key={index}>
           {line}
-          {index < text.split('\\n').length - 1 && <br />}
+          {index < text.split('\n').length - 1 && <br />}
         </React.Fragment>
       ))}
     </>
