@@ -40,7 +40,6 @@ export default function QuizClient({ bank, initialQuestions, siblingBanks, allBa
     handleSelectSubBank, startQuiz,
   } = useQuizEngine({ bank, initialQuestions });
 
-  // 【核心修复 1】重新加入自动播放状态和切换函数
   const [isAutoPlayOn, setIsAutoPlayOn] = useState(false);
   const toggleAutoPlay = () => setIsAutoPlayOn(prev => !prev);
   
@@ -70,20 +69,32 @@ export default function QuizClient({ bank, initialQuestions, siblingBanks, allBa
   }
 
   const renderCard = () => {
-    if (!currentQuestion) return null;
+    if (!currentQuestion && !isBatchMode) return null;
+    
+    // 【核心修复】为每个卡片组件添加一个唯一的 `key` 属性。
+    // 当 key 改变时，React会销毁旧组件并创建一个新组件，从而避免状态残留。
     switch (currentBank.mode) {
-      case 'pos': return <Pos rows={currentTableBatch} isAnswerVisible={isAnswerVisible} />;
-      case 'verb_forms': return <VerbForms rows={currentTableBatch} isAnswerVisible={isAnswerVisible} />;
-      case 'contextual_cloze': return <ContextualCloze questions={currentClozeGroup} options={currentClozeOptions} isAnswerVisible={isAnswerVisible} />;
-      case 'sbs': return <SBS question={currentQuestion} onReadingComplete={handleSbsReadingComplete} />;
-      case 'mcq': return <MCQ question={currentQuestion} onOptionSelected={handleMcqOptionSelected} />;
-      case 'poetry_pair': return <PoetryPair question={currentQuestion} isAnswerVisible={isAnswerVisible} />;
-      case 'poetry_completion': return <PoetryCompletion question={currentQuestion} isAnswerVisible={isAnswerVisible} />;
-      case 'layered_reveal': return <LayeredReveal question={currentQuestion} onAllLayersRevealed={handleAllLayersRevealed} />;
-      // 【核心修复 2】确保在渲染 InitialHint 时传递 isAutoPlayOn prop
-      case 'initial_hint': return <InitialHint question={currentQuestion} isAnswerVisible={isAnswerVisible} isAutoPlayOn={isAutoPlayOn} />;
+      case 'pos': 
+        return <Pos key={currentTableBatch[0]?.id || 'pos'} rows={currentTableBatch} isAnswerVisible={isAnswerVisible} />;
+      case 'verb_forms': 
+        return <VerbForms key={currentTableBatch[0]?.id || 'verb_forms'} rows={currentTableBatch} isAnswerVisible={isAnswerVisible} />;
+      case 'contextual_cloze': 
+        return <ContextualCloze key={currentClozeGroup[0]?.id || 'cloze'} questions={currentClozeGroup} options={currentClozeOptions} isAnswerVisible={isAnswerVisible} />;
+      case 'sbs': 
+        return <SBS key={currentQuestion.id} question={currentQuestion} onReadingComplete={handleSbsReadingComplete} />;
+      case 'mcq': 
+        return <MCQ key={currentQuestion.id} question={currentQuestion} onOptionSelected={handleMcqOptionSelected} />;
+      case 'poetry_pair': 
+        return <PoetryPair key={currentQuestion.id} question={currentQuestion} isAnswerVisible={isAnswerVisible} />;
+      case 'poetry_completion': 
+        return <PoetryCompletion key={currentQuestion.id} question={currentQuestion} isAnswerVisible={isAnswerVisible} />;
+      case 'layered_reveal': 
+        return <LayeredReveal key={currentQuestion.id} question={currentQuestion} onAllLayersRevealed={handleAllLayersRevealed} />;
+      case 'initial_hint': 
+        return <InitialHint key={currentQuestion.id} question={currentQuestion} isAnswerVisible={isAnswerVisible} isAutoPlayOn={isAutoPlayOn} />;
       case 'qa':
-      default: return <QA question={currentQuestion} isAnswerVisible={isAnswerVisible} />;
+      default: 
+        return <QA key={currentQuestion.id} question={currentQuestion} isAnswerVisible={isAnswerVisible} />;
     }
   };
 
@@ -99,7 +110,6 @@ export default function QuizClient({ bank, initialQuestions, siblingBanks, allBa
           <div className="flex justify-between items-center text-sm text-slate-400 mb-2">
             <span>{isBatchMode ? `进度: ${batchesCompleted} / ${totalBatches}` : `进度: ${answeredCount} / ${currentTotal}`}</span>
             
-            {/* 【核心修复 3】重新加入包含自动播放按钮的控制区域 */}
             <div className="flex items-center gap-4">
               {!isBatchMode && (
                 <>
@@ -108,16 +118,12 @@ export default function QuizClient({ bank, initialQuestions, siblingBanks, allBa
                   <span className="text-brand-red-500">答错: {incorrectCount}</span>
                 </>
               )}
-              {/* 自动播放开关，只在 initial_hint 模式下显示 */}
               {currentBank.mode === 'initial_hint' && (
                 <Button 
                   onClick={toggleAutoPlay}
                   variant="ghost" 
                   size="icon" 
-                  className={cn(
-                    "h-8 w-8 transition-colors",
-                    isAutoPlayOn ? 'text-brand-cyan-400 hover:text-brand-cyan-300' : 'text-slate-500 hover:text-slate-300'
-                  )}
+                  className={cn("h-8 w-8 transition-colors", isAutoPlayOn ? 'text-brand-cyan-400 hover:text-brand-cyan-300' : 'text-slate-500 hover:text-slate-300')}
                   title={isAutoPlayOn ? '关闭自动播放' : '开启自动播放'}
                 >
                   {isAutoPlayOn ? <Volume2 size={20} /> : <VolumeX size={20} />}
