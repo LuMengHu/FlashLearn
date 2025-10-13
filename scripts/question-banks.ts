@@ -91,11 +91,19 @@ export const banksToSeed: BankMeta[] = [
     category: '英文',
     subBanks: [
       {
-        name: 'U82 & U83',
+        name: 'U82',
         description: '',
         cover_image_url: '',
         mode: 'layered_reveal',
-        dataFile: '/7000_Words/U82&83.json',
+        dataFile: '/7000_Words/U83.json',
+        category: '7000 Words',
+      },
+      {
+        name: 'U83',
+        description: '',
+        cover_image_url: '',
+        mode: 'layered_reveal',
+        dataFile: '/7000_Words/U82.json',
         category: '7000 Words',
       },
     ]
