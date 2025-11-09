@@ -1,0 +1,277 @@
+[
+  {
+    "content": "alcohol",
+    "answer": [
+      {
+        "meaning": "酒",
+        "example": "The man drank too much [alcohol] at the bar and got drunk.",
+        "translation": "男子在酒吧喝了太多酒，喝醉了。"
+      },
+      {
+        "meaning": "酒精",
+        "example": "Frankie used [alcohol] to clean the open wound on his arm before he applied the medicine.",
+        "translation": "法蘭奇在手臂傷口上藥之前，先用酒精消毒傷口。"
+      }
+    ]
+  },
+  {
+    "content": "bacon",
+    "answer": [
+      {
+        "meaning": "培根，燻豬肉，鹹豬肉",
+        "example": "How many strips of [bacon] would you like on your sandwich?",
+        "translation": "你想在三明治上放多少條培根？"
+      }
+    ]
+  },
+  {
+    "content": "berry",
+    "answer": [
+      {
+        "meaning": "莓果",
+        "example": "Lisa bought some fresh [berries] at the farmer's market and made a birthday cake for her son.",
+        "translation": "莉莎在農夫市集買了一些新鮮莓果，並用來為兒子做了一個生日蛋糕。"
+      }
+    ]
+  },
+  {
+    "content": "biscuit",
+    "answer": [
+      {
+        "meaning": "小麵包，比司吉（美）；餅乾（英）",
+        "example": "Dolly brought some of the [biscuits] her grandmother made to school.",
+        "translation": "桃麗帶了一些祖母烤的比司吉去學校。"
+      }
+    ]
+  },
+  {
+    "content": "broil",
+    "answer": [
+      {
+        "meaning": "烤",
+        "example": "They made a fire and [broiled] fish over it.",
+        "translation": "他們升了一堆火，在上面烤魚。"
+      }
+    ]
+  },
+  {
+    "content": "buffet",
+    "answer": [
+      {
+        "meaning": "自助餐，快餐",
+        "example": "During the [buffet], people served themselves from a long counter and then returned to their tables to eat.",
+        "translation": "在吃自助餐時，人們自己去長桌上拿食物，然後回到自己的座位上用餐。"
+      }
+    ]
+  },
+  {
+    "content": "calorie",
+    "answer": [
+      {
+        "meaning": "（熱量單位）卡，卡路里",
+        "example": "Each of those chocolate cookies contains 50 [calories].",
+        "translation": "那些巧克力餅乾每一個的熱量是50卡。"
+      }
+    ]
+  },
+  {
+    "content": "cheese",
+    "answer": [
+      {
+        "meaning": "起司，乳酪",
+        "example": "Bavarian [cheese] is one of Bob's favorite foods.",
+        "translation": "巴伐利亞起司是鮑伯最愛吃的食物之一。"
+      }
+    ]
+  },
+  {
+    "content": "cherry",
+    "answer": [
+      {
+        "meaning": "櫻桃 \n ~ blossom 樱花",
+        "example": "Douglas can't wait to buy some [cherries], which are now in season.",
+        "translation": "現在是產櫻桃的季節，道格拉斯等不及想買些來吃了。"
+      }
+    ]
+  },
+  {
+    "content": "chip",
+    "answer": [
+      {
+        "meaning": "洋薯片",
+        "example": "I don't understand how Travis can eat only potato [chips] and nothing else.",
+        "translation": "我想不透托維斯怎能只靠吃洋芋片過活，他其他東西都不吃。"
+      },
+      {
+        "meaning": "晶片",
+        "example": "The worker's job is to add transistors to the [chips].",
+        "translation": "這個工人的工作是將電晶體裝配到晶片上。"
+      }
+    ]
+  },
+  {
+    "content": "cigar",
+    "answer": [
+      {
+        "meaning": "雪茄",
+        "example": "Gary smokes only [cigars], not cigarettes.",
+        "translation": "蓋瑞不抽香菸，只抽雪茄。"
+      }
+    ]
+  },
+  {
+    "content": "cigarette",
+    "answer": [
+      {
+        "meaning": "香菸",
+        "example": "Don't you know that smoking [cigarettes] is harmful to your lungs?",
+        "translation": "你難道不知道抽菸對肺部有害嗎？"
+      }
+    ]
+  },
+  {
+    "content": "cocktail",
+    "answer": [
+      {
+        "meaning": "雞尾酒",
+        "example": "Genna had a severe headache this morning because she drank too many [cocktails] last night.",
+        "translation": "金娜昨晚喝了太多雞尾酒，今天早上頭痛得很厲害。"
+      }
+    ]
+  },
+  {
+    "content": "coconut",
+    "answer": [
+      {
+        "meaning": "椰子",
+        "example": "John was hit by a falling [coconut] when he was sunbathing on the beach last week.",
+        "translation": "約翰上星期在海灘上做日光浴時，被一顆掉落的椰子給打中。"
+      }
+    ]
+  },
+  {
+    "content": "consume",
+    "answer": [
+      {
+        "meaning": "消耗，花費",
+        "example": "Mervin bought this car because its engine [consumes] less fuel than other models.",
+        "translation": "麥爾文買這款車，是因為它的引擎消耗的油量比其他款車少。"
+      },
+      {
+        "meaning": "吃完，喝光",
+        "example": "The guests [consumed] all the food on the dining table and drank three bottles of red wine.",
+        "translation": "客人把餐桌上的菜餚都吃光，而且也把三瓶紅酒都喝光了。"
+      }
+    ]
+  },
+  {
+    "content": "crisp",
+    "answer": [
+      {
+        "meaning": "脆的，酥的",
+        "example": "Nancy baked the bread in the oven until it was golden and [crisp].",
+        "translation": "南西用烤箱烤麵包，把麵包烤到呈金黃色、變得酥脆。"
+      },
+      {
+        "meaning": "新鮮爽口的",
+        "example": "Faye and her colleagues take turns preparing [crisp] carrots and celery sticks to share at work every day.",
+        "translation": "菲每天都會和同事輪流準備新鮮爽口的胡蘿蔔和芹菜莖，在上班時和大家一起享用。"
+      },
+      {
+        "meaning": "涼爽的",
+        "example": "Mom loves going for a walk in the [crisp], early morning air.",
+        "translation": "媽媽喜歡在涼爽的清晨到戶外走走。"
+      }
+    ]
+  },
+  {
+    "content": "crispy",
+    "answer": [
+      {
+        "meaning": "酥脆的",
+        "example": "Be sure to seal the bag tightly so the chips will stay [crispy] for a while.",
+        "translation": "要把袋口封緊，這樣洋芋片可以保持酥脆一陣子。"
+      }
+    ]
+  },
+  {
+    "content": "cube",
+    "answer": [
+      {
+        "meaning": "立方體，立方形物體",
+        "example": "Jocelyn took some ice [cubes] out of the fridge and put them in her coke.",
+        "translation": "賈思琳從冰箱拿了一些冰塊，放進可樂裡。"
+      }
+    ]
+  },
+  {
+    "content": "cucumber",
+    "answer": [
+      {
+        "meaning": "黃瓜",
+        "example": "In summer, my mom likes to preserve [cucumbers] with salt and put them in the refrigerator.",
+        "translation": "夏天時，我媽媽喜歡用鹽醃漬小黃瓜，然後放進冰箱冰。"
+      },
+      {
+        "meaning": "鎮定自若 \n as cool as a ~",
+        "example": "In an emergency, you should stay as cool as a [cucumber].",
+        "translation": "在危急時刻，你應該要保持鎮定。"
+      }
+    ]
+  },
+  {
+    "content": "dairy",
+    "answer": [
+      {
+        "meaning": "牛奶製的，乳品的",
+        "example": "Mara is allergic to [dairy] products, so she can't drink milk or eat cheese.",
+        "translation": "瑪拉對乳品過敏，所以不能喝牛奶或吃起司。"
+      },
+      {
+        "meaning": "製酪場，乳牛場",
+        "example": "The schoolchildren will visit a [dairy] to learn how milk is obtained and converted into butter and cheese.",
+        "translation": "這些學童將參觀一家製酪場，學習如何獲取牛奶，以及如何製作奶油和起司。"
+      },
+      {
+        "meaning": "乳品店",
+        "example": "We ran out of milk, so we bought some at the [dairy] on the corner.",
+        "translation": "我們的牛奶喝光了，所以我們在街角的乳品店買了一些牛奶。"
+      }
+    ]
+  },
+  {
+    "content": "diet",
+    "answer": [
+      {
+        "meaning": "飲食",
+        "example": "In Japan, many people's [diets] consist mainly of rice, fish, and vegetables.",
+        "translation": "日本人的飲食主要是米飯、魚肉和蔬菜。"
+      },
+      {
+        "meaning": "節食，限制飲食",
+        "example": "Cindy is on a [diet]; she doesn't eat fast food or desserts.",
+        "translation": "辛蒂正在節食，她不吃速食和甜點。"
+      },
+      {
+        "meaning": "按規定的飲食，節食",
+        "example": "Kelvin is [dieting] to lose 5 pounds this month.",
+        "translation": "凱文正在節食，為了要在一個月之內減掉五磅。"
+      },
+      {
+        "meaning": "低卡（饮料）",
+        "example": "[diet] drink",
+        "translation": ""
+      }
+    ]
+  },
+  {
+    "content": "dine",
+    "answer": [
+      {
+        "meaning": "進餐，用餐",
+        "example": "Mr. and Mrs. Edison often [dine] out with their friends on Friday nights.",
+        "translation": "愛迪生夫婦每週五晚上常和朋友外出用餐。"
+      }
+    ]
+  }
+]

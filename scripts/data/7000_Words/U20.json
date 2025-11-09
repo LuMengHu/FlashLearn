@@ -1,0 +1,289 @@
+[
+  {
+    "content": "powder",
+    "answer": [
+      {
+        "meaning": "粉末（名詞）",
+        "example": "Mrs. Gray put the milk [powder] in the nursing bottle and mixed it with some hot water.",
+        "translation": "葛雷太太把奶粉放進奶瓶裡，再加入一些熱水攪拌混合。"
+      },
+      {
+        "meaning": "撲粉（動詞）",
+        "example": "After [powdering] her face, the girl put on lipstick and eye shadow.",
+        "translation": "女孩在臉上撲粉之後，擦上口紅和眼影。"
+      }
+    ]
+  },
+  {
+    "content": "protein",
+    "answer": [
+      {
+        "meaning": "蛋白質",
+        "example": "Beans and eggs contain high quantities of [protein].",
+        "translation": "豆類和蛋富含豐富的蛋白質。"
+      }
+    ]
+  },
+  {
+    "content": "raisin",
+    "answer": [
+      {
+        "meaning": "葡萄乾",
+        "example": "Adding [raisins] and nuts to a bowl of cereal is a nutritious way to enrich the taste.",
+        "translation": "在麥片中加入葡萄乾和堅果，既營養又好吃。"
+      }
+    ]
+  },
+  {
+    "content": "raw",
+    "answer": [
+      {
+        "meaning": "生的，未煮過的",
+        "example": "When Daniel goes to a Japanese restaurant, he always orders a lot of [raw] fish.",
+        "translation": "丹尼爾去日本料理店用餐時，都會點很多生魚片。"
+      },
+      {
+        "meaning": "未加工的",
+        "example": "The country imports [raw] materials from other nations because it lacks natural resources.",
+        "translation": "這個國家缺乏自然資源，所以從其他國家進口原料。"
+      }
+    ]
+  },
+  {
+    "content": "recipe",
+    "answer": [
+      {
+        "meaning": "食譜，烹飪法",
+        "example": "Adeline collects [recipes] and then experiments with different ways of cooking to create her own style.",
+        "translation": "雅德琳收集食譜，然後嘗試各種烹飪方式，創造出自己的菜色。"
+      }
+    ]
+  },
+  {
+    "content": "refreshment",
+    "answer": [
+      {
+        "meaning": "茶點，點心，飲料",
+        "example": "There was a table of [refreshments] with drinks and sandwiches at the conference.",
+        "translation": "會議室裡有一張放茶點的餐桌，上面有飲料和三明治。"
+      },
+      {
+        "meaning": "恢復精神",
+        "example": "Come to our spa for some stress-free rest and [refreshment].",
+        "translation": "快來我們的溫泉浴場，放鬆身心地休息一下，恢復活力。"
+      }
+    ]
+  },
+  {
+    "content": "roast",
+    "answer": [
+      {
+        "meaning": "烘烤的（形容詞）",
+        "example": "The [roast] duck Ricardo made for the banquet was so tender and juicy that all the guests loved it.",
+        "translation": "瑞卡多為宴會做的烤鴨鮮嫩又多汁，所有的客人都讚不絕口。"
+      },
+      {
+        "meaning": "烘，烤（動詞）",
+        "example": "The camper made a fire near the river and [roasted] some fish for lunch.",
+        "translation": "露營者在河邊生了一堆火，烤了一些魚當作午餐。"
+      },
+      {
+        "meaning": "野外烤肉聚會（名詞）",
+        "example": "They are going to have a hot dog [roast] in their yard this Sunday, and 10 neighbors will attend.",
+        "translation": "這個星期天，他們將在院子舉辦一個烤熱狗的野餐會，有十位鄰居會來參加。"
+      }
+    ]
+  },
+  {
+    "content": "sausage",
+    "answer": [
+      {
+        "meaning": "香腸，臘腸",
+        "example": "To make [sausage], the cook mixed the chopped meat with the spices and stuffed the mixture into the pork gut.",
+        "translation": "廚師為了做香腸，把剁好的豬肉和香料混合好，再把它們塞進豬腸裡。"
+      }
+    ]
+  },
+  {
+    "content": "spaghetti",
+    "answer": [
+      {
+        "meaning": "義大利細麵",
+        "example": "Sandra usually allows 15 minutes to cook [spaghetti] in boiling water.",
+        "translation": "珊德拉通常會把義大利麵丟進滾水裡水煮十五分鐘。"
+      }
+    ]
+  },
+  {
+    "content": "spice",
+    "answer": [
+      {
+        "meaning": "香料，調味品（名詞）",
+        "example": "India has a long history of exporting [spices] by way of merchant ships.",
+        "translation": "印度商船外銷香料的歷史很悠久了。"
+      },
+      {
+        "meaning": "趣味，風味（名詞）",
+        "example": "To add some [spice] to her boring life, Heather planned an exciting trip to London.",
+        "translation": "海瑟打算去倫敦好好玩一下，為自己無聊的生活添點趣味。"
+      },
+      {
+        "meaning": "加香料於（動詞）",
+        "example": "The steak is [spiced] with rosemary, which will give it more flavor.",
+        "translation": "這個牛排加上了迷迭香來增添風味。"
+      },
+      {
+        "meaning": "使增添趣味（動詞）",
+        "example": "The speech was [spiced] with jokes and stories, which made it very interesting.",
+        "translation": "這場演講用一些笑話和故事來增添趣味，非常精彩。"
+      }
+    ]
+  },
+  {
+    "content": "spoil",
+    "answer": [
+      {
+        "meaning": "（食物等）變壞（動詞）",
+        "example": "Let's store all the leftovers in the refrigerator so they won't [spoil].",
+        "translation": "我們把剩菜剩飯都放進冰箱，這樣才不會壞掉。"
+      },
+      {
+        "meaning": "搞糟，糟蹋（動詞）",
+        "example": "The heavy rain [spoiled] their hiking trip and ruined the day.",
+        "translation": "這場大雨打亂了他們的健行，也讓一整天的旅行泡湯了。"
+      },
+      {
+        "meaning": "寵壞，溺愛（動詞）",
+        "example": "The mother [spoils] her children by giving them everything they ask for.",
+        "translation": "這個媽媽寵壞了孩子，不管他們要什麼她都給。"
+      }
+    ]
+  },
+{
+"content": "stale",
+"answer": [
+{
+"meaning": "不新鮮的",
+"example": "Open a new bag of potato chips because these are [stale].",
+"translation": "這些洋芋片都不新鮮了，再開包新的吧。"
+}
+]
+},
+{
+"content": "starve",
+"answer": [
+{
+"meaning": "餓死，挨餓",
+"example": "Even after two months without food, a cockroach will not [starve] to death.",
+"translation": "蟑螂即使兩個月不吃東西，也不會餓死。"
+}
+]
+},
+{
+"content": "sticky",
+"answer": [
+{
+"meaning": "黏的",
+"example": "Serena never had [sticky] rice until she traveled to Taiwan.",
+"translation": "瑟瑞娜來臺灣旅遊時，第一次吃到糯米。"
+}
+]
+},
+{
+"content": "tender",
+"answer": [
+{
+"meaning": "嫩的，柔軟的",
+"example": "After being cooked over a low flame for three hours, the meat becomes very [tender].",
+"translation": "肉用小火煮了三個小時之後，變得非常嫩。"
+},
+{
+"meaning": "溫柔的",
+"example": "The mother was [tender] toward her injured son; she bandaged his wound carefully and gently.",
+"translation": "媽媽對受傷的兒子很溫柔，她仔細、輕柔地用繃帶幫他包紮傷口。"
+}
+]
+},
+{
+"content": "tobacco",
+"answer": [
+{
+"meaning": "菸草",
+"example": "Some baseball players chew [tobacco] for minor stimulation while playing the game.",
+"translation": "有些棒球選手在打球時會嚼菸草來稍稍提神。"
+}
+]
+},
+{
+"content": "vitamin",
+"answer": [
+{
+"meaning": "維他命",
+"example": "Several years ago, Heather started taking a [vitamin] pill after breakfast every day.",
+"translation": "海瑟從幾年前開始，在每天早餐後都會服用維他命。"
+}
+]
+},
+{
+"content": "yolk",
+"answer": [
+{
+"meaning": "蛋黃",
+"example": "The [yolk] of a duck egg is larger and more tasty than the [yolk] of a chicken egg.",
+"translation": "鴨蛋蛋黃比雞蛋蛋黃要來得大，而且比較好吃。"
+}
+]
+},
+{
+"content": "spicy",
+"answer": [
+{
+"meaning": "辛辣的",
+"example": "Daren was overwhelmed by the [spicy] dishes prepared by his friends from Thailand.",
+"translation": "泰國朋友煮的辣味菜餚，讓戴倫吃不消。"
+}
+]
+},
+{
+"content": "syrup",
+"answer": [
+{
+"meaning": " 糖漿",
+"example": "Devin cannot resist maple [syrup], especially with French toast.",
+"translation": "戴文就是抗拒不了楓糖糖漿，尤其是吃法式土司的時候。"
+}
+]
+},
+{
+"content": "vinegar",
+"answer": [
+{
+"meaning": " 醋",
+"example": "The salad needs some salt and [vinegar].",
+"translation": "沙拉裡要加點鹽巴和醋。"
+}
+]
+},
+{
+"content": "walnut",
+"answer": [
+{
+"meaning": "胡桃",
+"example": "Until he lost his molars, Uncle Pete could crack [walnuts] open with his bare teeth.",
+"translation": "皮特叔叔在掉了臼齒之前，光用牙齒就能咬開胡桃。"
+}
+]
+},
+{
+"content": "yogurt",
+"answer": [
+{
+"meaning": "優格",
+"example": "Bradley eats frozen [yogurt] as a healthy alternative to ice cream.",
+"translation": "布德里為了健康，吃冷凍優格來代替冰淇淋。"
+}
+]
+}
+]
+
+
