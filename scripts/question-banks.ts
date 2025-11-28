@@ -121,7 +121,7 @@ export const banksToSeed: BankMeta[] = [
     description: '给出半句，对出另外半句。',
     cover_image_url: '/covers/poetry_pair.png',
     mode: 'poetry_pair',
-    dataFile: '/poetry_pair/T1.json',
+    dataFile: '/poetry_pair/T2.json',
     category: '中文',
     subBanks: [
       {
