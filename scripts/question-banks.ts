@@ -193,7 +193,7 @@ export const banksToSeed: BankMeta[] = [
     ]
   },
   {
-    name: '外交常识',
+    name: '珠澳歷史',
     description: '',
     cover_image_url: '/covers/diplomatic.png',
     mode: 'mcq',
