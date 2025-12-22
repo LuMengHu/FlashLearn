@@ -1,4 +1,4 @@
-// components/QACard.tsx
+// components/qa.tsx
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import type { Question } from '@/lib/schema';

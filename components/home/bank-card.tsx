@@ -1,4 +1,4 @@
-// components/home/BankCard.tsx
+// components/home/bank-card.tsx
 'use client';
 
 import Image from 'next/image';

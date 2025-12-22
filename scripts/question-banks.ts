@@ -15,9 +15,9 @@ export const banksToSeed: BankMeta[] = [
   {
     name: 'Word Skill',
     description: '',
-    cover_image_url: '/covers/word_skill.png', 
+    cover_image_url: '/covers/word-skill.png',
     mode: 'initial_hint',
-    dataFile: '/word_skill/U66.json',
+    dataFile: '/word-skill/U66.json',
     category: '英文',
     subBanks: [
       {
@@ -25,7 +25,7 @@ export const banksToSeed: BankMeta[] = [
         description: '',
         cover_image_url: '',
         mode: 'initial_hint',
-        dataFile: '/word_skill/U66.json',
+        dataFile: '/word-skill/U66.json',
         category: 'Word Skill',
       },
       {
@@ -33,17 +33,17 @@ export const banksToSeed: BankMeta[] = [
         description: '',
         cover_image_url: '',
         mode: 'initial_hint',
-        dataFile: '/word_skill/U68.json',
+        dataFile: '/word-skill/U68.json',
         category: 'Word Skill',
       },
-    ]
+    ],
   },
   {
     name: 'Mindset',
     description: '',
-    cover_image_url: '/covers/Mindset.png', 
+    cover_image_url: '/covers/mindset.png',
     mode: 'pos',
-    dataFile: '/Mindset/U1_pre.json',
+    dataFile: '/mindset/U1_pre.json',
     category: '英文',
     subBanks: [
       {
@@ -51,7 +51,7 @@ export const banksToSeed: BankMeta[] = [
         description: '',
         cover_image_url: '',
         mode: 'contextual_cloze',
-        dataFile: '/Mindset/U1.json',
+        dataFile: '/mindset/U1.json',
         category: 'Mindset',
       },
       {
@@ -59,15 +59,15 @@ export const banksToSeed: BankMeta[] = [
         description: '',
         cover_image_url: '',
         mode: 'pos',
-        dataFile: '/Mindset/U1_pre.json',
+        dataFile: '/mindset/U1_pre.json',
         category: 'Mindset',
       },
-    ]
+    ],
   },
-{
+  {
     name: 'Decoding',
     description: '',
-    cover_image_url: '/covers/decoding.png', 
+    cover_image_url: '/covers/decoding.png',
     mode: 'verb_forms',
     dataFile: '/decoding/U1-12.json',
     category: '英文',
@@ -80,14 +80,14 @@ export const banksToSeed: BankMeta[] = [
         dataFile: '/decoding/U1-12.json',
         category: 'Decoding',
       },
-    ]
-  }, 
+    ],
+  },
   {
     name: '7000 Words',
     description: '逐层揭示单词的多个释义和例句',
-    cover_image_url: '/covers/7000_Words.png', 
+    cover_image_url: '/covers/7000-words.png',
     mode: 'layered_reveal',
-    dataFile: '/7000_Words/U18&19&20.json',
+    dataFile: '/7000-words/U18&19&20.json',
     category: '英文',
     subBanks: [
       {
@@ -95,7 +95,7 @@ export const banksToSeed: BankMeta[] = [
         description: '',
         cover_image_url: '',
         mode: 'layered_reveal',
-        dataFile: '/7000_Words/U18.json',
+        dataFile: '/7000-words/U18.json',
         category: '7000 Words',
       },
       {
@@ -103,7 +103,7 @@ export const banksToSeed: BankMeta[] = [
         description: '',
         cover_image_url: '',
         mode: 'layered_reveal',
-        dataFile: '/7000_Words/U19.json',
+        dataFile: '/7000-words/U19.json',
         category: '7000 Words',
       },
       {
@@ -111,17 +111,17 @@ export const banksToSeed: BankMeta[] = [
         description: '',
         cover_image_url: '',
         mode: 'layered_reveal',
-        dataFile: '/7000_Words/U20.json',
+        dataFile: '/7000-words/U20.json',
         category: '7000 Words',
       },
-    ]
+    ],
   },
   {
     name: '名句',
     description: '给出半句，对出另外半句。',
-    cover_image_url: '/covers/poetry_pair.png',
+    cover_image_url: '/covers/poetry-pair.png',
     mode: 'poetry_pair',
-    dataFile: '/poetry_pair/T2.json',
+    dataFile: '/poetry-pair/T2.json',
     category: '中文',
     subBanks: [
       {
@@ -129,7 +129,7 @@ export const banksToSeed: BankMeta[] = [
         description: '',
         cover_image_url: '',
         mode: 'poetry_pair',
-        dataFile: '/poetry_pair/T1.json',
+        dataFile: '/poetry-pair/T1.json',
         category: '名句',
       },
       {
@@ -137,7 +137,7 @@ export const banksToSeed: BankMeta[] = [
         description: '',
         cover_image_url: '',
         mode: 'poetry_pair',
-        dataFile: '/poetry_pair/T2.json',
+        dataFile: '/poetry-pair/T2.json',
         category: '名句',
       },
       {
@@ -145,7 +145,7 @@ export const banksToSeed: BankMeta[] = [
         description: '',
         cover_image_url: '',
         mode: 'poetry_pair',
-        dataFile: '/poetry_pair/T3.json',
+        dataFile: '/poetry-pair/T3.json',
         category: '名句',
       },
       {
@@ -153,7 +153,7 @@ export const banksToSeed: BankMeta[] = [
         description: '',
         cover_image_url: '',
         mode: 'poetry_pair',
-        dataFile: '/poetry_pair/T4.json',
+        dataFile: '/poetry-pair/T4.json',
         category: '名句',
       },
       {
@@ -161,7 +161,7 @@ export const banksToSeed: BankMeta[] = [
         description: '',
         cover_image_url: '',
         mode: 'poetry_pair',
-        dataFile: '/poetry_pair/E1.json',
+        dataFile: '/poetry-pair/E1.json',
         category: '名句',
       },
       {
@@ -169,17 +169,17 @@ export const banksToSeed: BankMeta[] = [
         description: '',
         cover_image_url: '',
         mode: 'poetry_pair',
-        dataFile: '/poetry_pair/E2.json',
+        dataFile: '/poetry-pair/E2.json',
         category: '名句',
-      }
-    ]
+      },
+    ],
   },
   {
     name: '思考题',
     description: '',
-    cover_image_url: '/covers/Q&A.png', 
+    cover_image_url: '/covers/q-a.png',
     mode: 'sbs',
-    dataFile: '/Q&A/C1_T1.json',
+    dataFile: '/q-a/C1_T1.json',
     category: '中文',
     subBanks: [
       {
@@ -187,10 +187,10 @@ export const banksToSeed: BankMeta[] = [
         description: '',
         cover_image_url: '',
         mode: 'sbs',
-        dataFile: '/Q&A/C1_T1.json',
+        dataFile: '/q-a/C1_T1.json',
         category: '思考题',
       },
-    ]
+    ],
   },
   {
     name: '珠澳歷史',
@@ -203,9 +203,9 @@ export const banksToSeed: BankMeta[] = [
   {
     name: '问答题',
     description: '',
-    cover_image_url: '/covers/Q&A.png',
+    cover_image_url: '/covers/q-a.png',
     mode: 'sbs',
-    dataFile: '/Q&A/T1.json',
+    dataFile: '/q-a/T1.json',
     category: '历史',
     subBanks: [
       {
@@ -213,26 +213,25 @@ export const banksToSeed: BankMeta[] = [
         description: '',
         cover_image_url: '',
         mode: 'sbs',
-        dataFile: '/Q&A/T1.json',
+        dataFile: '/q-a/T1.json',
         category: 'Q&A',
-      }
-    ]
+      },
+    ],
   },
-   {
+  {
     name: '中国文化常识达标',
     description: '',
-    cover_image_url: '/covers/china_knowledge.png',
+    cover_image_url: '/covers/china-knowledge.png',
     mode: 'qa',
-    dataFile: '/knowledge/china_knowledge.json',
+    dataFile: '/china-knowledge/china_knowledge.json',
     category: '常识',
   },
   {
     name: '古诗补全',
     description: '补全古诗中的缺失部分。',
-    cover_image_url: '/covers/poetry_completion.png',
+    cover_image_url: '/covers/poetry-completion.png',
     mode: 'poetry_completion',
-    dataFile: '/poetry_completion/poetry_completion.json',
+    dataFile: '/poetry-completion/poetry_completion.json',
     category: '诗词',
   },
 ];
-

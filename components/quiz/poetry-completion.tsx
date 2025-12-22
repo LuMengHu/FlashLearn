@@ -1,4 +1,4 @@
-// components/PoetryCompletion.tsx
+// components/poetry-completion.tsx
 
 'use client';
 

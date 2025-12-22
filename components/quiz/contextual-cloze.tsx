@@ -1,4 +1,4 @@
-// components/quiz/ContextualCloze.tsx
+// components/quiz/contextual-cloze.tsx
 'use client';
 
 import { Card, CardContent } from '@/components/ui/card';

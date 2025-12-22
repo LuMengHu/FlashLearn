@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__ide__getDiagnostics",
+      "Bash(powershell -Command \"\\(Get-Content ''components/ui/scroll-area.tsx''\\) -replace ''React\\\\.ElementRef'', ''React.ComponentRef'' | Set-Content ''components/ui/scroll-area.tsx''\")",
+      "Bash(powershell -Command \"\\(Get-Content ''components/quiz/quiz-client.tsx''\\) -replace ''import type \\\\{ QuestionBank \\\\} from'', ''import type { QuestionBank, Question } from'' | Set-Content ''components/quiz/quiz-client.tsx''\")",
+      "Bash(powershell -Command \"\\(Get-Content ''components/quiz/quiz-client.tsx''\\) -replace ''initialQuestions: any\\\\[\\\\]'', ''initialQuestions: Question[]'' | Set-Content ''components/quiz/quiz-client.tsx''\")",
+      "Bash(powershell -Command \"\\(Get-Content ''components/quiz/quiz-client.tsx''\\) -replace ''isBatchMode, isSingleItemBatchMode,'', ''isBatchMode,'' | Set-Content ''components/quiz/quiz-client.tsx''\")",
+      "Bash(git checkout:*)",
+      "Bash(npm run build:*)"
+    ]
+  }
+}

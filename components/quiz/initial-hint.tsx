@@ -1,4 +1,4 @@
-// components/quiz/InitialHintCard.tsx
+// components/quiz/initial-hint.tsx
 'use client';
 
 import { useEffect } from 'react'; // 导入 useEffect

@@ -4,9 +4,9 @@
 import { useEffect, useMemo, useCallback } from 'react';
 import type { QuestionBank, Question } from '@/lib/schema';
 import { shuffle } from '@/lib/utils';
-import { useQuizState } from './useQuizState';
-import { useBatchProcessor } from './useBatchProcessor';
-import { useMediaQuery } from './useMediaQuery'; // 确保导入 useMediaQuery
+import { useQuizState } from './use-quiz-state';
+import { useBatchProcessor } from './use-batch-processor';
+import { useMediaQuery } from './use-media-query'; // 确保导入 useMediaQuery
 
 const BATCH_SIZE = 5;
 

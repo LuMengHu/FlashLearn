@@ -1,4 +1,4 @@
-// components/quiz/LayeredReveal.tsx
+// components/quiz/layered-reveal.tsx
 'use client';
 
 import { useState, useMemo, useEffect } from 'react';

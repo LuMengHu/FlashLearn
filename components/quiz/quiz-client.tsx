@@ -1,30 +1,30 @@
-// components/quiz/QuizClient.tsx
+// components/quiz/quiz-client.tsx
 'use client';
 
 import React, { useState } from 'react';
-import type { QuestionBank } from '@/lib/schema';
+import type { QuestionBank, Question } from '@/lib/schema';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { Undo2, Volume2, VolumeX } from 'lucide-react';
-import SubBankSelector from '@/components/SubBankSelector';
-import { useQuizEngine } from '../hooks/useQuizEngine';
+import SubBankSelector from '@/components/sub-bank-selector';
+import { useQuizEngine } from '@/hooks/use-quiz-engine';
 import { cn } from '@/lib/utils';
 
 // 导入所有模式组件
-import QA from './QA';
-import MCQ from './MCQ';
-import PoetryPair from './PoetryPair';
-import PoetryCompletion from './PoetryCompletion';
-import LayeredReveal from './LayeredReveal';
-import InitialHint from './InitialHint';
-import ContextualCloze from './ContextualCloze';
-import Pos from './Pos';
-import VerbForms from './VerbForms';
-import SBS from './SBS';
+import QA from './qa';
+import MCQ from './mcq';
+import PoetryPair from './poetry-pair';
+import PoetryCompletion from './poetry-completion';
+import LayeredReveal from './layered-reveal';
+import InitialHint from './initial-hint';
+import ContextualCloze from './contextual-cloze';
+import Pos from './pos';
+import VerbForms from './verb-forms';
+import SBS from './sbs';
 
 interface Props {
   bank: QuestionBank;
-  initialQuestions: any[];
+  initialQuestions: Question[];
   siblingBanks: QuestionBank[] | null;
   allBanks: QuestionBank[];
 }
@@ -32,7 +32,7 @@ interface Props {
 export default function QuizClient({ bank, initialQuestions, siblingBanks, allBanks }: Props) {
   const {
     currentBank, currentQuestion, answered, isAnswerVisible, isMcqAnswered,
-    canMarkLayeredReveal, isSbsReadingCompleted, isBatchMode, isSingleItemBatchMode,
+    canMarkLayeredReveal, isSbsReadingCompleted, isBatchMode,
     isCompleted, currentTableBatch, currentClozeGroup, currentClozeOptions,
     correctCount, incorrectCount, answeredCount, currentTotal, batchesCompleted, totalBatches,
     handleUndo, handleShowAnswer, handleNextBatch, handleMark, handleMcqOptionSelected,
@@ -42,7 +42,7 @@ export default function QuizClient({ bank, initialQuestions, siblingBanks, allBa
 
   const [isAutoPlayOn, setIsAutoPlayOn] = useState(false);
   const toggleAutoPlay = () => setIsAutoPlayOn(prev => !prev);
-  
+
   const handleReturn = () => {
     const parentId = currentBank.parentId || bank.id;
     const parentBank = allBanks.find(b => b.id === parentId);
@@ -52,7 +52,7 @@ export default function QuizClient({ bank, initialQuestions, siblingBanks, allBa
     }
     window.location.href = '/';
   };
-  
+
   if (isCompleted) {
     return (
         <div className="flex-grow flex items-center justify-center">
@@ -70,30 +70,30 @@ export default function QuizClient({ bank, initialQuestions, siblingBanks, allBa
 
   const renderCard = () => {
     if (!currentQuestion && !isBatchMode) return null;
-    
+
     // 【核心修复】为每个卡片组件添加一个唯一的 `key` 属性。
     // 当 key 改变时，React会销毁旧组件并创建一个新组件，从而避免状态残留。
     switch (currentBank.mode) {
-      case 'pos': 
+      case 'pos':
         return <Pos key={currentTableBatch[0]?.id || 'pos'} rows={currentTableBatch} isAnswerVisible={isAnswerVisible} />;
-      case 'verb_forms': 
+      case 'verb_forms':
         return <VerbForms key={currentTableBatch[0]?.id || 'verb_forms'} rows={currentTableBatch} isAnswerVisible={isAnswerVisible} />;
-      case 'contextual_cloze': 
+      case 'contextual_cloze':
         return <ContextualCloze key={currentClozeGroup[0]?.id || 'cloze'} questions={currentClozeGroup} options={currentClozeOptions} isAnswerVisible={isAnswerVisible} />;
-      case 'sbs': 
+      case 'sbs':
         return <SBS key={currentQuestion.id} question={currentQuestion} onReadingComplete={handleSbsReadingComplete} />;
-      case 'mcq': 
+      case 'mcq':
         return <MCQ key={currentQuestion.id} question={currentQuestion} onOptionSelected={handleMcqOptionSelected} />;
-      case 'poetry_pair': 
+      case 'poetry_pair':
         return <PoetryPair key={currentQuestion.id} question={currentQuestion} isAnswerVisible={isAnswerVisible} />;
-      case 'poetry_completion': 
+      case 'poetry_completion':
         return <PoetryCompletion key={currentQuestion.id} question={currentQuestion} isAnswerVisible={isAnswerVisible} />;
-      case 'layered_reveal': 
+      case 'layered_reveal':
         return <LayeredReveal key={currentQuestion.id} question={currentQuestion} onAllLayersRevealed={handleAllLayersRevealed} />;
-      case 'initial_hint': 
+      case 'initial_hint':
         return <InitialHint key={currentQuestion.id} question={currentQuestion} isAnswerVisible={isAnswerVisible} isAutoPlayOn={isAutoPlayOn} />;
       case 'qa':
-      default: 
+      default:
         return <QA key={currentQuestion.id} question={currentQuestion} isAnswerVisible={isAnswerVisible} />;
     }
   };
@@ -109,7 +109,7 @@ export default function QuizClient({ bank, initialQuestions, siblingBanks, allBa
         <div className="w-full">
           <div className="flex justify-between items-center text-sm text-slate-400 mb-2">
             <span>{isBatchMode ? `进度: ${batchesCompleted} / ${totalBatches}` : `进度: ${answeredCount} / ${currentTotal}`}</span>
-            
+
             <div className="flex items-center gap-4">
               {!isBatchMode && (
                 <>
@@ -119,10 +119,10 @@ export default function QuizClient({ bank, initialQuestions, siblingBanks, allBa
                 </>
               )}
               {currentBank.mode === 'initial_hint' && (
-                <Button 
+                <Button
                   onClick={toggleAutoPlay}
-                  variant="ghost" 
-                  size="icon" 
+                  variant="ghost"
+                  size="icon"
                   className={cn("h-8 w-8 transition-colors", isAutoPlayOn ? 'text-brand-cyan-400 hover:text-brand-cyan-300' : 'text-slate-500 hover:text-slate-300')}
                   title={isAutoPlayOn ? '关闭自动播放' : '开启自动播放'}
                 >
@@ -144,10 +144,10 @@ export default function QuizClient({ bank, initialQuestions, siblingBanks, allBa
         {renderCard()}
         <div className="mt-8 text-center h-16">
           {isBatchMode ? (
-            currentBank.mode === 'sbs' 
+            currentBank.mode === 'sbs'
               ? (isSbsReadingCompleted && <Button onClick={handleNextBatch} size="lg" className="bg-green-600 hover:bg-green-700 text-white">完成阅读</Button>)
-              : (isAnswerVisible 
-                  ? <Button onClick={handleNextBatch} size="lg" className="bg-brand-cyan-600 hover:bg-brand-cyan-700 text-white">下一组</Button> 
+              : (isAnswerVisible
+                  ? <Button onClick={handleNextBatch} size="lg" className="bg-brand-cyan-600 hover:bg-brand-cyan-700 text-white">下一组</Button>
                   : <Button onClick={handleShowAnswer} size="lg" className="bg-green-600 hover:bg-green-700 text-white">确认答案</Button>)
           ) : currentBank.mode === 'layered_reveal' ? (
             canMarkLayeredReveal && (

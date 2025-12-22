@@ -2,9 +2,9 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import BankCarousel from '@/components/home/BankCarousel';
-import BankSelectionSheet from '@/components/home/BankSelectionSheet';
-import CategoryTabs from '@/components/home/CategoryTabs';
+import BankCarousel from '@/components/home/bank-carousel';
+import BankSelectionSheet from '@/components/home/bank-selection-sheet';
+import CategoryTabs from '@/components/home/category-tabs';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import type { QuestionBank } from '@/lib/schema';

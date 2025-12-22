@@ -4,7 +4,7 @@
 import { useCallback } from 'react';
 import type { Question } from '@/lib/schema';
 import { shuffle } from '@/lib/utils'; // 从 utils 导入
-import { useMediaQuery } from './useMediaQuery';
+import { useMediaQuery } from './use-media-query';
 
 const BATCH_SIZE = 5;
 

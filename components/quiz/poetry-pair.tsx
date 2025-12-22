@@ -1,4 +1,4 @@
-// components/PoetryPair.tsx
+// components/poetry-pair.tsx
 
 'use client';
 

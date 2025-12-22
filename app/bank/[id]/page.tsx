@@ -1,7 +1,7 @@
 // app/bank/[id]/page.tsx
 import { db } from '@/lib/db';
 import { notFound } from 'next/navigation';
-import QuizClient from '@/components/quiz/QuizClient';
+import QuizClient from '@/components/quiz/quiz-client';
 import { eq } from 'drizzle-orm';
 import { questionBanks } from '@/lib/schema';
 import type { QuestionBank } from '@/lib/schema';

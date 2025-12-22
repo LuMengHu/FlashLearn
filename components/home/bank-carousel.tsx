@@ -1,4 +1,4 @@
-// components/home/BankCarousel.tsx
+// components/home/bank-carousel.tsx
 'use client';
 
 import { useState, useEffect } from 'react'; // 【修复】添加 useEffect
@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow } from 'swiper/modules';
 import type { Swiper as SwiperCore, SwiperOptions } from 'swiper/types';
 import type { QuestionBank } from '@/lib/schema';
-import BankCard from '@/components/home/BankCard';
+import BankCard from '@/components/home/bank-card';
 import { cn } from '@/lib/utils';
 
 import 'swiper/css';
