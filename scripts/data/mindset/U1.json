@@ -1,0 +1,112 @@
+[
+  {
+    "content": "Candice’s father had been raised in the mansion, and she had lived there (____) her childhood.",
+    "answer": "throughout",
+    "metadata": {
+      "familyKey": "throughout",
+      "forms": "throughout"
+    }
+  },
+  {
+    "content": "Due to the inflation, people are not inclined to spend more money buying (____) gifts at Christmas.",
+    "answer": "extravagant",
+    "metadata": {
+      "familyKey": "extravagance",
+      "forms": [
+        "extravagance",
+        "extravagant",
+        "extravagantly"
+      ]
+    }
+  },
+  {
+    "content": "The town’s main (____) are its beautiful mosque and ancient marketplace.",
+    "answer": "features",
+    "metadata": {
+      "familyKey": "feature",
+      "forms": [
+        "feature"
+      ]
+    }
+  },
+  {
+    "content": "Dressing up is so much fun at Halloween; wearing (____) makeup is definitely the highlight.",
+    "answer": "glamorous",
+    "metadata": {
+      "familyKey": "glamour",
+      "forms": [
+        "glamour",
+        "glamorous",
+        "glamorously"
+      ]
+    }
+  },
+  {
+    "content": "The local restaurant is (____) and it can accommodate a large group of people. We decide to have a celebration there.",
+    "answer": "spacious",
+    "metadata": {
+      "familyKey": "spacious",
+      "forms": [
+        "space",
+        "spacious",
+        "spaciously"
+      ]
+    }
+  },
+  {
+    "content": "The girl with eating disorder was severely (____) by her parents for not eating properly.",
+    "answer": "criticised",
+    "metadata": {
+      "familyKey": "criticism",
+      "forms": [
+        "criticism",
+        "criticise",
+        "critical"
+      ]
+    }
+  },
+  {
+    "content": "The world leaders have discussed these plans on (____) occasions and exchange views.",
+    "answer": "numerous",
+    "metadata": {
+      "familyKey": "numerous",
+      "forms": [
+        "numerous"
+      ]
+    }
+  },
+  {
+    "content": "In the remote village, the tower is equipped with a (____) to aid in medical evacuation.",
+    "answer": "helipad",
+    "metadata": {
+      "familyKey": "helipad",
+      "forms": [
+        "helipad"
+      ]
+    }
+  },
+  {
+    "content": "It would be a six-month wait for the operation. (____), you could pay for private treatment.",
+    "answer": "Alternatively",
+    "metadata": {
+      "familyKey": "alternation",
+      "forms": [
+        "alternation",
+        "alternative"
+      ]
+    }
+  },
+  {
+    "content": "No one is going to invest money in start-ups as the market is so (____).",
+    "answer": "unstable",
+    "metadata": {
+      "familyKey": "stability",
+      "forms": [
+        "stability",
+        "stabilize",
+        "stable",
+        "stably"
+      ]
+    }
+  }
+]
