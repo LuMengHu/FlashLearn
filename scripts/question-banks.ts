@@ -5,7 +5,7 @@ export type BankMeta = {
   description: string;
   cover_image_url: string;
   mode: 'qa' | 'mcq' | 'pos' | 'sbs' | 'verb_forms' |'poetry_pair' | 'poetry_completion'| 'layered_reveal'| 'initial_hint' | 'contextual_cloze';
-  dataFile?: string; // <-- 改为可选
+  dataFile?: string; 
   category: string;
   subBanks?: Omit<BankMeta, 'subBanks'>[];
 };
