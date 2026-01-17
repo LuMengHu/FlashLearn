@@ -4,38 +4,30 @@ export type BankMeta = {
   name: string;
   description: string;
   cover_image_url: string;
-  mode: 'qa' | 'mcq' | 'pos' | 'sbs' | 'verb_forms' |'poetry_pair' | 'poetry_completion'| 'layered_reveal'| 'initial_hint' | 'contextual_cloze';
-  dataFile?: string; 
+  mode: 'qa' | 'mcq' | 'pos' | 'sbs' | 'verb_forms' | 'poetry_pair' | 'poetry_completion' | 'layered_reveal' | 'initial_hint' | 'contextual_cloze';
+  dataFile?: string;
   category: string;
   subBanks?: Omit<BankMeta, 'subBanks'>[];
 };
 
 // 【修复】将 BankData 修改为 BankMeta
-export const banksToSeed: BankMeta[] = [ 
+export const banksToSeed: BankMeta[] = [
   {
     name: 'Word Skill',
     description: '',
     cover_image_url: '/covers/word-skill.png',
     mode: 'initial_hint',
-    dataFile: '/word-skill/U66.json',
+    dataFile: '/word-skill/U71&75.json',
     category: '英文',
     subBanks: [
       {
-        name: 'U66',
+        name: 'U71&75',
         description: '',
         cover_image_url: '',
         mode: 'initial_hint',
-        dataFile: '/word-skill/U66.json',
+        dataFile: '/word-skill/U71&75.json',
         category: 'Word Skill',
-      },
-      {
-        name: 'U68',
-        description: '',
-        cover_image_url: '',
-        mode: 'initial_hint',
-        dataFile: '/word-skill/U68.json',
-        category: 'Word Skill',
-      },
+      }
     ],
   },
   {
@@ -82,46 +74,46 @@ export const banksToSeed: BankMeta[] = [
       },
     ],
   },
-  {
-    name: '7000 Words',
-    description: '逐层揭示单词的多个释义和例句',
-    cover_image_url: '/covers/7000-words.png',
-    mode: 'layered_reveal',
-    dataFile: '/7000-words/U18&19&20.json',
-    category: '英文',
-    subBanks: [
-      {
-        name: 'U18',
-        description: '',
-        cover_image_url: '',
-        mode: 'layered_reveal',
-        dataFile: '/7000-words/U18.json',
-        category: '7000 Words',
-      },
-      {
-        name: 'U19',
-        description: '',
-        cover_image_url: '',
-        mode: 'layered_reveal',
-        dataFile: '/7000-words/U19.json',
-        category: '7000 Words',
-      },
-      {
-        name: 'U20',
-        description: '',
-        cover_image_url: '',
-        mode: 'layered_reveal',
-        dataFile: '/7000-words/U20.json',
-        category: '7000 Words',
-      },
-    ],
-  },
+  //{
+  //  name: '7000 Words',
+  // description: '逐层揭示单词的多个释义和例句',
+  //  cover_image_url: '/covers/7000-words.png',
+  //  mode: 'layered_reveal',
+  //  dataFile: '/7000-words/U18&19&20.json',
+  //  category: '英文',
+  //  subBanks: [
+  //    {
+  //      name: 'U18',
+  //      description: '',
+  //      cover_image_url: '',
+  //      mode: 'layered_reveal',
+  //     dataFile: '/7000-words/U18.json',
+  //      category: '7000 Words',
+  //    },
+  //   {
+  //      name: 'U19',
+  //      description: '',
+  //      cover_image_url: '',
+  //      mode: 'layered_reveal',
+  //      dataFile: '/7000-words/U19.json',
+  //      category: '7000 Words',
+  //    },
+  //    {
+  //      name: 'U20',
+  //      description: '',
+  //      cover_image_url: '',
+  //      mode: 'layered_reveal',
+  //      dataFile: '/7000-words/U20.json',
+  //      category: '7000 Words',
+  //    },
+  //  ],
+  //},
   {
     name: '名句',
     description: '给出半句，对出另外半句。',
     cover_image_url: '/covers/poetry-pair.png',
     mode: 'poetry_pair',
-    dataFile: '/poetry-pair/T2.json',
+    dataFile: '/poetry-pair/E1.json',
     category: '中文',
     subBanks: [
       {
@@ -192,14 +184,14 @@ export const banksToSeed: BankMeta[] = [
       },
     ],
   },
-  {
-    name: '珠澳歷史',
-    description: '',
-    cover_image_url: '/covers/diplomatic.png',
-    mode: 'mcq',
-    dataFile: '/mcq/diplomatic.json',
-    category: '历史',
-  },
+  //{
+  //  name: '珠澳歷史',
+  // description: '',
+  // cover_image_url: '/covers/diplomatic.png',
+  // mode: 'mcq',
+  // dataFile: '/mcq/diplomatic.json',
+  // category: '历史',
+  //},
   {
     name: '问答题',
     description: '',
@@ -218,20 +210,20 @@ export const banksToSeed: BankMeta[] = [
       },
     ],
   },
-  {
-    name: '中国文化常识达标',
-    description: '',
-    cover_image_url: '/covers/china-knowledge.png',
-    mode: 'qa',
-    dataFile: '/china-knowledge/china_knowledge.json',
-    category: '常识',
-  },
-  {
-    name: '古诗补全',
-    description: '补全古诗中的缺失部分。',
-    cover_image_url: '/covers/poetry-completion.png',
-    mode: 'poetry_completion',
-    dataFile: '/poetry-completion/poetry_completion.json',
-    category: '诗词',
-  },
+  //{
+  //  name: '中国文化常识达标',
+  //  description: '',
+  //  cover_image_url: '/covers/china-knowledge.png',
+  //  mode: 'qa',
+  //  dataFile: '/china-knowledge/china_knowledge.json',
+  //  category: '常识',
+  //},
+  //{
+  //  name: '古诗补全',
+  //  description: '补全古诗中的缺失部分。',
+  //  cover_image_url: '/covers/poetry-completion.png',
+  //  mode: 'poetry_completion',
+  //  dataFile: '/poetry-completion/poetry_completion.json',
+  //  category: '诗词',
+  //},
 ];

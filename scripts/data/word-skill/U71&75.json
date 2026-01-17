@@ -1,0 +1,177 @@
+[
+  {
+    "content": "dynamic",
+    "answer": "(of a person or a business) full of energy and ideas; dynamism n",
+    "metadata": {
+      "chineseMeaning": "思維活躍的；活潑的"
+    }
+  },
+  {
+    "content": "passionate",
+    "answer": "showing very strong feelings",
+    "metadata": {
+      "chineseMeaning": "熱情的"
+    }
+  },
+  {
+    "content": "aspire",
+    "answer": "have a strong desire to do or be sth",
+    "metadata": {
+      "chineseMeaning": "渴望 \n ~to sth / to be sth"
+    }
+  },
+  {
+    "content": "satisfied",
+    "answer": "pleased because you have done what you wanted to do",
+    "metadata": {
+      "chineseMeaning": "滿意的 \n OPP dissatisfied"
+    }
+  },
+  {
+    "content": "forward planning",
+    "answer": "planning for the future",
+    "metadata": {
+      "chineseMeaning": "為未來作的計劃 \n forward: relating to the future 未來的"
+    }
+  },
+  {
+    "content": "go downhill",
+    "answer": "get worse in quality, health, etc.",
+    "metadata": {
+      "chineseMeaning": "每況愈下；\n SYN deteriorate; (adv.) 向山下"
+    }
+  },
+  {
+    "content": "struggle",
+    "answer": "sth that is very difficult to do or succeed in ~",
+    "metadata": {
+      "chineseMeaning": "奮鬥；\n (V.)struggle"
+    }
+  },
+  {
+    "content": "failure",
+    "answer": "a person or thing that is not successful",
+    "metadata": {
+      "chineseMeaning": "失敗的人（或事） \n OPP success"
+    }
+  },
+  {
+    "content": "come bottom",
+    "answer": "receive the lowest score in an exam",
+    "metadata": {
+      "chineseMeaning": "墊底 \n OPP come top"
+    }
+  },
+  {
+    "content": "scrape through",
+    "answer": "only just succeed in passing an exam",
+    "metadata": {
+      "chineseMeaning": "勉強通過 \n ~an exam"
+    }
+  },
+  {
+    "content": "let sb down",
+    "answer": "make sb disappointed because you haven't behaved well or done what you said you would do",
+    "metadata": {
+      "chineseMeaning": "使（某人）失望"
+    }
+  },
+  {
+    "content": "drop out",
+    "answer": "leave a course or stop doing sth before you have finished",
+    "metadata": {
+      "chineseMeaning": "退學，中斷 \n ~of sth"
+    }
+  },
+  {
+    "content": "hopeless",
+    "answer": "giving no hope that sth/sb will be successful or get better",
+    "metadata": {
+      "chineseMeaning": "沒希望的"
+    }
+  },
+  {
+    "content": "get somewhere / nowhere",
+    "answer": "make/not make progress with sth/sb",
+    "metadata": {
+      "chineseMeaning": "有些進展 / 沒有進 \n with sth/sb"
+    }
+  },
+  {
+    "content": "row",
+    "answer": "a noisy argument or serious disagreement between two or more people; row v",
+    "metadata": {
+      "chineseMeaning": "爭吵 \n ~about/over sth"
+    }
+  },
+  {
+    "content": "interfere",
+    "answer": "get involved in a situation that does not involve you and where you are probably not wanted ~",
+    "metadata": {
+      "chineseMeaning": "干預 \n ~in sth \n (N.)interference"
+    }
+  },
+  {
+    "content": "otherwise",
+    "answer": "used to state what the result would be if sth didn't happen or the situation were different",
+    "metadata": {
+      "chineseMeaning": "否則 \n I had better tell him the truth, otherwise he will be angry. (Otherwise = If not)"
+    }
+  },
+  {
+    "content": "consequently",
+    "answer": "as a result; therefore",
+    "metadata": {
+      "chineseMeaning": "因此"
+    }
+  },
+  {
+    "content": "besides",
+    "answer": "in addition to what has just been said",
+    "metadata": {
+      "chineseMeaning": "除...之外 \n I don't want to go out that late. Besides, I am really tired after work."
+    }
+  },
+  {
+    "content": "thereby",
+    "answer": "used to introduce the result of the action or situation mentioned",
+    "metadata": {
+      "chineseMeaning": "從而 \n They have failed to agree with each other, thereby terminating the contract."
+    }
+  },
+  {
+    "content": "while (1)",
+    "answer": "used to compare or contrast two people, things, situations, etc.",
+    "metadata": {
+      "chineseMeaning": "然而;但是 \n SYN whereas \n Some people can work to music (,) while / , whereas others find it very difficult."
+    }
+  },
+  {
+    "content": "while (2)",
+    "answer": "(at the beginning of a sentence) although; despite the fact that ...",
+    "metadata": {
+      "chineseMeaning": "雖然;儘管 \n While the situation is not ideal, we will have to manage."
+    }
+  },
+  {
+    "content": "nonetheless",
+    "answer": "despite this fact",
+    "metadata": {
+      "chineseMeaning": "然而; 不過 \n SYN nevertheless"
+    }
+  },
+  {
+    "content": "furthermore",
+    "answer": "(used especially to add a point to an argument) in addition to what has just been said",
+    "metadata": {
+      "chineseMeaning": "此外;而且 \n SYN moreover"
+    }
+  },
+  {
+    "content": "provided (that)",
+    "answer": "used to say what must be done or happen to make sth else possible; only if",
+    "metadata": {
+      "chineseMeaning": "前提 \n SYN providing (that) \n You can use my car, provided that / providing that you fill the tank."
+    }
+  }
+]
