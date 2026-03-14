@@ -21,11 +21,11 @@ export const banksToSeed: BankMeta[] = [
     category: '英文',
     subBanks: [
       {
-        name: 'U71&75',
+        name: 'U1&72',
         description: '',
         cover_image_url: '',
         mode: 'initial_hint',
-        dataFile: '/word-skill/U71&75.json',
+        dataFile: '/word-skill/U1&72.json',
         category: 'Word Skill',
       }
     ],
