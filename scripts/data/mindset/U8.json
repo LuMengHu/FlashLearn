@@ -1,0 +1,102 @@
+[
+  {
+    "content": "Their team has received (____) to go ahead with the music festival in spite of the opposition from the local residents.",
+    "answer": "permission",
+    "metadata": {
+      "familyKey": "permit",
+      "forms": [
+        "permission",
+        "permit",
+        "permissible",
+        "permissibly"
+      ]
+    }
+  },
+  {
+    "content": "In the context of the modern Olympic Games, the lighting of the Olympic torch (____) peace and friendship among the nations of the world.",
+    "answer": "symbolizes",
+    "metadata": {
+      "familyKey": "symbol",
+      "forms": [
+        "symbol",
+        "symbolize",
+        "symbolic",
+        "symbolically"
+      ]
+    }
+  },
+  {
+    "content": "I am eager to do what I can to help the children of our town to reach their full (____) and achieve their dreams.",
+    "answer": "potential",
+    "metadata": {
+      "familyKey": "potential",
+      "forms": [
+        "potential",
+        "potentially"
+      ]
+    }
+  },
+  {
+    "content": "The old woman smiled (____) at the businessman on account of his generous donations of food and money.",
+    "answer": "appreciatively",
+    "metadata": {
+      "familyKey": "appreciate",
+      "forms": [
+        "appreciation",
+        "appreciate",
+        "appreciative",
+        "appreciatively"
+      ]
+    }
+  },
+  {
+    "content": "We have tried several different approaches, with (____) degrees of success. Finally, we stuck to the first approach as it turned out to be the most beneficial one.",
+    "answer": "varying",
+    "metadata": {
+      "familyKey": "variety",
+      "forms": [
+        "variety",
+        "vary",
+        "various",
+        "varying",
+        "variously"
+      ]
+    }
+  },
+  {
+    "content": "The attacks on the coast (____) simultaneously with nukes that would have been impossible for people to hide.",
+    "answer": "occurred",
+    "metadata": {
+      "familyKey": "occur",
+      "forms": [
+        "occurrence",
+        "occur"
+      ]
+    }
+  },
+  {
+    "content": "He is sensitive. The things that seemed to upset him were just (____) things, like asking him out to dinner and such.",
+    "answer": "minor",
+    "metadata": {
+      "familyKey": "major",
+      "forms": [
+        "majority",
+        "minority",
+        "major",
+        "minor"
+      ]
+    }
+  },
+  {
+    "content": "Food poisoning is almost entirely (____) by implementing adequate sanitation and good food handling techniques.",
+    "answer": "preventable",
+    "metadata": {
+      "familyKey": "prevent",
+      "forms": [
+        "prevention",
+        "prevent",
+        "preventable"
+      ]
+    }
+  }
+]

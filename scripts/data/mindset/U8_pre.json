@@ -1,0 +1,122 @@
+[
+  {
+    "content": "potential",
+    "answer": "词性变换",
+    "metadata": {
+      "pos_forms": {
+        "N.": { "word": "potential", "meaning": "潜能（[U]）" },
+        "V.": { "word": "", "meaning": "" },
+        "ADJ.": { "word": "potential", "meaning": "潜在的（e.g. potential buyers）" },
+        "ADV.": { "word": "potentially", "meaning": "潜在地；可能地" }
+      }
+    }
+  },
+  {
+    "content": "spectacular",
+    "answer": "词性变换",
+    "metadata": {
+      "pos_forms": {
+        "N.": { "word": "spectacle", "meaning": "壮观场面" },
+        "V.": { "word": "", "meaning": "" },
+        "ADJ.": { "word": "spectacular", "meaning": "壮观的" },
+        "ADV.": { "word": "spectacularly", "meaning": "壮观地" }
+      }
+    }
+  },
+  {
+    "content": "majority",
+    "answer": "词性变换",
+    "metadata": {
+      "pos_forms": {
+        "N.": { "word": "majority", "meaning": "大多数（反义词 OPP：minority 少数）" },
+        "V.": { "word": "", "meaning": "" },
+        "ADJ.": { "word": "major", "meaning": "主要的（反义词 OPP：minor 次要的）" },
+        "ADV.": { "word": "", "meaning": "" }
+      }
+    }
+  },
+  {
+    "content": "permit",
+    "answer": "词性变换",
+    "metadata": {
+      "pos_forms": {
+        "N.": { "word": "permission", "meaning": "许可" },
+        "V.": { "word": "permit", "meaning": "许可（过去式：permitted）" },
+        "ADJ.": { "word": "permissible", "meaning": "许可的（= allowed；Is it permissible to park my car here?）" },
+        "ADV.": { "word": "permissibly", "meaning": "被允许地" }
+      }
+    }
+  },
+  {
+    "content": "occur",
+    "answer": "词性变换",
+    "metadata": {
+      "pos_forms": {
+        "N.": { "word": "occurrence", "meaning": "发生（The ___ of … 的发生）; outbreak 爆发（[n] 名词，相关词）" },
+        "V.": { "word": "occur", "meaning": "发生" },
+        "ADJ.": { "word": "", "meaning": "" },
+        "ADV.": { "word": "", "meaning": "" }
+      }
+    }
+  },
+  {
+    "content": "prevent",
+    "answer": "词性变换",
+    "metadata": {
+      "pos_forms": {
+        "N.": { "word": "prevention", "meaning": "预防" },
+        "V.": { "word": "prevent", "meaning": "预防／阻止（prevent sth. from happening）" },
+        "ADJ.": { "word": "preventable", "meaning": "可预防的" },
+        "ADV.": { "word": "", "meaning": "" }
+      }
+    }
+  },
+  {
+    "content": "symbolic",
+    "answer": "词性变换",
+    "metadata": {
+      "pos_forms": {
+        "N.": { "word": "symbol", "meaning": "象征" },
+        "V.": { "word": "symbolize", "meaning": "象征" },
+        "ADJ.": { "word": "symbolic", "meaning": "象征的（symbolic + of）" },
+        "ADV.": { "word": "symbolically", "meaning": "象征性地（is used symbolically）" }
+      }
+    }
+  },
+  {
+    "content": "appreciate",
+    "answer": "词性变换",
+    "metadata": {
+      "pos_forms": {
+        "N.": { "word": "appreciation", "meaning": "欣赏；感激" },
+        "V.": { "word": "appreciate", "meaning": "欣赏；感激（+it／+that SV／+Ving）" },
+        "ADJ.": { "word": "appreciative", "meaning": "感激的（very appreciative of my efforts）" },
+        "ADV.": { "word": "appreciatively", "meaning": "感激地" }
+      }
+    }
+  },
+  {
+    "content": "occasion",
+    "answer": "词性变换",
+    "metadata": {
+      "pos_forms": {
+        "N.": { "word": "occasion", "meaning": "场合" },
+        "V.": { "word": "", "meaning": "" },
+        "ADJ.": { "word": "occasional", "meaning": "偶尔的" },
+        "ADV.": { "word": "occasionally", "meaning": "偶尔地（on occasion）" }
+      }
+    }
+  },
+  {
+    "content": "variety",
+    "answer": "词性变换",
+    "metadata": {
+      "pos_forms": {
+        "N.": { "word": "variety", "meaning": "多样化" },
+        "V.": { "word": "vary", "meaning": "变化（varies）" },
+        "ADJ.": { "word": "various / varying", "meaning": "various 不同种类的；varying 变化的／因人而异的" },
+        "ADV.": { "word": "variously", "meaning": "各式各样地" }
+      }
+    }
+  }
+]

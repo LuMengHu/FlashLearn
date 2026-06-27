@@ -10,22 +10,37 @@ export type BankMeta = {
   subBanks?: Omit<BankMeta, 'subBanks'>[];
 };
 
-// 【修复】将 BankData 修改为 BankMeta
 export const banksToSeed: BankMeta[] = [
   {
     name: 'Word Skill',
     description: '',
     cover_image_url: '/covers/word-skill.png',
     mode: 'initial_hint',
-    dataFile: '/word-skill/U71&75.json',
+    dataFile: '/word-skill/U45&46.json',
     category: '英文',
     subBanks: [
       {
-        name: 'U1&72',
+        name: 'U45&46',
         description: '',
         cover_image_url: '',
         mode: 'initial_hint',
-        dataFile: '/word-skill/U1&72.json',
+        dataFile: '/word-skill/U45&46.json',
+        category: 'Word Skill',
+      },
+      {
+        name: 'U45',
+        description: '',
+        cover_image_url: '',
+        mode: 'initial_hint',
+        dataFile: '/word-skill/U45.json',
+        category: 'Word Skill',
+      },
+      {
+        name: 'U46',
+        description: '',
+        cover_image_url: '',
+        mode: 'initial_hint',
+        dataFile: '/word-skill/U46.json',
         category: 'Word Skill',
       }
     ],
@@ -35,23 +50,23 @@ export const banksToSeed: BankMeta[] = [
     description: '',
     cover_image_url: '/covers/mindset.png',
     mode: 'pos',
-    dataFile: '/mindset/U1_pre.json',
+    dataFile: '/mindset/U8_pre.json',
     category: '英文',
     subBanks: [
       {
-        name: 'U1',
+        name: 'U8',
         description: '',
         cover_image_url: '',
         mode: 'contextual_cloze',
-        dataFile: '/mindset/U1.json',
+        dataFile: '/mindset/U8.json',
         category: 'Mindset',
       },
       {
-        name: 'U1_pre',
+        name: 'U8_pre',
         description: '',
         cover_image_url: '',
         mode: 'pos',
-        dataFile: '/mindset/U1_pre.json',
+        dataFile: '/mindset/U8_pre.json',
         category: 'Mindset',
       },
     ],
