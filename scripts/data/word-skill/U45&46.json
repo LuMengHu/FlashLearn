@@ -78,10 +78,10 @@
     }
   },
   {
-    "content": "switch (to sth)",
+    "content": "switch",
     "answer": "change or make sth change from using one thing to using another (U46)",
     "metadata": {
-      "chineseMeaning": "轉換\nSwitch to energy-saving mode"
+      "chineseMeaning": "轉換\nSwitch to energy-saving mode\n (to sth)"
     }
   },
   {
@@ -127,10 +127,10 @@
     }
   },
   {
-    "content": "charge sth (up)",
+    "content": "charge",
     "answer": "pass electricity through sth to store it there (U46)",
     "metadata": {
-      "chineseMeaning": "充電\ncharger n"
+      "chineseMeaning": "充電\ncharger n\n~ sth (up)"
     }
   },
   {
@@ -148,10 +148,10 @@
     }
   },
   {
-    "content": "landfill (site)",
+    "content": "landfill",
     "answer": "an area of land where large amounts of rubbish are buried (U46)",
     "metadata": {
-      "chineseMeaning": "垃圾堆填區"
+      "chineseMeaning": "垃圾堆填區\n~(site)"
     }
   },
   {
