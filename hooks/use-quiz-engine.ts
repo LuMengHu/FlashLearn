@@ -1,9 +1,8 @@
 // components/hooks/useQuizEngine.ts
 'use client';
 
-import { useEffect, useMemo, useCallback } from 'react';
+import { useEffect, useMemo, useCallback, useRef } from 'react';
 import type { QuestionBank, Question } from '@/lib/schema';
-import { shuffle } from '@/lib/utils';
 import { useQuizState } from './use-quiz-state';
 import { useBatchProcessor } from './use-batch-processor';
 import { useMediaQuery } from './use-media-query'; // 确保导入 useMediaQuery
@@ -28,18 +27,19 @@ export function useQuizEngine({ bank, initialQuestions }: UseQuizEngineProps) {
   const { prepareBatch } = useBatchProcessor({
     setCurrentTableBatch, setCurrentClozeGroup, setCurrentClozeOptions,
   });
-  
+
   // 我们需要在主 Hook 中获取 isDesktop
-  const isDesktop = useMediaQuery('(min-width: 768px)'); 
+  const isDesktop = useMediaQuery('(min-width: 768px)');
 
   const isBatchMode = useMemo(() => ['contextual_cloze', 'pos', 'verb_forms', 'sbs'].includes(currentBank.mode), [currentBank.mode]);
   const isSingleItemBatchMode = useMemo(() => currentBank.mode === 'sbs', [currentBank.mode]);
 
   const startQuiz = useCallback((questionSet: Question[], bankForQuiz: QuestionBank) => {
     setCurrentBank(bankForQuiz);
-    const shuffledQuestions = shuffle(questionSet);
-    setCurrentTotal(shuffledQuestions.length);
-    setUnanswered(shuffledQuestions);
+    // 【核心修改】不再打乱题目顺序，仅做浅拷贝，保持题库中的原始顺序
+    const orderedQuestions = [...questionSet];
+    setCurrentTotal(orderedQuestions.length);
+    setUnanswered(orderedQuestions);
     setAnswered([]);
     setIsAnswerVisible(false);
     setIsMcqAnswered(false);
@@ -49,27 +49,34 @@ export function useQuizEngine({ bank, initialQuestions }: UseQuizEngineProps) {
     const currentIsBatchMode = ['contextual_cloze', 'pos', 'verb_forms', 'sbs'].includes(bankForQuiz.mode);
     if (currentIsBatchMode) {
       let batchSize = BATCH_SIZE;
-      // 【核心修复】现在可以安全地访问 metadata
-      if (bankForQuiz.mode === 'contextual_cloze') batchSize = isDesktop ? 5 : 2; 
+      if (bankForQuiz.mode === 'contextual_cloze') batchSize = isDesktop ? 5 : 2;
       if (bankForQuiz.mode === 'sbs') batchSize = 1;
-      setTotalBatches(Math.ceil(shuffledQuestions.length / batchSize));
+      setTotalBatches(Math.ceil(orderedQuestions.length / batchSize));
       setBatchesCompleted(0);
-      prepareBatch(bankForQuiz.mode, shuffledQuestions);
+      prepareBatch(bankForQuiz.mode, orderedQuestions);
     }
-  }, [prepareBatch, setCurrentBank, setCurrentTotal, setUnanswered, setAnswered, setIsAnswerVisible, setIsMcqAnswered, setCanMarkLayeredReveal, setIsSbsReadingCompleted, setTotalBatches, setBatchesCompleted, isDesktop]); // 添加 isDesktop 依赖
+  }, [prepareBatch, setCurrentBank, setCurrentTotal, setUnanswered, setAnswered, setIsAnswerVisible, setIsMcqAnswered, setCanMarkLayeredReveal, setIsSbsReadingCompleted, setTotalBatches, setBatchesCompleted, isDesktop]);
 
-  useEffect(() => { startQuiz(initialQuestions, bank); }, [initialQuestions, bank, startQuiz]);
-  
+  // 【核心修改】使用 ref 记录已初始化的题库，防止窗口尺寸变化（isDesktop 改变）
+  // 导致 startQuiz 重新创建时，重复初始化并重置答题进度
+  const initializedBankId = useRef<number | null>(null);
+
+  useEffect(() => {
+    if (initializedBankId.current === bank.id) return; // 该题库已初始化过，跳过
+    initializedBankId.current = bank.id;
+    startQuiz(initialQuestions, bank);
+  }, [initialQuestions, bank, startQuiz]);
+
   const currentQuestion = unanswered[0];
   const { correctCount, incorrectCount } = useMemo(() => answered.reduce((acc, a) => { a.wasCorrect ? acc.correctCount++ : acc.incorrectCount++; return acc; }, { correctCount: 0, incorrectCount: 0 }), [answered]);
   const answeredCount = answered.length;
-  
+
   const handleNextBatch = () => {
     let currentBatch: Question[] = [];
     if (currentBank.mode === 'pos' || currentBank.mode === 'verb_forms') currentBatch = currentTableBatch;
     else if (currentBank.mode === 'contextual_cloze') currentBatch = currentClozeGroup;
     else if (currentBank.mode === 'sbs' && currentQuestion) currentBatch = [currentQuestion];
-    
+
     const nextUnanswered = unanswered.filter(q => !currentBatch.some(cb => cb.id === q.id));
     setUnanswered(nextUnanswered);
     setAnswered(prev => [...prev, ...currentBatch.map(q => ({ question: q, wasCorrect: true }))]);
@@ -85,7 +92,7 @@ export function useQuizEngine({ bank, initialQuestions }: UseQuizEngineProps) {
     setUnanswered(prev => prev.slice(1));
     setIsAnswerVisible(false);
   };
-  
+
   const handleMcqOptionSelected = (isCorrect: boolean) => { if (currentQuestion) { setIsMcqAnswered(true); setAnswered(prev => [...prev, { question: currentQuestion, wasCorrect: isCorrect }]); } };
   const handleNextMcq = () => { if (currentQuestion) { setUnanswered(prev => prev.slice(1)); setIsMcqAnswered(false); } };
   const handleAllLayersRevealed = () => setCanMarkLayeredReveal(true);
@@ -109,9 +116,9 @@ export function useQuizEngine({ bank, initialQuestions }: UseQuizEngineProps) {
     if (currentBank.mode === 'sbs' && currentQuestion) return [currentQuestion];
     return [];
   };
-  
+
   const isCompleted = isBatchMode ? getCurrentBatch().length === 0 && answered.length > 0 : !currentQuestion && answered.length > 0;
-  
+
   const handleSelectSubBank = (selectedBank: QuestionBank) => startQuiz(selectedBank.questions || [], selectedBank);
 
   return {
