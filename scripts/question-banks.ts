@@ -231,6 +231,14 @@ export const banksToSeed: BankMeta[] = [
         dataFile: '/mcq/diplomatic3.json',
         category: '外交知識',
       },
+      {
+        name: '50',
+        description: '',
+        cover_image_url: '',
+        mode: 'mcq',
+        dataFile: '/mcq/diplomatic4.json',
+        category: '外交知識',
+      },
     ],
   },
   {
