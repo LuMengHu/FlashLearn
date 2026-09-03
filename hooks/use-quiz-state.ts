@@ -15,23 +15,13 @@ export function useQuizState(initialBank: QuestionBank) {
   const [answered, setAnswered] = useState<AnsweredQuestion[]>([]);
   const [currentTotal, setCurrentTotal] = useState(0);
   const [isAnswerVisible, setIsAnswerVisible] = useState(false);
-  const [totalBatches, setTotalBatches] = useState(0);
-  const [batchesCompleted, setBatchesCompleted] = useState(0);
-  const [currentClozeGroup, setCurrentClozeGroup] = useState<Question[]>([]);
-  const [currentClozeOptions, setCurrentClozeOptions] = useState<string[]>([]);
-  const [currentTableBatch, setCurrentTableBatch] = useState<Question[]>([]);
   const [isMcqAnswered, setIsMcqAnswered] = useState(false);
-  const [canMarkLayeredReveal, setCanMarkLayeredReveal] = useState(false);
-  const [isSbsReadingCompleted, setIsSbsReadingCompleted] = useState(false);
 
   return {
     // State values
-    currentBank, unanswered, answered, currentTotal, isAnswerVisible, totalBatches,
-    batchesCompleted, currentClozeGroup, currentClozeOptions, currentTableBatch,
-    isMcqAnswered, canMarkLayeredReveal, isSbsReadingCompleted,
+    currentBank, unanswered, answered, currentTotal, isAnswerVisible, isMcqAnswered,
     // State setters
     setCurrentBank, setUnanswered, setAnswered, setCurrentTotal, setIsAnswerVisible,
-    setTotalBatches, setBatchesCompleted, setCurrentClozeGroup, setCurrentClozeOptions,
-    setCurrentTableBatch, setIsMcqAnswered, setCanMarkLayeredReveal, setIsSbsReadingCompleted,
+    setIsMcqAnswered,
   };
 }

@@ -68,7 +68,9 @@ async function main() {
   console.log('🌱 Seeding database...');
 
   // 清空旧数据
-  console.log('🗑️  Deleting existing data...');
+  // ⚠️ 这里会清空整张 Questions / QuestionBanks 表，然后按 banksToSeed 重建。
+  // 背单词用的 Words 表是独立的，不在这里删除，所以 seed 不会影响已录入的单词。
+  console.log('🗑️  Deleting existing question banks and questions...');
   await db.delete(schema.questions).execute();
   await db.delete(schema.questionBanks).execute();
   console.log('✅ Existing data deleted.');

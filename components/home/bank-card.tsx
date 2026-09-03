@@ -9,7 +9,7 @@ interface Props {
 }
 
 // 题库没有配置 cover_image_url 时使用的兜底封面
-const FALLBACK_COVER_URL = '/covers/q-a.png';
+const FALLBACK_COVER_URL = '/covers/default.png';
 
 export default function BankCard({ bank }: Props) {
   return (

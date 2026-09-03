@@ -1,203 +1,21 @@
 // 种子数据的题库清单：每一项描述一个题库（及其子题库）的元信息，由 seed.ts 读取插入数据库
+//
+// 目前只保留「外交知識」一个题库。其余题库（Word Skill / Mindset / Decoding / 名句 /
+// 思考题 / 问答题 / 7000 Words / 中国文化常识 / 古诗补全）的完整定义已移到
+// archive/question-banks.archived.ts，对应的题目数据在 archive/data/、封面图在 archive/covers/。
+// 需要恢复某个题库时，把它的定义从归档文件复制回下面的数组，并把数据/封面移回
+// scripts/data/ 与 public/covers/ 即可。
 export type BankMeta = {
   name: string;
   description: string;
   cover_image_url: string;
-  mode: 'qa' | 'mcq' | 'pos' | 'sbs' | 'verb_forms' | 'poetry_pair' | 'poetry_completion' | 'layered_reveal' | 'initial_hint' | 'contextual_cloze';
+  mode: 'qa' | 'mcq';
   dataFile?: string;
   category: string;
   subBanks?: Omit<BankMeta, 'subBanks'>[];
 };
 
 export const banksToSeed: BankMeta[] = [
-  {
-    name: 'Word Skill',
-    description: '',
-    cover_image_url: '/covers/word-skill.png',
-    mode: 'initial_hint',
-    dataFile: '/word-skill/U45&46.json',
-    category: '英文',
-    subBanks: [
-      {
-        name: 'U45&46',
-        description: '',
-        cover_image_url: '',
-        mode: 'initial_hint',
-        dataFile: '/word-skill/U45&46.json',
-        category: 'Word Skill',
-      },
-      {
-        name: 'U45',
-        description: '',
-        cover_image_url: '',
-        mode: 'initial_hint',
-        dataFile: '/word-skill/U45.json',
-        category: 'Word Skill',
-      },
-      {
-        name: 'U46',
-        description: '',
-        cover_image_url: '',
-        mode: 'initial_hint',
-        dataFile: '/word-skill/U46.json',
-        category: 'Word Skill',
-      }
-    ],
-  },
-  {
-    name: 'Mindset',
-    description: '',
-    cover_image_url: '/covers/mindset.png',
-    mode: 'pos',
-    dataFile: '/mindset/U8_pre.json',
-    category: '英文',
-    subBanks: [
-      {
-        name: 'U8',
-        description: '',
-        cover_image_url: '',
-        mode: 'contextual_cloze',
-        dataFile: '/mindset/U8.json',
-        category: 'Mindset',
-      },
-      {
-        name: 'U8_pre',
-        description: '',
-        cover_image_url: '',
-        mode: 'pos',
-        dataFile: '/mindset/U8_pre.json',
-        category: 'Mindset',
-      },
-    ],
-  },
-  {
-    name: 'Decoding',
-    description: '',
-    cover_image_url: '/covers/decoding.png',
-    mode: 'verb_forms',
-    dataFile: '/decoding/U1-12.json',
-    category: '英文',
-    subBanks: [
-      {
-        name: 'U1-12',
-        description: '',
-        cover_image_url: '',
-        mode: 'verb_forms',
-        dataFile: '/decoding/U1-12.json',
-        category: 'Decoding',
-      },
-    ],
-  },
-  //{
-  //  name: '7000 Words',
-  // description: '逐层揭示单词的多个释义和例句',
-  //  cover_image_url: '/covers/7000-words.png',
-  //  mode: 'layered_reveal',
-  //  dataFile: '/7000-words/U18&19&20.json',
-  //  category: '英文',
-  //  subBanks: [
-  //    {
-  //      name: 'U18',
-  //      description: '',
-  //      cover_image_url: '',
-  //      mode: 'layered_reveal',
-  //     dataFile: '/7000-words/U18.json',
-  //      category: '7000 Words',
-  //    },
-  //   {
-  //      name: 'U19',
-  //      description: '',
-  //      cover_image_url: '',
-  //      mode: 'layered_reveal',
-  //      dataFile: '/7000-words/U19.json',
-  //      category: '7000 Words',
-  //    },
-  //    {
-  //      name: 'U20',
-  //      description: '',
-  //      cover_image_url: '',
-  //      mode: 'layered_reveal',
-  //      dataFile: '/7000-words/U20.json',
-  //      category: '7000 Words',
-  //    },
-  //  ],
-  //},
-  {
-    name: '名句',
-    description: '给出半句，对出另外半句。',
-    cover_image_url: '/covers/poetry-pair.png',
-    mode: 'poetry_pair',
-    dataFile: '/poetry-pair/E1.json',
-    category: '中文',
-    subBanks: [
-      {
-        name: 'T1',
-        description: '',
-        cover_image_url: '',
-        mode: 'poetry_pair',
-        dataFile: '/poetry-pair/T1.json',
-        category: '名句',
-      },
-      {
-        name: 'T2',
-        description: '',
-        cover_image_url: '',
-        mode: 'poetry_pair',
-        dataFile: '/poetry-pair/T2.json',
-        category: '名句',
-      },
-      {
-        name: 'T3',
-        description: '',
-        cover_image_url: '',
-        mode: 'poetry_pair',
-        dataFile: '/poetry-pair/T3.json',
-        category: '名句',
-      },
-      {
-        name: 'T4',
-        description: '',
-        cover_image_url: '',
-        mode: 'poetry_pair',
-        dataFile: '/poetry-pair/T4.json',
-        category: '名句',
-      },
-      {
-        name: 'E1',
-        description: '',
-        cover_image_url: '',
-        mode: 'poetry_pair',
-        dataFile: '/poetry-pair/E1.json',
-        category: '名句',
-      },
-      {
-        name: 'E2',
-        description: '',
-        cover_image_url: '',
-        mode: 'poetry_pair',
-        dataFile: '/poetry-pair/E2.json',
-        category: '名句',
-      },
-    ],
-  },
-  {
-    name: '思考题',
-    description: '',
-    cover_image_url: '/covers/q-a.png',
-    mode: 'sbs',
-    dataFile: '/q-a/C1_T1.json',
-    category: '中文',
-    subBanks: [
-      {
-        name: 'C1_T1',
-        description: '',
-        cover_image_url: '',
-        mode: 'sbs',
-        dataFile: '/q-a/C1_T1.json',
-        category: '思考题',
-      },
-    ],
-  },
   {
     name: '外交知識',
     description: '',
@@ -240,38 +58,4 @@ export const banksToSeed: BankMeta[] = [
       },
     ],
   },
-  {
-    name: '问答题',
-    description: '',
-    cover_image_url: '/covers/q-a.png',
-    mode: 'sbs',
-    dataFile: '/q-a/T1.json',
-    category: '历史',
-    subBanks: [
-      {
-        name: 'T1',
-        description: '',
-        cover_image_url: '',
-        mode: 'sbs',
-        dataFile: '/q-a/T1.json',
-        category: 'Q&A',
-      },
-    ],
-  },
-  //{
-  //  name: '中国文化常识达标',
-  //  description: '',
-  //  cover_image_url: '/covers/china-knowledge.png',
-  //  mode: 'qa',
-  //  dataFile: '/china-knowledge/china_knowledge.json',
-  //  category: '常识',
-  //},
-  //{
-  //  name: '古诗补全',
-  //  description: '补全古诗中的缺失部分。',
-  //  cover_image_url: '/covers/poetry-completion.png',
-  //  mode: 'poetry_completion',
-  //  dataFile: '/poetry-completion/poetry_completion.json',
-  //  category: '诗词',
-  //},
 ];

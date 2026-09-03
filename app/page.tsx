@@ -6,6 +6,7 @@ import BankCarousel from '@/components/home/bank-carousel';
 import BankSelectionSheet from '@/components/home/bank-selection-sheet';
 import CategoryTabs from '@/components/home/category-tabs';
 import { Button } from '@/components/ui/button';
+import { BookOpen, PlusCircle } from 'lucide-react';
 import Link from 'next/link';
 import type { QuestionBank } from '@/lib/schema';
 import type { Swiper as SwiperCore } from 'swiper/types';
@@ -120,7 +121,7 @@ export default function HomePage() {
       </header>
       
       <main className="w-full flex-grow flex flex-col">
-        <div 
+        <div
           className="w-full h-48 md:h-45 bg-cover bg-center relative"
           style={{ backgroundImage: "url('/home/home.png')" }}
         >
@@ -132,6 +133,22 @@ export default function HomePage() {
         </div>
 
         <div className="container mx-auto px-4 -mt-8 relative z-10">
+          {/* 背单词的两个入口 */}
+          <div className="flex justify-center gap-3 sm:gap-4 mb-8">
+            <Button asChild size="lg" className="bg-brand-cyan-600 hover:bg-brand-cyan-700 text-white rounded-xl h-12 px-5 sm:px-7 text-base font-bold shadow-xl">
+              <Link href="/vocab/study">
+                <BookOpen size={20} className="mr-2" />
+                背单词
+              </Link>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="rounded-xl h-12 px-5 sm:px-7 text-base font-bold border-slate-700 bg-slate-800/60 text-slate-200 hover:bg-slate-700 hover:text-white shadow-xl">
+              <Link href="/vocab/new">
+                <PlusCircle size={20} className="mr-2" />
+                录入单词
+              </Link>
+            </Button>
+          </div>
+
           <div className="w-full overflow-x-auto pb-2 scrollbar-hide">
             <CategoryTabs categories={categories} onSelectCategory={handleSelectCategory} activeCategory={activeCategory} />
           </div>
