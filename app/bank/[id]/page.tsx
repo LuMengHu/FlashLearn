@@ -1,4 +1,4 @@
-// app/bank/[id]/page.tsx
+// 题库详情页（服务器组件）：按 id 加载题库、题目及同级/子级题库，交给 QuizClient 渲染
 import { db } from '@/lib/db';
 import { notFound } from 'next/navigation';
 import QuizClient from '@/components/quiz/quiz-client';

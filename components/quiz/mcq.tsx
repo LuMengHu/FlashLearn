@@ -1,8 +1,8 @@
-// components/MCQ.tsx
-
+// 选择题模式：单选，选中后立即高亮正确/错误选项
 import { useState, useEffect } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import QuizCardShell from './quiz-card-shell';
 import { cn } from '@/lib/utils';
 import type { Question } from '@/lib/schema';
 
@@ -29,10 +29,10 @@ export default function MCQCard({ question, onOptionSelected }: Props) {
     question.correctOptionIndex === undefined
   ) {
     return (
-      <Card className="bg-slate-900/50 border-red-500 text-white shadow-lg">
+      <QuizCardShell className="border-red-500">
         <CardHeader><CardTitle className="text-red-400">错误：题目数据不完整</CardTitle></CardHeader>
         <CardContent><p>这道选择题缺少 "options" 字段或正确答案索引。</p></CardContent>
-      </Card>
+      </QuizCardShell>
     );
   }
 
@@ -48,7 +48,7 @@ export default function MCQCard({ question, onOptionSelected }: Props) {
   };
 
   return (
-    <Card className="bg-slate-900/50 border-slate-800 text-white shadow-lg">
+    <QuizCardShell>
       <CardHeader>
         <CardTitle className="text-xl sm:text-2xl leading-relaxed text-slate-200">{question.content}</CardTitle>
       </CardHeader>
@@ -74,6 +74,6 @@ export default function MCQCard({ question, onOptionSelected }: Props) {
           ))}
         </div>
       </CardContent>
-    </Card>
+    </QuizCardShell>
   );
 }

@@ -38,7 +38,7 @@
 ### 依赖环境
 
 - Node.js (v18.17 或更高版本)
-- `pnpm` (推荐), `npm`, 或 `yarn`
+- `npm`
 
 ### 安装与运行
 
@@ -51,7 +51,7 @@
 2. **安装依赖**
 
    ```bash
-   pnpm install
+   npm install
    ```
 3. **配置环境变量**
    复制 `.env.example` 文件为 `.env`，并填入你的 Neon 数据库连接字符串。
@@ -63,7 +63,7 @@
    启动本地开发服务器。
 
    ```bash
-   pnpm dev
+   npm run dev
    ```
 
    在浏览器中打开 `http://localhost:3000`。
@@ -83,8 +83,8 @@
 npm run db:seed
 
 # 在修改 schema 后，生成迁移文件
-npm drizzle-kit generate
+npx drizzle-kit generate
 
 # 将生成的迁移文件推送到数据库
-npm drizzle-kit push
+npx drizzle-kit push
 ```

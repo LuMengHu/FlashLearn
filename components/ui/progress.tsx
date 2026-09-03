@@ -1,3 +1,4 @@
+// shadcn/ui 进度条原语，用于展示背题进度
 "use client"
 
 import * as React from "react"

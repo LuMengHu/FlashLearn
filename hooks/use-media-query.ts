@@ -1,4 +1,4 @@
-// components/hooks/useMediaQuery.ts
+// 监听 CSS media query 是否命中（用于区分桌面端/移动端渲染分支）
 'use client';
 
 import { useState, useEffect } from 'react';

@@ -1,5 +1,4 @@
-// lib/db.ts
-
+// 创建全局唯一的 Drizzle + Neon 数据库连接实例，供其他模块导入使用
 import { drizzle } from 'drizzle-orm/neon-http';
 import { neon } from '@neondatabase/serverless';
 import * as schema from './schema';

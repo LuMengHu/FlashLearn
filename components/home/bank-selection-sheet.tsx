@@ -1,4 +1,4 @@
-// components/home/bank-selection-sheet.tsx
+// 顶部菜单：侧边抽屉列出所有顶级题库，点击直接跳转到对应题库
 'use client';
 
 import Link from 'next/link';
@@ -18,7 +18,7 @@ interface Props {
 }
 
 export default function BankSelectionSheet({ banks }: Props) {
-  // 【新增】在渲染前，先筛选出所有父题库（即没有 parentId 的题库）
+  // 只在侧边栏展示顶级题库（没有 parentId 的题库）
   const parentBanks = banks.filter(bank => !bank.parentId);
 
   return (
@@ -34,7 +34,6 @@ export default function BankSelectionSheet({ banks }: Props) {
           <SheetTitle className="text-2xl text-slate-100">所有题库</SheetTitle>
         </SheetHeader>
         <div className="mt-8 flex flex-col space-y-2">
-          {/* 【修改】现在只遍历筛选后的父题库列表 */}
           {parentBanks.map((bank) => (
             <Button
               key={bank.id}

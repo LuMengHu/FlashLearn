@@ -1,9 +1,9 @@
-// components/quiz/VerbForms.tsx
+// 动词变形表格模式：随机隐藏每行的一个动词形态格子，答案揭晓后高亮显示
 'use client';
 
 import { useState, useEffect } from 'react';
 import type { Question } from '@/lib/schema';
-import { cn } from '@/lib/utils';
+import { cn, pickHiddenKeys } from '@/lib/utils';
 
 interface Props {
   rows: Question[];
@@ -18,19 +18,7 @@ export default function VerbFormsTable({ rows, isAnswerVisible }: Props) {
     rows.forEach(row => {
       const data = (row.metadata as any)?.verb_forms;
       if (!data) return;
-
-      // 【优化 3】实现“只显现一个”逻辑
-      // 1. 找出所有有效的 keys (即有内容的形态)
-      const validKeys = Object.keys(data).filter(key => data[key]);
-
-      if (validKeys.length > 0) {
-        // 2. 随机挑选一个 key 来显示
-        const keyToShow = validKeys[Math.floor(Math.random() * validKeys.length)];
-        
-        // 3. 将所有不是 keyToShow 的有效 key 都加入隐藏集合
-        const keysToHide = new Set(validKeys.filter(key => key !== keyToShow));
-        newHidden.set(row.id, keysToHide);
-      }
+      newHidden.set(row.id, pickHiddenKeys(data, (value) => Boolean(value)));
     });
     setHiddenCells(newHidden);
   }, [rows]);

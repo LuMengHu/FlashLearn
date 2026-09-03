@@ -1,7 +1,7 @@
-// components/home/bank-carousel.tsx
+// 首页题库轮播：3D coverflow 效果 + 循环滚动 + 底部分页指示器
 'use client';
 
-import { useState, useEffect } from 'react'; // 【修复】添加 useEffect
+import { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow } from 'swiper/modules';
 import type { Swiper as SwiperCore, SwiperOptions } from 'swiper/types';
@@ -102,11 +102,6 @@ export default function BankCarousel({
         {displayBanks.map((bank, index) => (
           <SwiperSlide key={`${bank.id}-${index}`} className="!w-64 !h-96 md:!w-80 md:!h-[365px]">
             <BankCard bank={bank} />
-            <style jsx global>{`
-              .swiper-slide { transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out; transform: scale(0.85); opacity: 0.4; }
-              .swiper-slide-active { transform: scale(1); opacity: 1; }
-              .swiper-slide-active .cover-image { opacity: 1 !important; }
-            `}</style>
           </SwiperSlide>
         ))}
       </Swiper>

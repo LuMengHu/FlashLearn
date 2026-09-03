@@ -1,5 +1,4 @@
-// scripts/seed.ts
-
+// 种子脚本：清空数据库中现有的题库/题目，按 question-banks.ts 中的定义重新插入
 import 'dotenv/config';
 import { drizzle } from 'drizzle-orm/neon-http';
 import { neon } from '@neondatabase/serverless';

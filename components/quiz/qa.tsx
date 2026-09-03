@@ -1,18 +1,16 @@
-// components/qa.tsx
-
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+// 问答模式：展示问题，点击"显示答案"后展示答案
+import { CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import QuizCardShell from './quiz-card-shell';
 import type { Question } from '@/lib/schema';
 
-// 这是正确的 QACard 的 Props 定义，它不需要 onOptionSelected
 interface Props {
   question: Question;
   isAnswerVisible: boolean;
 }
 
 export default function QACard({ question, isAnswerVisible }: Props) {
-  // 这是正确的 QACard 的渲染逻辑，它只显示问题和答案
   return (
-    <Card className="bg-slate-900/50 border-slate-800 text-white shadow-lg">
+    <QuizCardShell>
       <CardHeader>
         <CardTitle className="text-xl sm:text-2xl leading-relaxed text-slate-200">{question.content}</CardTitle>
       </CardHeader>
@@ -23,6 +21,6 @@ export default function QACard({ question, isAnswerVisible }: Props) {
           </div>
         )}
       </CardContent>
-    </Card>
+    </QuizCardShell>
   );
 }

@@ -103,17 +103,21 @@
   align-items: center;
   padding: 1rem;
   overflow: visible !important;
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
 }
 
 .swiper-slide:not(.swiper-slide-active) {
-  opacity: 0.5;
+  opacity: 0.4;
   transform: scale(0.85);
 }
 
 .swiper-slide.swiper-slide-active {
   opacity: 1;
   transform: scale(1);
+}
+
+.swiper-slide-active .cover-image {
+  opacity: 1 !important;
 }
 
 /* Swiper 分页器 */
@@ -152,19 +156,5 @@
 .swiper-button-next:hover {
   background-color: rgba(0, 0, 0, 0.5);
   transform: scale(1.1); /* 在所有设备上都保留 hover 放大效果 */
-}
-
-.swiper-slide {
-  transition: transform 0.5s ease-in-out; /* 确保缩放有平滑过渡 */
-}
-
-/* 默认（侧边）卡片的样式 */
-.swiper-slide:not(.swiper-slide-active) {
-  transform: scale(0.85);
-}
-
-/* 当前激活（中间）卡片的样式 */
-.swiper-slide.swiper-slide-active {
-  transform: scale(1.05); /* 放大到 105% */
 }
 
