@@ -1,5 +1,4 @@
-// components/ui/button.tsx
-
+// shadcn/ui 按钮原语：提供 variant/size 组合的通用按钮样式
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"

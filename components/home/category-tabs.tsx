@@ -1,4 +1,4 @@
-// components/home/category-tabs.tsx
+// 首页分类切换标签栏
 'use client';
 
 import { Button } from '@/components/ui/button';
@@ -24,7 +24,7 @@ export default function CategoryTabs({ categories, activeCategory, onSelectCateg
             // --- 通用样式 ---
             'rounded-full px-5 py-2 text-sm md:text-base font-semibold transition-all duration-300 ease-in-out',
             'whitespace-nowrap',  // 防止按钮内的文字换行
-            'flex-shrink-0',      // 【核心修复】防止按钮在 flex 容器中被压缩
+            'flex-shrink-0',      // 防止按钮在 flex 容器中被压缩
             'border-2 border-transparent', // 添加透明边框，以防止激活时发生布局偏移
 
             // --- 根据是否激活来切换样式 ---

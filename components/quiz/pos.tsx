@@ -1,21 +1,16 @@
-// components/quiz/Pos.tsx
+// POS（词性变形）表格模式：每次展示一行，随机隐藏一个词性格子等待作答，可通过导航按钮切换题目
 'use client';
 
 import { useMemo, useState, useEffect } from 'react';
 import type { Question } from '@/lib/schema';
-import { cn } from '@/lib/utils';
+import { cn, pickHiddenKeys } from '@/lib/utils';
 
 interface Props {
   rows: Question[];
   isAnswerVisible: boolean;
-  /**
-   * 可选回调：当切换到上/下一题时触发。
-   * 父组件可借此重置 isAnswerVisible（例如换题时自动收起答案）。
-   */
-  onIndexChange?: (index: number) => void;
 }
 
-export default function PosTable({ rows, isAnswerVisible, onIndexChange }: Props) {
+export default function PosTable({ rows, isAnswerVisible }: Props) {
   const headers = ['N.', 'V.', 'ADJ.', 'ADV.'];
 
   // 只保留有 pos_forms 数据的行
@@ -35,17 +30,10 @@ export default function PosTable({ rows, isAnswerVisible, onIndexChange }: Props
   // 为每一行随机选定一个"要展示的格子"，其余有词的格子作为待猜答案隐藏
   const hiddenCells = useMemo(() => {
     const newHidden = new Map<number, Set<string>>();
-
     validRows.forEach((row) => {
       const data = (row.metadata as any)?.pos_forms;
-      const validKeys = Object.keys(data).filter((key) => data[key]?.word);
-
-      if (validKeys.length > 0) {
-        const keyToShow = validKeys[Math.floor(Math.random() * validKeys.length)];
-        newHidden.set(row.id, new Set(validKeys.filter((key) => key !== keyToShow)));
-      }
+      newHidden.set(row.id, pickHiddenKeys(data, (value) => Boolean(value?.word)));
     });
-
     return newHidden;
   }, [validRows]);
 
@@ -59,7 +47,6 @@ export default function PosTable({ rows, isAnswerVisible, onIndexChange }: Props
   const goTo = (index: number) => {
     const next = Math.max(0, Math.min(validRows.length - 1, index));
     setCurrentIndex(next);
-    onIndexChange?.(next);
   };
 
   return (

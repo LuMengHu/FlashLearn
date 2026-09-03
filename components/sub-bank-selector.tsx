@@ -1,4 +1,4 @@
-// components/SubBankSelector.tsx
+// 题库详情页顶部的子题库切换下拉菜单，多于 1 个可选题库时才显示
 'use client';
 
 import {
@@ -19,16 +19,14 @@ interface Props {
 }
 
 export default function SubBankSelector({ currentBankId, parentBankId, siblingBanks, onSelectSubBank }: Props) {
-  
-  // 【核心修复】判断条件基于原始的 siblingBanks 列表
-  // 如果可供选择的题库总数小于或等于1，就没有选择的必要，直接返回 null
+  // 可选题库总数小于等于 1 时没有切换的必要，不显示按钮
   if (!siblingBanks || siblingBanks.length <= 1) {
     return null;
   }
 
-  // 父题库过滤逻辑保持不变，这只影响下拉菜单里的内容，不影响按钮是否显示
-  const subBanksOnly = parentBankId 
-    ? siblingBanks.filter(b => b.id !== parentBankId) 
+  // 下拉菜单里不展示父题库本身，只展示子题库
+  const subBanksOnly = parentBankId
+    ? siblingBanks.filter(b => b.id !== parentBankId)
     : siblingBanks;
 
   // 如果过滤后，菜单项为空（例如只有一个父题库，没有子题库），也不显示按钮

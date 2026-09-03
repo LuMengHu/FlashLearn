@@ -1,9 +1,9 @@
-// components/quiz/contextual-cloze.tsx
+// 语境完形填空模式：展示一组共用同一词族选项的句子，逐句挖空作答
 'use client';
 
-import { Card, CardContent } from '@/components/ui/card';
+import { CardContent } from '@/components/ui/card';
+import QuizCardShell from './quiz-card-shell';
 import type { Question } from '@/lib/schema';
-import { cn } from '@/lib/utils';
 
 interface Props {
   questions: Question[];
@@ -13,7 +13,7 @@ interface Props {
 
 export default function ContextualClozeCard({ questions, options, isAnswerVisible }: Props) {
   return (
-    <Card className="bg-slate-900/50 border-slate-800 text-white shadow-lg flex flex-col min-h-[450px]">
+    <QuizCardShell className="flex flex-col min-h-[450px]">
       {/* 选项区域 */}
       <div className="p-4 border-b border-slate-700 bg-slate-900/70">
         <h3 className="text-sm text-slate-400 mb-3 text-center">请从下列词中选择合适的形态填空：</h3>
@@ -51,6 +51,6 @@ export default function ContextualClozeCard({ questions, options, isAnswerVisibl
           })}
         </ul>
       </CardContent>
-    </Card>
+    </QuizCardShell>
   );
 }

@@ -1,5 +1,4 @@
-// app/layout.tsx
-
+// 全局根布局：注入字体与页面元信息
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";

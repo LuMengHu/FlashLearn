@@ -1,5 +1,4 @@
-// scripts/question-banks.ts
-
+// 种子数据的题库清单：每一项描述一个题库（及其子题库）的元信息，由 seed.ts 读取插入数据库
 export type BankMeta = {
   name: string;
   description: string;

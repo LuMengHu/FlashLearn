@@ -1,9 +1,9 @@
-// components/poetry-pair.tsx
-
+// 诗词配对模式：随机隐藏上句或下句，让用户回忆并配对
 'use client';
 
 import { useMemo } from 'react';
-import { Card, CardContent, CardFooter } from '@/components/ui/card';
+import { CardContent, CardFooter } from '@/components/ui/card';
+import QuizCardShell from './quiz-card-shell';
 import { cn } from '@/lib/utils';
 import type { Question } from '@/lib/schema';
 
@@ -22,7 +22,7 @@ export default function PoetryPairCard({ question, isAnswerVisible }: Props) {
   const secondLine = question.answer;
 
   return (
-    <Card className="bg-slate-900/50 border-slate-800 text-white shadow-lg flex flex-col min-h-[300px]">
+    <QuizCardShell className="flex flex-col min-h-[300px]">
       <CardContent className="p-6 flex-grow flex flex-col items-center justify-center text-center">
         <div className="space-y-4">
           {/* 上句 */}
@@ -51,6 +51,6 @@ export default function PoetryPairCard({ question, isAnswerVisible }: Props) {
           —— {metadata?.poet || '佚名'}《{metadata?.title || '无题'}》
         </p>
       </CardFooter>
-    </Card>
+    </QuizCardShell>
   );
 }

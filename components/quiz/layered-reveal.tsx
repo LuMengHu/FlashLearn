@@ -1,12 +1,14 @@
-// components/quiz/layered-reveal.tsx
+// 分层释义模式：逐条揭示一个单词的多组释义/例句，点击单词或例句可发音
 'use client';
 
 import { useState, useMemo, useEffect } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Button } from '@/components/ui/button';
+import QuizCardShell from './quiz-card-shell';
+import { useSpeech } from '@/hooks/use-speech';
 import type { Question } from '@/lib/schema';
-import React from 'react'; // 确保导入 React
+import React from 'react';
 
 type MeaningExamplePair = {
   meaning: string;
@@ -77,16 +79,9 @@ export default function LayeredRevealCard({ question, onAllLayersRevealed }: Pro
     }
   };
   
-  const handlePronounce = (text: string) => {
-    if (typeof window !== 'undefined' && window.speechSynthesis) {
-      const utterance = new SpeechSynthesisUtterance(text.replace(/\[|\]/g, '')); // 发音时去除括号
-      utterance.lang = 'en-US';
-      utterance.rate = 0.8; 
-      window.speechSynthesis.speak(utterance);
-    } else {
-      alert('你的浏览器不支持语音合成功能。');
-    }
-  };
+  const { speak } = useSpeech();
+  // 发音时去除高亮用的方括号
+  const handlePronounce = (text: string) => speak(text.replace(/\[|\]/g, ''), { rate: 0.8 });
 
   const handleExampleClick = (index: number, exampleText: string) => {
     const isVisible = translationVisibility.get(index) || false;
@@ -102,7 +97,7 @@ export default function LayeredRevealCard({ question, onAllLayersRevealed }: Pro
   const hasMultipleMeanings = meanings.length > 1;
 
   return (
-    <Card className="bg-slate-900/50 border-slate-800 text-white shadow-lg flex flex-col min-h-[450px]">
+    <QuizCardShell className="flex flex-col min-h-[450px]">
       <CardHeader className="text-center flex-shrink-0">
         <div 
           onClick={() => handlePronounce(question.content)} 
@@ -150,6 +145,6 @@ export default function LayeredRevealCard({ question, onAllLayersRevealed }: Pro
           </Button>
         )}
       </div>
-    </Card>
+    </QuizCardShell>
   );
 }

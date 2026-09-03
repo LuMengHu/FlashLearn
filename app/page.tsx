@@ -1,4 +1,4 @@
-// app/page.tsx
+// 首页：加载题库列表，按分类切换轮播，并记住上次浏览的位置
 'use client';
 
 import { useState, useEffect, useRef } from 'react';

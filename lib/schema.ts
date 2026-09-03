@@ -1,4 +1,4 @@
-// lib/schema.ts
+// Drizzle 数据库表结构定义：题库（questionBanks）与题目（questions），以及它们之间的关系
 import {
   pgTable,
   bigserial,
@@ -41,14 +41,14 @@ export const questionBanksRelations = relations(questionBanks, ({ one, many }) =
     relationName: 'bankToQuestions'
   }),
 
-  // 【核心修复】parent 和 subBanks 是同一关系的两面，必须使用同一个 relationName
+  // parent 和 subBanks 是同一个自关联关系的两面，relationName 必须完全一致
   parent: one(questionBanks, {
     fields: [questionBanks.parentId],
     references: [questionBanks.id],
-    relationName: 'parentSubBankRelationship', // <-- 使用一个统一的、描述性的名称
+    relationName: 'parentSubBankRelationship',
   }),
   subBanks: many(questionBanks, {
-    relationName: 'parentSubBankRelationship', // <-- 使用与上面完全相同的名称
+    relationName: 'parentSubBankRelationship',
   }),
 }));
 

@@ -1,13 +1,11 @@
-// components/hooks/useQuizEngine.ts
+// 背题会话的核心状态机：管理当前题目/批次/进度状态，并向 QuizClient 暴露交互回调
 'use client';
 
 import { useEffect, useMemo, useCallback, useRef } from 'react';
 import type { QuestionBank, Question } from '@/lib/schema';
 import { useQuizState } from './use-quiz-state';
-import { useBatchProcessor } from './use-batch-processor';
-import { useMediaQuery } from './use-media-query'; // 确保导入 useMediaQuery
-
-const BATCH_SIZE = 5;
+import { useBatchProcessor, TABLE_BATCH_SIZE } from './use-batch-processor';
+import { useMediaQuery } from './use-media-query';
 
 interface UseQuizEngineProps {
   bank: QuestionBank;
@@ -28,11 +26,12 @@ export function useQuizEngine({ bank, initialQuestions }: UseQuizEngineProps) {
     setCurrentTableBatch, setCurrentClozeGroup, setCurrentClozeOptions,
   });
 
-  // 我们需要在主 Hook 中获取 isDesktop
   const isDesktop = useMediaQuery('(min-width: 768px)');
 
-  const isBatchMode = useMemo(() => ['contextual_cloze', 'pos', 'verb_forms', 'sbs'].includes(currentBank.mode), [currentBank.mode]);
-  const isSingleItemBatchMode = useMemo(() => currentBank.mode === 'sbs', [currentBank.mode]);
+  const isBatchMode = useMemo(
+    () => ['contextual_cloze', 'pos', 'verb_forms', 'sbs'].includes(currentBank.mode),
+    [currentBank.mode]
+  );
 
   const startQuiz = useCallback((questionSet: Question[], bankForQuiz: QuestionBank) => {
     setCurrentBank(bankForQuiz);
@@ -48,7 +47,7 @@ export function useQuizEngine({ bank, initialQuestions }: UseQuizEngineProps) {
 
     const currentIsBatchMode = ['contextual_cloze', 'pos', 'verb_forms', 'sbs'].includes(bankForQuiz.mode);
     if (currentIsBatchMode) {
-      let batchSize = BATCH_SIZE;
+      let batchSize = TABLE_BATCH_SIZE; // pos / verb_forms 默认每批 1 题，与 use-batch-processor.ts 保持一致
       if (bankForQuiz.mode === 'contextual_cloze') batchSize = isDesktop ? 5 : 2;
       if (bankForQuiz.mode === 'sbs') batchSize = 1;
       setTotalBatches(Math.ceil(orderedQuestions.length / batchSize));
@@ -68,7 +67,15 @@ export function useQuizEngine({ bank, initialQuestions }: UseQuizEngineProps) {
   }, [initialQuestions, bank, startQuiz]);
 
   const currentQuestion = unanswered[0];
-  const { correctCount, incorrectCount } = useMemo(() => answered.reduce((acc, a) => { a.wasCorrect ? acc.correctCount++ : acc.incorrectCount++; return acc; }, { correctCount: 0, incorrectCount: 0 }), [answered]);
+  const { correctCount, incorrectCount } = useMemo(() => {
+    return answered.reduce(
+      (acc, a) => {
+        a.wasCorrect ? acc.correctCount++ : acc.incorrectCount++;
+        return acc;
+      },
+      { correctCount: 0, incorrectCount: 0 }
+    );
+  }, [answered]);
   const answeredCount = answered.length;
 
   const handleNextBatch = () => {
@@ -93,12 +100,19 @@ export function useQuizEngine({ bank, initialQuestions }: UseQuizEngineProps) {
     setIsAnswerVisible(false);
   };
 
-  const handleMcqOptionSelected = (isCorrect: boolean) => { if (currentQuestion) { setIsMcqAnswered(true); setAnswered(prev => [...prev, { question: currentQuestion, wasCorrect: isCorrect }]); } };
-  const handleNextMcq = () => { if (currentQuestion) { setUnanswered(prev => prev.slice(1)); setIsMcqAnswered(false); } };
+  const handleMcqOptionSelected = (isCorrect: boolean) => {
+    if (!currentQuestion) return;
+    setIsMcqAnswered(true);
+    setAnswered(prev => [...prev, { question: currentQuestion, wasCorrect: isCorrect }]);
+  };
+  const handleNextMcq = () => {
+    if (!currentQuestion) return;
+    setUnanswered(prev => prev.slice(1));
+    setIsMcqAnswered(false);
+  };
   const handleAllLayersRevealed = () => setCanMarkLayeredReveal(true);
   const handleSbsReadingComplete = () => setIsSbsReadingCompleted(true);
   const handleShowAnswer = () => setIsAnswerVisible(true);
-  const handleReturn = () => { const parentId = currentBank.parentId || bank.id; sessionStorage.setItem('lastParentBankId', String(parentId)); window.location.href = '/'; };
 
   const handleUndo = () => {
     if (answered.length === 0 || isBatchMode) return;
@@ -123,10 +137,10 @@ export function useQuizEngine({ bank, initialQuestions }: UseQuizEngineProps) {
 
   return {
     currentBank, currentQuestion, answered, isAnswerVisible, isMcqAnswered, canMarkLayeredReveal,
-    isSbsReadingCompleted, isBatchMode, isSingleItemBatchMode, isCompleted, currentTableBatch,
+    isSbsReadingCompleted, isBatchMode, isCompleted, currentTableBatch,
     currentClozeGroup, currentClozeOptions, correctCount, incorrectCount, answeredCount,
     currentTotal, batchesCompleted, totalBatches, startQuiz, handleMark, handleNextBatch,
     handleMcqOptionSelected, handleNextMcq, handleAllLayersRevealed, handleSbsReadingComplete,
-    handleShowAnswer, handleSelectSubBank, handleReturn, handleUndo
+    handleShowAnswer, handleSelectSubBank, handleUndo
   };
 }

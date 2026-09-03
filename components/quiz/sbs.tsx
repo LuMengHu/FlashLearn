@@ -1,4 +1,4 @@
-// components/quiz/SBS.tsx
+// 分句阅读模式：逐句揭示一段长文本，全部读完后才能进入下一批
 'use client';
 
 import { useState, useEffect, useMemo } from 'react';

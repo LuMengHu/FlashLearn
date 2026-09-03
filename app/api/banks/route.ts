@@ -1,5 +1,4 @@
-// app/api/banks/route.ts
-
+// 返回全部题库列表（不含题目），供首页轮播和分类展示使用
 import { db } from "@/lib/db";
 import { NextResponse } from "next/server";
 

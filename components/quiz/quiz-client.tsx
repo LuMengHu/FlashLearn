@@ -1,4 +1,4 @@
-// components/quiz/quiz-client.tsx
+// 背题页的客户端外壳：接入 useQuizEngine，按当前题库的 mode 渲染对应卡片，并展示进度/操作按钮
 'use client';
 
 import React, { useState, Suspense } from 'react';
@@ -135,9 +135,28 @@ export default function QuizClient({ bank, initialQuestions, siblingBanks, allBa
     <div className="flex flex-col w-full h-full flex-grow">
       <div className="mb-8 space-y-4">
         <div className="grid grid-cols-[auto_1fr_auto] items-center gap-4">
-          <Button onClick={handleReturn} variant="ghost" size="lg" className="p-2 flex items-center gap-1 text-slate-400 hover:bg-slate-700/50 hover:text-white px-2 py-1 rounded-md transition-colors"><Undo2 className="rotate-180" size={20}/>返回</Button>
-          <h1 className="text-xl sm:text-2xl font-bold text-center text-gray-200 bg-slate-800/70 border border-slate-700 px-6 py-2 rounded-lg truncate">{currentBank.name}</h1>
-          <div className="justify-self-end">{siblingBanks && (<SubBankSelector currentBankId={currentBank.id} parentBankId={bank.id} siblingBanks={siblingBanks} onSelectSubBank={handleSelectSubBank} />)}</div>
+          <Button
+            onClick={handleReturn}
+            variant="ghost"
+            size="lg"
+            className="p-2 flex items-center gap-1 text-slate-400 hover:bg-slate-700/50 hover:text-white px-2 py-1 rounded-md transition-colors"
+          >
+            <Undo2 className="rotate-180" size={20} />
+            返回
+          </Button>
+          <h1 className="text-xl sm:text-2xl font-bold text-center text-gray-200 bg-slate-800/70 border border-slate-700 px-6 py-2 rounded-lg truncate">
+            {currentBank.name}
+          </h1>
+          <div className="justify-self-end">
+            {siblingBanks && (
+              <SubBankSelector
+                currentBankId={currentBank.id}
+                parentBankId={bank.id}
+                siblingBanks={siblingBanks}
+                onSelectSubBank={handleSelectSubBank}
+              />
+            )}
+          </div>
         </div>
         <div className="w-full">
           <div className="flex justify-between items-center text-sm text-slate-400 mb-2">

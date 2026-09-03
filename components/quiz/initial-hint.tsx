@@ -1,11 +1,13 @@
-// components/quiz/initial-hint.tsx
+// 首字提示模式：只显示单词的首字母提示，点击可发音，支持自动播放
 'use client';
 
-import { useEffect } from 'react'; // 导入 useEffect
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { useEffect } from 'react';
+import { CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import QuizCardShell from './quiz-card-shell';
 import { cn } from '@/lib/utils';
+import { useSpeech } from '@/hooks/use-speech';
 import type { Question } from '@/lib/schema';
-import React from 'react'; // 导入 React
+import React from 'react';
 
 type InitialHintMetadata = {
   chineseMeaning?: string;
@@ -14,7 +16,7 @@ type InitialHintMetadata = {
 interface Props {
   question: Question;
   isAnswerVisible: boolean;
-  isAutoPlayOn: boolean; // 【新】接收自动播放状态
+  isAutoPlayOn: boolean;
 }
 
 // 【新功能】处理换行符的组件
@@ -44,18 +46,8 @@ export default function InitialHintCard({ question, isAnswerVisible, isAutoPlayO
     .map(part => part.charAt(0).toLowerCase() + '______')
     .join(' ');
 
-  const handlePronounce = (text: string) => {
-    if (typeof window !== 'undefined' && window.speechSynthesis) {
-      // 停止任何正在播放的语音，防止重叠
-      window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'en-US';
-      utterance.rate = 0.9;
-      window.speechSynthesis.speak(utterance);
-    } else {
-      alert('您的浏览器不支持语音合成功能。');
-    }
-  };
+  const { speak } = useSpeech();
+  const handlePronounce = (text: string) => speak(text, { rate: 0.9 });
 
   // 【功能 3 实现】自动播放逻辑
   useEffect(() => {
@@ -65,7 +57,7 @@ export default function InitialHintCard({ question, isAnswerVisible, isAutoPlayO
   }, [isAnswerVisible, isAutoPlayOn, word]); // 依赖项确保在这些值变化时正确触发
 
   return (
-    <Card className="bg-slate-900/50 border-slate-800 text-white shadow-lg flex flex-col min-h-[350px] justify-center gap-y-0">
+    <QuizCardShell className="flex flex-col min-h-[350px] justify-center gap-y-0">
       <CardHeader className="text-center pt-6">
         <div 
           onClick={() => handlePronounce(word)} 
@@ -96,6 +88,6 @@ export default function InitialHintCard({ question, isAnswerVisible, isAutoPlayO
           {!chineseMeaning && '\u00A0'} {/* 占位符 */}
         </div>
       </CardContent>
-    </Card>
+    </QuizCardShell>
   );
 }

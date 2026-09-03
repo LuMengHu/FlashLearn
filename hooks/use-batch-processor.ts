@@ -1,12 +1,13 @@
-// components/hooks/useBatchProcessor.ts
+// 批次准备逻辑：为 pos/verb_forms（每次 1 题）和 contextual_cloze（按屏幕尺寸分组）准备下一批题目
 'use client';
 
 import { useCallback } from 'react';
 import type { Question } from '@/lib/schema';
-import { shuffle } from '@/lib/utils'; // 从 utils 导入
+import { shuffle } from '@/lib/utils';
 import { useMediaQuery } from './use-media-query';
 
-const BATCH_SIZE = 1;
+// pos/verb_forms 每批固定只取 1 题；同时导出给 use-quiz-engine.ts 计算 totalBatches，避免两处批大小定义不一致
+export const TABLE_BATCH_SIZE = 1;
 
 interface BatchProcessorProps {
   setCurrentTableBatch: (batch: Question[]) => void;
@@ -23,7 +24,7 @@ export function useBatchProcessor({
 
   const prepareNewTableBatch = useCallback((questionsPool: Question[]) => {
     if (questionsPool.length === 0) { setCurrentTableBatch([]); return; }
-    const batch = shuffle(questionsPool).slice(0, BATCH_SIZE);
+    const batch = shuffle(questionsPool).slice(0, TABLE_BATCH_SIZE);
     setCurrentTableBatch(batch);
   }, [setCurrentTableBatch]);
 
@@ -38,7 +39,6 @@ export function useBatchProcessor({
       }
     });
     const groupSize = isDesktop ? 5 : 2;
-    // ... (其余的 cloze 准备逻辑保持不变)
     const familyKeys = Array.from(families.keys());
     const familiesToDraw = Math.min(familyKeys.length, groupSize);
     const chosenFamilyKeys = shuffle(familyKeys).slice(0, familiesToDraw);
