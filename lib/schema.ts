@@ -123,6 +123,30 @@ export const chineseItems = pgTable('ChineseItems', {
   typeFrontUnique: uniqueIndex('ChineseItems_type_front_unique').on(table.type, table.front),
 }));
 
+// --- 学习进度：三个分类共用 ---
+// 只记「熟练等级」，不记复习到期时间：任何时候都能开练，等级低的排前面，
+// 所以就算只有十个条目也会一直轮着出现，不会出现「今天练完了要等明天」。
+
+/** 进度记录挂在哪一类内容上 */
+export const STUDY_ITEM_TYPES = ['word', 'chinese', 'question'] as const;
+export type StudyItemType = (typeof STUDY_ITEM_TYPES)[number];
+
+/** 熟练等级上限：连续答对到这个等级就算掌握 */
+export const MAX_STUDY_LEVEL = 5;
+
+export const studyProgress = pgTable('StudyProgress', {
+  id: bigserial('id', { mode: 'number' }).primaryKey(),
+  itemType: text('item_type', { enum: STUDY_ITEM_TYPES }).notNull(),
+  itemId: bigint('item_id', { mode: 'number' }).notNull(),
+  level: integer('level').notNull().default(0),        // 0 = 生疏，MAX_STUDY_LEVEL = 掌握
+  seenCount: integer('seen_count').notNull().default(0),
+  correctCount: integer('correct_count').notNull().default(0),
+  wrongCount: integer('wrong_count').notNull().default(0),
+  lastSeenAt: timestamp('last_seen_at', { withTimezone: true }).defaultNow(),
+}, (table) => ({
+  itemUnique: uniqueIndex('StudyProgress_item_unique').on(table.itemType, table.itemId),
+}));
+
 // --- 关系定义 (RELATIONS) ---
 export const questionBanksRelations = relations(questionBanks, ({ one, many }) => ({
   questions: many(questions, {
@@ -160,3 +184,4 @@ export type Word = typeof words.$inferSelect;
 export type NewWord = typeof words.$inferInsert;
 export type ChineseItem = typeof chineseItems.$inferSelect;
 export type NewChineseItem = typeof chineseItems.$inferInsert;
+export type StudyProgress = typeof studyProgress.$inferSelect;

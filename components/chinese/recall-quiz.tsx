@@ -4,17 +4,19 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import { StatBar, RoundSummary } from '@/components/ui/page-shell';
-import { shuffle } from '@/lib/utils';
+import { reportResult } from '@/lib/study';
 import type { ChineseItem, ChineseType } from '@/lib/schema';
 
 export default function RecallQuiz({
   items,
   type,
   hint,
+  onFinish,
 }: {
   items: ChineseItem[];
   type: ChineseType;
   hint?: string;
+  onFinish: () => void;
 }) {
   const [queue, setQueue] = useState<ChineseItem[]>([]);
   const [revealed, setRevealed] = useState(false);
@@ -24,7 +26,7 @@ export default function RecallQuiz({
   const [total, setTotal] = useState(0);
 
   const startRound = useCallback((source: ChineseItem[]) => {
-    setQueue(shuffle(source));
+    setQueue(source);
     setTotal(source.length);
     setRevealed(false);
     setDone(0);
@@ -40,6 +42,7 @@ export default function RecallQuiz({
 
   const handleMark = (isRight: boolean) => {
     if (!current) return;
+    reportResult('chinese', current.id, isRight);
     setDone(d => d + 1);
     if (isRight) setRight(r => r + 1);
     else setWrongItems(prev => [...prev, current]);
@@ -53,7 +56,7 @@ export default function RecallQuiz({
         total={done}
         right={right}
         wrong={done - right}
-        onRestart={() => startRound(items)}
+        onRestart={onFinish}
         onReviewWrong={wrongItems.length > 0 ? () => startRound(wrongItems) : undefined}
         rightLabel="记住"
         wrongLabel="没记住"

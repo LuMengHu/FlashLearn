@@ -1,17 +1,22 @@
-// 背单词：正面只显示英文（可点击发音、可开自动发音），回忆中文后揭晓释义与全部笔记
+// 背单词：先选本轮题量，再看英文回忆中文；揭晓时显示释义与全部笔记
+// 出题顺序按熟练度：没背过的排最前，越生疏越常出现（不设复习间隔，随时可再来一轮）
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Volume2, VolumeX, Loader2 } from 'lucide-react';
 import { StatBar, RoundSummary, EmptyState } from '@/components/ui/page-shell';
+import { RoundStarter } from '@/components/ui/round-starter';
 import { useSpeech } from '@/hooks/use-speech';
-import { shuffle, cn } from '@/lib/utils';
+import { cn } from '@/lib/utils';
+import { fetchProgress, pickForRound, reportResult, summarize, type ProgressMap } from '@/lib/study';
 import type { Word } from '@/lib/schema';
 
 export default function WordStudy() {
   const [words, setWords] = useState<Word[] | null>(null);
+  const [progress, setProgress] = useState<ProgressMap>({});
   const [error, setError] = useState('');
-  const [queue, setQueue] = useState<Word[]>([]);
+
+  const [queue, setQueue] = useState<Word[] | null>(null); // null = 还没开始，停在准备页
   const [total, setTotal] = useState(0);
   const [done, setDone] = useState(0);
   const [right, setRight] = useState(0);
@@ -20,48 +25,65 @@ export default function WordStudy() {
   const [isAutoPlayOn, setIsAutoPlayOn] = useState(false);
   const { speak } = useSpeech();
 
-  useEffect(() => {
-    let cancelled = false;
-    (async () => {
-      try {
-        const res = await fetch('/api/words');
-        const data = await res.json();
-        if (!res.ok) throw new Error(data?.error || '读取单词失败');
-        if (cancelled) return;
-        setWords(data);
-        setQueue(shuffle(data));
-        setTotal(data.length);
-      } catch (err) {
-        if (!cancelled) setError(err instanceof Error ? err.message : '读取单词失败');
-      }
-    })();
-    return () => {
-      cancelled = true;
-    };
+  const load = useCallback(async () => {
+    try {
+      const res = await fetch('/api/words');
+      const data = await res.json();
+      if (!res.ok) throw new Error(data?.error || '读取单词失败');
+      const [p] = await Promise.all([fetchProgress('word')]);
+      setWords(data);
+      setProgress(p);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : '读取单词失败');
+    }
   }, []);
 
-  const current = queue[0];
+  useEffect(() => {
+    load();
+  }, [load]);
+
+  const current = queue?.[0];
 
   // 开了自动发音时，每换一个词就念一遍
   useEffect(() => {
     if (isAutoPlayOn && current) speak(current.word, { rate: 0.9 });
   }, [isAutoPlayOn, current, speak]);
 
-  const startRound = useCallback((list: Word[]) => {
-    setQueue(shuffle(list));
+  const summary = useMemo(() => summarize(words ?? [], progress), [words, progress]);
+
+  const startRound = (count: number) => {
+    if (!words) return;
+    const picked = pickForRound(words, progress, count);
+    setQueue(picked);
+    setTotal(picked.length);
+    setDone(0);
+    setRight(0);
+    setWrongWords([]);
+    setIsAnswerVisible(false);
+  };
+
+  /** 只重练指定的一批（结算页的「只背没记住的」） */
+  const restartWith = (list: Word[]) => {
+    setQueue(list);
     setTotal(list.length);
     setDone(0);
     setRight(0);
     setWrongWords([]);
     setIsAnswerVisible(false);
-  }, []);
+  };
+
+  const backToStart = async () => {
+    setQueue(null);
+    setProgress(await fetchProgress('word')); // 回准备页时刷新掌握情况
+  };
 
   const handleMark = (isRight: boolean) => {
     if (!current) return;
+    reportResult('word', current.id, isRight);
     if (isRight) setRight(r => r + 1);
     else setWrongWords(prev => [...prev, current]);
     setDone(d => d + 1);
-    setQueue(prev => prev.slice(1));
+    setQueue(prev => (prev ? prev.slice(1) : prev));
     setIsAnswerVisible(false);
   };
 
@@ -80,17 +102,26 @@ export default function WordStudy() {
     return <EmptyState message="单词库还是空的" actionHref="/vocab/new" actionLabel="去录入第一个单词" />;
   }
 
+  // 准备页：选题量
+  if (queue === null) {
+    return <RoundStarter summary={summary} onStart={startRound} unit="个" />;
+  }
+
+  // 一轮结束
   if (!current) {
     return (
-      <RoundSummary
-        total={done}
-        right={right}
-        wrong={wrongWords.length}
-        onRestart={() => startRound(words)}
-        onReviewWrong={wrongWords.length > 0 ? () => startRound(wrongWords) : undefined}
-        rightLabel="记住"
-        wrongLabel="没记住"
-      />
+      <div className="space-y-4">
+        <RoundSummary
+          total={done}
+          right={right}
+          wrong={wrongWords.length}
+          onRestart={() => backToStart()}
+          onReviewWrong={wrongWords.length > 0 ? () => restartWith(wrongWords) : undefined}
+          rightLabel="记住"
+          wrongLabel="没记住"
+        />
+        <p className="text-center text-sm text-slate-600">「再来一轮」会回到题量选择</p>
+      </div>
     );
   }
 
@@ -124,7 +155,6 @@ export default function WordStudy() {
       />
 
       <div className="flex min-h-[400px] flex-col rounded-2xl border border-slate-800 bg-slate-900/50 p-6 shadow-xl sm:p-8">
-        {/* 正面：英文单词 */}
         <div className="text-center">
           <button
             type="button"

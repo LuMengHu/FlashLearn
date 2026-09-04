@@ -4,10 +4,19 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import { StatBar, RoundSummary } from '@/components/ui/page-shell';
-import { shuffle, cn } from '@/lib/utils';
+import { cn } from '@/lib/utils';
+import { reportResult } from '@/lib/study';
 import type { ChineseItem } from '@/lib/schema';
 
-export default function ChoiceQuiz({ items, choices }: { items: ChineseItem[]; choices: string[] }) {
+export default function ChoiceQuiz({
+  items,
+  choices,
+  onFinish,
+}: {
+  items: ChineseItem[];
+  choices: string[];
+  onFinish: () => void;
+}) {
   const [queue, setQueue] = useState<ChineseItem[]>([]);
   const [picked, setPicked] = useState<string | null>(null);
   const [done, setDone] = useState(0);
@@ -16,7 +25,7 @@ export default function ChoiceQuiz({ items, choices }: { items: ChineseItem[]; c
   const [total, setTotal] = useState(0);
 
   const startRound = useCallback((source: ChineseItem[]) => {
-    setQueue(shuffle(source));
+    setQueue(source);
     setTotal(source.length);
     setPicked(null);
     setDone(0);
@@ -34,7 +43,9 @@ export default function ChoiceQuiz({ items, choices }: { items: ChineseItem[]; c
     if (picked || !current) return;
     setPicked(choice);
     setDone(d => d + 1);
-    if (choice === current.back) setRight(r => r + 1);
+    const isCorrect = choice === current.back;
+    reportResult('chinese', current.id, isCorrect);
+    if (isCorrect) setRight(r => r + 1);
     else setWrongItems(prev => [...prev, current]);
   };
 
@@ -49,7 +60,7 @@ export default function ChoiceQuiz({ items, choices }: { items: ChineseItem[]; c
         total={done}
         right={right}
         wrong={done - right}
-        onRestart={() => startRound(items)}
+        onRestart={onFinish}
         onReviewWrong={wrongItems.length > 0 ? () => startRound(wrongItems) : undefined}
       />
     );

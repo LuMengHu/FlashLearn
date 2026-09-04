@@ -4,13 +4,16 @@
 import { useEffect, useMemo, useCallback, useRef, useState } from 'react';
 import type { QuestionBank, Question } from '@/lib/schema';
 import { useQuizState } from './use-quiz-state';
+import { reportResult } from '@/lib/study';
 
 interface UseQuizEngineProps {
   bank: QuestionBank;
   initialQuestions: Question[];
+  /** false 时不自动开练，由调用方选好题量后手动 startQuiz */
+  autoStart?: boolean;
 }
 
-export function useQuizEngine({ bank, initialQuestions }: UseQuizEngineProps) {
+export function useQuizEngine({ bank, initialQuestions, autoStart = true }: UseQuizEngineProps) {
   const {
     currentBank, unanswered, answered, currentTotal, isAnswerVisible, isMcqAnswered,
     setCurrentBank, setUnanswered, setAnswered, setCurrentTotal, setIsAnswerVisible,
@@ -35,10 +38,11 @@ export function useQuizEngine({ bank, initialQuestions }: UseQuizEngineProps) {
   const initializedBankId = useRef<number | null>(null);
 
   useEffect(() => {
+    if (!autoStart) return;
     if (initializedBankId.current === bank.id) return; // 该题库已初始化过，跳过
     initializedBankId.current = bank.id;
     startQuiz(initialQuestions, bank);
-  }, [initialQuestions, bank, startQuiz]);
+  }, [autoStart, initialQuestions, bank, startQuiz]);
 
   const currentQuestion = unanswered[0];
   const { correctCount, incorrectCount } = useMemo(() => {
@@ -54,6 +58,7 @@ export function useQuizEngine({ bank, initialQuestions }: UseQuizEngineProps) {
 
   const handleMark = (isCorrect: boolean) => {
     if (!currentQuestion) return;
+    reportResult('question', currentQuestion.id, isCorrect);
     setAnswered(prev => [...prev, { question: currentQuestion, wasCorrect: isCorrect }]);
     setUnanswered(prev => prev.slice(1));
     setIsAnswerVisible(false);
@@ -61,6 +66,7 @@ export function useQuizEngine({ bank, initialQuestions }: UseQuizEngineProps) {
 
   const handleMcqOptionSelected = (isCorrect: boolean) => {
     if (!currentQuestion) return;
+    reportResult('question', currentQuestion.id, isCorrect);
     setIsMcqAnswered(true);
     setAnswered(prev => [...prev, { question: currentQuestion, wasCorrect: isCorrect }]);
   };

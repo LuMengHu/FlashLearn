@@ -7,6 +7,7 @@ import { Check, X } from 'lucide-react';
 import { StatBar, RoundSummary } from '@/components/ui/page-shell';
 import { shuffle } from '@/lib/utils';
 import { cn } from '@/lib/utils';
+import { reportResults } from '@/lib/study';
 import type { ChineseItem } from '@/lib/schema';
 
 type Card = {
@@ -19,11 +20,13 @@ export default function JudgmentQuiz({
   items,
   batchSize,
   variant,
+  onFinish,
 }: {
   items: ChineseItem[];
   batchSize: number;
   /** single: 只显示词本身（易错字）；pair: 上面词、下面注音（拼音） */
   variant: 'single' | 'pair';
+  onFinish: () => void;
 }) {
   const [pool, setPool] = useState<ChineseItem[]>([]);
   const [cards, setCards] = useState<Card[]>([]);
@@ -45,7 +48,8 @@ export default function JudgmentQuiz({
         setFinished(true);
         return;
       }
-      const batch = source.slice(0, batchSize);
+      // 按优先级顺序取一批，再打乱这一批的展示顺序
+      const batch = shuffle(source.slice(0, batchSize));
       // 随机决定 1-2 条展示正确版本，其余展示错版
       const rightCount = Math.min(batch.length, Math.random() < 0.5 ? 1 : 2);
       const rightIndexes = new Set(shuffle(batch.map((_, i) => i)).slice(0, rightCount));
@@ -64,7 +68,7 @@ export default function JudgmentQuiz({
       setRight(0);
       setWrongItems([]);
       setFinished(false);
-      dealFrom(shuffle(source));
+      dealFrom(source);
     },
     [dealFrom]
   );
@@ -84,13 +88,18 @@ export default function JudgmentQuiz({
 
   const handleReveal = () => {
     setRevealed(true);
-    const answer = new Set(cards.map((c, i) => (c.isRight ? i : -1)).filter(i => i >= 0));
-    const isAllCorrect =
-      answer.size === picked.size && [...answer].every(i => picked.has(i));
 
+    // 每张卡单独判定：勾了且确实是对的、或没勾且确实是错的，都算判断正确
+    const perCard = cards.map((card, index) => ({
+      itemId: card.item.id,
+      correct: picked.has(index) === card.isRight,
+    }));
+    reportResults('chinese', perCard);
+
+    const isAllCorrect = perCard.every(r => r.correct);
     setDone(d => d + 1);
     if (isAllCorrect) setRight(r => r + 1);
-    else setWrongItems(prev => [...prev, ...cards.map(c => c.item)]);
+    else setWrongItems(prev => [...prev, ...cards.filter((_, i) => !perCard[i].correct).map(c => c.item)]);
   };
 
   const handleNext = () => {
@@ -104,7 +113,7 @@ export default function JudgmentQuiz({
         total={done}
         right={right}
         wrong={done - right}
-        onRestart={() => startRound(items)}
+        onRestart={onFinish}
         onReviewWrong={wrongItems.length > 0 ? () => startRound(wrongItems) : undefined}
         rightLabel="全对"
         wrongLabel="有错"
