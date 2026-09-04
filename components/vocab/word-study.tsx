@@ -1,23 +1,23 @@
-// 背单词：正面只显示英文，回忆中文后揭晓答案，同时展示含义/词源家族/易混词/自己的笔记
+// 背单词：正面只显示英文（可点击发音、可开自动发音），回忆中文后揭晓释义与全部笔记
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { Progress } from '@/components/ui/progress';
-import { Undo2, Volume2, Loader2, Plus } from 'lucide-react';
+import { useCallback, useEffect, useState } from 'react';
+import { Volume2, VolumeX, Loader2 } from 'lucide-react';
+import { StatBar, RoundSummary, EmptyState } from '@/components/ui/page-shell';
 import { useSpeech } from '@/hooks/use-speech';
-import { shuffle } from '@/lib/utils';
+import { shuffle, cn } from '@/lib/utils';
 import type { Word } from '@/lib/schema';
 
 export default function WordStudy() {
   const [words, setWords] = useState<Word[] | null>(null);
   const [error, setError] = useState('');
   const [queue, setQueue] = useState<Word[]>([]);
-  const [answeredCount, setAnsweredCount] = useState(0);
-  const [correctCount, setCorrectCount] = useState(0);
+  const [total, setTotal] = useState(0);
+  const [done, setDone] = useState(0);
+  const [right, setRight] = useState(0);
   const [wrongWords, setWrongWords] = useState<Word[]>([]);
   const [isAnswerVisible, setIsAnswerVisible] = useState(false);
+  const [isAutoPlayOn, setIsAutoPlayOn] = useState(false);
   const { speak } = useSpeech();
 
   useEffect(() => {
@@ -30,6 +30,7 @@ export default function WordStudy() {
         if (cancelled) return;
         setWords(data);
         setQueue(shuffle(data));
+        setTotal(data.length);
       } catch (err) {
         if (!cancelled) setError(err instanceof Error ? err.message : '读取单词失败');
       }
@@ -40,87 +41,56 @@ export default function WordStudy() {
   }, []);
 
   const current = queue[0];
-  const total = words?.length ?? 0;
 
-  const startRound = (list: Word[]) => {
+  // 开了自动发音时，每换一个词就念一遍
+  useEffect(() => {
+    if (isAutoPlayOn && current) speak(current.word, { rate: 0.9 });
+  }, [isAutoPlayOn, current, speak]);
+
+  const startRound = useCallback((list: Word[]) => {
     setQueue(shuffle(list));
-    setAnsweredCount(0);
-    setCorrectCount(0);
+    setTotal(list.length);
+    setDone(0);
+    setRight(0);
     setWrongWords([]);
     setIsAnswerVisible(false);
-  };
+  }, []);
 
-  const handleMark = (isCorrect: boolean) => {
+  const handleMark = (isRight: boolean) => {
     if (!current) return;
-    if (isCorrect) setCorrectCount(c => c + 1);
+    if (isRight) setRight(r => r + 1);
     else setWrongWords(prev => [...prev, current]);
-    setAnsweredCount(c => c + 1);
+    setDone(d => d + 1);
     setQueue(prev => prev.slice(1));
     setIsAnswerVisible(false);
   };
 
-  const progressValue = useMemo(
-    () => (total > 0 ? (answeredCount / total) * 100 : 0),
-    [answeredCount, total]
-  );
-
-  // ---------- 各种状态 ----------
-  if (error) {
-    return (
-      <Shell>
-        <p className="text-brand-red-500 text-center">{error}</p>
-      </Shell>
-    );
-  }
+  if (error) return <p className="text-center text-brand-red-500">{error}</p>;
 
   if (!words) {
     return (
-      <Shell>
-        <div className="flex items-center justify-center gap-2 text-slate-400 py-20">
-          <Loader2 className="animate-spin" size={20} />
-          正在加载单词库…
-        </div>
-      </Shell>
+      <div className="flex items-center justify-center gap-2 py-24 text-slate-500">
+        <Loader2 className="animate-spin" size={20} />
+        正在加载单词库…
+      </div>
     );
   }
 
   if (words.length === 0) {
-    return (
-      <Shell>
-        <div className="text-center py-16 space-y-4">
-          <p className="text-slate-300 text-lg">单词库还是空的</p>
-          <Button asChild size="lg" className="bg-brand-cyan-600 hover:bg-brand-cyan-700 text-white">
-            <Link href="/vocab/new">
-              <Plus size={18} className="mr-1" />
-              去录入第一个单词
-            </Link>
-          </Button>
-        </div>
-      </Shell>
-    );
+    return <EmptyState message="单词库还是空的" actionHref="/vocab/new" actionLabel="去录入第一个单词" />;
   }
 
   if (!current) {
     return (
-      <Shell>
-        <div className="text-center py-16 space-y-6">
-          <h2 className="text-3xl font-bold text-slate-100">🎉 这一轮背完了！</h2>
-          <p className="text-lg text-slate-300">
-            共 {answeredCount} 个 ｜ <span className="text-brand-green-500">记住 {correctCount}</span> ｜{' '}
-            <span className="text-brand-red-500">没记住 {wrongWords.length}</span>
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Button onClick={() => startRound(words)} size="lg" className="bg-brand-cyan-600 hover:bg-brand-cyan-700 text-white">
-              再背一轮
-            </Button>
-            {wrongWords.length > 0 && (
-              <Button onClick={() => startRound(wrongWords)} variant="destructive" size="lg">
-                只背没记住的 ({wrongWords.length})
-              </Button>
-            )}
-          </div>
-        </div>
-      </Shell>
+      <RoundSummary
+        total={done}
+        right={right}
+        wrong={wrongWords.length}
+        onRestart={() => startRound(words)}
+        onReviewWrong={wrongWords.length > 0 ? () => startRound(wrongWords) : undefined}
+        rightLabel="记住"
+        wrongLabel="没记住"
+      />
     );
   }
 
@@ -129,42 +99,51 @@ export default function WordStudy() {
   const confusables = current.confusables ?? [];
 
   return (
-    <Shell>
-      {/* 进度 */}
-      <div className="w-full mb-6">
-        <div className="flex justify-between items-center text-sm text-slate-400 mb-2">
-          <span>进度: {answeredCount} / {total}</span>
-          <div className="flex items-center gap-4">
-            <span className="text-brand-green-500">记住: {correctCount}</span>
-            <span className="text-slate-600">|</span>
-            <span className="text-brand-red-500">没记住: {wrongWords.length}</span>
-          </div>
-        </div>
-        <Progress value={progressValue} className="w-full h-2 bg-slate-800" />
-      </div>
+    <div>
+      <StatBar
+        done={done}
+        total={total}
+        right={right}
+        wrong={wrongWords.length}
+        rightLabel="记住"
+        wrongLabel="没记住"
+        extra={
+          <button
+            onClick={() => setIsAutoPlayOn(v => !v)}
+            title={isAutoPlayOn ? '关闭自动发音' : '开启自动发音'}
+            className={cn(
+              'ml-1 flex h-7 w-7 items-center justify-center rounded-full border transition-colors',
+              isAutoPlayOn
+                ? 'border-cyan-500 bg-cyan-500/15 text-cyan-400'
+                : 'border-slate-700 text-slate-600 hover:text-slate-300'
+            )}
+          >
+            {isAutoPlayOn ? <Volume2 size={15} /> : <VolumeX size={15} />}
+          </button>
+        }
+      />
 
-      {/* 卡片 */}
-      <div className="rounded-xl border border-slate-800 bg-slate-900/50 shadow-lg p-6 sm:p-8 min-h-[420px] flex flex-col">
+      <div className="flex min-h-[400px] flex-col rounded-2xl border border-slate-800 bg-slate-900/50 p-6 shadow-xl sm:p-8">
+        {/* 正面：英文单词 */}
         <div className="text-center">
           <button
             type="button"
             onClick={() => speak(current.word, { rate: 0.9 })}
-            className="group inline-flex items-center gap-3 cursor-pointer"
+            className="group inline-flex items-center gap-3"
             title="点击发音"
           >
-            <span className="text-4xl sm:text-5xl font-bold tracking-wide text-slate-100 group-hover:text-brand-cyan-400 transition-colors">
+            <span className="text-4xl font-bold tracking-wide text-slate-100 transition-colors group-hover:text-cyan-400 sm:text-5xl">
               {current.word}
             </span>
-            <Volume2 size={22} className="text-slate-600 group-hover:text-brand-cyan-400 transition-colors" />
+            <Volume2 size={22} className="text-slate-700 transition-colors group-hover:text-cyan-400" />
           </button>
-          {current.phonetic && <p className="text-slate-500 mt-2 font-mono">{current.phonetic}</p>}
         </div>
 
         {!isAnswerVisible ? (
-          <p className="text-slate-600 text-center mt-10">先在心里回忆它的中文意思</p>
+          <p className="mt-10 text-center text-sm text-slate-600">先在心里回忆它的中文意思</p>
         ) : (
-          <div className="mt-8 space-y-6 flex-grow">
-            <p className="text-2xl sm:text-3xl text-brand-green-500 font-semibold text-center">{current.meaning}</p>
+          <div className="mt-8 flex-grow space-y-4 border-t border-slate-800 pt-6">
+            <p className="text-center text-2xl font-semibold text-brand-green-500 sm:text-3xl">{current.meaning}</p>
 
             {senses.length > 0 && (
               <Block title="含义">
@@ -172,13 +151,13 @@ export default function WordStudy() {
                   {senses.map((sense, i) => (
                     <li key={i}>
                       <p className="text-slate-200">
-                        {sense.pos && <span className="text-brand-cyan-500 mr-2 font-mono text-sm">{sense.pos}</span>}
+                        {sense.pos && <span className="mr-2 font-mono text-sm text-cyan-500">{sense.pos}</span>}
                         {sense.meaning}
                       </p>
                       {sense.example && (
-                        <p className="text-slate-400 text-sm mt-1 pl-4 border-l-2 border-slate-700">
+                        <p className="mt-1 border-l-2 border-slate-700 pl-3 text-sm text-slate-400">
                           {sense.example}
-                          {sense.translation && <span className="block text-slate-500 mt-0.5">{sense.translation}</span>}
+                          {sense.translation && <span className="mt-0.5 block text-slate-500">{sense.translation}</span>}
                         </p>
                       )}
                     </li>
@@ -192,8 +171,15 @@ export default function WordStudy() {
                 <ul className="space-y-1.5">
                   {family.map((item, i) => (
                     <li key={i} className="text-slate-300">
-                      <span className="text-slate-100 font-medium">{item.word}</span>
-                      {item.pos && <span className="text-slate-500 mx-2 font-mono text-sm">{item.pos}</span>}
+                      <button
+                        type="button"
+                        onClick={() => speak(item.word, { rate: 0.9 })}
+                        className="font-medium text-slate-100 hover:text-cyan-400"
+                        title="点击发音"
+                      >
+                        {item.word}
+                      </button>
+                      {item.pos && <span className="mx-2 font-mono text-sm text-slate-500">{item.pos}</span>}
                       <span className="text-slate-400">{item.meaning}</span>
                     </li>
                   ))}
@@ -207,10 +193,17 @@ export default function WordStudy() {
                   {confusables.map((item, i) => (
                     <li key={i}>
                       <p className="text-slate-300">
-                        <span className="text-brand-red-500 font-medium">{item.word}</span>
-                        <span className="text-slate-400 ml-2">{item.meaning}</span>
+                        <button
+                          type="button"
+                          onClick={() => speak(item.word, { rate: 0.9 })}
+                          className="font-medium text-brand-red-500 hover:underline"
+                          title="点击发音"
+                        >
+                          {item.word}
+                        </button>
+                        <span className="ml-2 text-slate-400">{item.meaning}</span>
                       </p>
-                      {item.tip && <p className="text-slate-500 text-sm mt-0.5 pl-4">{item.tip}</p>}
+                      {item.tip && <p className="mt-0.5 pl-4 text-sm text-slate-500">{item.tip}</p>}
                     </li>
                   ))}
                 </ul>
@@ -219,65 +212,53 @@ export default function WordStudy() {
 
             {current.etymology && (
               <Block title="词源">
-                <p className="text-slate-400 leading-relaxed">{current.etymology}</p>
+                <p className="leading-relaxed text-slate-400">{current.etymology}</p>
               </Block>
             )}
 
             {current.notes && (
               <Block title="我的笔记">
-                <p className="text-slate-300 leading-relaxed whitespace-pre-wrap">{current.notes}</p>
+                <p className="whitespace-pre-wrap leading-relaxed text-slate-300">{current.notes}</p>
               </Block>
             )}
           </div>
         )}
       </div>
 
-      {/* 操作按钮 */}
-      <div className="mt-8 text-center h-16">
+      <div className="mt-8 text-center">
         {isAnswerVisible ? (
-          <div className="flex justify-center space-x-4">
-            <Button onClick={() => handleMark(true)} size="lg" className="bg-green-600 hover:bg-green-700 text-white">
+          <div className="flex justify-center gap-3">
+            <button
+              onClick={() => handleMark(true)}
+              className="rounded-xl bg-green-600 px-7 py-3 font-semibold text-white transition-colors hover:bg-green-500"
+            >
               记住了
-            </Button>
-            <Button onClick={() => handleMark(false)} variant="destructive" size="lg">
+            </button>
+            <button
+              onClick={() => handleMark(false)}
+              className="rounded-xl bg-red-600/90 px-7 py-3 font-semibold text-white transition-colors hover:bg-red-500"
+            >
               没记住
-            </Button>
+            </button>
           </div>
         ) : (
-          <Button onClick={() => setIsAnswerVisible(true)} size="lg" className="bg-brand-cyan-600 hover:bg-brand-cyan-700 text-white">
+          <button
+            onClick={() => setIsAnswerVisible(true)}
+            className="rounded-xl bg-cyan-600 px-8 py-3 font-semibold text-white transition-colors hover:bg-cyan-500"
+          >
             显示答案
-          </Button>
+          </button>
         )}
       </div>
-    </Shell>
+    </div>
   );
 }
 
 function Block({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <section className="rounded-lg border border-slate-800 bg-slate-950/40 p-4">
-      <h3 className="text-xs uppercase tracking-wider text-slate-500 mb-2">{title}</h3>
+    <section className="rounded-xl border border-slate-800 bg-slate-950/40 p-4">
+      <h3 className="mb-2 text-xs uppercase tracking-wider text-slate-500">{title}</h3>
       {children}
     </section>
-  );
-}
-
-function Shell({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="w-full max-w-2xl mx-auto">
-      <div className="flex items-center justify-between gap-4 mb-6">
-        <Button asChild variant="ghost" className="text-slate-400 hover:text-white hover:bg-slate-700/50">
-          <Link href="/">
-            <Undo2 className="rotate-180 mr-1" size={18} />
-            返回
-          </Link>
-        </Button>
-        <h1 className="text-xl sm:text-2xl font-bold text-slate-100">背单词</h1>
-        <Button asChild variant="ghost" className="text-slate-400 hover:text-white hover:bg-slate-700/50">
-          <Link href="/vocab/new">录入</Link>
-        </Button>
-      </div>
-      {children}
-    </div>
   );
 }

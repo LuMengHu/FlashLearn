@@ -6,12 +6,11 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Loader2, Plus, Trash2, Sparkles, Save, Undo2 } from 'lucide-react';
+import { Loader2, Plus, Trash2, Sparkles, Save } from 'lucide-react';
 import type { WordSense, WordFamilyItem, ConfusableItem } from '@/lib/schema';
 
 type Draft = {
   word: string;
-  phonetic: string;
   meaning: string;
   senses: WordSense[];
   family: WordFamilyItem[];
@@ -22,7 +21,6 @@ type Draft = {
 
 const EMPTY_DRAFT: Draft = {
   word: '',
-  phonetic: '',
   meaning: '',
   senses: [],
   family: [],
@@ -179,22 +177,9 @@ export default function WordEditor() {
   const patch = (changes: Partial<Draft>) => setDraft(prev => (prev ? { ...prev, ...changes } : prev));
 
   return (
-    <div className="w-full max-w-3xl mx-auto space-y-6">
-      <div className="flex items-center justify-between gap-4">
-        <Button asChild variant="ghost" className="text-slate-400 hover:text-white hover:bg-slate-700/50">
-          <Link href="/">
-            <Undo2 className="rotate-180 mr-1" size={18} />
-            返回
-          </Link>
-        </Button>
-        <h1 className="text-xl sm:text-2xl font-bold text-slate-100">录入新单词</h1>
-        <Button asChild variant="ghost" className="text-slate-400 hover:text-white hover:bg-slate-700/50">
-          <Link href="/vocab/study">去背单词</Link>
-        </Button>
-      </div>
-
+    <div className="w-full space-y-6">
       {/* 输入 + 生成 */}
-      <div className="rounded-xl border border-slate-800 bg-slate-900/50 p-4 sm:p-6 space-y-3">
+      <div className="rounded-2xl border border-slate-800 bg-slate-900/50 p-4 sm:p-6 space-y-3 shadow-lg">
         <label className="block text-sm text-slate-400">输入一个英文单词，让 AI 帮你整理</label>
         <div className="flex gap-3">
           <Input
@@ -218,21 +203,22 @@ export default function WordEditor() {
           </Button>
         </div>
         {error && <p className="text-sm text-brand-red-500">{error}</p>}
-        {savedMessage && <p className="text-sm text-brand-green-500">{savedMessage}</p>}
+        {savedMessage && (
+          <p className="flex items-center gap-2 text-sm text-brand-green-500">
+            {savedMessage}
+            <Link href="/vocab/study" className="underline underline-offset-2 hover:text-green-400">
+              去背单词
+            </Link>
+          </p>
+        )}
       </div>
 
       {/* 审阅 / 编辑 */}
       {draft && (
-        <div className="rounded-xl border border-slate-800 bg-slate-900/50 p-4 sm:p-6 space-y-8">
-          <div className="grid grid-cols-1 sm:grid-cols-[2fr_1fr] gap-4">
-            <div>
-              <label className="block text-xs text-slate-500 mb-1">单词</label>
-              <Input value={draft.word} onChange={e => patch({ word: e.target.value })} className={`${fieldClass} text-lg font-semibold`} />
-            </div>
-            <div>
-              <label className="block text-xs text-slate-500 mb-1">音标</label>
-              <Input value={draft.phonetic} onChange={e => patch({ phonetic: e.target.value })} className={fieldClass} />
-            </div>
+        <div className="rounded-2xl border border-slate-800 bg-slate-900/50 p-4 sm:p-6 space-y-8 shadow-lg">
+          <div>
+            <label className="block text-xs text-slate-500 mb-1">单词</label>
+            <Input value={draft.word} onChange={e => patch({ word: e.target.value })} className={`${fieldClass} text-lg font-semibold`} />
           </div>
 
           <div>

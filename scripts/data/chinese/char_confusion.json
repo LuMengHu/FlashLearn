@@ -1,0 +1,212 @@
+[
+  {
+    "front": "按部就班",
+    "wrong": "按步就班",
+    "back": "步→部",
+    "note": "「部」指门类、类别，按部就班是指按门类条理安排就位，而非脚步。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "川流不息",
+    "wrong": "穿流不息",
+    "back": "穿→川",
+    "note": "「川」指河流，形容像河水流淌一样连续不断，而非穿梭。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "再接再厉",
+    "wrong": "再接再励",
+    "back": "励→厉",
+    "note": "「厉」通「砺」，本指公鸡搏斗前把嘴磨快，引申为奋勇振作，非鼓励勉励。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "迫不及待",
+    "wrong": "迫不急待",
+    "back": "急→及",
+    "note": "「及」是赶得上的意思，形容急迫得不能等待，而非着急。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "针砭时弊",
+    "wrong": "针贬时弊",
+    "back": "贬→砭",
+    "note": "「砭」是古代治病用的石针，比喻指出缺点错误以医治弊病，非贬低之意。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "提纲挈领",
+    "wrong": "题纲挈领",
+    "back": "题→提",
+    "note": "「提」是提起拉住，「纲」是渔网的总绳，比喻抓住要领，非题目的题。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "趋之若鹜",
+    "wrong": "趋之若骛",
+    "back": "骛→鹜",
+    "note": "「鹜」指野鸭，形容争相追逐像成群鸭子跑过去一样，非奔驰之「骛」。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "走投无路",
+    "wrong": "走头无路",
+    "back": "头→投",
+    "note": "「投」是投奔、投靠，形容无处投奔落脚，非脑袋的头。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "墨守成规",
+    "wrong": "默守成规",
+    "back": "默→墨",
+    "note": "「墨」指战国墨子善于守城，后借指固守既有规矩不思变通，非沉默。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "仗义执言",
+    "wrong": "仗义直言",
+    "back": "直→执",
+    "note": "「执」是坚守、主持，指主持公道说出正义之辞，非直爽说话。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "鬼鬼祟祟",
+    "wrong": "鬼鬼崇崇",
+    "back": "崇→祟",
+    "note": "「祟」指鬼怪作祸害人，形容偷偷摸摸见不得人，非崇高之崇。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "饮鸩止渴",
+    "wrong": "饮鸠止渴",
+    "back": "鸠→鸩",
+    "note": "「鸩」是传说中羽毛浸酒能致人死命的毒鸟，非斑鸠之鸠。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "蛛丝马迹",
+    "wrong": "蛛丝蚂迹",
+    "back": "蚂→马",
+    "note": "「马」指常在灶台爬动的昆虫「灶马」，留下的细微爬痕，非蚂蚁。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "沧海一粟",
+    "wrong": "沧海一栗",
+    "back": "栗→粟",
+    "note": "「粟」指谷子、小米，比喻人在天地间极其渺小，非板栗之栗。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "滥竽充数",
+    "wrong": "滥竿充数",
+    "back": "竿→竽",
+    "note": "「竽」是古代的一种吹奏乐器，非竹竿的竿。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "黄粱一梦",
+    "wrong": "黄梁一梦",
+    "back": "梁→粱",
+    "note": "“粱”指黄米饭，典出卢生煮黄米饭入梦的典故。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "不胫而走",
+    "wrong": "不径而走",
+    "back": "径→胫",
+    "note": "“胫”指小腿，比喻事情不用小腿跑就能迅速传开。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "一张一弛",
+    "wrong": "一张一驰",
+    "back": "驰→弛",
+    "note": "“弛”指放松弓弦，与拉紧弓弦的“张”相对。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "破釜沉舟",
+    "wrong": "破斧沉舟",
+    "back": "斧→釜",
+    "note": "“釜”指古代煮饭的锅，形容砸破锅凿沉船决一死战。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "相形见绌",
+    "wrong": "相形见拙",
+    "back": "拙→绌",
+    "note": "“绌”指不足、欠缺，指互相比较之下显出差距。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "甘拜下风",
+    "wrong": "甘败下风",
+    "back": "败→拜",
+    "note": "“拜”指伏地行礼，表示真心佩服、自认不如。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "声名鹊起",
+    "wrong": "声名雀起",
+    "back": "雀→鹊",
+    "note": "“鹊”指喜鹊，借喜鹊飞鸣比喻知名度迅速提高。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "世外桃源",
+    "wrong": "世外桃园",
+    "back": "园→源",
+    "note": "“源”指水源，典出《桃花源记》，指桃花溪流的发源地。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "出其不意",
+    "wrong": "出奇不意",
+    "back": "奇→其",
+    "note": "“其”是代词“对方”，意为趁对方没有料到时采取行动。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "融会贯通",
+    "wrong": "融汇贯通",
+    "back": "汇→会",
+    "note": "“会”指领会、领悟，指融合各方道理而全面领悟透彻。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "精兵简政",
+    "wrong": "精兵减政",
+    "back": "减→简",
+    "note": "“简”指简化、精简，指裁减多余人员、精简行政机构。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "病入膏肓",
+    "wrong": "病入膏盲",
+    "back": "盲→肓",
+    "note": "“肓”指心下膈上的部位，药力难及，比喻病情严重危急。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "美轮美奂",
+    "wrong": "美仑美奂",
+    "back": "仑→轮",
+    "note": "“轮”形容高大，原形容房屋高大众多、华美壮丽。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "班门弄斧",
+    "wrong": "斑门弄斧",
+    "back": "斑→班",
+    "note": "“班”指古代巧匠鲁班，比喻在行家里手面前卖弄本领。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "名列前茅",
+    "wrong": "名列前矛",
+    "back": "矛→茅",
+    "note": "“茅”指古代前锋行军用来报警示警的茅草，比喻名次排在前面。",
+    "type": "char_confusion"
+  }
+]

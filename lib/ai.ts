@@ -5,7 +5,6 @@ import type { WordSense, WordFamilyItem, ConfusableItem } from '@/lib/schema';
 /** AI 返回并经过校验后的单词解析结果 */
 export type WordDraft = {
   word: string;
-  phonetic: string;
   meaning: string;
   senses: WordSense[];
   family: WordFamilyItem[];
@@ -19,7 +18,6 @@ const SYSTEM_PROMPT = `你是一个帮助中文母语者记忆英语单词的助
 JSON 结构如下：
 {
   "word": "单词原形（小写）",
-  "phonetic": "英式或美式音标，形如 /rɪˈzɪst/，没有把握就留空字符串",
   "meaning": "最核心的中文释义，一行以内，背单词时作为答案显示",
   "senses": [
     { "pos": "词性缩写，如 n. / v. / adj.", "meaning": "这个义项的中文释义", "example": "一个地道的英文例句", "translation": "例句的中文翻译" }
@@ -34,9 +32,14 @@ JSON 结构如下：
 }
 
 要求：
-- senses 给 1-4 条，覆盖最常用的义项，按常用度排序。
-- family 给 0-6 条，是真正同词根的派生词（如 resist -> resistance / resistant / irresistible），不要硬凑。
-- confusables 给 0-4 条，必须是**长得像或读起来像**因而真的容易认错的词（如 adapt/adopt/adept），不要放单纯近义词。
+- 不要输出音标字段。
+- senses 给 1-4 条，覆盖最常用的义项，按常用度排序，每条都要配例句和翻译。
+- family 要**尽可能完整**：把这个词的同词根派生词、常见前后缀变形都列出来（名词/形容词/副词/反义前缀形式等，
+  如 resist -> resistance, resistant, resistance-free, irresistible, resistor, unresisting）。
+  只要是真实存在、学习者会遇到的同族词就都列上，宁多勿漏；但不要编造不存在的词。
+- confusables **按实际情况给**：只有当确实存在拼写或发音上容易认错的词时才列出（如 adapt/adopt/adept、
+  affect/effect）。如果这个词没有明显的易混词，就返回空数组 []，**不要为了凑数硬编**。
+  近义词不算易混词。
 - 所有中文用简体中文。
 - 只输出 JSON 对象本身。`;
 
@@ -71,7 +74,6 @@ function normalizeDraft(parsed: unknown, fallbackWord: string): WordDraft {
 
   return {
     word: asString(obj.word) || fallbackWord,
-    phonetic: asString(obj.phonetic),
     meaning: asString(obj.meaning),
     senses: toArray(obj.senses).map(item => ({
       pos: asString(item.pos),

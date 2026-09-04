@@ -41,7 +41,6 @@ function toWordRow(body: any): NewWord | null {
   return {
     word,
     meaning,
-    phonetic: typeof body?.phonetic === 'string' ? body.phonetic.trim() || null : null,
     etymology: typeof body?.etymology === 'string' ? body.etymology.trim() || null : null,
     notes: typeof body?.notes === 'string' ? body.notes.trim() || null : null,
     senses: cleanList(body?.senses, ['pos', 'meaning', 'example', 'translation']),

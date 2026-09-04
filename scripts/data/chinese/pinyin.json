@@ -1,0 +1,212 @@
+[
+  {
+    "front": "参差",
+    "back": "cēn cī",
+    "wrong": "cān chā",
+    "note": "多音字，表示长短不齐时读 cēn cī，常被误读为常见音 cān 和 chā。",
+    "type": "pinyin"
+  },
+  {
+    "front": "强迫",
+    "back": "qiǎng pò",
+    "wrong": "qiáng pò",
+    "note": "“强”作勉强、迫使义时读三声 qiǎng，常被误读为表示强壮的二声 qiáng。",
+    "type": "pinyin"
+  },
+  {
+    "front": "创伤",
+    "back": "chuāng shāng",
+    "wrong": "chuàng shāng",
+    "note": "“创”作创口、伤痛义时读一声 chuāng，易受“创造、开创”的四声 chuàng 误导。",
+    "type": "pinyin"
+  },
+  {
+    "front": "悄然",
+    "back": "qiǎo rán",
+    "wrong": "qiāo rán",
+    "note": "“悄”表示寂静无声或忧愁时读三声 qiǎo，常被口语常用音一声 qiāo 误导。",
+    "type": "pinyin"
+  },
+  {
+    "front": "处理",
+    "back": "chǔ lǐ",
+    "wrong": "chù lǐ",
+    "note": "“处”作动词（安排、处置）时读三声 chǔ，易与名词读音（如处所）四声 chù 混淆。",
+    "type": "pinyin"
+  },
+  {
+    "front": "下载",
+    "back": "xià zài",
+    "wrong": "xià zǎi",
+    "note": "“载”表示装载、记录时均读四声 zài，只有表示“年”或“刊登”等极少义项时才读三声 zǎi。",
+    "type": "pinyin"
+  },
+  {
+    "front": "结束",
+    "back": "jié shù",
+    "wrong": "jiē shù",
+    "note": "“结”表完结、结合时读二声 jié，易受“结实、结果子”的一声 jiē 混淆。",
+    "type": "pinyin"
+  },
+  {
+    "front": "符合",
+    "back": "fú hé",
+    "wrong": "fǔ hé",
+    "note": "“符”字在现代汉语中只有二声 fú 一个标准音，常因方言或习惯误读为三声 fǔ。",
+    "type": "pinyin"
+  },
+  {
+    "front": "潜移默化",
+    "back": "qián yí mò huà",
+    "wrong": "qiǎn yí mò huà",
+    "note": "“潜”字标准读音只有二声 qián，极易被错误类推为三声 qiǎn。",
+    "type": "pinyin"
+  },
+  {
+    "front": "惩罚",
+    "back": "chéng fá",
+    "wrong": "chěng fá",
+    "note": "“惩”字只有二声 chéng，常被误读为三声 chěng。",
+    "type": "pinyin"
+  },
+  {
+    "front": "气氛",
+    "back": "qì fēn",
+    "wrong": "qì fèn",
+    "note": "“氛”字只有一声 fēn，常被受“气愤”的四声 fèn 影响而读错。",
+    "type": "pinyin"
+  },
+  {
+    "front": "给予",
+    "back": "jǐ yǔ",
+    "wrong": "gěi yǔ",
+    "note": "“给”在书面语中表示“使对方得到”时读 jǐ，常被口语音 gěi 误导。",
+    "type": "pinyin"
+  },
+  {
+    "front": "角色",
+    "back": "jué sè",
+    "wrong": "jiǎo sè",
+    "note": "“角”作戏剧角色、竞争义时读 jué，易被日常最常用的“角落、牛角”等读音 jiǎo 误导。",
+    "type": "pinyin"
+  },
+  {
+    "front": "妊娠",
+    "back": "rèn shēn",
+    "wrong": "rèn chén",
+    "note": "“娠”读一声 shēn，极易看半边误读为声旁“辰”的读音 chén。",
+    "type": "pinyin"
+  },
+  {
+    "front": "埋怨",
+    "back": "mán yuàn",
+    "wrong": "mái yuàn",
+    "note": "“埋”在表示因为事情不如意而抱怨时读二声 mán，易受“埋葬”二声 mái 误导。",
+    "type": "pinyin"
+  },
+  {
+    "front": "档案",
+    "back": "dàng àn",
+    "wrong": "dǎng àn",
+    "note": "“档”字只有四声 dàng 这一个读音，常因口语习惯误读为三声。",
+    "type": "pinyin"
+  },
+  {
+    "front": "粗犷",
+    "back": "cū guǎng",
+    "wrong": "cū kuàng",
+    "note": "“犷”读 guǎng，常因形近误读为旷达的“旷（kuàng）”。",
+    "type": "pinyin"
+  },
+  {
+    "front": "模样",
+    "back": "mú yàng",
+    "wrong": "mó yàng",
+    "note": "“模”是多音字，表示人的长相或大致情况时读 mú。",
+    "type": "pinyin"
+  },
+  {
+    "front": "嫉妒",
+    "back": "jí dù",
+    "wrong": "jì dù",
+    "note": "“嫉”读二声 jí，常被习惯性误读为四声 jì。",
+    "type": "pinyin"
+  },
+  {
+    "front": "压轴",
+    "back": "yā zhòu",
+    "wrong": "yā zhóu",
+    "note": "“轴”在戏曲术语（压轴戏）或指卷轴装订部分时读四声 zhòu。",
+    "type": "pinyin"
+  },
+  {
+    "front": "症结",
+    "back": "zhēng jié",
+    "wrong": "zhèng jié",
+    "note": "表示腹内结块或比喻事物关键、难解决的环节时，“症”读一声 zhēng。",
+    "type": "pinyin"
+  },
+  {
+    "front": "脂肪",
+    "back": "zhī fáng",
+    "wrong": "zhǐ fáng",
+    "note": "“脂”读一声 zhī，常被误读为三声 zhǐ。",
+    "type": "pinyin"
+  },
+  {
+    "front": "吮吸",
+    "back": "shǔn xī",
+    "wrong": "yǔn xī",
+    "note": "“吮”读 shǔn，容易按右半边声旁误读为“允（yǔn）”。",
+    "type": "pinyin"
+  },
+  {
+    "front": "莘莘学子",
+    "back": "shēn shēn xué zǐ",
+    "wrong": "xīn xīn xué zǐ",
+    "note": "“莘”作“众多”讲时读 shēn，容易误读为 xīn。",
+    "type": "pinyin"
+  },
+  {
+    "front": "殷红",
+    "back": "yān hóng",
+    "wrong": "yīn hóng",
+    "note": "指带黑的深红色时，“殷”读 yān，不读常见的 yīn。",
+    "type": "pinyin"
+  },
+  {
+    "front": "恪守",
+    "back": "kè shǒu",
+    "wrong": "gè shǒu",
+    "note": "“恪”读 kè，容易受右半边“各”影响误读为 gè。",
+    "type": "pinyin"
+  },
+  {
+    "front": "倔强",
+    "back": "jué jiàng",
+    "wrong": "jué qiáng",
+    "note": "表示脾气刚强不屈时，“强”读四声 jiàng。",
+    "type": "pinyin"
+  },
+  {
+    "front": "剖析",
+    "back": "pōu xī",
+    "wrong": "pō xī",
+    "note": "“剖”读一声 pōu，经常被口语误读为 pō 或 pāo。",
+    "type": "pinyin"
+  },
+  {
+    "front": "模具",
+    "back": "mú jù",
+    "wrong": "mó jù",
+    "note": "用于生产制造的模型器具，“模”统读为 mú。",
+    "type": "pinyin"
+  },
+  {
+    "front": "召唤",
+    "back": "zhào huàn",
+    "wrong": "zhāo huàn",
+    "note": "“召”作呼唤、召集讲时统读四声 zhào，易误读为招手的一声 zhāo。",
+    "type": "pinyin"
+  }
+]

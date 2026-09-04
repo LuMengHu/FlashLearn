@@ -45,13 +45,7 @@ export default function QuizClient({ bank, initialQuestions, siblingBanks, allBa
   } = useQuizEngine({ bank, initialQuestions });
 
   const handleReturn = () => {
-    const parentId = currentBank.parentId || bank.id;
-    const parentBank = allBanks.find(b => b.id === parentId);
-    if (parentBank) {
-      sessionStorage.setItem('lastParentBankId', String(parentBank.id));
-      sessionStorage.setItem('lastParentBankCategory', parentBank.category || '未分类');
-    }
-    window.location.href = '/';
+    window.location.href = '/diplomatic';
   };
 
   if (isCompleted) {

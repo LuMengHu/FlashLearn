@@ -1,178 +1,147 @@
-// 首页：加载题库列表，按分类切换轮播，并记住上次浏览的位置
-'use client';
-
-import { useState, useEffect, useRef } from 'react';
-import BankCarousel from '@/components/home/bank-carousel';
-import BankSelectionSheet from '@/components/home/bank-selection-sheet';
-import CategoryTabs from '@/components/home/category-tabs';
-import { Button } from '@/components/ui/button';
-import { BookOpen, PlusCircle } from 'lucide-react';
+// 首页：三个分类入口（中文 / 英文 / 外交知识）+ 总体统计
 import Link from 'next/link';
-import type { QuestionBank } from '@/lib/schema';
-import type { Swiper as SwiperCore } from 'swiper/types';
+import { ChevronRight } from 'lucide-react';
+import { db } from '@/lib/db';
+import { chineseItems, words, questions } from '@/lib/schema';
+import { sql as raw } from 'drizzle-orm';
 
-const HomePageLoader = () => {
-  const loadingMessages = [ "正在连接神经元网络...", "编译知识矩阵...", "解密数据流...", "启动学习协议...", "校准记忆回路...", "正在从知识库中提取数据..." ];
-  const [message, setMessage] = useState('');
-  const [dots, setDots] = useState('');
-  useEffect(() => { setMessage(loadingMessages[Math.floor(Math.random() * loadingMessages.length)]); }, []);
-  useEffect(() => { const interval = setInterval(() => { setDots(prev => (prev.length >= 3 ? '' : prev + '.')); }, 400); return () => clearInterval(interval); }, []);
-  return (
-    <div className="bg-gray-900 min-h-screen flex items-center justify-center text-white">
-      <div className="text-center font-mono">
-        <p className="text-xl md:text-2xl text-cyan-300 animate-pulse">{message}{dots}</p>
-      </div>
-    </div>
-  );
+export const dynamic = 'force-dynamic';
+
+type Category = {
+  href: string;
+  emoji: string;
+  title: string;
+  subtitle: string;
+  entries: string[];
+  count: number;
+  unit: string;
+  gradient: string;
+  glow: string;
 };
 
-async function getBanks(): Promise<QuestionBank[]> {
-  const res = await fetch('/api/banks');
-  if (!res.ok) { throw new Error('Failed to fetch banks'); }
-  return res.json();
+async function countRows(table: any): Promise<number> {
+  try {
+    const [row] = await db.select({ count: raw<number>`count(*)`.mapWith(Number) }).from(table);
+    return row?.count ?? 0;
+  } catch {
+    return 0;
+  }
 }
 
-export default function HomePage() {
-  const [originalBanks, setOriginalBanks] = useState<QuestionBank[]>([]);
-  const [filteredBanks, setFilteredBanks] = useState<QuestionBank[]>([]);
-  const [displayBanks, setDisplayBanks] = useState<QuestionBank[]>([]);
-  const [categories, setCategories] = useState<string[]>([]);
-  const [activeBank, setActiveBank] = useState<QuestionBank | null>(null);
-  const [activeCategory, setActiveCategory] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const swiperRef = useRef<SwiperCore | null>(null);
-  const initialSlideIndex = useRef<number>(0);
+export default async function HomePage() {
+  const [chineseCount, wordCount, questionCount] = await Promise.all([
+    countRows(chineseItems),
+    countRows(words),
+    countRows(questions),
+  ]);
 
-  useEffect(() => {
-    async function loadData() {
-      try {
-        const fetchedBanks = await getBanks();
-        const topLevelBanks = fetchedBanks.filter(bank => !bank.parentId);
-        const uniqueCategories = [...new Set(topLevelBanks.map(b => b.category || '未分类'))];
-        
-        setOriginalBanks(fetchedBanks);
-        setCategories(uniqueCategories);
-        
-        const lastBankId = sessionStorage.getItem('lastParentBankId');
-        const lastBankCategory = sessionStorage.getItem('lastParentBankCategory');
-        
-        let targetCategory = uniqueCategories[0] || null;
-
-        if (lastBankCategory && uniqueCategories.includes(lastBankCategory)) {
-          targetCategory = lastBankCategory;
-        }
-        
-        if (lastBankId && targetCategory) {
-            const banksInTargetCategory = topLevelBanks.filter(b => (b.category || '未分类') === targetCategory);
-            const targetIndex = banksInTargetCategory.findIndex(b => b.id === parseInt(lastBankId, 10));
-            if (targetIndex !== -1) {
-                initialSlideIndex.current = targetIndex;
-            }
-        }
-        
-        setActiveCategory(targetCategory);
-      } catch (error) { 
-        console.error("数据加载失败:", error); 
-      } finally {
-        setIsLoading(false);
-        sessionStorage.removeItem('lastParentBankId');
-        sessionStorage.removeItem('lastParentBankCategory');
-      }
-    }
-    loadData();
-  }, []);
-  
-  useEffect(() => {
-    if (activeCategory && originalBanks.length > 0) {
-      const filtered = originalBanks.filter(bank => !bank.parentId && (bank.category || '未分类') === activeCategory);
-      setFilteredBanks(filtered);
-      
-      const activeIndex = initialSlideIndex.current < filtered.length ? initialSlideIndex.current : 0;
-      setActiveBank(filtered[activeIndex] || null);
-
-      if (filtered.length > 2) {
-        setDisplayBanks([...filtered, ...filtered, ...filtered]);
-      } else {
-        setDisplayBanks(filtered);
-      }
-      
-      const targetSlide = filtered.length > 2 ? filtered.length + activeIndex : activeIndex;
-      swiperRef.current?.slideTo(targetSlide, 0);
-    }
-  }, [activeCategory, originalBanks]);
-
-  const handleSelectCategory = (category: string) => {
-    initialSlideIndex.current = 0;
-    setActiveCategory(category);
-  };
-  
-  const handleActiveBankChange = (bank: QuestionBank) => {
-    setActiveBank(bank);
-  };
-  
-  if (isLoading) {
-    return <HomePageLoader />;
-  }
+  const categories: Category[] = [
+    {
+      href: '/chinese',
+      emoji: '🀄',
+      title: '中文',
+      subtitle: '字词、常识与文言',
+      entries: ['易错字辨析', '拼音', '六书', '文化常识', '作者常识', '文言常识'],
+      count: chineseCount,
+      unit: '条',
+      gradient: 'from-amber-500/20 via-orange-500/5',
+      glow: 'group-hover:border-amber-600/60',
+    },
+    {
+      href: '/english',
+      emoji: '🔤',
+      title: '英文',
+      subtitle: 'AI 整理 + 背单词',
+      entries: ['背单词', '录入单词'],
+      count: wordCount,
+      unit: '个单词',
+      gradient: 'from-cyan-500/20 via-teal-500/5',
+      glow: 'group-hover:border-cyan-600/60',
+    },
+    {
+      href: '/diplomatic',
+      emoji: '🏛️',
+      title: '外交知识',
+      subtitle: '选择题题库',
+      entries: ['1-100', '101-200', '201-300', '50'],
+      count: questionCount,
+      unit: '题',
+      gradient: 'from-violet-500/20 via-purple-500/5',
+      glow: 'group-hover:border-violet-600/60',
+    },
+  ];
 
   return (
-    <div className="bg-gray-900 text-white min-h-screen flex flex-col">
-      <header className="absolute top-0 left-0 z-20 p-4">
-        <BankSelectionSheet banks={originalBanks} />
-      </header>
-      
-      <main className="w-full flex-grow flex flex-col">
-        <div
-          className="w-full h-48 md:h-45 bg-cover bg-center relative"
-          style={{ backgroundImage: "url('/home/home.png')" }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/70 to-transparent"></div>
-          <div className="absolute bottom-12 left-0 right-0 text-center px-4">
-            <h1 className="text-5xl font-extrabold tracking-tight text-white">FlashLearn</h1>
-            <p className="text-lg text-gray-300 mt-2">选择一个题库，开始你的学习之旅</p>
-          </div>
-        </div>
+    <main className="min-h-screen bg-slate-950 text-slate-100">
+      {/* 背景氛围 */}
+      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(70%_50%_at_50%_0%,rgba(34,211,238,0.13),transparent)]" />
 
-        <div className="container mx-auto px-4 -mt-8 relative z-10">
-          {/* 背单词的两个入口 */}
-          <div className="flex justify-center gap-3 sm:gap-4 mb-8">
-            <Button asChild size="lg" className="bg-brand-cyan-600 hover:bg-brand-cyan-700 text-white rounded-xl h-12 px-5 sm:px-7 text-base font-bold shadow-xl">
-              <Link href="/vocab/study">
-                <BookOpen size={20} className="mr-2" />
-                背单词
-              </Link>
-            </Button>
-            <Button asChild size="lg" variant="outline" className="rounded-xl h-12 px-5 sm:px-7 text-base font-bold border-slate-700 bg-slate-800/60 text-slate-200 hover:bg-slate-700 hover:text-white shadow-xl">
-              <Link href="/vocab/new">
-                <PlusCircle size={20} className="mr-2" />
-                录入单词
-              </Link>
-            </Button>
-          </div>
+      <div className="relative mx-auto max-w-4xl px-4 py-14 sm:py-20">
+        {/* 标题区 */}
+        <header className="mb-12 text-center sm:mb-16">
+          <h1 className="bg-gradient-to-br from-white via-slate-100 to-slate-400 bg-clip-text text-5xl font-extrabold tracking-tight text-transparent sm:text-7xl">
+            FlashLearn
+          </h1>
+          <p className="mt-4 text-base text-slate-400 sm:text-lg">科学高效地记住该记住的东西</p>
 
-          <div className="w-full overflow-x-auto pb-2 scrollbar-hide">
-            <CategoryTabs categories={categories} onSelectCategory={handleSelectCategory} activeCategory={activeCategory} />
+          <div className="mt-6 flex justify-center gap-6 text-sm text-slate-500">
+            <span>
+              <span className="font-semibold tabular-nums text-slate-300">{chineseCount}</span> 条中文
+            </span>
+            <span className="text-slate-700">·</span>
+            <span>
+              <span className="font-semibold tabular-nums text-slate-300">{wordCount}</span> 个单词
+            </span>
+            <span className="text-slate-700">·</span>
+            <span>
+              <span className="font-semibold tabular-nums text-slate-300">{questionCount}</span> 道题
+            </span>
           </div>
-          
-          <div className="mt-8">
-            <BankCarousel 
-              key={activeCategory}
-              originalBanks={filteredBanks}
-              displayBanks={displayBanks}
-              onSwiper={(swiper) => { swiperRef.current = swiper; }}
-              onActiveBankChange={handleActiveBankChange}
-              initialSlideIndex={initialSlideIndex.current}
-            />
-          </div>
-          
-          {activeBank && activeBank.id && (
-            <div className="w-full flex justify-center mt-8">
-              <Button asChild size="lg" className="bg-white text-black hover:bg-gray-200 rounded-xl px-8 h-12 text-lg font-bold shadow-2xl">
-                <Link href={`/bank/${activeBank.id}`}>开始学习: {activeBank.name}</Link>
-              </Button>
-            </div>
-          )}
+        </header>
+
+        {/* 三个分类 */}
+        <div className="grid gap-4 sm:grid-cols-3">
+          {categories.map(cat => (
+            <Link
+              key={cat.href}
+              href={cat.href}
+              className={`group relative flex flex-col overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/50 p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-slate-900/80 hover:shadow-2xl ${cat.glow}`}
+            >
+              <div
+                className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${cat.gradient} to-transparent opacity-60 transition-opacity duration-300 group-hover:opacity-100`}
+              />
+
+              <div className="relative">
+                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl border border-slate-700/60 bg-slate-800/70 text-3xl">
+                  {cat.emoji}
+                </div>
+
+                <h2 className="text-2xl font-bold">{cat.title}</h2>
+                <p className="mt-1 text-sm text-slate-400">{cat.subtitle}</p>
+
+                <ul className="mt-4 space-y-1.5">
+                  {cat.entries.map(entry => (
+                    <li key={entry} className="flex items-center gap-2 text-sm text-slate-500">
+                      <span className="h-1 w-1 rounded-full bg-slate-600" />
+                      {entry}
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-6 flex items-center justify-between border-t border-slate-800 pt-4">
+                  <span className="text-xs text-slate-600">
+                    <span className="font-semibold tabular-nums text-slate-400">{cat.count}</span> {cat.unit}
+                  </span>
+                  <ChevronRight
+                    size={18}
+                    className="text-slate-600 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-slate-300"
+                  />
+                </div>
+              </div>
+            </Link>
+          ))}
         </div>
-      </main>
-    </div>
+      </div>
+    </main>
   );
 }
