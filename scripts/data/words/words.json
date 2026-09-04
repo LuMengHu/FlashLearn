@@ -1,0 +1,329 @@
+[
+  {
+    "word": "adapt",
+    "meaning": "适应；改编，改造",
+    "senses": [
+      {
+        "pos": "v.",
+        "example": "It took him several months to adapt to the new school.",
+        "meaning": "适应（新环境、新情况等）",
+        "translation": "他花了好几个月才适应这所新学校。"
+      },
+      {
+        "pos": "v.",
+        "example": "The novel was adapted for television by the BBC.",
+        "meaning": "改编，改写（供电影、电视、舞台使用）",
+        "translation": "这部小说被BBC改编成了电视剧。"
+      },
+      {
+        "pos": "v.",
+        "example": "The old garage was adapted to serve as a home office.",
+        "meaning": "改造，改装（使适合新用途）",
+        "translation": "旧车库被改造成了家庭办公室。"
+      }
+    ],
+    "family": [
+      {
+        "pos": "n.",
+        "word": "adaptation",
+        "meaning": "适应；改编本"
+      },
+      {
+        "pos": "n.",
+        "word": "adaptor",
+        "meaning": "适配器，转接头"
+      },
+      {
+        "pos": "n.",
+        "word": "adapter",
+        "meaning": "适配器；改编者"
+      },
+      {
+        "pos": "adj.",
+        "word": "adaptable",
+        "meaning": "有适应能力的；可改装的"
+      },
+      {
+        "pos": "n.",
+        "word": "adaptability",
+        "meaning": "适应性，顺应能力"
+      },
+      {
+        "pos": "adj.",
+        "word": "adaptive",
+        "meaning": "适应的，有适应能力的"
+      },
+      {
+        "pos": "adv.",
+        "word": "adaptively",
+        "meaning": "适应性地"
+      },
+      {
+        "pos": "adj.",
+        "word": "unadaptable",
+        "meaning": "无法适应的；不能改编的"
+      },
+      {
+        "pos": "adj.",
+        "word": "maladaptive",
+        "meaning": "适应不良的"
+      },
+      {
+        "pos": "v.",
+        "word": "readapt",
+        "meaning": "重新适应"
+      }
+    ],
+    "confusables": [
+      {
+        "tip": "字母“o”联想为“option（选择）”，表示采纳或领养；而 adapt 的“a”来自 apt（合适），表示使适合。",
+        "word": "adopt",
+        "meaning": "收养；采纳，采用"
+      },
+      {
+        "tip": "字母“e”联想为“expert（专家）”，指技能熟练、精通。",
+        "word": "adept",
+        "meaning": "熟练的，内行的"
+      }
+    ],
+    "etymology": "源自前缀 ad-（去，向着）+ 词根 apt（适合的，恰当的，同 apt/aptitude）。字面意思即为“使朝向适合的状态”，从而引申为“适应（环境）”和“改造、改编（使其适合新要求）”。",
+    "notes": ""
+  },
+  {
+    "word": "apple",
+    "meaning": "苹果；苹果树",
+    "senses": [
+      {
+        "pos": "n.",
+        "example": "He took a bite out of a crisp green apple.",
+        "meaning": "苹果（常见水果）",
+        "translation": "他咬了一口清脆的青苹果。"
+      },
+      {
+        "pos": "n.",
+        "example": "They planted two apples in the backyard.",
+        "meaning": "苹果树",
+        "translation": "他们在后院种了两棵苹果树。"
+      }
+    ],
+    "family": [
+      {
+        "pos": "n.",
+        "word": "applesauce",
+        "meaning": "苹果酱；胡说八道"
+      },
+      {
+        "pos": "n.",
+        "word": "applecart",
+        "meaning": "运苹果的车（常用于短语 upset the applecart 捣乱、破坏计划）"
+      },
+      {
+        "pos": "adj.",
+        "word": "apple-pie",
+        "meaning": "传统美式的；井井有条的"
+      },
+      {
+        "pos": "n.",
+        "word": "crabapple",
+        "meaning": "野苹果；酸苹果"
+      },
+      {
+        "pos": "n.",
+        "word": "pineapple",
+        "meaning": "菠萝，凤梨（松果pine与苹果apple的结合词）"
+      }
+    ],
+    "confusables": [
+      {
+        "tip": "比 apple 少一个 p，读音不同，ample 表示空间或数量很大很足",
+        "word": "ample",
+        "meaning": "充足的，丰富的；丰满的"
+      },
+      {
+        "tip": "以 -y 结尾的动词，词意是'申请/应用'，注意与水果名词 apple 区分",
+        "word": "apply",
+        "meaning": "申请；应用；涂抹"
+      }
+    ],
+    "etymology": "源自古英语 æppel，在古日耳曼语族中原本可以泛指各种树上结的圆形果实（甚至包括坚果），随着时代演变，语义逐渐缩小，最终专门指代我们今天所吃的'苹果'。",
+    "notes": ""
+  },
+  {
+    "word": "inevitable",
+    "meaning": "不可避免的，必然发生",
+    "senses": [
+      {
+        "pos": "adj.",
+        "example": "Change is an inevitable part of career growth.",
+        "meaning": "不可避免的，必然发生的",
+        "translation": "改变是职业发展中不可避免的一部分。"
+      },
+      {
+        "pos": "n.",
+        "example": "Accepting the inevitable is often the first step toward moving forward.",
+        "meaning": "无法避免的事，必然的结局",
+        "translation": "接受无法避免的现实往往是向前迈进的第一步。"
+      }
+    ],
+    "family": [
+      {
+        "pos": "adv.",
+        "word": "inevitably",
+        "meaning": "不可避免地，必然地"
+      },
+      {
+        "pos": "n.",
+        "word": "inevitability",
+        "meaning": "必然性，不可避免"
+      },
+      {
+        "pos": "n.",
+        "word": "inevitableness",
+        "meaning": "必然性"
+      },
+      {
+        "pos": "adj.",
+        "word": "evitable",
+        "meaning": "可以避免的"
+      },
+      {
+        "pos": "n.",
+        "word": "evitability",
+        "meaning": "可避免性"
+      }
+    ],
+    "confusables": [
+      {
+        "tip": "词根来自 vary（改变），强调'不改变'；而 inevitable 强调事情'躲不开、无法避免'。",
+        "word": "invariable",
+        "meaning": "始终如一的，恒定不变的"
+      },
+      {
+        "tip": "词根来自 imitate（模仿），注意中间是 imi 而不是 evi。",
+        "word": "inimitable",
+        "meaning": "无可比拟的，无法模仿的"
+      }
+    ],
+    "etymology": "由前缀 in-（不，否定）+ 词根 evit（源自拉丁语 evitare，由 ex- 出 + vitare 避开组成，意为'避开'）+ 形容词后缀 -able（可……的）构成。字面意思就是'不能避开的'，引申为'不可避免的、必然发生的'。",
+    "notes": ""
+  },
+  {
+    "word": "persist",
+    "meaning": "坚持不懈；持续存在",
+    "senses": [
+      {
+        "pos": "v.",
+        "example": "If you persist in blaming others, you will never solve the real problem.",
+        "meaning": "坚持不懈，执意（常与 in 连用）",
+        "translation": "如果你一味坚持责怪他人，就永远无法解决真正的问题。"
+      },
+      {
+        "pos": "v.",
+        "example": "If the pain persists for more than three days, you should consult a doctor.",
+        "meaning": "持续存在，残留",
+        "translation": "如果疼痛持续超过三天，你应该去看医生。"
+      }
+    ],
+    "family": [
+      {
+        "pos": "n.",
+        "word": "persistence",
+        "meaning": "坚持不懈，毅力；持续存在"
+      },
+      {
+        "pos": "n.",
+        "word": "persistency",
+        "meaning": "坚持，持续（persistence的少用异体）"
+      },
+      {
+        "pos": "adj.",
+        "word": "persistent",
+        "meaning": "坚持不懈的；执意的；持续不断的"
+      },
+      {
+        "pos": "adv.",
+        "word": "persistently",
+        "meaning": "坚持地；固执地；持续不断地"
+      },
+      {
+        "pos": "adj.",
+        "word": "nonpersistent",
+        "meaning": "非持久的；短暂的"
+      }
+    ],
+    "confusables": [
+      {
+        "tip": "persist 侧重坚持“行动”（搭配 in doing）或事物“持续存在”；insist 侧重坚持“说法、观点或要求”（搭配 on doing 或 that 从句）。",
+        "word": "insist",
+        "meaning": "坚决要求，坚持主张"
+      },
+      {
+        "tip": "persist 意为“持续存在/活着”，perish 恰好相反，意为“消亡/毁灭”。",
+        "word": "perish",
+        "meaning": "死亡，毁灭，腐烂"
+      }
+    ],
+    "etymology": "源自拉丁语 persistere，由前缀 per-（贯穿，始终，彻底）+ 词根 sist（站立，同 stand）构成。字面含义是“始终站立不倒”，引申为在困难中“坚持不懈”，或事物“持续存在”。",
+    "notes": ""
+  },
+  {
+    "word": "resist",
+    "meaning": "抵制；反抗；抵挡；忍住",
+    "senses": [
+      {
+        "pos": "v.",
+        "example": "The local residents strongly resisted the new highway plan.",
+        "meaning": "抵制，反抗，抵抗",
+        "translation": "当地居民强烈抵制这项新的高速公路规划。"
+      },
+      {
+        "pos": "v.",
+        "example": "I couldn't resist chocolates, so I ate the whole box.",
+        "meaning": "忍住，克制（诱惑等）",
+        "translation": "我实在忍不住想吃巧克力，结果把整盒都吃光了。"
+      },
+      {
+        "pos": "v.",
+        "example": "This special paint resists corrosion and extreme heat.",
+        "meaning": "耐，抗（受损伤等）",
+        "translation": "这种特制涂料能抗腐蚀和耐极端高温。"
+      }
+    ],
+    "family": [
+      {
+        "pos": "n.",
+        "word": "resistance",
+        "meaning": "抵抗；阻力；抵抗力"
+      },
+      {
+        "pos": "adj.",
+        "word": "resistant",
+        "meaning": "有抵抗力的；耐……的"
+      },
+      {
+        "pos": "adj.",
+        "word": "irresistible",
+        "meaning": "不可抗拒的；极具诱惑力的"
+      }
+    ],
+    "confusables": [
+      {
+        "tip": "前缀 in-（进入/向内），表示主张'站进去不退让'，即坚持要求；而 re- 是'反着站'，表示抵抗。",
+        "word": "insist",
+        "meaning": "坚持；坚决主张"
+      },
+      {
+        "tip": "前缀 per-（自始至终/穿透），表示'一直站到底'，侧重持续做某事。",
+        "word": "persist",
+        "meaning": "坚持不懈；执意"
+      },
+      {
+        "tip": "前缀 con-（共同），表示'站在一起'构成一个整体，常连用 of。",
+        "word": "consist",
+        "meaning": "由……组成；在于"
+      }
+    ],
+    "etymology": "由前缀 re-（反向、相对）+ 词根 sist（站立，源自拉丁语 sistere）构成。字面意思是“站在对立面”，引申为“抵挡、反抗、抗拒”。",
+    "notes": ""
+  }
+]

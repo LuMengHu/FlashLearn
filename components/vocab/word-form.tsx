@@ -1,10 +1,12 @@
 // 单词编辑表单：录入页和总表的快速编辑共用这一套字段编辑 UI
 'use client';
 
+import { useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Plus, Trash2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { SectionTabs, type SectionTab } from '@/components/ui/section-tabs';
 import type { WordSense, WordFamilyItem, ConfusableItem } from '@/lib/schema';
 
 export type WordDraft = {
@@ -142,79 +144,116 @@ export function WordForm({
   onChange: (changes: Partial<WordDraft>) => void;
   showWordField?: boolean;
 }) {
+  // 分段编辑：顶部标签直接跳到想改的部分，写笔记不用一路滚到底
+  const [section, setSection] = useState('basic');
+
+  const tabs: SectionTab[] = [
+    { key: 'basic', label: '基本' },
+    { key: 'senses', label: '含义', count: draft.senses.length, empty: draft.senses.length === 0 },
+    { key: 'family', label: '词源家族', count: draft.family.length, empty: draft.family.length === 0 },
+    { key: 'confusables', label: '易混词', count: draft.confusables.length, empty: draft.confusables.length === 0 },
+    { key: 'etymology', label: '词源', empty: !draft.etymology },
+    { key: 'notes', label: '我的笔记', empty: !draft.notes },
+  ];
+
   return (
-    <div className="space-y-8">
-      {showWordField && (
+    <div className="space-y-5">
+      <SectionTabs tabs={tabs} active={section} onChange={setSection} />
+
+      {section === 'basic' && (
+        <div className="space-y-4">
+          {showWordField && (
+            <div>
+              <label className="mb-1 block text-xs text-slate-500">单词</label>
+              <Input
+                value={draft.word}
+                onChange={e => onChange({ word: e.target.value })}
+                className={`${fieldClass} text-lg font-semibold`}
+              />
+            </div>
+          )}
+          <div>
+            <label className="mb-1 block text-xs text-slate-500">主释义（背单词时显示的答案）</label>
+            <Input
+              value={draft.meaning}
+              onChange={e => onChange({ meaning: e.target.value })}
+              className={`${fieldClass} text-lg`}
+            />
+          </div>
+        </div>
+      )}
+
+      {section === 'senses' && (
+        <ListSection<WordSense>
+          title="需要记住的含义"
+          hint="按常用度排序，背单词揭晓答案时会显示"
+          items={draft.senses}
+          emptyItem={{ pos: '', meaning: '', example: '', translation: '' }}
+          fields={[
+            { key: 'pos', label: '词性' },
+            { key: 'meaning', label: '中文释义' },
+            { key: 'example', label: '英文例句', multiline: true },
+            { key: 'translation', label: '例句翻译', multiline: true },
+          ]}
+          onChange={senses => onChange({ senses })}
+        />
+      )}
+
+      {section === 'family' && (
+        <ListSection<WordFamilyItem>
+          title="词源家族 / 变形"
+          hint="同词根派生出来的词"
+          items={draft.family}
+          emptyItem={{ word: '', pos: '', meaning: '' }}
+          fields={[
+            { key: 'word', label: '单词' },
+            { key: 'pos', label: '词性' },
+            { key: 'meaning', label: '中文释义' },
+          ]}
+          onChange={family => onChange({ family })}
+        />
+      )}
+
+      {section === 'confusables' && (
+        <ListSection<ConfusableItem>
+          title="容易弄混的词"
+          hint="长得像或读起来像、真的会认错的词"
+          items={draft.confusables}
+          emptyItem={{ word: '', meaning: '', tip: '' }}
+          fields={[
+            { key: 'word', label: '易混词' },
+            { key: 'meaning', label: '它的意思' },
+            { key: 'tip', label: '怎么区分', multiline: true },
+          ]}
+          onChange={confusables => onChange({ confusables })}
+        />
+      )}
+
+      {section === 'etymology' && (
         <div>
-          <label className="mb-1 block text-xs text-slate-500">单词</label>
-          <Input
-            value={draft.word}
-            onChange={e => onChange({ word: e.target.value })}
-            className={`${fieldClass} text-lg font-semibold`}
+          <label className="mb-1 block text-xs text-slate-500">词源说明</label>
+          <Textarea
+            value={draft.etymology}
+            onChange={e => onChange({ etymology: e.target.value })}
+            className={fieldClass}
+            rows={6}
           />
         </div>
       )}
 
-      <div>
-        <label className="mb-1 block text-xs text-slate-500">主释义（背单词时显示的答案）</label>
-        <Input value={draft.meaning} onChange={e => onChange({ meaning: e.target.value })} className={`${fieldClass} text-lg`} />
-      </div>
-
-      <ListSection<WordSense>
-        title="需要记住的含义"
-        hint="按常用度排序，背单词揭晓答案时会显示"
-        items={draft.senses}
-        emptyItem={{ pos: '', meaning: '', example: '', translation: '' }}
-        fields={[
-          { key: 'pos', label: '词性' },
-          { key: 'meaning', label: '中文释义' },
-          { key: 'example', label: '英文例句', multiline: true },
-          { key: 'translation', label: '例句翻译', multiline: true },
-        ]}
-        onChange={senses => onChange({ senses })}
-      />
-
-      <ListSection<WordFamilyItem>
-        title="词源家族 / 变形"
-        hint="同词根派生出来的词"
-        items={draft.family}
-        emptyItem={{ word: '', pos: '', meaning: '' }}
-        fields={[
-          { key: 'word', label: '单词' },
-          { key: 'pos', label: '词性' },
-          { key: 'meaning', label: '中文释义' },
-        ]}
-        onChange={family => onChange({ family })}
-      />
-
-      <ListSection<ConfusableItem>
-        title="容易弄混的词"
-        hint="长得像或读起来像、真的会认错的词"
-        items={draft.confusables}
-        emptyItem={{ word: '', meaning: '', tip: '' }}
-        fields={[
-          { key: 'word', label: '易混词' },
-          { key: 'meaning', label: '它的意思' },
-          { key: 'tip', label: '怎么区分', multiline: true },
-        ]}
-        onChange={confusables => onChange({ confusables })}
-      />
-
-      <div>
-        <label className="mb-1 block text-xs text-slate-500">词源说明</label>
-        <Textarea value={draft.etymology} onChange={e => onChange({ etymology: e.target.value })} className={fieldClass} rows={3} />
-      </div>
-
-      <div>
-        <label className="mb-1 block text-xs text-slate-500">我自己的笔记</label>
-        <Textarea
-          value={draft.notes}
-          onChange={e => onChange({ notes: e.target.value })}
-          className={fieldClass}
-          rows={3}
-          placeholder="自己补充的记忆方法、容易弄混的地方……"
-        />
-      </div>
+      {section === 'notes' && (
+        <div>
+          <label className="mb-1 block text-xs text-slate-500">我自己的笔记</label>
+          <Textarea
+            value={draft.notes}
+            onChange={e => onChange({ notes: e.target.value })}
+            className={fieldClass}
+            rows={8}
+            placeholder="自己补充的记忆方法、容易弄混的地方……"
+            autoFocus
+          />
+        </div>
+      )}
     </div>
   );
 }

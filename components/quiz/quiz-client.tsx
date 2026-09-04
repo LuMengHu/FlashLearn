@@ -1,7 +1,6 @@
 // 背题页的客户端外壳：接入 useQuizEngine，按当前题库的 mode 渲染对应卡片，并展示进度/操作按钮
 'use client';
 
-import { useCallback, useEffect, useMemo, useState } from 'react';
 import dynamic from 'next/dynamic';
 import type { QuestionBank, Question } from '@/lib/schema';
 import { Button } from '@/components/ui/button';
@@ -9,8 +8,6 @@ import { Progress } from '@/components/ui/progress';
 import { Undo2 } from 'lucide-react';
 import SubBankSelector from '@/components/sub-bank-selector';
 import { useQuizEngine } from '@/hooks/use-quiz-engine';
-import { RoundStarter } from '@/components/ui/round-starter';
-import { fetchProgress, pickForRound, summarize, type ProgressMap } from '@/lib/study';
 
 // 骨架加载组件
 const SkeletonCard = () => (
@@ -40,82 +37,17 @@ interface Props {
 }
 
 export default function QuizClient({ bank, initialQuestions, siblingBanks, allBanks }: Props) {
+  // 外交知识不做题量拆分与熟练度排序，进来就是整套题库按原顺序练
   const {
     currentBank, currentQuestion, answered, isAnswerVisible, isMcqAnswered, isCompleted,
     correctCount, incorrectCount, answeredCount, currentTotal, attempt,
     handleUndo, handleShowAnswer, handleMark, handleMcqOptionSelected,
-    handleNextMcq, startQuiz,
-  } = useQuizEngine({ bank, initialQuestions, autoStart: false });
-
-  // 停在准备页时选题量；选好后才真正开练
-  const [started, setStarted] = useState(false);
-  const [activeBank, setActiveBank] = useState<QuestionBank>(bank);
-  const [progress, setProgress] = useState<ProgressMap>({});
-
-  const activeQuestions = useMemo(
-    () => (activeBank.id === bank.id ? initialQuestions : activeBank.questions ?? []),
-    [activeBank, bank.id, initialQuestions]
-  );
-
-  const refreshProgress = useCallback(async () => {
-    setProgress(await fetchProgress('question'));
-  }, []);
-
-  useEffect(() => {
-    refreshProgress();
-  }, [refreshProgress]);
-
-  const summary = useMemo(() => summarize(activeQuestions, progress), [activeQuestions, progress]);
-
-  const handleStart = (count: number) => {
-    startQuiz(pickForRound(activeQuestions, progress, count), activeBank);
-    setStarted(true);
-  };
-
-  const backToStart = async () => {
-    setStarted(false);
-    await refreshProgress();
-  };
-
-  /** 切换子题库后回到准备页重新选题量 */
-  const handlePickSubBank = async (selectedBank: QuestionBank) => {
-    setActiveBank(selectedBank);
-    setStarted(false);
-    await refreshProgress();
-  };
+    handleNextMcq, handleSelectSubBank, startQuiz,
+  } = useQuizEngine({ bank, initialQuestions });
 
   const handleReturn = () => {
     window.location.href = '/diplomatic';
   };
-
-  if (!started) {
-    return (
-      <div className="space-y-6">
-        <div className="flex items-center justify-between gap-4">
-          <Button
-            onClick={handleReturn}
-            variant="ghost"
-            className="text-slate-400 hover:bg-slate-700/50 hover:text-white"
-          >
-            <Undo2 className="mr-1 rotate-180" size={18} />
-            返回
-          </Button>
-          <h1 className="truncate text-lg font-bold text-slate-200 sm:text-xl">{activeBank.name}</h1>
-          <div>
-            {siblingBanks && (
-              <SubBankSelector
-                currentBankId={activeBank.id}
-                parentBankId={bank.id}
-                siblingBanks={siblingBanks}
-                onSelectSubBank={handlePickSubBank}
-              />
-            )}
-          </div>
-        </div>
-        <RoundStarter summary={summary} onStart={handleStart} />
-      </div>
-    );
-  }
 
   if (isCompleted) {
     return (
@@ -124,7 +56,7 @@ export default function QuizClient({ bank, initialQuestions, siblingBanks, allBa
                 <h2 className="text-3xl font-bold mb-4 text-slate-100">🎉 恭喜你，完成了一轮！</h2>
                 <p className="text-lg text-slate-300 mb-8">总题数: {currentTotal} | <span className="text-brand-green-500">完成: {answeredCount}</span></p>
                 <div className="flex flex-col sm:flex-row justify-center gap-4">
-                    <Button onClick={backToStart} size="lg" className="bg-brand-cyan-600 hover:bg-brand-cyan-700 text-white">再来一轮</Button>
+                    <Button onClick={() => startQuiz(currentBank.questions || [], currentBank)} size="lg" className="bg-brand-cyan-600 hover:bg-brand-cyan-700 text-white">重新开始本节</Button>
                     {incorrectCount > 0 && <Button onClick={() => startQuiz(answered.filter(a => !a.wasCorrect).map(a => a.question), currentBank)} variant="destructive" size="lg">只复习错题</Button>}
                 </div>
             </div>
@@ -169,7 +101,7 @@ export default function QuizClient({ bank, initialQuestions, siblingBanks, allBa
                 currentBankId={currentBank.id}
                 parentBankId={bank.id}
                 siblingBanks={siblingBanks}
-                onSelectSubBank={handlePickSubBank}
+                onSelectSubBank={handleSelectSubBank}
               />
             )}
           </div>

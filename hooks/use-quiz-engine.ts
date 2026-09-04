@@ -4,7 +4,6 @@
 import { useEffect, useMemo, useCallback, useRef, useState } from 'react';
 import type { QuestionBank, Question } from '@/lib/schema';
 import { useQuizState } from './use-quiz-state';
-import { reportResult } from '@/lib/study';
 
 interface UseQuizEngineProps {
   bank: QuestionBank;
@@ -58,7 +57,6 @@ export function useQuizEngine({ bank, initialQuestions, autoStart = true }: UseQ
 
   const handleMark = (isCorrect: boolean) => {
     if (!currentQuestion) return;
-    reportResult('question', currentQuestion.id, isCorrect);
     setAnswered(prev => [...prev, { question: currentQuestion, wasCorrect: isCorrect }]);
     setUnanswered(prev => prev.slice(1));
     setIsAnswerVisible(false);
@@ -66,7 +64,6 @@ export function useQuizEngine({ bank, initialQuestions, autoStart = true }: UseQ
 
   const handleMcqOptionSelected = (isCorrect: boolean) => {
     if (!currentQuestion) return;
-    reportResult('question', currentQuestion.id, isCorrect);
     setIsMcqAnswered(true);
     setAnswered(prev => [...prev, { question: currentQuestion, wasCorrect: isCorrect }]);
   };
