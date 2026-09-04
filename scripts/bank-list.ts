@@ -1,4 +1,4 @@
-// 种子数据的题库清单：每一项描述一个题库（及其子题库）的元信息，由 seed.ts 读取插入数据库
+// 题库清单：每一项描述一个题库（及其子题库）的元信息，由 seed-banks.ts 读取后灌进数据库
 //
 // 目前只保留「外交知識」一个题库。其余题库（Word Skill / Mindset / Decoding / 名句 /
 // 思考题 / 问答题 / 7000 Words / 中国文化常识 / 古诗补全）的完整定义已移到
@@ -21,7 +21,7 @@ export const banksToSeed: BankMeta[] = [
     description: '',
     cover_image_url: '/covers/diplomatic.png',
     mode: 'mcq',
-    dataFile: '/mcq/diplomatic1.json',
+    dataFile: '/banks/diplomatic1.json',
     category: '历史',
     subBanks: [
       {
@@ -29,7 +29,7 @@ export const banksToSeed: BankMeta[] = [
         description: '',
         cover_image_url: '',
         mode: 'mcq',
-        dataFile: '/mcq/diplomatic1.json',
+        dataFile: '/banks/diplomatic1.json',
         category: '外交知識',
       },
       {
@@ -37,7 +37,7 @@ export const banksToSeed: BankMeta[] = [
         description: '',
         cover_image_url: '',
         mode: 'mcq',
-        dataFile: '/mcq/diplomatic2.json',
+        dataFile: '/banks/diplomatic2.json',
         category: '外交知識',
       },
       {
@@ -45,7 +45,7 @@ export const banksToSeed: BankMeta[] = [
         description: '',
         cover_image_url: '',
         mode: 'mcq',
-        dataFile: '/mcq/diplomatic3.json',
+        dataFile: '/banks/diplomatic3.json',
         category: '外交知識',
       },
       {
@@ -53,7 +53,7 @@ export const banksToSeed: BankMeta[] = [
         description: '',
         cover_image_url: '',
         mode: 'mcq',
-        dataFile: '/mcq/diplomatic4.json',
+        dataFile: '/banks/diplomatic4.json',
         category: '外交知識',
       },
     ],

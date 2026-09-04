@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Plus, Trash2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { SectionTabs, type SectionTab } from '@/components/ui/section-tabs';
+import { SectionTabs, type SectionTab } from '@/components/layout/section-tabs';
 import type { WordSense, WordFamilyItem, ConfusableItem } from '@/lib/schema';
 
 export type WordDraft = {

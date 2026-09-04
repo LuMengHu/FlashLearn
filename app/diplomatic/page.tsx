@@ -1,6 +1,7 @@
 // 外交知识分类页：列出外交知識题库及其各个子题库
-import { PageShell, EmptyState } from '@/components/ui/page-shell';
-import { EntryCard } from '@/components/ui/entry-card';
+import { PageShell } from '@/components/layout/page-shell';
+import { EmptyState } from '@/components/layout/empty-state';
+import { EntryCard } from '@/components/layout/entry-card';
 import { db } from '@/lib/db';
 import { questionBanks } from '@/lib/schema';
 import { isNull } from 'drizzle-orm';
@@ -21,7 +22,7 @@ export default async function DiplomaticPage() {
   if (!bank) {
     return (
       <PageShell title="🏛️ 外交知识" subtitle="选择题练习">
-        <EmptyState message="题库还没有灌入，运行 npm run db:seed 后再来" />
+        <EmptyState message="题库还没有灌入，运行 npm run db:seed:banks 后再来" />
       </PageShell>
     );
   }
@@ -32,7 +33,7 @@ export default async function DiplomaticPage() {
     <PageShell title="🏛️ 外交知识" subtitle={`${bank.name} · 选择题`}>
       <div className="grid gap-3">
         <EntryCard
-          href={`/bank/${bank.id}`}
+          href={`/diplomatic/${bank.id}`}
           emoji="🏛️"
           title={`${bank.name}（全部）`}
           description="从头开始练这个题库"
@@ -43,7 +44,7 @@ export default async function DiplomaticPage() {
         {subBanks.map(sub => (
           <EntryCard
             key={sub.id}
-            href={`/bank/${sub.id}`}
+            href={`/diplomatic/${sub.id}`}
             emoji="📄"
             title={sub.name}
             meta={`${sub.questions?.length ?? 0} 题`}

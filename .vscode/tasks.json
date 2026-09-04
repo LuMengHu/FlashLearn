@@ -3,9 +3,9 @@
 	"tasks": [
 				{
 			"type": "npm",
-			"script": "db:seed",
+			"script": "db:seed:banks",
 			"problemMatcher": [],
-			"label": "npm: db:seed",
+			"label": "npm: db:seed:banks",
 			"detail": "tsx scripts/seed.ts"
 		}
 	]

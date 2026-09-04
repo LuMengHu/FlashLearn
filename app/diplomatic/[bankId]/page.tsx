@@ -1,24 +1,18 @@
-// 题库详情页（服务器组件）：按 id 加载题库、题目及同级/子级题库，交给 QuizClient 渲染
+// 外交知识答题页（服务器组件）：按 id 加载题库、题目及同级/子题库，交给 QuizClient 渲染
 import { db } from '@/lib/db';
 import { notFound } from 'next/navigation';
-import QuizClient from '@/components/quiz/quiz-client';
+import QuizClient from '@/components/diplomatic/quiz-client';
 import { eq } from 'drizzle-orm';
 import { questionBanks } from '@/lib/schema';
 import type { QuestionBank } from '@/lib/schema';
 
-interface BankPageProps {
-  params: {
-    id?: string;
-  };
-}
+export default async function BankPage({ params }: { params: Promise<{ bankId: string }> }) {
+  const { bankId: rawId } = await params;
+  const bankId = parseInt(rawId, 10);
 
-// 这是一个服务器组件，负责获取所有需要的数据
-export default async function BankPage({ params }: BankPageProps) {
-  if (!params.id || isNaN(parseInt(params.id, 10))) {
+  if (!rawId || Number.isNaN(bankId)) {
     notFound();
   }
-  
-  const bankId = parseInt(params.id, 10);
 
   // 1. 获取当前正在访问的题库
   const bank = await db.query.questionBanks.findFirst({

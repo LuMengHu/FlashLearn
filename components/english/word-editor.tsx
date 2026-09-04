@@ -103,7 +103,7 @@ export default function WordEditor() {
         {savedMessage && (
           <p className="flex items-center gap-2 text-sm text-brand-green-500">
             {savedMessage}
-            <Link href="/vocab/study" className="underline underline-offset-2 hover:text-green-400">
+            <Link href="/english/study" className="underline underline-offset-2 hover:text-green-400">
               去背单词
             </Link>
           </p>

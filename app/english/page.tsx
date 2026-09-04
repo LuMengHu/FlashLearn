@@ -1,6 +1,6 @@
-// 英文分类页：背单词 + 录入单词两个入口
-import { PageShell } from '@/components/ui/page-shell';
-import { EntryCard } from '@/components/ui/entry-card';
+// 英文分类页：背单词 / 录入单词 / 单词总表 三个入口
+import { PageShell } from '@/components/layout/page-shell';
+import { EntryCard } from '@/components/layout/entry-card';
 import { db } from '@/lib/db';
 import { words } from '@/lib/schema';
 import { sql as raw } from 'drizzle-orm';
@@ -23,7 +23,7 @@ export default async function EnglishHomePage() {
     <PageShell title="🔤 英文" subtitle="用 AI 整理单词，然后把它们背下来">
       <div className="grid gap-3">
         <EntryCard
-          href="/vocab/study"
+          href="/english/study"
           emoji="📚"
           title="背单词"
           description="看英文回忆中文，揭晓时一并复习词源家族和易混词"
@@ -32,7 +32,7 @@ export default async function EnglishHomePage() {
           size="lg"
         />
         <EntryCard
-          href="/vocab/new"
+          href="/english/new"
           emoji="✨"
           title="录入单词"
           description="输入一个单词，AI 自动整理含义、词源家族与易混词，确认后入库"

@@ -6,7 +6,7 @@ import type { QuestionBank, Question } from '@/lib/schema';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { Undo2 } from 'lucide-react';
-import SubBankSelector from '@/components/sub-bank-selector';
+import SubBankSelector from '@/components/diplomatic/sub-bank-selector';
 import { useQuizEngine } from '@/hooks/use-quiz-engine';
 
 // 骨架加载组件
@@ -22,10 +22,10 @@ const SkeletonCard = () => (
 );
 
 // 动态导入模式组件，带有加载状态
-const QA = dynamic(() => import('./qa'), {
+const QA = dynamic(() => import('./qa-card'), {
   loading: () => <SkeletonCard />
 });
-const MCQ = dynamic(() => import('./mcq'), {
+const MCQ = dynamic(() => import('./mcq-card'), {
   loading: () => <SkeletonCard />
 });
 

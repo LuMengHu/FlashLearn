@@ -1,10 +1,10 @@
-// 中文练习页的客户端外壳：拉取条目与熟练度 → 选题量 → 按 meta 配置的练习方式出题
+// 中文练习页的客户端外壳：拉取条目与熟练度 → 选题量 → 按 chinese-meta 配置的练习方式出题
 'use client';
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Loader2 } from 'lucide-react';
-import { EmptyState } from '@/components/ui/page-shell';
-import { RoundStarter } from '@/components/ui/round-starter';
+import { EmptyState } from '@/components/layout/empty-state';
+import { RoundStarter } from '@/components/study/round-starter';
 import JudgmentQuiz from './judgment-quiz';
 import ChoiceQuiz from './choice-quiz';
 import RecallQuiz from './recall-quiz';

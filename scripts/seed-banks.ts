@@ -1,9 +1,10 @@
-// 种子脚本：清空数据库中现有的题库/题目，按 question-banks.ts 中的定义重新插入
+// 灌入外交知识题库：清空 QuestionBanks / Questions，按 bank-list.ts 的定义重新插入
+// 只影响这两张表，不会动 Words / ChineseItems / StudyProgress
 import 'dotenv/config';
 import { drizzle } from 'drizzle-orm/neon-http';
 import { neon } from '@neondatabase/serverless';
 import * as schema from '../lib/schema';
-import { banksToSeed, type BankMeta } from './question-banks'; // 导入类型
+import { banksToSeed, type BankMeta } from './bank-list'; // 导入类型
 import fs from 'fs';
 import path from 'path';
 

@@ -1,4 +1,4 @@
-// 封装浏览器 Web Speech API 的英文发音逻辑，供 layered-reveal / initial-hint 等背题卡片复用
+// 封装浏览器 Web Speech API 的英文发音，供背单词页与单词总表点击发音复用
 'use client';
 
 interface SpeakOptions {

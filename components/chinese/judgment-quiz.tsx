@@ -4,7 +4,8 @@
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Check, X } from 'lucide-react';
-import { StatBar, RoundSummary } from '@/components/ui/page-shell';
+import { StatBar } from '@/components/study/stat-bar';
+import { RoundSummary } from '@/components/study/round-summary';
 import { shuffle } from '@/lib/utils';
 import { cn } from '@/lib/utils';
 import { reportResults } from '@/lib/study';

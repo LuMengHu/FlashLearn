@@ -1,7 +1,7 @@
 // 中文某一类的练习页，具体练习形式由 lib/chinese-meta.ts 里的配置决定
 import { notFound } from 'next/navigation';
-import { PageShell } from '@/components/ui/page-shell';
-import ChinesePractice from '@/components/chinese/chinese-practice';
+import { PageShell } from '@/components/layout/page-shell';
+import ChinesePractice from '@/components/chinese/practice-loader';
 import { CHINESE_META, getChineseMeta } from '@/lib/chinese-meta';
 
 export function generateStaticParams() {

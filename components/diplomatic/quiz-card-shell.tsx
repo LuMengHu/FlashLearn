@@ -1,4 +1,4 @@
-// 各背题模式卡片共用的深色外壳样式，避免每个模式组件重复同一串 className
+// 选择题/问答卡片共用的深色外壳样式，避免两个卡片组件重复同一串 className
 import { Card } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import type { ComponentProps } from 'react';

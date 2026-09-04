@@ -1,6 +1,6 @@
 // 单词总表页：批量查询全部单词，点开任意一个直接编辑
-import { PageShell } from '@/components/ui/page-shell';
-import WordTable from '@/components/vocab/word-table';
+import { PageShell } from '@/components/layout/page-shell';
+import WordTable from '@/components/english/word-table';
 
 export default function WordListPage() {
   return (

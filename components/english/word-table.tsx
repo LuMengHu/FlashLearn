@@ -5,7 +5,7 @@ import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { EmptyState } from '@/components/ui/page-shell';
+import { EmptyState } from '@/components/layout/empty-state';
 import { Loader2, Search, Save, Trash2, X, Plus, Volume2 } from 'lucide-react';
 import { useSpeech } from '@/hooks/use-speech';
 import { WordForm, fieldClass, toDraft, type WordDraft } from './word-form';
@@ -136,7 +136,7 @@ export default function WordTable() {
   }
 
   if (words.length === 0) {
-    return <EmptyState message="单词库还是空的" actionHref="/vocab/new" actionLabel="去录入第一个单词" />;
+    return <EmptyState message="单词库还是空的" actionHref="/english/new" actionLabel="去录入第一个单词" />;
   }
 
   return (
@@ -169,7 +169,7 @@ export default function WordTable() {
         </div>
 
         <Button asChild size="sm" className="h-11 shrink-0 bg-cyan-600 px-4 text-white hover:bg-cyan-500">
-          <Link href="/vocab/new">
+          <Link href="/english/new">
             <Plus size={16} className="mr-1" />
             录入
           </Link>

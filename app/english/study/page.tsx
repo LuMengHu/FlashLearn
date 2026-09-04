@@ -1,6 +1,6 @@
 // 背单词页：看英文回忆中文，揭晓答案时一并显示含义、词源家族、易混词和自己的笔记
-import { PageShell } from '@/components/ui/page-shell';
-import WordStudy from '@/components/vocab/word-study';
+import { PageShell } from '@/components/layout/page-shell';
+import WordStudy from '@/components/english/word-study';
 
 export default function StudyWordsPage() {
   return (

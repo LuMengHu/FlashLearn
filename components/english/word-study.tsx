@@ -4,9 +4,11 @@
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Volume2, VolumeX, Loader2 } from 'lucide-react';
-import { StatBar, RoundSummary, EmptyState } from '@/components/ui/page-shell';
-import { RoundStarter } from '@/components/ui/round-starter';
-import { SectionTabs, type SectionTab } from '@/components/ui/section-tabs';
+import { StatBar } from '@/components/study/stat-bar';
+import { RoundSummary } from '@/components/study/round-summary';
+import { EmptyState } from '@/components/layout/empty-state';
+import { RoundStarter } from '@/components/study/round-starter';
+import { SectionTabs, type SectionTab } from '@/components/layout/section-tabs';
 import { useSpeech } from '@/hooks/use-speech';
 import { cn } from '@/lib/utils';
 import { fetchProgress, pickForRound, reportResult, summarize, type ProgressMap } from '@/lib/study';
@@ -127,7 +129,7 @@ export default function WordStudy() {
   }
 
   if (words.length === 0) {
-    return <EmptyState message="单词库还是空的" actionHref="/vocab/new" actionLabel="去录入第一个单词" />;
+    return <EmptyState message="单词库还是空的" actionHref="/english/new" actionLabel="去录入第一个单词" />;
   }
 
   if (queue === null) {

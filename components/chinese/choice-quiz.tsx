@@ -3,7 +3,8 @@
 'use client';
 
 import { useCallback, useEffect, useState } from 'react';
-import { StatBar, RoundSummary } from '@/components/ui/page-shell';
+import { StatBar } from '@/components/study/stat-bar';
+import { RoundSummary } from '@/components/study/round-summary';
 import { cn } from '@/lib/utils';
 import { reportResult } from '@/lib/study';
 import type { ChineseItem } from '@/lib/schema';

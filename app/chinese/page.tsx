@@ -1,6 +1,6 @@
 // 中文分类页：六个入口
-import { PageShell } from '@/components/ui/page-shell';
-import { EntryCard } from '@/components/ui/entry-card';
+import { PageShell } from '@/components/layout/page-shell';
+import { EntryCard } from '@/components/layout/entry-card';
 import { CHINESE_META } from '@/lib/chinese-meta';
 import { db } from '@/lib/db';
 import { chineseItems } from '@/lib/schema';

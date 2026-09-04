@@ -1,4 +1,8 @@
-// Drizzle 数据库表结构定义：题库（questionBanks）、题目（questions）与背单词的单词表（words）
+// Drizzle 数据库表结构定义：
+//   questionBanks / questions —— 外交知识题库与题目（由 seed-banks 灌入）
+//   words                   —— 英文单词（AI 生成 + 手动编辑）
+//   chineseItems            —— 中文六类知识条目
+//   studyProgress           —— 中文/英文的熟练度（外交知识不参与）
 import {
   pgTable,
   bigserial,

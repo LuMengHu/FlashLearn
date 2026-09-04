@@ -1,4 +1,4 @@
-// 手动执行指定的 drizzle 迁移文件：npx tsx scripts/apply-migration.ts 0005_loud_puppet_master
+// 手动执行指定的 drizzle 迁移文件：npm run db:migrate <迁移文件名，不含 .sql>
 // （项目历史上用的是 drizzle-kit push，没有 __drizzle_migrations 记录表，所以用这个脚本按需执行单个迁移）
 import 'dotenv/config';
 import { neon } from '@neondatabase/serverless';
