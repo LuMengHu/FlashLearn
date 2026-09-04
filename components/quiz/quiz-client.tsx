@@ -39,7 +39,7 @@ interface Props {
 export default function QuizClient({ bank, initialQuestions, siblingBanks, allBanks }: Props) {
   const {
     currentBank, currentQuestion, answered, isAnswerVisible, isMcqAnswered, isCompleted,
-    correctCount, incorrectCount, answeredCount, currentTotal,
+    correctCount, incorrectCount, answeredCount, currentTotal, attempt,
     handleUndo, handleShowAnswer, handleMark, handleMcqOptionSelected,
     handleNextMcq, handleSelectSubBank, startQuiz,
   } = useQuizEngine({ bank, initialQuestions });
@@ -66,13 +66,15 @@ export default function QuizClient({ bank, initialQuestions, siblingBanks, allBa
   const renderCard = () => {
     if (!currentQuestion) return null;
 
-    // 每个卡片组件都带唯一的 key，切题时销毁旧组件重建，避免状态残留
+    // key 里带上 attempt，撤销回同一道题时也能强制重建组件，避免上一次的揭晓状态残留
+    const cardKey = `${currentQuestion.id}-${attempt}`;
+
     switch (currentBank.mode) {
       case 'mcq':
-        return <MCQ key={currentQuestion.id} question={currentQuestion} onOptionSelected={handleMcqOptionSelected} />;
+        return <MCQ key={cardKey} question={currentQuestion} onOptionSelected={handleMcqOptionSelected} />;
       case 'qa':
       default:
-        return <QA key={currentQuestion.id} question={currentQuestion} isAnswerVisible={isAnswerVisible} />;
+        return <QA key={cardKey} question={currentQuestion} isAnswerVisible={isAnswerVisible} />;
     }
   };
 

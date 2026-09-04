@@ -10,7 +10,8 @@
     "db:seed": "tsx scripts/seed.ts",
     "db:seed:chinese": "tsx scripts/seed-chinese.ts",
     "db:migrate": "tsx scripts/apply-migration.ts",
-    "gen:chinese": "tsx scripts/generate-chinese.ts"
+    "gen:chinese": "tsx scripts/generate-chinese.ts",
+    "words:import": "tsx scripts/import-words.ts"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.0.1",

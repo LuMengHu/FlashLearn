@@ -5,120 +5,12 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Loader2, Plus, Trash2, Sparkles, Save } from 'lucide-react';
-import type { WordSense, WordFamilyItem, ConfusableItem } from '@/lib/schema';
-
-type Draft = {
-  word: string;
-  meaning: string;
-  senses: WordSense[];
-  family: WordFamilyItem[];
-  confusables: ConfusableItem[];
-  etymology: string;
-  notes: string;
-};
-
-const EMPTY_DRAFT: Draft = {
-  word: '',
-  meaning: '',
-  senses: [],
-  family: [],
-  confusables: [],
-  etymology: '',
-  notes: '',
-};
-
-const fieldClass =
-  'bg-slate-950/60 border-slate-700 text-slate-100 placeholder:text-slate-600 focus-visible:ring-brand-cyan-600';
-
-/** 一个可增删条目的区块 */
-function ListSection<T extends Record<string, string | undefined>>({
-  title,
-  hint,
-  items,
-  fields,
-  emptyItem,
-  onChange,
-}: {
-  title: string;
-  hint: string;
-  items: T[];
-  fields: { key: keyof T & string; label: string; multiline?: boolean; className?: string }[];
-  emptyItem: T;
-  onChange: (items: T[]) => void;
-}) {
-  const update = (index: number, key: string, value: string) => {
-    onChange(items.map((item, i) => (i === index ? { ...item, [key]: value } : item)));
-  };
-
-  return (
-    <section className="space-y-3">
-      <div className="flex items-center justify-between gap-4">
-        <div>
-          <h2 className="text-lg font-semibold text-slate-100">{title}</h2>
-          <p className="text-xs text-slate-500 mt-0.5">{hint}</p>
-        </div>
-        <Button
-          type="button"
-          variant="ghost"
-          size="sm"
-          onClick={() => onChange([...items, { ...emptyItem }])}
-          className="text-slate-300 hover:text-white hover:bg-slate-700/50 shrink-0"
-        >
-          <Plus size={16} className="mr-1" />
-          添加
-        </Button>
-      </div>
-
-      {items.length === 0 ? (
-        <p className="text-sm text-slate-600 border border-dashed border-slate-800 rounded-lg py-4 text-center">
-          暂无内容
-        </p>
-      ) : (
-        <div className="space-y-3">
-          {items.map((item, index) => (
-            <div key={index} className="relative rounded-lg border border-slate-800 bg-slate-900/40 p-3 pr-11 space-y-2">
-              {fields.map(field => (
-                <div key={field.key} className={field.className}>
-                  <label className="block text-xs text-slate-500 mb-1">{field.label}</label>
-                  {field.multiline ? (
-                    <Textarea
-                      value={item[field.key] ?? ''}
-                      onChange={e => update(index, field.key, e.target.value)}
-                      className={fieldClass}
-                      rows={2}
-                    />
-                  ) : (
-                    <Input
-                      value={item[field.key] ?? ''}
-                      onChange={e => update(index, field.key, e.target.value)}
-                      className={fieldClass}
-                    />
-                  )}
-                </div>
-              ))}
-              <Button
-                type="button"
-                variant="ghost"
-                size="icon"
-                onClick={() => onChange(items.filter((_, i) => i !== index))}
-                className="absolute top-2 right-2 h-8 w-8 text-slate-500 hover:text-brand-red-500 hover:bg-slate-800"
-                title="删除这一条"
-              >
-                <Trash2 size={16} />
-              </Button>
-            </div>
-          ))}
-        </div>
-      )}
-    </section>
-  );
-}
+import { Loader2, Sparkles, Save } from 'lucide-react';
+import { WordForm, EMPTY_WORD_DRAFT, fieldClass, type WordDraft } from './word-form';
 
 export default function WordEditor() {
   const [query, setQuery] = useState('');
-  const [draft, setDraft] = useState<Draft | null>(null);
+  const [draft, setDraft] = useState<WordDraft | null>(null);
   const [isGenerating, setIsGenerating] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [error, setError] = useState('');
@@ -139,7 +31,7 @@ export default function WordEditor() {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data?.error || '生成失败');
-      setDraft({ ...EMPTY_DRAFT, ...data, notes: '' });
+      setDraft({ ...EMPTY_WORD_DRAFT, ...data, notes: '' });
     } catch (err) {
       setError(err instanceof Error ? err.message : '生成失败，请重试');
     } finally {
@@ -174,13 +66,18 @@ export default function WordEditor() {
     }
   };
 
-  const patch = (changes: Partial<Draft>) => setDraft(prev => (prev ? { ...prev, ...changes } : prev));
+  const patch = (changes: Partial<WordDraft>) => setDraft(prev => (prev ? { ...prev, ...changes } : prev));
 
   return (
     <div className="w-full space-y-6">
       {/* 输入 + 生成 */}
-      <div className="rounded-2xl border border-slate-800 bg-slate-900/50 p-4 sm:p-6 space-y-3 shadow-lg">
-        <label className="block text-sm text-slate-400">输入一个英文单词，让 AI 帮你整理</label>
+      <div className="space-y-3 rounded-2xl border border-slate-800 bg-slate-900/50 p-4 shadow-lg sm:p-6">
+        <div className="flex items-center justify-between gap-3">
+          <label className="text-sm text-slate-400">输入一个英文单词，让 AI 帮你整理</label>
+          <Link href="/english/list" className="shrink-0 text-xs text-slate-500 underline underline-offset-2 hover:text-slate-300">
+            批量导入？看单词总表
+          </Link>
+        </div>
         <div className="flex gap-3">
           <Input
             value={query}
@@ -196,7 +93,7 @@ export default function WordEditor() {
             onClick={handleGenerate}
             disabled={isGenerating || !query.trim()}
             size="lg"
-            className="bg-brand-cyan-600 hover:bg-brand-cyan-700 text-white h-12 px-6 shrink-0"
+            className="h-12 shrink-0 bg-cyan-600 px-6 text-white hover:bg-cyan-500"
           >
             {isGenerating ? <Loader2 className="animate-spin" size={18} /> : <Sparkles size={18} />}
             <span className="ml-2">{isGenerating ? '生成中' : '生成'}</span>
@@ -215,79 +112,15 @@ export default function WordEditor() {
 
       {/* 审阅 / 编辑 */}
       {draft && (
-        <div className="rounded-2xl border border-slate-800 bg-slate-900/50 p-4 sm:p-6 space-y-8 shadow-lg">
-          <div>
-            <label className="block text-xs text-slate-500 mb-1">单词</label>
-            <Input value={draft.word} onChange={e => patch({ word: e.target.value })} className={`${fieldClass} text-lg font-semibold`} />
-          </div>
+        <div className="space-y-8 rounded-2xl border border-slate-800 bg-slate-900/50 p-4 shadow-lg sm:p-6">
+          <WordForm draft={draft} onChange={patch} />
 
-          <div>
-            <label className="block text-xs text-slate-500 mb-1">主释义（背单词时显示的答案）</label>
-            <Input value={draft.meaning} onChange={e => patch({ meaning: e.target.value })} className={`${fieldClass} text-lg`} />
-          </div>
-
-          <ListSection<WordSense>
-            title="需要记住的含义"
-            hint="按常用度排序，背单词揭晓答案时会显示"
-            items={draft.senses}
-            emptyItem={{ pos: '', meaning: '', example: '', translation: '' }}
-            fields={[
-              { key: 'pos', label: '词性' },
-              { key: 'meaning', label: '中文释义' },
-              { key: 'example', label: '英文例句', multiline: true },
-              { key: 'translation', label: '例句翻译', multiline: true },
-            ]}
-            onChange={senses => patch({ senses })}
-          />
-
-          <ListSection<WordFamilyItem>
-            title="词源家族 / 变形"
-            hint="同词根派生出来的词"
-            items={draft.family}
-            emptyItem={{ word: '', pos: '', meaning: '' }}
-            fields={[
-              { key: 'word', label: '单词' },
-              { key: 'pos', label: '词性' },
-              { key: 'meaning', label: '中文释义' },
-            ]}
-            onChange={family => patch({ family })}
-          />
-
-          <ListSection<ConfusableItem>
-            title="容易弄混的词"
-            hint="长得像或读起来像、真的会认错的词"
-            items={draft.confusables}
-            emptyItem={{ word: '', meaning: '', tip: '' }}
-            fields={[
-              { key: 'word', label: '易混词' },
-              { key: 'meaning', label: '它的意思' },
-              { key: 'tip', label: '怎么区分', multiline: true },
-            ]}
-            onChange={confusables => patch({ confusables })}
-          />
-
-          <div>
-            <label className="block text-xs text-slate-500 mb-1">词源说明</label>
-            <Textarea value={draft.etymology} onChange={e => patch({ etymology: e.target.value })} className={fieldClass} rows={3} />
-          </div>
-
-          <div>
-            <label className="block text-xs text-slate-500 mb-1">我自己的笔记</label>
-            <Textarea
-              value={draft.notes}
-              onChange={e => patch({ notes: e.target.value })}
-              className={fieldClass}
-              rows={3}
-              placeholder="自己补充的记忆方法、容易弄混的地方……"
-            />
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-3 justify-end pt-2 border-t border-slate-800">
-            <Button variant="ghost" onClick={() => setDraft(null)} className="text-slate-400 hover:text-white hover:bg-slate-700/50">
+          <div className="flex flex-col justify-end gap-3 border-t border-slate-800 pt-4 sm:flex-row">
+            <Button variant="ghost" onClick={() => setDraft(null)} className="text-slate-400 hover:bg-slate-700/50 hover:text-white">
               放弃
             </Button>
-            <Button onClick={handleSave} disabled={isSaving} size="lg" className="bg-green-600 hover:bg-green-700 text-white">
-              {isSaving ? <Loader2 className="animate-spin mr-2" size={18} /> : <Save className="mr-2" size={18} />}
+            <Button onClick={handleSave} disabled={isSaving} size="lg" className="bg-green-600 text-white hover:bg-green-500">
+              {isSaving ? <Loader2 className="mr-2 animate-spin" size={18} /> : <Save className="mr-2" size={18} />}
               {isSaving ? '保存中' : '确认无误，加入单词库'}
             </Button>
           </div>

@@ -52,7 +52,7 @@ export default async function HomePage() {
       emoji: '🔤',
       title: '英文',
       subtitle: 'AI 整理 + 背单词',
-      entries: ['背单词', '录入单词'],
+      entries: ['背单词', '录入单词', '单词总表'],
       count: wordCount,
       unit: '个单词',
       gradient: 'from-cyan-500/20 via-teal-500/5',

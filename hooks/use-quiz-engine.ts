@@ -1,7 +1,7 @@
 // 背题会话的核心状态机：管理当前题目与进度状态，并向 QuizClient 暴露交互回调
 'use client';
 
-import { useEffect, useMemo, useCallback, useRef } from 'react';
+import { useEffect, useMemo, useCallback, useRef, useState } from 'react';
 import type { QuestionBank, Question } from '@/lib/schema';
 import { useQuizState } from './use-quiz-state';
 
@@ -16,6 +16,9 @@ export function useQuizEngine({ bank, initialQuestions }: UseQuizEngineProps) {
     setCurrentBank, setUnanswered, setAnswered, setCurrentTotal, setIsAnswerVisible,
     setIsMcqAnswered,
   } = useQuizState(bank);
+
+  // 每次撤销都自增，作为卡片 key 的一部分，强制卡片重新挂载以清空内部状态
+  const [attempt, setAttempt] = useState(0);
 
   const startQuiz = useCallback((questionSet: Question[], bankForQuiz: QuestionBank) => {
     setCurrentBank(bankForQuiz);
@@ -70,11 +73,23 @@ export function useQuizEngine({ bank, initialQuestions }: UseQuizEngineProps) {
 
   const handleUndo = () => {
     if (answered.length === 0) return;
+
+    // 选择题选完但还没点「下一题」时，题目仍留在 unanswered 队列里（要等 handleNextMcq 才出队）。
+    // 这种情况下只需撤销这次作答，绝不能再把它塞回队列，否则队列里会出现两份同一道题。
+    if (isMcqAnswered) {
+      setAnswered(prev => prev.slice(0, -1));
+      setIsMcqAnswered(false);
+      setIsAnswerVisible(false);
+      setAttempt(a => a + 1); // 让卡片重新挂载，清掉它内部已揭晓的状态
+      return;
+    }
+
     const lastAnswered = answered[answered.length - 1];
     setUnanswered(prev => [lastAnswered.question, ...prev]);
     setAnswered(prev => prev.slice(0, -1));
     setIsAnswerVisible(false);
     setIsMcqAnswered(false);
+    setAttempt(a => a + 1);
   };
 
   const isCompleted = !currentQuestion && answered.length > 0;
@@ -83,7 +98,7 @@ export function useQuizEngine({ bank, initialQuestions }: UseQuizEngineProps) {
 
   return {
     currentBank, currentQuestion, answered, isAnswerVisible, isMcqAnswered, isCompleted,
-    correctCount, incorrectCount, answeredCount, currentTotal,
+    correctCount, incorrectCount, answeredCount, currentTotal, attempt,
     startQuiz, handleMark, handleMcqOptionSelected, handleNextMcq,
     handleShowAnswer, handleSelectSubBank, handleUndo,
   };

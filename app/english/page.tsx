@@ -39,6 +39,15 @@ export default async function EnglishHomePage() {
           accent="cyan"
           size="lg"
         />
+        <EntryCard
+          href="/english/list"
+          emoji="📋"
+          title="单词总表"
+          description="按字母或录入时间浏览全部单词，支持搜索，点开即可就地编辑"
+          meta={count > 0 ? `${count} 个单词` : undefined}
+          accent="cyan"
+          size="lg"
+        />
       </div>
     </PageShell>
   );
