@@ -94,6 +94,31 @@ export async function reportResults(itemType: StudyItemType, results: { itemId: 
   }
 }
 
+/** 一次作答的记录，撤销时用它把熟练度恢复回去 */
+export type AnswerRecord = {
+  itemId: number;
+  correct: boolean;
+  /** 作答之前的等级；-1 表示当时还没练过 */
+  previousLevel: number;
+};
+
+/**
+ * 撤销上一次作答：把这些条目的熟练度恢复成作答前的样子。
+ * 不撤销的话，回退后重答会让等级被算两次（比如连着答对两次会从 0 直接跳到 2）。
+ */
+export async function revertResults(itemType: StudyItemType, entries: AnswerRecord[]) {
+  if (entries.length === 0) return;
+  try {
+    await fetch('/api/progress', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ itemType, undo: entries }),
+    });
+  } catch {
+    // 撤销上报失败不影响本轮练习
+  }
+}
+
 /** 拉取某一类内容的进度快照 */
 export async function fetchProgress(itemType: StudyItemType): Promise<ProgressMap> {
   try {

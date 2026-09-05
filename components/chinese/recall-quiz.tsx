@@ -5,18 +5,23 @@
 import { useCallback, useEffect, useState } from 'react';
 import { StatBar } from '@/components/study/stat-bar';
 import { RoundSummary } from '@/components/study/round-summary';
-import { reportResult } from '@/lib/study';
+import { levelOf, reportResult, revertResults, type ProgressMap } from '@/lib/study';
 import type { ChineseItem, ChineseType } from '@/lib/schema';
+
+/** 已作答的一步，供回退时还原 */
+type HistoryEntry = { item: ChineseItem; wasRight: boolean; previousLevel: number };
 
 export default function RecallQuiz({
   items,
   type,
   hint,
+  progress,
   onFinish,
 }: {
   items: ChineseItem[];
   type: ChineseType;
   hint?: string;
+  progress: ProgressMap;
   onFinish: () => void;
 }) {
   const [queue, setQueue] = useState<ChineseItem[]>([]);
@@ -25,6 +30,7 @@ export default function RecallQuiz({
   const [right, setRight] = useState(0);
   const [wrongItems, setWrongItems] = useState<ChineseItem[]>([]);
   const [total, setTotal] = useState(0);
+  const [history, setHistory] = useState<HistoryEntry[]>([]);
 
   const startRound = useCallback((source: ChineseItem[]) => {
     setQueue(source);
@@ -33,6 +39,7 @@ export default function RecallQuiz({
     setDone(0);
     setRight(0);
     setWrongItems([]);
+    setHistory([]);
   }, []);
 
   useEffect(() => {
@@ -44,10 +51,25 @@ export default function RecallQuiz({
   const handleMark = (isRight: boolean) => {
     if (!current) return;
     reportResult('chinese', current.id, isRight);
+    setHistory(prev => [...prev, { item: current, wasRight: isRight, previousLevel: levelOf(current.id, progress) }]);
     setDone(d => d + 1);
     if (isRight) setRight(r => r + 1);
     else setWrongItems(prev => [...prev, current]);
     setQueue(prev => prev.slice(1));
+    setRevealed(false);
+  };
+
+  /** 回退上一题：放回队首、撤掉计分，并把熟练度恢复成作答前 */
+  const handleUndo = () => {
+    const last = history[history.length - 1];
+    if (!last) return;
+
+    revertResults('chinese', [{ itemId: last.item.id, correct: last.wasRight, previousLevel: last.previousLevel }]);
+    setHistory(prev => prev.slice(0, -1));
+    setQueue(prev => [last.item, ...prev]);
+    setDone(d => Math.max(0, d - 1));
+    if (last.wasRight) setRight(r => Math.max(0, r - 1));
+    else setWrongItems(prev => prev.filter(i => i.id !== last.item.id));
     setRevealed(false);
   };
 
@@ -70,7 +92,16 @@ export default function RecallQuiz({
 
   return (
     <div>
-      <StatBar done={done} total={total} right={right} wrong={done - right} rightLabel="记住" wrongLabel="没记住" />
+      <StatBar
+        done={done}
+        total={total}
+        right={right}
+        wrong={done - right}
+        rightLabel="记住"
+        wrongLabel="没记住"
+        onUndo={handleUndo}
+        canUndo={history.length > 0}
+      />
 
       <div className="flex min-h-[380px] flex-col rounded-2xl border border-slate-800 bg-slate-900/50 p-6 shadow-xl sm:p-8">
         {/* 正面 */}

@@ -45,6 +45,48 @@ export async function POST(request: Request) {
   const itemType = parseItemType(body?.itemType);
   if (!itemType) return NextResponse.json({ error: '缺少合法的 itemType' }, { status: 400 });
 
+  // 撤销上一题：把这几条记录恢复成作答之前的样子
+  // previousLevel < 0 表示作答前根本没有记录，那就把整行删掉，回到「没练过」
+  const undo: { itemId: number; correct: boolean; previousLevel: number }[] = Array.isArray(body?.undo)
+    ? body.undo
+        .filter((r: any) => Number.isFinite(Number(r?.itemId)))
+        .map((r: any) => ({
+          itemId: Number(r.itemId),
+          correct: !!r.correct,
+          previousLevel: Number.isFinite(Number(r?.previousLevel)) ? Number(r.previousLevel) : 0,
+        }))
+    : [];
+
+  if (undo.length > 0) {
+    try {
+      for (const { itemId, correct, previousLevel } of undo) {
+        const existing = await db.query.studyProgress.findFirst({
+          where: and(eq(studyProgress.itemType, itemType), eq(studyProgress.itemId, itemId)),
+        });
+        if (!existing) continue;
+
+        if (previousLevel < 0) {
+          await db.delete(studyProgress).where(eq(studyProgress.id, existing.id));
+          continue;
+        }
+
+        await db
+          .update(studyProgress)
+          .set({
+            level: previousLevel,
+            seenCount: Math.max(0, existing.seenCount - 1),
+            correctCount: Math.max(0, existing.correctCount - (correct ? 1 : 0)),
+            wrongCount: Math.max(0, existing.wrongCount - (correct ? 0 : 1)),
+          })
+          .where(eq(studyProgress.id, existing.id));
+      }
+      return NextResponse.json({ ok: true, reverted: undo.length });
+    } catch (error) {
+      console.error('撤销学习进度失败:', error);
+      return NextResponse.json({ error: '撤销学习进度失败' }, { status: 500 });
+    }
+  }
+
   const results: { itemId: number; correct: boolean }[] = Array.isArray(body?.results)
     ? body.results
         .filter((r: any) => Number.isFinite(Number(r?.itemId)))

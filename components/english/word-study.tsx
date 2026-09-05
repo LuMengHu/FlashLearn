@@ -11,8 +11,19 @@ import { RoundStarter } from '@/components/study/round-starter';
 import { SectionTabs, type SectionTab } from '@/components/layout/section-tabs';
 import { useSpeech } from '@/hooks/use-speech';
 import { cn } from '@/lib/utils';
-import { fetchProgress, pickForRound, reportResult, summarize, type ProgressMap } from '@/lib/study';
+import {
+  fetchProgress,
+  levelOf,
+  pickForRound,
+  reportResult,
+  revertResults,
+  summarize,
+  type ProgressMap,
+} from '@/lib/study';
 import type { Word } from '@/lib/schema';
+
+/** 已作答的一步，供回退时还原 */
+type HistoryEntry = { word: Word; wasRight: boolean; previousLevel: number };
 
 export default function WordStudy() {
   const [words, setWords] = useState<Word[] | null>(null);
@@ -27,6 +38,7 @@ export default function WordStudy() {
   const [isAnswerVisible, setIsAnswerVisible] = useState(false);
   const [isAutoPlayOn, setIsAutoPlayOn] = useState(false);
   const [section, setSection] = useState('senses');
+  const [history, setHistory] = useState<HistoryEntry[]>([]);
   const { speak } = useSpeech();
 
   const load = useCallback(async () => {
@@ -55,13 +67,7 @@ export default function WordStudy() {
 
   const startRound = (count: number) => {
     if (!words) return;
-    const picked = pickForRound(words, progress, count);
-    setQueue(picked);
-    setTotal(picked.length);
-    setDone(0);
-    setRight(0);
-    setWrongWords([]);
-    setIsAnswerVisible(false);
+    restartWith(pickForRound(words, progress, count));
   };
 
   const restartWith = (list: Word[]) => {
@@ -71,6 +77,7 @@ export default function WordStudy() {
     setRight(0);
     setWrongWords([]);
     setIsAnswerVisible(false);
+    setHistory([]);
   };
 
   const backToStart = async () => {
@@ -82,21 +89,42 @@ export default function WordStudy() {
     (isRight: boolean) => {
       if (!current) return;
       reportResult('word', current.id, isRight);
+      setHistory(prev => [...prev, { word: current, wasRight: isRight, previousLevel: levelOf(current.id, progress) }]);
       if (isRight) setRight(r => r + 1);
       else setWrongWords(prev => [...prev, current]);
       setDone(d => d + 1);
       setQueue(prev => (prev ? prev.slice(1) : prev));
       setIsAnswerVisible(false);
     },
-    [current]
+    [current, progress]
   );
 
-  // 键盘快捷键：空格/回车揭晓，← 没记住，→ 记住了
+  /** 回退上一题：把它放回队首、撤掉计分，并把熟练度恢复成作答前 */
+  const handleUndo = useCallback(() => {
+    const last = history[history.length - 1];
+    if (!last) return;
+
+    revertResults('word', [{ itemId: last.word.id, correct: last.wasRight, previousLevel: last.previousLevel }]);
+    setHistory(prev => prev.slice(0, -1));
+    setQueue(prev => [last.word, ...(prev ?? [])]);
+    setDone(d => Math.max(0, d - 1));
+    if (last.wasRight) setRight(r => Math.max(0, r - 1));
+    else setWrongWords(prev => prev.filter(w => w.id !== last.word.id));
+    setIsAnswerVisible(false);
+  }, [history]);
+
+  // 键盘快捷键：空格/回车揭晓，← 没记住，→ 记住了，Backspace 回退上一题
   useEffect(() => {
     if (!current) return;
     const onKey = (e: KeyboardEvent) => {
       const target = e.target as HTMLElement | null;
       if (target && ['INPUT', 'TEXTAREA'].includes(target.tagName)) return;
+
+      if (e.key === 'Backspace') {
+        e.preventDefault();
+        handleUndo();
+        return;
+      }
 
       if (!isAnswerVisible) {
         if (e.key === ' ' || e.key === 'Enter') {
@@ -110,7 +138,7 @@ export default function WordStudy() {
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [current, isAnswerVisible, handleMark]);
+  }, [current, isAnswerVisible, handleMark, handleUndo]);
 
   // 换词时回到默认分段
   useEffect(() => {
@@ -174,6 +202,8 @@ export default function WordStudy() {
         wrong={wrongWords.length}
         rightLabel="记住"
         wrongLabel="没记住"
+        onUndo={handleUndo}
+        canUndo={history.length > 0}
         extra={
           <button
             onClick={() => setIsAutoPlayOn(v => !v)}
@@ -329,7 +359,7 @@ export default function WordStudy() {
           </button>
         )}
         <p className="mt-2 hidden text-center text-xs text-slate-700 sm:block">
-          快捷键：空格 显示答案 · ← 没记住 · → 记住了
+          快捷键：空格 显示答案 · ← 没记住 · → 记住了 · Backspace 回退
         </p>
       </div>
     </div>

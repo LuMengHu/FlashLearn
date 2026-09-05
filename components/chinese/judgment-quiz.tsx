@@ -8,7 +8,7 @@ import { StatBar } from '@/components/study/stat-bar';
 import { RoundSummary } from '@/components/study/round-summary';
 import { shuffle } from '@/lib/utils';
 import { cn } from '@/lib/utils';
-import { reportResults } from '@/lib/study';
+import { levelOf, reportResults, revertResults, type AnswerRecord, type ProgressMap } from '@/lib/study';
 import type { ChineseItem } from '@/lib/schema';
 
 type Card = {
@@ -17,16 +17,28 @@ type Card = {
   isRight: boolean;
 };
 
+/** 揭晓一组时存一份快照，回退时整组还原回未作答的状态 */
+type HistoryEntry = {
+  cards: Card[];
+  pool: ChineseItem[];
+  done: number;
+  right: number;
+  wrongItems: ChineseItem[];
+  reported: AnswerRecord[];
+};
+
 export default function JudgmentQuiz({
   items,
   batchSize,
   variant,
+  progress,
   onFinish,
 }: {
   items: ChineseItem[];
   batchSize: number;
   /** single: 只显示词本身（易错字）；pair: 上面词、下面注音（拼音） */
   variant: 'single' | 'pair';
+  progress: ProgressMap;
   onFinish: () => void;
 }) {
   const [pool, setPool] = useState<ChineseItem[]>([]);
@@ -37,6 +49,7 @@ export default function JudgmentQuiz({
   const [right, setRight] = useState(0);
   const [wrongItems, setWrongItems] = useState<ChineseItem[]>([]);
   const [finished, setFinished] = useState(false);
+  const [history, setHistory] = useState<HistoryEntry[]>([]);
 
   const totalRounds = useMemo(
     () => Math.max(1, Math.ceil(items.length / batchSize)),
@@ -69,6 +82,7 @@ export default function JudgmentQuiz({
       setRight(0);
       setWrongItems([]);
       setFinished(false);
+      setHistory([]);
       dealFrom(source);
     },
     [dealFrom]
@@ -94,8 +108,12 @@ export default function JudgmentQuiz({
     const perCard = cards.map((card, index) => ({
       itemId: card.item.id,
       correct: picked.has(index) === card.isRight,
+      previousLevel: levelOf(card.item.id, progress),
     }));
     reportResults('chinese', perCard);
+
+    // 先把这一组作答前的状态压栈，回退时整组还原
+    setHistory(prev => [...prev, { cards, pool, done, right, wrongItems, reported: perCard }]);
 
     const isAllCorrect = perCard.every(r => r.correct);
     setDone(d => d + 1);
@@ -106,6 +124,26 @@ export default function JudgmentQuiz({
   const handleNext = () => {
     if (pool.length === 0) setFinished(true);
     else dealFrom(pool);
+  };
+
+  /**
+   * 回退一组：把上一组原样发回来（未作答状态），计分和熟练度都退回去。
+   * 已揭晓但还没点「下一组」时，回退的就是当前这一组，相当于重做。
+   */
+  const handleUndo = () => {
+    const last = history[history.length - 1];
+    if (!last) return;
+
+    revertResults('chinese', last.reported);
+    setHistory(prev => prev.slice(0, -1));
+    setCards(last.cards);
+    setPool(last.pool);
+    setDone(last.done);
+    setRight(last.right);
+    setWrongItems(last.wrongItems);
+    setPicked(new Set());
+    setRevealed(false);
+    setFinished(false);
   };
 
   if (finished) {
@@ -128,7 +166,16 @@ export default function JudgmentQuiz({
 
   return (
     <div>
-      <StatBar done={done} total={totalRounds} right={right} wrong={done - right} rightLabel="全对" wrongLabel="有错" />
+      <StatBar
+        done={done}
+        total={totalRounds}
+        right={right}
+        wrong={done - right}
+        rightLabel="全对"
+        wrongLabel="有错"
+        onUndo={handleUndo}
+        canUndo={history.length > 0}
+      />
 
       <p className="mb-4 text-center text-slate-400">
         选出 <span className="font-semibold text-cyan-400">{variant === 'pair' ? '注音正确' : '没有写错'}</span> 的

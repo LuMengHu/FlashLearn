@@ -66,20 +66,24 @@ export default function ChinesePractice({ meta }: { meta: ChineseMeta }) {
     return <RoundStarter summary={summary} onStart={startRound} unit={meta.kind === 'judgment' ? '条' : '题'} />;
   }
 
+  // progress 传给子组件，是为了回退时能把熟练度恢复成作答前的等级
   if (meta.kind === 'judgment') {
     return (
       <JudgmentQuiz
         items={round}
         batchSize={meta.batchSize ?? 6}
         variant={meta.type === 'pinyin' ? 'pair' : 'single'}
+        progress={progress}
         onFinish={backToStart}
       />
     );
   }
 
   if (meta.kind === 'choice') {
-    return <ChoiceQuiz items={round} choices={meta.choices ?? []} onFinish={backToStart} />;
+    return <ChoiceQuiz items={round} choices={meta.choices ?? []} progress={progress} onFinish={backToStart} />;
   }
 
-  return <RecallQuiz items={round} type={meta.type} hint={meta.recallHint} onFinish={backToStart} />;
+  return (
+    <RecallQuiz items={round} type={meta.type} hint={meta.recallHint} progress={progress} onFinish={backToStart} />
+  );
 }
