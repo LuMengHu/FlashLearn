@@ -3,119 +3,119 @@
     "front": "按部就班",
     "wrong": "按步就班",
     "back": "步→部",
-    "note": "「部」指门类、类别，按部就班是指按门类条理安排就位，而非脚步。",
+    "note": "“部”指门类、次序，按门类条理安排就位；“步”是脚步，讲不通。",
     "type": "char_confusion"
   },
   {
     "front": "川流不息",
     "wrong": "穿流不息",
     "back": "穿→川",
-    "note": "「川」指河流，形容像河水流淌一样连续不断，而非穿梭。",
+    "note": "“川”指河流，形容像河水一样连续不断；“穿”是穿过。",
     "type": "char_confusion"
   },
   {
     "front": "再接再厉",
     "wrong": "再接再励",
     "back": "励→厉",
-    "note": "「厉」通「砺」，本指公鸡搏斗前把嘴磨快，引申为奋勇振作，非鼓励勉励。",
+    "note": "“厉”通“砺”，本指公鸡搏斗前把嘴磨快，引申为奋勇振作，非鼓励勉励。",
     "type": "char_confusion"
   },
   {
     "front": "迫不及待",
     "wrong": "迫不急待",
     "back": "急→及",
-    "note": "「及」是赶得上的意思，形容急迫得不能等待，而非着急。",
+    "note": "“及”是赶得上，急迫得来不及等待；“急”是着急，与“待”重复。",
     "type": "char_confusion"
   },
   {
     "front": "针砭时弊",
     "wrong": "针贬时弊",
     "back": "贬→砭",
-    "note": "「砭」是古代治病用的石针，比喻指出缺点错误以医治弊病，非贬低之意。",
+    "note": "“砭”是古代治病的石针，比喻指出并医治弊病；“贬”是贬低，与治病无关。",
     "type": "char_confusion"
   },
   {
     "front": "提纲挈领",
     "wrong": "题纲挈领",
     "back": "题→提",
-    "note": "「提」是提起拉住，「纲」是渔网的总绳，比喻抓住要领，非题目的题。",
+    "note": "“提”是提起拉住，“纲”是渔网的总绳，比喻抓住要领，非题目的题。",
     "type": "char_confusion"
   },
   {
     "front": "趋之若鹜",
-    "wrong": "趋之若骛",
-    "back": "骛→鹜",
-    "note": "「鹜」指野鸭，形容争相追逐像成群鸭子跑过去一样，非奔驰之「骛」。",
+    "wrong": "趋之若惊",
+    "back": "惊→鹜",
+    "note": "“鹜”是野鸭，像鸭子一样成群跑过去；“惊”是受惊。",
     "type": "char_confusion"
   },
   {
     "front": "走投无路",
     "wrong": "走头无路",
     "back": "头→投",
-    "note": "「投」是投奔、投靠，形容无处投奔落脚，非脑袋的头。",
+    "note": "“投”是投奔、投靠，形容无处投奔落脚，非脑袋的头。",
     "type": "char_confusion"
   },
   {
     "front": "墨守成规",
     "wrong": "默守成规",
     "back": "默→墨",
-    "note": "「墨」指战国墨子善于守城，后借指固守既有规矩不思变通，非沉默。",
+    "note": "“墨”指战国墨子善于守城，后借指固守既有规矩不思变通，非沉默。",
     "type": "char_confusion"
   },
   {
     "front": "仗义执言",
     "wrong": "仗义直言",
     "back": "直→执",
-    "note": "「执」是坚守、主持，指主持公道说出正义之辞，非直爽说话。",
+    "note": "“执”是坚持、主持，主持公道说公正的话；“直言”只是直率地说。",
     "type": "char_confusion"
   },
   {
     "front": "鬼鬼祟祟",
     "wrong": "鬼鬼崇崇",
     "back": "崇→祟",
-    "note": "「祟」指鬼怪作祸害人，形容偷偷摸摸见不得人，非崇高之崇。",
+    "note": "“祟”读 suì，指鬼怪作怪，形容行动偷偷摸摸；“崇”是崇高、崇拜。",
     "type": "char_confusion"
   },
   {
     "front": "饮鸩止渴",
     "wrong": "饮鸠止渴",
     "back": "鸠→鸩",
-    "note": "「鸩」是传说中羽毛浸酒能致人死命的毒鸟，非斑鸠之鸠。",
+    "note": "“鸩”读 zhèn，是毒鸟，其羽泡的酒有毒；“鸠”是斑鸠。",
     "type": "char_confusion"
   },
   {
     "front": "蛛丝马迹",
     "wrong": "蛛丝蚂迹",
     "back": "蚂→马",
-    "note": "「马」指常在灶台爬动的昆虫「灶马」，留下的细微爬痕，非蚂蚁。",
+    "note": "“马”指马匹留下的蹄印，与蛛丝并列指隐约线索；“蚂”是蚂蚁。",
     "type": "char_confusion"
   },
   {
     "front": "沧海一粟",
     "wrong": "沧海一栗",
     "back": "栗→粟",
-    "note": "「粟」指谷子、小米，比喻人在天地间极其渺小，非板栗之栗。",
+    "note": "“粟”指谷子、小米，比喻人在天地间极其渺小，非板栗之栗。",
     "type": "char_confusion"
   },
   {
     "front": "滥竽充数",
     "wrong": "滥竿充数",
     "back": "竿→竽",
-    "note": "「竽」是古代的一种吹奏乐器，非竹竿的竿。",
+    "note": "“竽”是古代的一种吹奏乐器，非竹竿的竿。",
     "type": "char_confusion"
   },
   {
     "front": "黄粱一梦",
     "wrong": "黄梁一梦",
     "back": "梁→粱",
-    "note": "“粱”指黄米饭，典出卢生煮黄米饭入梦的典故。",
+    "note": "“粱”是小米，煮黄米饭时做的梦；“梁”是屋梁。",
     "type": "char_confusion"
   },
   {
     "front": "不胫而走",
     "wrong": "不径而走",
     "back": "径→胫",
-    "note": "“胫”指小腿，比喻事情不用小腿跑就能迅速传开。",
+    "note": "“胫”是小腿，没有腿却能跑，形容传播迅速；“径”是小路。",
     "type": "char_confusion"
   },
   {
@@ -129,14 +129,14 @@
     "front": "破釜沉舟",
     "wrong": "破斧沉舟",
     "back": "斧→釜",
-    "note": "“釜”指古代煮饭的锅，形容砸破锅凿沉船决一死战。",
+    "note": "“釜”是古代的锅，砸锅沉船表示决一死战；“斧”是斧头。",
     "type": "char_confusion"
   },
   {
     "front": "相形见绌",
     "wrong": "相形见拙",
     "back": "拙→绌",
-    "note": "“绌”指不足、欠缺，指互相比较之下显出差距。",
+    "note": "“绌”读 chù，是不足、不够；“拙”是笨拙，指能力差而非相比不足。",
     "type": "char_confusion"
   },
   {
@@ -157,42 +157,42 @@
     "front": "世外桃源",
     "wrong": "世外桃园",
     "back": "园→源",
-    "note": "“源”指水源，典出《桃花源记》，指桃花溪流的发源地。",
+    "note": "“源”出自陶渊明《桃花源记》，指理想境地；“园”只是园子。",
     "type": "char_confusion"
   },
   {
     "front": "出其不意",
     "wrong": "出奇不意",
     "back": "奇→其",
-    "note": "“其”是代词“对方”，意为趁对方没有料到时采取行动。",
+    "note": "“其”指对方，趁对方没料到时行动；“奇”是奇怪。",
     "type": "char_confusion"
   },
   {
     "front": "融会贯通",
     "wrong": "融汇贯通",
     "back": "汇→会",
-    "note": "“会”指领会、领悟，指融合各方道理而全面领悟透彻。",
+    "note": "“会”是领会、理解，把各方面知识领会而贯穿起来；“汇”是汇合水流。",
     "type": "char_confusion"
   },
   {
     "front": "精兵简政",
     "wrong": "精兵减政",
     "back": "减→简",
-    "note": "“简”指简化、精简，指裁减多余人员、精简行政机构。",
+    "note": "“简”是精简、使简化，指缩减机构；“减”只是数量减少，不合原义。",
     "type": "char_confusion"
   },
   {
     "front": "病入膏肓",
     "wrong": "病入膏盲",
     "back": "盲→肓",
-    "note": "“肓”指心下膈上的部位，药力难及，比喻病情严重危急。",
+    "note": "“肓”读 huāng，指心脏与横膈膜之间，药力难到之处；“盲”是眼瞎。",
     "type": "char_confusion"
   },
   {
     "front": "美轮美奂",
-    "wrong": "美仑美奂",
-    "back": "仑→轮",
-    "note": "“轮”形容高大，原形容房屋高大众多、华美壮丽。",
+    "wrong": "美伦美奂",
+    "back": "伦→轮",
+    "note": "“轮”指高大，“奂”指众多，原形容房屋高大华美；“伦”是人伦、伦次。",
     "type": "char_confusion"
   },
   {
@@ -207,6 +207,1518 @@
     "wrong": "名列前矛",
     "back": "矛→茅",
     "note": "“茅”指古代前锋行军用来报警示警的茅草，比喻名次排在前面。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "唉声叹气",
+    "wrong": "哀声叹气",
+    "back": "哀→唉",
+    "note": "“唉”是叹息的拟声词，读 āi，指发出叹气声；“哀”是悲哀，重在情绪而非声音。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "黯然销魂",
+    "wrong": "暗然销魂",
+    "back": "暗→黯",
+    "note": "“黯”指心神沮丧、脸色发暗，形容情绪低落；“暗”只指光线不亮。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "咄咄逼人",
+    "wrong": "拙拙逼人",
+    "back": "拙→咄",
+    "note": "“咄”读 duō，是呵斥声，形容气势汹汹逼人；“拙”是笨拙，意思相反。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "永葆青春",
+    "wrong": "永保青春",
+    "back": "保→葆",
+    "note": "“葆”是保持、保有的书面语，多用于抽象事物；“保”偏重保护、保住具体东西。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "关怀备至",
+    "wrong": "关怀倍至",
+    "back": "倍→备",
+    "note": "“备”是完备、周全，指关怀极其周到；“倍”是加倍，程度义不合。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "金碧辉煌",
+    "wrong": "金壁辉煌",
+    "back": "壁→碧",
+    "note": "“碧”指青绿色的玉石，与“金”并列写建筑色彩华丽；“壁”是墙壁。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "明辨是非",
+    "wrong": "明辩是非",
+    "back": "辩→辨",
+    "note": "“辨”是分辨、辨别，从“辡”加“刂”表示用刀剖分；“辩”是用言辞争论。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "层峦叠嶂",
+    "wrong": "层峦迭嶂",
+    "back": "迭→叠",
+    "note": "“叠”是重叠、一层层堆起；“迭”是交替、屡次，如更迭、迭起。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "众志成城",
+    "wrong": "众志乘城",
+    "back": "乘→成",
+    "note": "“成”是形成，众人同心就能筑成城墙；“乘”是登上、趁着。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "忧心忡忡",
+    "wrong": "忧心冲冲",
+    "back": "冲→忡",
+    "note": "“忡”从“忄”，读 chōng，形容忧愁不安；“冲”是冲撞、向前冲。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "强词夺理",
+    "wrong": "强辞夺理",
+    "back": "辞→词",
+    "note": "“词”指言词、说法，硬编说法夺人之理；“辞”多指文辞、辞别。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "以逸待劳",
+    "wrong": "以逸代劳",
+    "back": "代→待",
+    "note": "“待”是等待，养精蓄锐等敌方疲劳；“代”是代替，与兵法原意不符。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "殚精竭虑",
+    "wrong": "惮精竭虑",
+    "back": "惮→殚",
+    "note": "“殚”读 dān，是竭尽、用尽；“惮”是畏惧，如肆无忌惮。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "虎视眈眈",
+    "wrong": "虎视耽耽",
+    "back": "耽→眈",
+    "note": "“眈”从“目”，指注视的样子；“耽”从“耳”，是耽误、沉溺。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "飞扬跋扈",
+    "wrong": "飞扬拔扈",
+    "back": "拔→跋",
+    "note": "“跋扈”本指鱼跳出竹笼，形容专横放肆；“拔”是拔起，无此义。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "鞠躬尽瘁",
+    "wrong": "鞠躬尽粹",
+    "back": "粹→瘁",
+    "note": "“瘁”从“疒”，是劳累成疾、耗尽心力；“粹”是纯粹、精华。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "沧海桑田",
+    "wrong": "仓海桑田",
+    "back": "仓→沧",
+    "note": "“沧”从“氵”，指青绿色的大海；“仓”是仓库。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "一筹莫展",
+    "wrong": "一愁莫展",
+    "back": "愁→筹",
+    "note": "“筹”是筹码、计策，一点办法也施展不出；“愁”是发愁，与“展”搭配不通。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "出类拔萃",
+    "wrong": "出类拔粹",
+    "back": "粹→萃",
+    "note": "“萃”指聚集在一起的草木、人群，超出同类之上；“粹”是纯粹。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "中流砥柱",
+    "wrong": "中流抵柱",
+    "back": "抵→砥",
+    "note": "“砥”是砥石，黄河中形如柱石的山，比喻能担重任的人；“抵”是抵挡。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "蜚声中外",
+    "wrong": "斐声中外",
+    "back": "斐→蜚",
+    "note": "“蜚”通“飞”，指名声传扬；“斐”是有文采，如成绩斐然。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "奋发图强",
+    "wrong": "愤发图强",
+    "back": "愤→奋",
+    "note": "“奋”是振作、鼓起劲；“愤”是愤怒，情绪义不合。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "言简意赅",
+    "wrong": "言简意刻",
+    "back": "刻→赅",
+    "note": "“赅”读 gāi，是完备、齐全，指话少而意思完整；“刻”是刻薄、雕刻。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "悬梁刺股",
+    "wrong": "悬梁刺骨",
+    "back": "骨→股",
+    "note": "“股”指大腿，苏秦读书困倦时用锥刺大腿；“骨”不合史实。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "食不果腹",
+    "wrong": "食不裹腹",
+    "back": "裹→果",
+    "note": "“果”是吃饱、充实，如果腹；“裹”是包裹。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "貌合神离",
+    "wrong": "貌和神离",
+    "back": "和→合",
+    "note": "“合”是相合，表面一致而内心不合；“和”是和睦，与“离”不成对照。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "哄堂大笑",
+    "wrong": "轰堂大笑",
+    "back": "轰→哄",
+    "note": "“哄”从“口”，读 hōng，指满屋人同时大笑；“轰”是巨响、轰击。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "焕然一新",
+    "wrong": "涣然一新",
+    "back": "涣→焕",
+    "note": "“焕”是光亮、鲜明；“涣”是流散，如涣然冰释。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "兵荒马乱",
+    "wrong": "兵慌马乱",
+    "back": "慌→荒",
+    "note": "“荒”指荒乱、荒废，形容战乱的社会景象；“慌”只是人心慌张。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "张皇失措",
+    "wrong": "张惶失措",
+    "back": "惶→皇",
+    "note": "“皇”通“惶”但成语定形作“张皇”，指慌张失去分寸。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "插科打诨",
+    "wrong": "插科打浑",
+    "back": "浑→诨",
+    "note": "“诨”读 hùn，指戏曲中的滑稽话；“浑”是浑浊、浑身。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "战战兢兢",
+    "wrong": "战战竞竞",
+    "back": "竞→兢",
+    "note": "“兢”读 jīng，是小心谨慎的样子；“竞”是竞争。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "掎角之势",
+    "wrong": "犄角之势",
+    "back": "犄→掎",
+    "note": "“掎”读 jǐ，是拉住腿脚，指分兵牵制、夹击；“犄”是牛角。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "一如既往",
+    "wrong": "一如继往",
+    "back": "继→既",
+    "note": "“既”是已经，完全像已往一样；“继”是继续，语义不通。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "草菅人命",
+    "wrong": "草管人命",
+    "back": "管→菅",
+    "note": "“菅”读 jiān，是一种野草，把人命看作野草；“管”是管理。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "矫揉造作",
+    "wrong": "娇揉造作",
+    "back": "娇→矫",
+    "note": "“矫”是使弯的变直，指故意做作、不自然；“娇”是娇气。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "耳根清净",
+    "wrong": "耳根清静",
+    "back": "静→净",
+    "note": "“净”是干净、无杂音；“静”侧重安静无声，成语定形作“清净”。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "龙盘虎踞",
+    "wrong": "龙盘虎据",
+    "back": "据→踞",
+    "note": "“踞”是蹲坐，形容地势雄伟险要；“据”是占据、凭据。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "不假思索",
+    "wrong": "不加思索",
+    "back": "加→假",
+    "note": "“假”是凭借、借助，用不着借助思考；“加”是增加，讲不通。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "功亏一篑",
+    "wrong": "功亏一匮",
+    "back": "匮→篑",
+    "note": "“篑”读 kuì，是盛土的竹筐，差一筐土而功败垂成；“匮”是缺乏。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "脍炙人口",
+    "wrong": "烩炙人口",
+    "back": "烩→脍",
+    "note": "“脍”是切细的肉，“炙”是烤肉，美味人人爱吃；“烩”是烹调方法之一。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "同仇敌忾",
+    "wrong": "同仇敌慨",
+    "back": "慨→忾",
+    "note": "“忾”读 kài，是愤恨；“慨”是感慨、慷慨。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "流芳百世",
+    "wrong": "留芳百世",
+    "back": "留→流",
+    "note": "“流”是流传，美名流传后世；“留”是留下，与“百世”搭配不当。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "筚路蓝缕",
+    "wrong": "筚路篮缕",
+    "back": "篮→蓝",
+    "note": "“蓝缕”即褴褛，指破衣服，形容创业艰苦；“篮”是竹篮。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "鞭辟入里",
+    "wrong": "鞭僻入里",
+    "back": "僻→辟",
+    "note": "“辟”是透彻、切中，形容分析深入；“僻”是偏僻。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "励精图治",
+    "wrong": "厉精图治",
+    "back": "厉→励",
+    "note": "“励”是振奋、激励，振作精神谋求治理好国家；“厉”是严厉。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "风声鹤唳",
+    "wrong": "风声鹤泪",
+    "back": "泪→唳",
+    "note": "“唳”读 lì，是鹤的鸣叫声；“泪”是眼泪，鹤不会流泪。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "黄粱美梦",
+    "wrong": "黄梁美梦",
+    "back": "梁→粱",
+    "note": "“粱”是小米，煮黄米饭时做的一场梦；“梁”是屋梁、桥梁。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "满腹经纶",
+    "wrong": "满腹经论",
+    "back": "论→纶",
+    "note": "“经纶”本指整理蚕丝，比喻治国的才识；“论”是议论。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "溘然长逝",
+    "wrong": "盍然长逝",
+    "back": "盍→溘",
+    "note": "“溘”读 kè，是忽然、突然；“盍”是何不。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "陈腔滥调",
+    "wrong": "陈腔烂调",
+    "back": "烂→滥",
+    "note": "“滥”是过度、不实在，指陈旧空泛的论调；“烂”是腐烂。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "得陇望蜀",
+    "wrong": "得垄望蜀",
+    "back": "垄→陇",
+    "note": "“陇”指陇西（今甘肃），与“蜀”同为地名；“垄”是田埂。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "萎靡不振",
+    "wrong": "萎糜不振",
+    "back": "糜→靡",
+    "note": "“靡”是倒下、消沉，指精神不振；“糜”是粥、糜烂。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "绵里藏针",
+    "wrong": "棉里藏针",
+    "back": "棉→绵",
+    "note": "“绵”指丝绵，柔软中藏着针，比喻外柔内刚；“棉”是棉花。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "浮想联翩",
+    "wrong": "浮想联篇",
+    "back": "篇→翩",
+    "note": "“翩”形容鸟飞的样子，指联想像飞鸟一样接连不断；“篇”是篇章。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "前仆后继",
+    "wrong": "前扑后继",
+    "back": "扑→仆",
+    "note": "“仆”读 pū，是向前倒下，前面的倒下后面的跟上；“扑”是扑打。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "罄竹难书",
+    "wrong": "磬竹难书",
+    "back": "磬→罄",
+    "note": "“罄”是用尽，把竹简用完也写不完罪状；“磬”是石制打击乐器。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "委曲求全",
+    "wrong": "委屈求全",
+    "back": "屈→曲",
+    "note": "“委曲”指曲意迁就、勉强将就；“委屈”是受了冤枉，两词意思不同。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "鸠占鹊巢",
+    "wrong": "鸠占雀巢",
+    "back": "雀→鹊",
+    "note": "“鹊”是喜鹊，鸠鸟强占喜鹊的窝；“雀”是麻雀，典出《诗经》作鹊。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "月色溶溶",
+    "wrong": "月色熔熔",
+    "back": "熔→溶",
+    "note": "“溶溶”形容水或月光荡漾流动的样子；“熔”是熔化金属。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "扑朔迷离",
+    "wrong": "扑溯迷离",
+    "back": "溯→朔",
+    "note": "“朔”出自“雄兔脚扑朔”，形容雄兔脚爪乱动，引申为难以分辨；“溯”是逆流而上。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "歃血为盟",
+    "wrong": "插血为盟",
+    "back": "插→歃",
+    "note": "“歃”读 shà，指用嘴吸取牲畜的血涂在唇上盟誓；“插”是插入。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "心浮气躁",
+    "wrong": "心浮气燥",
+    "back": "燥→躁",
+    "note": "“躁”从“足”，指性情急躁；“燥”从“火”，指干燥。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "真知灼见",
+    "wrong": "真知卓见",
+    "back": "卓→灼",
+    "note": "“灼”是明白透彻，如目光灼灼；“卓”是高超，虽近义但成语定形作“灼”。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "文过饰非",
+    "wrong": "闻过饰非",
+    "back": "闻→文",
+    "note": "“文”用作动词是掩饰，与“饰”并列；“闻”是听见。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "共商国是",
+    "wrong": "共商国事",
+    "back": "事→是",
+    "note": "“国是”是国家大政方针的专门说法，“共商国是”为定型搭配；“国事”泛指国家事务。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "额手称庆",
+    "wrong": "额首称庆",
+    "back": "首→手",
+    "note": "“额手”是把手举到额头表示庆幸；“额首”不成词。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "毁家纾难",
+    "wrong": "毁家抒难",
+    "back": "抒→纾",
+    "note": "“纾”读 shū，是解除、缓和；“抒”是抒发、表达。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "金榜题名",
+    "wrong": "金榜提名",
+    "back": "提→题",
+    "note": "“题”是书写、题写，名字被写在金榜上；“提”是提出、提拔。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "运筹帷幄",
+    "wrong": "运筹帷握",
+    "back": "握→幄",
+    "note": "“帷幄”是军中帐幕，在帐中筹划决策；“握”是握持。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "振聋发聩",
+    "wrong": "震聋发聩",
+    "back": "震→振",
+    "note": "“振”是振动、唤醒，使耳聋的人听见；“震”偏重震动、震惊。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "枉费心机",
+    "wrong": "妄费心机",
+    "back": "妄→枉",
+    "note": "“枉”是白白地、徒然；“妄”是狂妄、胡乱。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "销声匿迹",
+    "wrong": "消声匿迹",
+    "back": "消→销",
+    "note": "“销”是消除、除去，与“匿”并列指隐藏起来；“消”多指自然消失。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "一泻千里",
+    "wrong": "一泄千里",
+    "back": "泄→泻",
+    "note": "“泻”指水急速往下流；“泄”多指泄露、排出。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "别出心裁",
+    "wrong": "别出新裁",
+    "back": "新→心",
+    "note": "“心裁”指心中的构思裁断，另有一番构思；“新”是形容词，不能受“出”支配。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "栩栩如生",
+    "wrong": "诩诩如生",
+    "back": "诩→栩",
+    "note": "“栩栩”出自《庄子》，形容生动逼真；“诩”是夸耀，如自诩。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "喧宾夺主",
+    "wrong": "宣宾夺主",
+    "back": "宣→喧",
+    "note": "“喧”是声音大、喧闹，客人声势压过主人；“宣”是宣布。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "偃旗息鼓",
+    "wrong": "掩旗息鼓",
+    "back": "掩→偃",
+    "note": "“偃”是放倒，放倒旗子停止击鼓；“掩”是遮盖。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "神采奕奕",
+    "wrong": "神彩奕奕",
+    "back": "彩→采",
+    "note": "“采”指神色、精神，如风采、神采；“彩”指色彩、彩色。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "万马齐喑",
+    "wrong": "万马齐暗",
+    "back": "暗→喑",
+    "note": "“喑”读 yīn，是沉默不作声；“暗”是昏暗无光。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "闲情逸致",
+    "wrong": "闲情逸志",
+    "back": "志→致",
+    "note": "“致”指情趣、兴致，如兴致、雅致；“志”是志向。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "因地制宜",
+    "wrong": "因地治宜",
+    "back": "治→制",
+    "note": "“制”是制定、订出，根据当地情况定出办法；“治”是治理。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "捉迷藏",
+    "wrong": "捉谜藏",
+    "back": "谜→迷",
+    "note": "“迷”是使人分辨不清，藏起来让人找不着；“谜”是谜语。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "大型",
+    "wrong": "大形",
+    "back": "形→型",
+    "note": "“型”指类型、规模等级，如大型、微型；“形”指形状、外形。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "旁征博引",
+    "wrong": "旁证博引",
+    "back": "证→征",
+    "note": "“征”是征引、搜集，广泛引用材料；“证”是证明、证据。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "天幕",
+    "wrong": "天暮",
+    "back": "暮→幕",
+    "note": "“幕”指像帐幕一样笼罩大地的天空；“暮”是傍晚、日落。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "倾泻",
+    "wrong": "倾泄",
+    "back": "泄→泻",
+    "note": "“泻”指大量的水从高处很快流下；“泄”多指液体气体排出或秘密泄露。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "变幻莫测",
+    "wrong": "变换莫测",
+    "back": "换→幻",
+    "note": "“幻”指虚幻不定的变化，难以揣测；“换”只是替换。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "羸弱",
+    "wrong": "赢弱",
+    "back": "赢→羸",
+    "note": "“羸”读 léi，是瘦弱；“赢”是赢得，字形相近而义远。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "废弛",
+    "wrong": "废驰",
+    "back": "驰→弛",
+    "note": "“弛”是松弛、放松，指法令制度废置松弛；“驰”是奔驰。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "罔顾",
+    "wrong": "枉顾",
+    "back": "枉→罔",
+    "note": "“罔”是无、没有，指全然不顾；“枉”是白白地、冤枉。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "一溜烟",
+    "wrong": "一遛烟",
+    "back": "遛→溜",
+    "note": "“溜”是快速滑走，形容跑得极快；“遛”是慢慢散步。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "心无旁骛",
+    "wrong": "心无旁鹜",
+    "back": "鹜→骛",
+    "note": "“骛”从“马”下“攵”，是追求、奔驰，指不分心他求；“鹜”是野鸭。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "秘诀",
+    "wrong": "密诀",
+    "back": "密→秘",
+    "note": "“秘”是不公开的、独有的；“密”是稠密、紧密或秘密的另一用法，此处定形作“秘诀”。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "装订",
+    "wrong": "装钉",
+    "back": "钉→订",
+    "note": "“订”是把书页装连成册；“钉”是钉子、钉住。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "厮杀",
+    "wrong": "撕杀",
+    "back": "撕→厮",
+    "note": "“厮”是互相，指双方对杀；“撕”是用手扯裂。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "喧哗",
+    "wrong": "暄哗",
+    "back": "暄→喧",
+    "note": "“喧”是声音大而杂；“暄”是温暖，如寒暄。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "淋漓尽致",
+    "wrong": "淋漓尽至",
+    "back": "至→致",
+    "note": "“致”指情致、程度，形容表达得充分透彻；“至”是到达。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "辩证法",
+    "wrong": "辨证法",
+    "back": "辨→辩",
+    "note": "“辩”是辩论、论辩，哲学上的辩证法取此义；“辨”是分辨。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "文采",
+    "wrong": "文彩",
+    "back": "彩→采",
+    "note": "“采”指文辞的风采、才华；“彩”指颜色。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "冥思苦想",
+    "wrong": "瞑思苦想",
+    "back": "瞑→冥",
+    "note": "“冥”是深沉、幽深，指深入地思索；“瞑”是闭眼。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "气冲霄汉",
+    "wrong": "气冲宵汉",
+    "back": "宵→霄",
+    "note": "“霄”是云霄、高空；“宵”是夜晚，如通宵。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "稗官野史",
+    "wrong": "裨官野史",
+    "back": "裨→稗",
+    "note": "“稗”是稗草，稗官指小官，引申为记载民间传说的野史；“裨”是补益。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "羁縻",
+    "wrong": "羁靡",
+    "back": "靡→縻",
+    "note": "“縻”读 mí，是牛缰绳，引申为牵制笼络；“靡”是倒下、浪费。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "惹是生非",
+    "wrong": "惹事生非",
+    "back": "事→是",
+    "note": "“是”与“非”相对，指招惹是非；“事”与“非”不成对。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "精粹",
+    "wrong": "精萃",
+    "back": "萃→粹",
+    "note": "“粹”是纯净、精华，指精练纯粹的部分；“萃”是聚集，如出类拔萃。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "流水账",
+    "wrong": "流水帐",
+    "back": "帐→账",
+    "note": "“账”从“贝”，与钱财有关；“帐”从“巾”，指帐篷、蚊帐。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "供认不讳",
+    "wrong": "供认不悔",
+    "back": "悔→讳",
+    "note": "“讳”是隐瞒、避忌，供认而不隐瞒；“悔”是后悔。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "易拉罐",
+    "wrong": "一拉罐",
+    "back": "一→易",
+    "note": "“易”是容易，指易于拉开的罐子；写成“一”失去构词理据。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "刎颈之交",
+    "wrong": "吻颈之交",
+    "back": "吻→刎",
+    "note": "“刎”是用刀割颈，指可以同生死的朋友；“吻”是亲吻。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "尝试",
+    "wrong": "偿试",
+    "back": "偿→尝",
+    "note": "“尝”是试一试、经历；“偿”是偿还、补偿。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "改弦更张",
+    "wrong": "改弦更章",
+    "back": "章→张",
+    "note": "“张”指给琴上弦、绷紧，换掉琴弦重新调整；“章”是篇章。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "猩红",
+    "wrong": "腥红",
+    "back": "腥→猩",
+    "note": "“猩”指猩猩，猩红是像猩猩血一样的鲜红；“腥”是腥味。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "两全其美",
+    "wrong": "两全齐美",
+    "back": "齐→其",
+    "note": "“其”指双方，使双方都得到好处；“齐”是整齐、一齐。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "挖墙脚",
+    "wrong": "挖墙角",
+    "back": "角→脚",
+    "note": "“墙脚”指墙的根基，挖根基比喻拆台；“墙角”只是两墙相交处。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "膨胀",
+    "wrong": "膨涨",
+    "back": "涨→胀",
+    "note": "“胀”从“月”（肉），指体积变大；“涨”从“氵”，指水位或价格上升。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "名门望族",
+    "wrong": "名门旺族",
+    "back": "旺→望",
+    "note": "“望”指声望、名望，有名望的大族；“旺”是兴旺。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "忸怩",
+    "wrong": "扭怩",
+    "back": "扭→忸",
+    "note": "“忸”从“忄”，与羞愧的心理有关，形容不好意思；“扭”是扭转。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "笑容可掬",
+    "wrong": "笑容可鞠",
+    "back": "鞠→掬",
+    "note": "“掬”是双手捧取，笑容浓到可以捧起来；“鞠”是弯身、抚养。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "朋比为奸",
+    "wrong": "朋比为肩",
+    "back": "肩→奸",
+    "note": "“奸”指坏事、邪恶，互相勾结干坏事；“肩”是肩膀。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "疾风劲草",
+    "wrong": "急风劲草",
+    "back": "急→疾",
+    "note": "“疾”指迅猛，疾风才能显出劲草；“急”偏重时间紧迫。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "流线型",
+    "wrong": "流线形",
+    "back": "形→型",
+    "note": "“型”指类型、样式；“形”指具体形状，此处定形作“流线型”。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "寸草春晖",
+    "wrong": "寸草春辉",
+    "back": "辉→晖",
+    "note": "“晖”是阳光，比喻母爱如春日阳光；“辉”是光辉、照耀。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "微言大义",
+    "wrong": "微言大意",
+    "back": "意→义",
+    "note": "“义”指精深的义理；“意”是意思、意图，分量不足。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "浩渺",
+    "wrong": "浩缈",
+    "back": "缈→渺",
+    "note": "“渺”从“氵”，形容水面辽阔；“缈”用于“缥缈”，指隐约。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "聒噪",
+    "wrong": "聒燥",
+    "back": "燥→噪",
+    "note": "“噪”从“口”，指吵闹的声音；“燥”从“火”，是干燥。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "精骛八极",
+    "wrong": "精骛八级",
+    "back": "级→极",
+    "note": "“极”指极远之处，精神驰骋到八方极远；“级”是等级。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "纷繁",
+    "wrong": "纷烦",
+    "back": "烦→繁",
+    "note": "“繁”是繁多、复杂；“烦”是烦躁、厌烦。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "嬗变",
+    "wrong": "擅变",
+    "back": "擅→嬗",
+    "note": "“嬗”读 shàn，是演变、更替；“擅”是擅自、擅长。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "栉风沐雨",
+    "wrong": "节风沐雨",
+    "back": "节→栉",
+    "note": "“栉”读 zhì，是梳头，以风梳发、以雨洗头，形容奔波劳苦；“节”无此义。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "渎职",
+    "wrong": "赎职",
+    "back": "赎→渎",
+    "note": "“渎”是轻慢、不敬，指不尽职守；“赎”是赎回、赎罪。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "平心而论",
+    "wrong": "凭心而论",
+    "back": "凭→平",
+    "note": "“平”指心气平和、公平地说；“凭”是凭借。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "宣泄",
+    "wrong": "渲泄",
+    "back": "渲→宣",
+    "note": "“宣”是疏通、发散，指排出积水或发泄情绪；“渲”用于渲染。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "班师回朝",
+    "wrong": "搬师回朝",
+    "back": "搬→班",
+    "note": "“班”是调回、撤回，古义为分开、返回；“搬”是搬运。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "见风使舵",
+    "wrong": "见风驶舵",
+    "back": "驶→使",
+    "note": "“使”是操纵、掌握，看风向操纵舵；“驶”是行驶。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "天网恢恢",
+    "wrong": "天网灰灰",
+    "back": "灰→恢",
+    "note": "“恢恢”形容宽广、宏大；“灰灰”不成词。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "妨害",
+    "wrong": "防害",
+    "back": "防→妨",
+    "note": "“妨”是阻碍、损害；“防”是防备、防止，方向相反。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "责无旁贷",
+    "wrong": "责无旁待",
+    "back": "待→贷",
+    "note": "“贷”是推卸、推给别人，责任不能推给旁人；“待”是等待。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "部署",
+    "wrong": "布署",
+    "back": "布→部",
+    "note": "“部署”指分门别类地安排人力，“部”表门类；写成“布”失去理据。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "老生常谈",
+    "wrong": "老声常谈",
+    "back": "声→生",
+    "note": "“生”指书生、老书生，指老书生的平常议论；“声”是声音。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "诡秘",
+    "wrong": "鬼秘",
+    "back": "鬼→诡",
+    "note": "“诡”是奇异、隐秘难测；“鬼”虽义近但不成词。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "春意阑珊",
+    "wrong": "春意阑姗",
+    "back": "姗→珊",
+    "note": "“阑珊”是将尽、衰落的样子；“姗”用于“姗姗来迟”。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "安详",
+    "wrong": "安祥",
+    "back": "祥→详",
+    "note": "“详”指从容不迫、周到；“祥”是吉祥。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "返修率",
+    "wrong": "反修率",
+    "back": "反→返",
+    "note": "“返”是回来、退回，指退回修理；“反”是相反、反对。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "梦寐以求",
+    "wrong": "梦寐已求",
+    "back": "已→以",
+    "note": "“以”是连词表方式，睡梦中都在追求；“已”是已经。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "毕其功于一役",
+    "wrong": "毕其攻于一役",
+    "back": "攻→功",
+    "note": "“功”指功业、事情，一次战役完成全部事业；“攻”是进攻。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "锋芒毕露",
+    "wrong": "锋芒必露",
+    "back": "必→毕",
+    "note": "“毕”是完全、全部，锋芒完全显露；“必”是必定。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "前倨后恭",
+    "wrong": "前踞后恭",
+    "back": "踞→倨",
+    "note": "“倨”是傲慢；“踞”是蹲坐，如龙盘虎踞。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "脉搏",
+    "wrong": "脉膊",
+    "back": "膊→搏",
+    "note": "“搏”是跳动、搏动；“膊”是胳膊。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "纯粹",
+    "wrong": "纯萃",
+    "back": "萃→粹",
+    "note": "“粹”是不掺杂、纯净；“萃”是聚集。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "专心致志",
+    "wrong": "专心至志",
+    "back": "至→致",
+    "note": "“致”是集中、尽力，把心志集中于一处；“至”是到达。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "一滩血",
+    "wrong": "一摊血",
+    "back": "摊→滩",
+    "note": "液体成片用量词“滩”；“摊”是摊子、摊开，作量词多用于泥、事。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "燥热",
+    "wrong": "躁热",
+    "back": "躁→燥",
+    "note": "“燥”从“火”，指天气干热；“躁”从“足”，指性情急躁。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "视若草芥",
+    "wrong": "视若草介",
+    "back": "介→芥",
+    "note": "“芥”是小草，把人看得像小草一样轻贱；“介”是介绍、耿介。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "乔装打扮",
+    "wrong": "巧装打扮",
+    "back": "巧→乔",
+    "note": "“乔”是假扮、伪装；“巧”是灵巧。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "关注",
+    "wrong": "观注",
+    "back": "观→关",
+    "note": "“关”是关心、关切；“观”只是观看。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "卑躬屈膝",
+    "wrong": "卑躬曲膝",
+    "back": "曲→屈",
+    "note": "“屈”是使弯曲、屈服，含屈服之意；“曲”只是形状弯曲。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "刹那间",
+    "wrong": "霎那间",
+    "back": "霎→刹",
+    "note": "“刹那”是梵语音译，指极短时间；“霎”用于“霎时”，两词不能混拼。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "作壁上观",
+    "wrong": "坐壁上观",
+    "back": "坐→作",
+    "note": "“作”是充当、做，在壁垒上充当旁观者；“坐”是坐下。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "信誉值千金",
+    "wrong": "信誊值千金",
+    "back": "誊→誉",
+    "note": "“誉”是名誉、声誉；“誊”是誊写、抄写。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "远见卓识",
+    "wrong": "远见灼识",
+    "back": "灼→卓",
+    "note": "“卓”是高超、卓越，指见识高远；“灼”用于“真知灼见”，两成语各有定形。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "熏陶",
+    "wrong": "熏淘",
+    "back": "淘→陶",
+    "note": "“陶”指用陶土烧制器物，比喻长期感染培育；“淘”是淘洗。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "候补",
+    "wrong": "侯补",
+    "back": "侯→候",
+    "note": "“候”是等候、等待；“侯”是爵位，如诸侯。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "要言不烦",
+    "wrong": "要言不凡",
+    "back": "凡→烦",
+    "note": "“烦”是烦琐，指说话简要不啰嗦；“凡”是平凡，语义相反。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "青睐",
+    "wrong": "亲睐",
+    "back": "亲→青",
+    "note": "“青睐”指用黑眼珠正视，表示重视；“亲”是亲近。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "娴熟",
+    "wrong": "闲熟",
+    "back": "闲→娴",
+    "note": "“娴”是熟练、文雅；“闲”是空闲。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "订金",
+    "wrong": "定金",
+    "back": "定→订",
+    "note": "“订金”是预订时的可退款项，“定金”是有担保效力的定金，法律含义不同。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "胜券在握",
+    "wrong": "胜卷在握",
+    "back": "卷→券",
+    "note": "“券”指契约、凭据，胜利的凭据在手；“卷”是书卷。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "刻不容缓",
+    "wrong": "咳不容缓",
+    "back": "咳→刻",
+    "note": "“刻”指片刻、时间，一刻也不能拖延；“咳”是咳嗽。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "震耳欲聋",
+    "wrong": "振耳欲聋",
+    "back": "振→震",
+    "note": "“震”指强烈震动，声音大得要把耳朵震聋；“振”是振作、挥动。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "巨擘",
+    "wrong": "巨挚",
+    "back": "挚→擘",
+    "note": "“擘”读 bò，本指大拇指，比喻某领域的杰出人物；“挚”是诚挚。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "下马威",
+    "wrong": "吓马威",
+    "back": "吓→下",
+    "note": "“下马”指官员初到任就显示威风；“吓”是恐吓。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "顺口溜",
+    "wrong": "顺口遛",
+    "back": "遛→溜",
+    "note": "“溜”形容顺畅滑出，指顺口而出的韵语；“遛”是遛弯。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "擎天柱",
+    "wrong": "檠天柱",
+    "back": "檠→擎",
+    "note": "“擎”是向上托举，支撑天的柱子；“檠”是灯架。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "烂摊子",
+    "wrong": "烂滩子",
+    "back": "滩→摊",
+    "note": "“摊”指摊子、局面，比喻难收拾的局面；“滩”是水滩。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "回光返照",
+    "wrong": "回光反照",
+    "back": "反→返",
+    "note": "“返”是回、退回，指日落时光线回射；“反”是相反。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "和盘托出",
+    "wrong": "合盘托出",
+    "back": "合→和",
+    "note": "“和”是连同，连盘子一起端出，比喻全部说出；“合”是合拢。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "烦躁不安",
+    "wrong": "烦燥不安",
+    "back": "燥→躁",
+    "note": "“躁”指性情急躁不安；“燥”指干燥。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "鼎力相助",
+    "wrong": "鼎立相助",
+    "back": "立→力",
+    "note": "“鼎力”是大力，敬辞；“鼎立”指三方对立，如三足鼎立。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "徇私枉法",
+    "wrong": "殉私枉法",
+    "back": "殉→徇",
+    "note": "“徇”是曲从、迁就私情；“殉”是为某目的而死。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "天花乱坠",
+    "wrong": "天花乱堕",
+    "back": "堕→坠",
+    "note": "“坠”是落下，形容说得极动听；“堕”多指堕落、掉入。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "计日程功",
+    "wrong": "计日成功",
+    "back": "成→程",
+    "note": "“程”是计量、估量，可以按天数估量成效；“成”是完成。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "所向披靡",
+    "wrong": "所向披糜",
+    "back": "糜→靡",
+    "note": "“靡”是倒下，所到之处敌人纷纷溃败；“糜”是粥、糜烂。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "独出心裁",
+    "wrong": "独出新裁",
+    "back": "新→心",
+    "note": "“心裁”指心中的构思裁断；“新”不能受“出”支配。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "蛊惑人心",
+    "wrong": "盅惑人心",
+    "back": "盅→蛊",
+    "note": "“蛊”是毒虫、毒害，指用谣言迷惑人；“盅”是小杯子。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "心猿意马",
+    "wrong": "心猿义马",
+    "back": "义→意",
+    "note": "“意”指心意，形容心思不定；“义”是道义。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "殒身不恤",
+    "wrong": "陨身不恤",
+    "back": "陨→殒",
+    "note": "“殒”从“歹”，指人死亡；“陨”从“阝”，指天体坠落。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "梦魇",
+    "wrong": "梦靥",
+    "back": "靥→魇",
+    "note": "“魇”从“鬼”，指睡梦中被压迫不能动；“靥”是酒窝。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "刍议",
+    "wrong": "诌议",
+    "back": "诌→刍",
+    "note": "“刍”是割草，刍议是自谦的浅陋议论；“诌”是胡编乱造。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "戒骄戒躁",
+    "wrong": "戒骄戒燥",
+    "back": "燥→躁",
+    "note": "“躁”指急躁的性情；“燥”指干燥。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "察言观色",
+    "wrong": "察颜观色",
+    "back": "颜→言",
+    "note": "“言”与“色”相对，指看人的言语和脸色；写“颜”与“色”重复。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "原形毕露",
+    "wrong": "原形必露",
+    "back": "必→毕",
+    "note": "“毕”是完全，本来面目完全暴露；“必”是必定。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "流觞曲水",
+    "wrong": "流殇曲水",
+    "back": "殇→觞",
+    "note": "“觞”是酒杯，把酒杯放在曲水上任其漂流；“殇”是夭折。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "完璧归赵",
+    "wrong": "完壁归赵",
+    "back": "壁→璧",
+    "note": "“璧”是玉器，指和氏璧完好归还；“壁”是墙壁。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "歉收",
+    "wrong": "欠收",
+    "back": "欠→歉",
+    "note": "“歉”指收成不好，与“丰”相对；“欠”是欠缺、亏欠。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "剑拔弩张",
+    "wrong": "剑拔驽张",
+    "back": "驽→弩",
+    "note": "“弩”是弓弩，拔剑张弓形容形势紧张；“驽”是劣马。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "荧光棒",
+    "wrong": "萤光棒",
+    "back": "萤→荧",
+    "note": "“荧”指微弱的光亮，如荧光屏；“萤”是萤火虫。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "按揭款",
+    "wrong": "按接款",
+    "back": "接→揭",
+    "note": "“揭”在按揭中表抵押贷款；“接”是连接。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "妨碍",
+    "wrong": "防碍",
+    "back": "防→妨",
+    "note": "“妨”是阻碍；“防”是防止，方向相反。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "胁从",
+    "wrong": "协从",
+    "back": "协→胁",
+    "note": "“胁”是被胁迫，指被迫跟从；“协”是协助、协同。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "丁是丁，卯是卯",
+    "wrong": "钉是钉，卯是卯",
+    "back": "钉→丁",
+    "note": "“丁”“卯”是天干地支用字，比喻严格认真不含糊；“钉”是钉子。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "只言片语",
+    "wrong": "支言片语",
+    "back": "支→只",
+    "note": "“只”是单个、少量，与“片”并列；“支”是分支。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "心心相印",
+    "wrong": "心心相映",
+    "back": "映→印",
+    "note": "“印”是印证、契合，彼此心意完全一致；“映”是映照。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "准备就绪",
+    "wrong": "准备就序",
+    "back": "序→绪",
+    "note": "“绪”指头绪、事情的开端，一切安排妥当；“序”是次序。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "轻歌曼舞",
+    "wrong": "轻歌慢舞",
+    "back": "慢→曼",
+    "note": "“曼”是柔美、舒展；“慢”只是速度慢。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "影碟",
+    "wrong": "影牒",
+    "back": "牒→碟",
+    "note": "“碟”指碟片；“牒”是文书，如通牒。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "节骨眼",
+    "wrong": "结骨眼",
+    "back": "结→节",
+    "note": "“节骨眼”指骨节相接的关键处，比喻紧要关头；“结”是打结。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "歌声渺茫",
+    "wrong": "歌声缈茫",
+    "back": "缈→渺",
+    "note": "“渺茫”指遥远模糊；“缈”只用于“缥缈”。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "寥廓",
+    "wrong": "廖廓",
+    "back": "廖→寥",
+    "note": "“寥”是空旷、稀少，寥廓指高远空阔；“廖”是姓氏。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "萧索",
+    "wrong": "箫索",
+    "back": "箫→萧",
+    "note": "“萧”形容冷落凄凉；“箫”是竹制乐器。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "赔礼道歉",
+    "wrong": "赔理道歉",
+    "back": "理→礼",
+    "note": "“礼”指礼节，赔不是、行礼道歉；“理”是道理。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "元宵节",
+    "wrong": "元霄节",
+    "back": "霄→宵",
+    "note": "“宵”是夜晚，元宵即一年第一个月圆之夜；“霄”是云霄。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "宁缺毋滥",
+    "wrong": "宁缺毋烂",
+    "back": "烂→滥",
+    "note": "“滥”是过多而不加选择；“烂”是腐烂。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "更迭",
+    "wrong": "更叠",
+    "back": "叠→迭",
+    "note": "“迭”是交替、轮换，指轮流更换；“叠”是重叠。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "九州",
+    "wrong": "九洲",
+    "back": "洲→州",
+    "note": "“州”是古代行政区划，九州指中国；“洲”是水中陆地或大洲。",
+    "type": "char_confusion"
+  },
+  {
+    "front": "万事俱备",
+    "wrong": "万事具备",
+    "back": "具→俱",
+    "note": "“俱”是全、都；“具”是具备、器具，此处成语定形作“俱”。",
     "type": "char_confusion"
   }
 ]

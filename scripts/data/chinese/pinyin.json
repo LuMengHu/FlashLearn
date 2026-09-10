@@ -66,7 +66,7 @@
     "front": "惩罚",
     "back": "chéng fá",
     "wrong": "chěng fá",
-    "note": "“惩”字只有二声 chéng，常被误读为三声 chěng。",
+    "note": "“惩”读二声 chéng；常被误读为三声。",
     "type": "pinyin"
   },
   {
@@ -80,7 +80,7 @@
     "front": "给予",
     "back": "jǐ yǔ",
     "wrong": "gěi yǔ",
-    "note": "“给”在书面语中表示“使对方得到”时读 jǐ，常被口语音 gěi 误导。",
+    "note": "书面语“给予”中“给”读 jǐ；读 gěi 是口语的给。",
     "type": "pinyin"
   },
   {
@@ -164,14 +164,14 @@
     "front": "莘莘学子",
     "back": "shēn shēn xué zǐ",
     "wrong": "xīn xīn xué zǐ",
-    "note": "“莘”作“众多”讲时读 shēn，容易误读为 xīn。",
+    "note": "“莘莘”读 shēn shēn，形容众多；常被误读为 xīn。",
     "type": "pinyin"
   },
   {
     "front": "殷红",
     "back": "yān hóng",
     "wrong": "yīn hóng",
-    "note": "指带黑的深红色时，“殷”读 yān，不读常见的 yīn。",
+    "note": "表示黑红色时“殷”读 yān；读 yīn 是殷勤、殷实。",
     "type": "pinyin"
   },
   {
@@ -207,6 +207,678 @@
     "back": "zhào huàn",
     "wrong": "zhāo huàn",
     "note": "“召”作呼唤、召集讲时统读四声 zhào，易误读为招手的一声 zhāo。",
+    "type": "pinyin"
+  },
+  {
+    "front": "镌刻",
+    "back": "juān kè",
+    "wrong": "juàn kè",
+    "note": "“镌”读一声 juān，指雕刻；受“隽”字影响常被误读为 juàn。",
+    "type": "pinyin"
+  },
+  {
+    "front": "徜徉",
+    "back": "cháng yáng",
+    "wrong": "táng yáng",
+    "note": "“徜”读 cháng，徜徉指闲游、安闲自在地行走；常被误读为 táng。",
+    "type": "pinyin"
+  },
+  {
+    "front": "觥筹交错",
+    "back": "gōng chóu jiāo cuò",
+    "wrong": "guāng chóu jiāo cuò",
+    "note": "“觥”是古代兽角酒器，读 gōng；因右旁“光”常被误读为 guāng。",
+    "type": "pinyin"
+  },
+  {
+    "front": "鞭挞",
+    "back": "biān tà",
+    "wrong": "biān dá",
+    "note": "“挞”读 tà，是用鞭子抽打，引申为严厉批判；常被误读为 dá。",
+    "type": "pinyin"
+  },
+  {
+    "front": "挫折",
+    "back": "cuò zhé",
+    "wrong": "cuō zhé",
+    "note": "“挫”读四声 cuò，指失败受阻；受“搓”影响易误读为一声。",
+    "type": "pinyin"
+  },
+  {
+    "front": "彤云",
+    "back": "tóng yún",
+    "wrong": "dān yún",
+    "note": "“彤”读 tóng，指红色，彤云指密布的阴云；常被误读为 dān。",
+    "type": "pinyin"
+  },
+  {
+    "front": "两鬓",
+    "back": "liǎng bìn",
+    "wrong": "liǎng bìng",
+    "note": "“鬓”读 bìn，指耳边的头发；常被误读为后鼻音 bìng。",
+    "type": "pinyin"
+  },
+  {
+    "front": "悄无声息",
+    "back": "qiǎo wú shēng xī",
+    "wrong": "qiāo wú shēng xī",
+    "note": "表示寂静无声时“悄”读三声 qiǎo；口语常用音一声 qiāo 用于“悄悄”。",
+    "type": "pinyin"
+  },
+  {
+    "front": "蓊郁",
+    "back": "wěng yù",
+    "wrong": "wēng yù",
+    "note": "“蓊”读三声 wěng，形容草木茂盛；常被误读为一声。",
+    "type": "pinyin"
+  },
+  {
+    "front": "执拗",
+    "back": "zhí niù",
+    "wrong": "zhí ào",
+    "note": "表示固执时“拗”读 niù；读 ào 是“拗口”，读 ǎo 是折断。",
+    "type": "pinyin"
+  },
+  {
+    "front": "隽永",
+    "back": "juàn yǒng",
+    "wrong": "jùn yǒng",
+    "note": "“隽”表意味深长时读 juàn；读 jùn 时同“俊”，用于人才出众。",
+    "type": "pinyin"
+  },
+  {
+    "front": "信笺",
+    "back": "xìn jiān",
+    "wrong": "xìn qiān",
+    "note": "“笺”读 jiān，指信纸；常被误读为 qiān。",
+    "type": "pinyin"
+  },
+  {
+    "front": "甫一开始",
+    "back": "fǔ yī kāi shǐ",
+    "wrong": "pǔ yī kāi shǐ",
+    "note": "“甫”读 fǔ，意思是刚刚；常被误读为 pǔ。",
+    "type": "pinyin"
+  },
+  {
+    "front": "告罄",
+    "back": "gào qìng",
+    "wrong": "gào qǐng",
+    "note": "“罄”读四声 qìng，意思是用尽、空；常被误读为三声。",
+    "type": "pinyin"
+  },
+  {
+    "front": "乏人问津",
+    "back": "fá rén wèn jīn",
+    "wrong": "fá rén wèn jìn",
+    "note": "“津”读一声 jīn，本义是渡口，问津指探问渡口、引申为过问。",
+    "type": "pinyin"
+  },
+  {
+    "front": "憨态可掬",
+    "back": "hān tài kě jū",
+    "wrong": "hān tài kě jú",
+    "note": "“掬”读 jū，是双手捧取，指憨态浓得可以捧起来。",
+    "type": "pinyin"
+  },
+  {
+    "front": "风靡",
+    "back": "fēng mǐ",
+    "wrong": "fēng mí",
+    "note": "“靡”表倒下、盛行时读三声 mǐ；读 mí 时义为浪费，如奢靡。",
+    "type": "pinyin"
+  },
+  {
+    "front": "不禁",
+    "back": "bù jīn",
+    "wrong": "bù jìn",
+    "note": "表示忍不住时“禁”读一声 jīn；读四声 jìn 是禁止。",
+    "type": "pinyin"
+  },
+  {
+    "front": "脐带血",
+    "back": "qí dài xuè",
+    "wrong": "jì dài xuè",
+    "note": "“脐”读 qí，指肚脐；常被误读为 jì。",
+    "type": "pinyin"
+  },
+  {
+    "front": "言为心声",
+    "back": "yán wéi xīn shēng",
+    "wrong": "yán wèi xīn shēng",
+    "note": "“为”作“是”讲时读二声 wéi；读四声 wèi 是为了。",
+    "type": "pinyin"
+  },
+  {
+    "front": "病恹恹",
+    "back": "bìng yān yān",
+    "wrong": "bìng yàng yàng",
+    "note": "“恹”读一声 yān，形容精神萎靡；常被误读为 yàng。",
+    "type": "pinyin"
+  },
+  {
+    "front": "折本",
+    "back": "shé běn",
+    "wrong": "zhé běn",
+    "note": "表示亏损时“折”读 shé；读 zhé 是折断、折叠。",
+    "type": "pinyin"
+  },
+  {
+    "front": "着陆",
+    "back": "zhuó lù",
+    "wrong": "zháo lù",
+    "note": "表示接触、附着时“着”读 zhuó；读 zháo 用于着火、着急。",
+    "type": "pinyin"
+  },
+  {
+    "front": "伫立",
+    "back": "zhù lì",
+    "wrong": "chù lì",
+    "note": "“伫”读 zhù，指长时间站立；常被误读为 chù。",
+    "type": "pinyin"
+  },
+  {
+    "front": "撒大网",
+    "back": "sā dà wǎng",
+    "wrong": "sǎ dà wǎng",
+    "note": "表示张开、放开时“撒”读一声 sā；读三声 sǎ 是散布，如撒种。",
+    "type": "pinyin"
+  },
+  {
+    "front": "蓦然回首",
+    "back": "mò rán huí shǒu",
+    "wrong": "mù rán huí shǒu",
+    "note": "“蓦”读 mò，指突然；受“暮”影响常被误读为 mù。",
+    "type": "pinyin"
+  },
+  {
+    "front": "追本溯源",
+    "back": "zhuī běn sù yuán",
+    "wrong": "zhuī běn shuò yuán",
+    "note": "“溯”读 sù，指逆流而上、往上推求；常被误读为 shuò。",
+    "type": "pinyin"
+  },
+  {
+    "front": "人影幢幢",
+    "back": "rén yǐng chuáng chuáng",
+    "wrong": "rén yǐng zhuàng zhuàng",
+    "note": "形容影子晃动时“幢”读 chuáng；读 zhuàng 是量词，如一幢楼。",
+    "type": "pinyin"
+  },
+  {
+    "front": "长吁短叹",
+    "back": "cháng xū duǎn tàn",
+    "wrong": "cháng yù duǎn tàn",
+    "note": "叹气义的“吁”读 xū；读 yù 用于“呼吁”。",
+    "type": "pinyin"
+  },
+  {
+    "front": "狡黠",
+    "back": "jiǎo xiá",
+    "wrong": "jiǎo xié",
+    "note": "“黠”读 xiá，意思是狡猾；常被误读为 xié。",
+    "type": "pinyin"
+  },
+  {
+    "front": "方枘圆凿",
+    "back": "fāng ruì yuán záo",
+    "wrong": "fāng nè yuán záo",
+    "note": "“枘”读 ruì，是榫头，方榫头配圆卯眼比喻格格不入。",
+    "type": "pinyin"
+  },
+  {
+    "front": "戛然而止",
+    "back": "jiá rán ér zhǐ",
+    "wrong": "gā rán ér zhǐ",
+    "note": "“戛”读 jiá，指声音突然停止；常被误读为 gā。",
+    "type": "pinyin"
+  },
+  {
+    "front": "炽热",
+    "back": "chì rè",
+    "wrong": "zhì rè",
+    "note": "“炽”读 chì，指火旺、极热；常被误读为 zhì。",
+    "type": "pinyin"
+  },
+  {
+    "front": "倾轧",
+    "back": "qīng yà",
+    "wrong": "qīng zhá",
+    "note": "表示排挤、倾轧时“轧”读 yà；读 zhá 用于轧钢。",
+    "type": "pinyin"
+  },
+  {
+    "front": "厉兵秣马",
+    "back": "lì bīng mò mǎ",
+    "wrong": "lì bīng mù mǎ",
+    "note": "“秣”读 mò，是喂牲口，磨快兵器喂饱战马；常被误读为 mù。",
+    "type": "pinyin"
+  },
+  {
+    "front": "解剖",
+    "back": "jiě pōu",
+    "wrong": "jiě pāo",
+    "note": "“剖”读 pōu，只有这一个读音；常被误读为 pāo。",
+    "type": "pinyin"
+  },
+  {
+    "front": "角逐",
+    "back": "jué zhú",
+    "wrong": "jiǎo zhú",
+    "note": "表示竞争较量时“角”读 jué；读 jiǎo 是角落、牛角。",
+    "type": "pinyin"
+  },
+  {
+    "front": "掺和",
+    "back": "chān huo",
+    "wrong": "cān huo",
+    "note": "“掺”读 chān，是混合；常被误读为 cān。",
+    "type": "pinyin"
+  },
+  {
+    "front": "聒噪",
+    "back": "guō zào",
+    "wrong": "guō zhào",
+    "note": "“噪”读 zào，指喧哗；常被误读为 zhào。",
+    "type": "pinyin"
+  },
+  {
+    "front": "乳臭未干",
+    "back": "rǔ xiù wèi gān",
+    "wrong": "rǔ chòu wèi gān",
+    "note": "表示气味时“臭”读 xiù；读 chòu 才是难闻的气味。",
+    "type": "pinyin"
+  },
+  {
+    "front": "传记",
+    "back": "zhuàn jì",
+    "wrong": "chuán jì",
+    "note": "记载生平的著作“传”读 zhuàn；读 chuán 是传递。",
+    "type": "pinyin"
+  },
+  {
+    "front": "恐吓",
+    "back": "kǒng hè",
+    "wrong": "kǒng xià",
+    "note": "“吓”在“恐吓”中读 hè，是威胁；读 xià 是使害怕。",
+    "type": "pinyin"
+  },
+  {
+    "front": "羡慕",
+    "back": "xiàn mù",
+    "wrong": "xiàn mú",
+    "note": "“慕”读 mù，指仰慕；不读 mú。",
+    "type": "pinyin"
+  },
+  {
+    "front": "醇厚",
+    "back": "chún hòu",
+    "wrong": "cún hòu",
+    "note": "“醇”读 chún，指酒味浓厚、质朴；常被误读为 cún。",
+    "type": "pinyin"
+  },
+  {
+    "front": "沟壑",
+    "back": "gōu hè",
+    "wrong": "gōu huò",
+    "note": "“壑”读 hè，指山沟；常被误读为 huò。",
+    "type": "pinyin"
+  },
+  {
+    "front": "纤维",
+    "back": "xiān wéi",
+    "wrong": "qiān wéi",
+    "note": "“纤”读 xiān，细小义；读 qiàn 用于“纤夫”拉船的绳。",
+    "type": "pinyin"
+  },
+  {
+    "front": "拓荒者",
+    "back": "tuò huāng zhě",
+    "wrong": "tà huāng zhě",
+    "note": "开辟义的“拓”读 tuò；读 tà 是拓印碑帖。",
+    "type": "pinyin"
+  },
+  {
+    "front": "和面",
+    "back": "huó miàn",
+    "wrong": "hé miàn",
+    "note": "掺水揉面时“和”读 huó；读 huò 用于和药，读 hè 用于唱和。",
+    "type": "pinyin"
+  },
+  {
+    "front": "扪心自问",
+    "back": "mén xīn zì wèn",
+    "wrong": "mèn xīn zì wèn",
+    "note": "“扪”读 mén，是按、摸；常被误读为 mèn。",
+    "type": "pinyin"
+  },
+  {
+    "front": "半身不遂",
+    "back": "bàn shēn bù suí",
+    "wrong": "bàn shēn bù suì",
+    "note": "“遂”在此读 suí，指顺遂、听使唤；一般义读 suì。",
+    "type": "pinyin"
+  },
+  {
+    "front": "坼裂",
+    "back": "chè liè",
+    "wrong": "chāi liè",
+    "note": "“坼”读 chè，指裂开；因形近“拆”常被误读为 chāi。",
+    "type": "pinyin"
+  },
+  {
+    "front": "剔透",
+    "back": "tī tòu",
+    "wrong": "tì tòu",
+    "note": "“剔”读一声 tī，指剔除、通透；“悌”“倜”才读 tì。",
+    "type": "pinyin"
+  },
+  {
+    "front": "醍醐灌顶",
+    "back": "tí hú guàn dǐng",
+    "wrong": "tǐ hú guàn dǐng",
+    "note": "“醍”读二声 tí；常被误读为三声。",
+    "type": "pinyin"
+  },
+  {
+    "front": "纰漏",
+    "back": "pī lòu",
+    "wrong": "bì lòu",
+    "note": "“纰”读 pī，指疏忽造成的错误；常被误读为 bì。",
+    "type": "pinyin"
+  },
+  {
+    "front": "歼灭",
+    "back": "jiān miè",
+    "wrong": "qiān miè",
+    "note": "“歼”读 jiān，指消灭；因形近“纤”常被误读。",
+    "type": "pinyin"
+  },
+  {
+    "front": "踽踽独行",
+    "back": "jǔ jǔ dú xíng",
+    "wrong": "yǔ yǔ dú xíng",
+    "note": "“踽”读 jǔ，形容孤独行走的样子。",
+    "type": "pinyin"
+  },
+  {
+    "front": "矢志不渝",
+    "back": "shǐ zhì bù yú",
+    "wrong": "shǐ zhì bù yù",
+    "note": "“渝”读 yú，意思是改变；常被误读为 yù。",
+    "type": "pinyin"
+  },
+  {
+    "front": "咄咄逼人",
+    "back": "duō duō bī rén",
+    "wrong": "zhuō zhuō bī rén",
+    "note": "“咄”读 duō，是呵斥声；因形近“拙”常被误读为 zhuō。",
+    "type": "pinyin"
+  },
+  {
+    "front": "对峙",
+    "back": "duì zhì",
+    "wrong": "duì shì",
+    "note": "“峙”读 zhì，指相对而立；常被误读为 shì。",
+    "type": "pinyin"
+  },
+  {
+    "front": "良莠不齐",
+    "back": "liáng yǒu bù qí",
+    "wrong": "liáng xiù bù qí",
+    "note": "“莠”读 yǒu，是狗尾草，比喻坏人；常被误读为 xiù。",
+    "type": "pinyin"
+  },
+  {
+    "front": "媲美",
+    "back": "pì měi",
+    "wrong": "bì měi",
+    "note": "“媲”读 pì，指比美；常被误读为 bì。",
+    "type": "pinyin"
+  },
+  {
+    "front": "撩拨",
+    "back": "liáo bō",
+    "wrong": "liào bō",
+    "note": "挑弄义的“撩”读 liáo；“瞭望”的“瞭”才读 liào。",
+    "type": "pinyin"
+  },
+  {
+    "front": "瞭望",
+    "back": "liào wàng",
+    "wrong": "liáo wàng",
+    "note": "远望义的“瞭”读 liào；读 liáo 用于“眼睛瞭亮”。",
+    "type": "pinyin"
+  },
+  {
+    "front": "潦草",
+    "back": "lǎo cǎo",
+    "wrong": "liáo cǎo",
+    "note": "“潦草”的“潦”读 lǎo；“潦倒”中读 liáo，注意区分。",
+    "type": "pinyin"
+  },
+  {
+    "front": "富庶",
+    "back": "fù shù",
+    "wrong": "fù sù",
+    "note": "“庶”读 shù，指众多、富足；常被误读为 sù。",
+    "type": "pinyin"
+  },
+  {
+    "front": "同仇敌忾",
+    "back": "tóng chóu dí kài",
+    "wrong": "tóng chóu dí qì",
+    "note": "“忾”读 kài，是愤恨；常被误读为 qì。",
+    "type": "pinyin"
+  },
+  {
+    "front": "休戚相关",
+    "back": "xiū qī xiāng guān",
+    "wrong": "xiū qì xiāng guān",
+    "note": "“戚”读一声 qī，指忧愁；常被误读为 qì。",
+    "type": "pinyin"
+  },
+  {
+    "front": "悬揣",
+    "back": "xuán chuǎi",
+    "wrong": "xuán chuài",
+    "note": "“揣”读三声 chuǎi，指揣测；常被误读为四声。",
+    "type": "pinyin"
+  },
+  {
+    "front": "相形见绌",
+    "back": "xiāng xíng jiàn chù",
+    "wrong": "xiāng xíng jiàn zhuō",
+    "note": "“绌”读 chù，是不足；因形近“拙”常被误读为 zhuō。",
+    "type": "pinyin"
+  },
+  {
+    "front": "茁壮",
+    "back": "zhuó zhuàng",
+    "wrong": "zhuō zhuàng",
+    "note": "“茁”读二声 zhuó，指植物生长旺盛；常被误读为一声。",
+    "type": "pinyin"
+  },
+  {
+    "front": "着装",
+    "back": "zhuó zhuāng",
+    "wrong": "zháo zhuāng",
+    "note": "穿衣义的“着”读 zhuó；读 zháo 用于着急、着火。",
+    "type": "pinyin"
+  },
+  {
+    "front": "校对",
+    "back": "jiào duì",
+    "wrong": "xiào duì",
+    "note": "核对义的“校”读 jiào；读 xiào 是学校。",
+    "type": "pinyin"
+  },
+  {
+    "front": "鲜有所闻",
+    "back": "xiǎn yǒu suǒ wén",
+    "wrong": "xiān yǒu suǒ wén",
+    "note": "表示少的“鲜”读三声 xiǎn；读一声 xiān 是新鲜。",
+    "type": "pinyin"
+  },
+  {
+    "front": "棱角",
+    "back": "léng jiǎo",
+    "wrong": "líng jiǎo",
+    "note": "“棱”读 léng；常被误读为 líng。",
+    "type": "pinyin"
+  },
+  {
+    "front": "腈纶",
+    "back": "jīng lún",
+    "wrong": "qíng lún",
+    "note": "“腈”读 jīng，是一种合成纤维；常被误读为 qíng。",
+    "type": "pinyin"
+  },
+  {
+    "front": "呱呱坠地",
+    "back": "gū gū zhuì dì",
+    "wrong": "guā guā zhuì dì",
+    "note": "形容婴儿啼哭声时“呱”读 gū；读 guā 用于“呱呱叫”。",
+    "type": "pinyin"
+  },
+  {
+    "front": "搭理",
+    "back": "dā li",
+    "wrong": "dá li",
+    "note": "“搭”读一声 dā；常被误读为二声。",
+    "type": "pinyin"
+  },
+  {
+    "front": "膝盖",
+    "back": "xī gài",
+    "wrong": "qī gài",
+    "note": "“膝”读 xī；常被误读为 qī。",
+    "type": "pinyin"
+  },
+  {
+    "front": "煽风点火",
+    "back": "shān fēng diǎn huǒ",
+    "wrong": "shàn fēng diǎn huǒ",
+    "note": "“煽”读一声 shān，是鼓动；受“扇”影响常被误读为四声。",
+    "type": "pinyin"
+  },
+  {
+    "front": "一丘之貉",
+    "back": "yī qiū zhī hé",
+    "wrong": "yī qiū zhī háo",
+    "note": "“貉”在此读 hé；读 háo 用于口语“貉子”。",
+    "type": "pinyin"
+  },
+  {
+    "front": "凹陷",
+    "back": "āo xiàn",
+    "wrong": "wā xiàn",
+    "note": "“凹”读 āo；因字形像洼常被误读为 wā。",
+    "type": "pinyin"
+  },
+  {
+    "front": "咀嚼",
+    "back": "jǔ jué",
+    "wrong": "zǔ jiáo",
+    "note": "“咀”读 jǔ；“嚼”在书面语中读 jué，口语“嚼东西”才读 jiáo。",
+    "type": "pinyin"
+  },
+  {
+    "front": "载体",
+    "back": "zài tǐ",
+    "wrong": "zǎi tǐ",
+    "note": "承载义的“载”读 zài；读 zǎi 是记载、年份。",
+    "type": "pinyin"
+  },
+  {
+    "front": "刹那",
+    "back": "chà nà",
+    "wrong": "shā nà",
+    "note": "“刹那”的“刹”读 chà；读 shā 用于“刹车”。",
+    "type": "pinyin"
+  },
+  {
+    "front": "未雨绸缪",
+    "back": "wèi yǔ chóu móu",
+    "wrong": "wèi yǔ chóu miù",
+    "note": "“缪”在此读 móu，同“谋”；作姓氏读 miào，读 miù 是“纰缪”。",
+    "type": "pinyin"
+  },
+  {
+    "front": "毗连",
+    "back": "pí lián",
+    "wrong": "bǐ lián",
+    "note": "“毗”读 pí，指相连；常被误读为 bǐ。",
+    "type": "pinyin"
+  },
+  {
+    "front": "奶酪",
+    "back": "nǎi lào",
+    "wrong": "nǎi luò",
+    "note": "“酪”读 lào；常被误读为 luò。",
+    "type": "pinyin"
+  },
+  {
+    "front": "际遇",
+    "back": "jì yù",
+    "wrong": "jí yù",
+    "note": "“际”读四声 jì；与“棘、极、集”的二声 jí 不同。",
+    "type": "pinyin"
+  },
+  {
+    "front": "驽马",
+    "back": "nú mǎ",
+    "wrong": "nǔ mǎ",
+    "note": "“驽”读 nú，指劣马；与“弩”nǔ 字形相近而音不同。",
+    "type": "pinyin"
+  },
+  {
+    "front": "颅骨",
+    "back": "lú gǔ",
+    "wrong": "lǔ gǔ",
+    "note": "“颅”读二声 lú；常被误读为三声。",
+    "type": "pinyin"
+  },
+  {
+    "front": "伶俜",
+    "back": "líng pīng",
+    "wrong": "líng pìng",
+    "note": "“俜”读一声 pīng，伶俜指孤单；常被误读为四声。",
+    "type": "pinyin"
+  },
+  {
+    "front": "掮客",
+    "back": "qián kè",
+    "wrong": "jiān kè",
+    "note": "“掮”读 qián，指替人介绍买卖抽佣的人；常被误读为 jiān。",
+    "type": "pinyin"
+  },
+  {
+    "front": "心宽体胖",
+    "back": "xīn kuān tǐ pán",
+    "wrong": "xīn kuān tǐ pàng",
+    "note": "此处“胖”读 pán，指安泰舒坦，不是肥胖的 pàng。",
+    "type": "pinyin"
+  },
+  {
+    "front": "吆五喝六",
+    "back": "yāo wǔ hè liù",
+    "wrong": "yāo wǔ hē liù",
+    "note": "大声呼喝时“喝”读 hè；读 hē 是喝水。",
+    "type": "pinyin"
+  },
+  {
+    "front": "蛇蝎",
+    "back": "shé xiē",
+    "wrong": "shé jié",
+    "note": "“蝎”读 xiē；常被误读为 jié。",
+    "type": "pinyin"
+  },
+  {
+    "front": "舷窗",
+    "back": "xián chuāng",
+    "wrong": "xuán chuāng",
+    "note": "“舷”读 xián，指船飞机两侧；受“弦、悬”影响常被误读为 xuán。",
     "type": "pinyin"
   }
 ]
