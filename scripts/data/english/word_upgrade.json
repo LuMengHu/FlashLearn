@@ -1,0 +1,122 @@
+[
+  {
+    "type": "word_upgrade",
+    "front": "want",
+    "hint": "想、打算",
+    "back": "intend to",
+    "note": "intend to + 原形動詞。",
+    "payload": { "upgrades": ["intend to"] }
+  },
+  {
+    "type": "word_upgrade",
+    "front": "famous",
+    "hint": "著名的",
+    "back": "well-known; outstanding",
+    "note": "well-known 有連字號；outstanding 偏「傑出的」。",
+    "payload": { "upgrades": ["well-known", "outstanding"] }
+  },
+  {
+    "type": "word_upgrade",
+    "front": "important",
+    "hint": "重要的",
+    "back": "crucial; significant; essential",
+    "note": "三個都是高頻寫作詞，crucial 語氣最強（關鍵的）。",
+    "payload": { "upgrades": ["crucial", "significant", "essential"] }
+  },
+  {
+    "type": "word_upgrade",
+    "front": "remember",
+    "hint": "記得",
+    "back": "bear in mind that",
+    "note": "★ 是完整短語 bear in mind that + 子句，不是單一個字。",
+    "payload": { "upgrades": ["bear in mind that"] }
+  },
+  {
+    "type": "word_upgrade",
+    "front": "cause",
+    "hint": "導致",
+    "back": "contribute to; give rise to; lead to; result in",
+    "note": "★ 四個裡有三個以 to 結尾且 to 是介詞，後接名詞或動名詞。注意 result in = 導致，result from = 由……造成，方向相反。",
+    "payload": { "upgrades": ["contribute to", "give rise to", "lead to", "result in"] }
+  },
+  {
+    "type": "word_upgrade",
+    "front": "helpful",
+    "hint": "有用的、有益的",
+    "back": "beneficial; rewarding",
+    "note": "be beneficial to = 對……有益；rewarding 偏「值得的、有回報的」。",
+    "payload": { "upgrades": ["beneficial", "rewarding"] }
+  },
+  {
+    "type": "word_upgrade",
+    "front": "many",
+    "hint": "許多",
+    "back": "numerous; a number of; quite a few",
+    "note": "三個後面都接可數名詞複數；quite a few = 相當多（肯定意思，別誤會成很少）。",
+    "payload": { "upgrades": ["numerous", "a number of", "quite a few"] }
+  },
+  {
+    "type": "word_upgrade",
+    "front": "beautiful",
+    "hint": "美麗的、吸引人的",
+    "back": "attractive; appealing; charming",
+    "note": "appealing 也有「有吸引力、動人的」之意。",
+    "payload": { "upgrades": ["attractive", "appealing", "charming"] }
+  },
+  {
+    "type": "word_upgrade",
+    "front": "improve",
+    "hint": "提高、改善",
+    "back": "enhance; promote; strengthen",
+    "note": "enhance 提升（品質、能力）；promote 促進；strengthen 加強。",
+    "payload": { "upgrades": ["enhance", "promote", "strengthen"] }
+  },
+  {
+    "type": "word_upgrade",
+    "front": "finish",
+    "hint": "完成",
+    "back": "complete; fulfill; accomplish",
+    "note": "fulfill 多接 dream / promise / need；accomplish 多接 task / goal。",
+    "payload": { "upgrades": ["complete", "fulfill", "accomplish"] }
+  },
+  {
+    "type": "word_upgrade",
+    "front": "serious",
+    "hint": "嚴重的",
+    "back": "severe",
+    "note": "severe 用於問題、後果、天氣等；注意別和 serious「認真的」那個義項混用。",
+    "payload": { "upgrades": ["severe"] }
+  },
+  {
+    "type": "word_upgrade",
+    "front": "develop",
+    "hint": "發展、培養",
+    "back": "cultivate; nurture",
+    "note": "cultivate / nurture 都偏「培養」（習慣、能力、興趣），不是指經濟發展。",
+    "payload": { "upgrades": ["cultivate", "nurture"] }
+  },
+  {
+    "type": "word_upgrade",
+    "front": "keep",
+    "hint": "保持、維持",
+    "back": "preserve; maintain",
+    "note": "preserve 偏「保存、保護」（文化、環境）；maintain 偏「維持」（水準、關係）。",
+    "payload": { "upgrades": ["preserve", "maintain"] }
+  },
+  {
+    "type": "word_upgrade",
+    "front": "solve",
+    "hint": "解決、處理",
+    "back": "resolve; settle; cope with; deal with",
+    "note": "★ cope with / deal with 都是「處理」，with 不能省。",
+    "payload": { "upgrades": ["resolve", "settle", "cope with", "deal with"] }
+  },
+  {
+    "type": "word_upgrade",
+    "front": "cheap",
+    "hint": "便宜的",
+    "back": "economical; inexpensive",
+    "note": "cheap 帶有「廉價、劣質」的貶義，寫作要用 economical（划算的）或 inexpensive。",
+    "payload": { "upgrades": ["economical", "inexpensive"] }
+  }
+]

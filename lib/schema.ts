@@ -132,8 +132,45 @@ export const chineseItems = pgTable('ChineseItems', {
 // 所以就算只有十个条目也会一直轮着出现，不会出现「今天练完了要等明天」。
 
 /** 进度记录挂在哪一类内容上 */
-export const STUDY_ITEM_TYPES = ['word', 'chinese', 'question'] as const;
+export const STUDY_ITEM_TYPES = ['word', 'chinese', 'question', 'english'] as const;
 export type StudyItemType = (typeof STUDY_ITEM_TYPES)[number];
+
+// --- 英文：考试复习条目（作文句型 / 词汇升级）---
+// 和 Words 表分开：Words 是长期积累的单词库，这里是针对讲义某几页的应试背诵内容。
+
+/** 英文复习入口的类型 */
+export const ENGLISH_TYPES = [
+  'essay_pattern', // 作文句型（挖空默写）
+  'word_upgrade',  // 词汇升级（把简单词换成高级说法）
+] as const;
+
+export type EnglishType = (typeof ENGLISH_TYPES)[number];
+
+/** 句型按顺序拆成的片段；blank 为 true 的片段就是要默写的空 */
+export type EnglishSegment = {
+  text: string;
+  blank?: boolean;
+};
+
+export type EnglishPayload = {
+  segments?: EnglishSegment[]; // 句型：挖空结构
+  upgrades?: string[];         // 词汇升级：高级替换词
+};
+
+export const englishItems = pgTable('EnglishItems', {
+  id: bigserial('id', { mode: 'number' }).primaryKey(),
+  type: text('type', { enum: ENGLISH_TYPES }).notNull(),
+  front: text('front').notNull(), // 句型 = 中文翻译；词汇 = 简单词
+  hint: text('hint'),             // 词汇 = 该词的中文意思
+  back: text('back').notNull(),   // 句型 = 完整英文；词汇 = 全部高级替换词
+  note: text('note'),             // 考点说明
+  payload: jsonb('payload').$type<EnglishPayload>().default({}),
+  createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
+  updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow(),
+}, (table) => ({
+  // 同一类型下同一条目只保留一条，重复灌库时走更新
+  typeFrontUnique: uniqueIndex('EnglishItems_type_front_unique').on(table.type, table.front),
+}));
 
 /** 熟练等级上限：连续答对到这个等级就算掌握 */
 export const MAX_STUDY_LEVEL = 5;
@@ -189,3 +226,5 @@ export type NewWord = typeof words.$inferInsert;
 export type ChineseItem = typeof chineseItems.$inferSelect;
 export type NewChineseItem = typeof chineseItems.$inferInsert;
 export type StudyProgress = typeof studyProgress.$inferSelect;
+export type EnglishItem = typeof englishItems.$inferSelect;
+export type NewEnglishItem = typeof englishItems.$inferInsert;

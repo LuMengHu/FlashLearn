@@ -50,6 +50,13 @@
       "when": 1788544245167,
       "tag": "0006_bizarre_ego",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1789046097385,
+      "tag": "0007_square_bullseye",
+      "breakpoints": true
     }
   ]
 }

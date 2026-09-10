@@ -1,0 +1,298 @@
+[
+  {
+    "type": "essay_pattern",
+    "front": "隨著……的發展，越來越多……",
+    "back": "Along with the development of..., more and more...",
+    "note": "Along with = 隨著，後接名詞；more and more 後可接名詞或形容詞。",
+    "payload": {
+      "segments": [
+        { "text": "Along with", "blank": true },
+        { "text": " the development of..., " },
+        { "text": "more and more", "blank": true },
+        { "text": "..." }
+      ]
+    }
+  },
+  {
+    "type": "essay_pattern",
+    "front": "關於是否……有著長期的辯論。",
+    "back": "There is a long-running debate as to whether...",
+    "note": "as to 是固定介詞搭配（= 關於），不能寫成 about that；whether 引導的是名詞從句。",
+    "payload": {
+      "segments": [
+        { "text": "There is a " },
+        { "text": "long-running", "blank": true },
+        { "text": " debate " },
+        { "text": "as to whether", "blank": true },
+        { "text": "..." }
+      ]
+    }
+  },
+  {
+    "type": "essay_pattern",
+    "front": "普遍/廣泛認為……",
+    "back": "It is commonly / generally / widely believed / accepted / recognized / known / agreed that...",
+    "note": "★ 講義原文就在這兩處畫了底線，幾乎確定是空格位置。副詞與過去分詞任意組合都成立，寫其中一個即可。",
+    "payload": {
+      "segments": [
+        { "text": "It is " },
+        { "text": "commonly / generally / widely", "blank": true },
+        { "text": " " },
+        { "text": "believed / accepted / recognized / known / agreed", "blank": true },
+        { "text": " that..." }
+      ]
+    }
+  },
+  {
+    "type": "essay_pattern",
+    "front": "就……而言",
+    "back": "As far as... is concerned,",
+    "note": "concerned 用被動，不能寫成 concerning；主詞放在 as far as 和 is concerned 中間。",
+    "payload": {
+      "segments": [
+        { "text": "As far as", "blank": true },
+        { "text": "... " },
+        { "text": "is concerned", "blank": true },
+        { "text": "," }
+      ]
+    }
+  },
+  {
+    "type": "essay_pattern",
+    "front": "近年……引起公眾關注。",
+    "back": "In recent years, the problem of ... has aroused / caused public concern.",
+    "note": "arouse / cause public concern 是固定搭配；concern 此處為不可數名詞，不加 s。",
+    "payload": {
+      "segments": [
+        { "text": "In recent years, the problem of ... has " },
+        { "text": "aroused / caused", "blank": true },
+        { "text": " public " },
+        { "text": "concern", "blank": true },
+        { "text": "." }
+      ]
+    }
+  },
+  {
+    "type": "essay_pattern",
+    "front": "當被問及……大多數人會想到……",
+    "back": "When asked about... most people would think of... / When it comes to... most people would hold the view that...",
+    "note": "When asked 是 When they are asked 的省略（主詞一致才能省）；when it comes to 的 to 是介詞，後接名詞或動名詞。",
+    "payload": {
+      "segments": [
+        { "text": "When " },
+        { "text": "asked", "blank": true },
+        { "text": " about... most people would " },
+        { "text": "think of", "blank": true },
+        { "text": "... / When it " },
+        { "text": "comes to", "blank": true },
+        { "text": "... most people would " },
+        { "text": "hold the view that", "blank": true },
+        { "text": "..." }
+      ]
+    }
+  },
+  {
+    "type": "essay_pattern",
+    "front": "任何事物都有兩面性，……也不例外。",
+    "back": "Everything has two sides and... is not an exception.",
+    "note": "exception 是可數名詞，前面必須加冠詞 an。",
+    "payload": {
+      "segments": [
+        { "text": "Everything has " },
+        { "text": "two sides", "blank": true },
+        { "text": " and... is " },
+        { "text": "not an exception", "blank": true },
+        { "text": "." }
+      ]
+    }
+  },
+  {
+    "type": "essay_pattern",
+    "front": "多年來，……一直被視為……，但現在的情況有很大的不同。",
+    "back": "For years, ... has been seen as..., but things are quite different now.",
+    "note": "現在完成式被動 has been seen as，強調從過去持續到現在；see A as B = 把 A 視為 B。",
+    "payload": {
+      "segments": [
+        { "text": "For years, ... " },
+        { "text": "has been seen as", "blank": true },
+        { "text": "..., but things are " },
+        { "text": "quite different", "blank": true },
+        { "text": " now." }
+      ]
+    }
+  },
+  {
+    "type": "essay_pattern",
+    "front": "正如諺語所說的，……",
+    "back": "As the proverb says, ...",
+    "note": "proverb = 諺語（不是 sentence / word）；as 引導方式從句，動詞用第三人稱單數 says。",
+    "payload": {
+      "segments": [
+        { "text": "As the " },
+        { "text": "proverb", "blank": true },
+        { "text": " " },
+        { "text": "says", "blank": true },
+        { "text": ", ..." }
+      ]
+    }
+  },
+  {
+    "type": "essay_pattern",
+    "front": "眾所周知，任何人沒有……都是不能……的。",
+    "back": "As we all know, everybody can't ... without...",
+    "note": "can't ... without... 是雙重否定表肯定（沒有……就不能……）。",
+    "payload": {
+      "segments": [
+        { "text": "As we all know", "blank": true },
+        { "text": ", everybody can't ... " },
+        { "text": "without", "blank": true },
+        { "text": "..." }
+      ]
+    }
+  },
+  {
+    "type": "essay_pattern",
+    "front": "有幾個原因，但在一般情況下，它們歸結為三個主要方面，分別是……",
+    "back": "There are several reasons for..., but in general, they come down to three major ones, which are...",
+    "note": "come down to = 歸結為（三個詞缺一不可）；in general = 一般而言。",
+    "payload": {
+      "segments": [
+        { "text": "There are several reasons for..., but " },
+        { "text": "in general", "blank": true },
+        { "text": ", they " },
+        { "text": "come down to", "blank": true },
+        { "text": " three major ones, which are..." }
+      ]
+    }
+  },
+  {
+    "type": "essay_pattern",
+    "front": "我們該採取措施解決……問題了。",
+    "back": "It's high time we took measures to solve the problem of...",
+    "note": "★★ 虛擬語氣：It's high time + 主詞 + 過去式，必須寫 took 不能寫 take。這是這一頁最經典、最可能出的一個空。",
+    "payload": {
+      "segments": [
+        { "text": "It's " },
+        { "text": "high time", "blank": true },
+        { "text": " we " },
+        { "text": "took", "blank": true },
+        { "text": " measures to solve the problem of..." }
+      ]
+    }
+  },
+  {
+    "type": "essay_pattern",
+    "front": "原因如下。",
+    "back": "The reasons are as follows.",
+    "note": "as follows 是固定用法，follows 永遠帶 s，不隨主詞單複數變化（不能寫 as follow）。",
+    "payload": {
+      "segments": [
+        { "text": "The reasons are " },
+        { "text": "as follows", "blank": true },
+        { "text": "." }
+      ]
+    }
+  },
+  {
+    "type": "essay_pattern",
+    "front": "我無法完全同意……，因為……。",
+    "back": "I cannot entirely agree with the idea that...because ....",
+    "note": "cannot entirely 是部分否定（= 不完全同意），不等於完全不同意；agree with 後接人或意見。",
+    "payload": {
+      "segments": [
+        { "text": "I cannot " },
+        { "text": "entirely", "blank": true },
+        { "text": " " },
+        { "text": "agree with", "blank": true },
+        { "text": " the idea that...because ...." }
+      ]
+    }
+  },
+  {
+    "type": "essay_pattern",
+    "front": "坦率地說，我不能同意他們的意見，理由如下。",
+    "back": "To be frank, I cannot agree with this opinion for the reasons below.",
+    "note": "To be frank 是獨立不定式作狀語（= 坦率地說），也可說 To be honest。",
+    "payload": {
+      "segments": [
+        { "text": "To be frank", "blank": true },
+        { "text": ", I cannot agree with this opinion " },
+        { "text": "for the reasons below", "blank": true },
+        { "text": "." }
+      ]
+    }
+  },
+  {
+    "type": "essay_pattern",
+    "front": "我對這個問題的看法如下。",
+    "back": "My argument for this view goes as follows.",
+    "note": "argument for = 支持某觀點的論述（介詞用 for）；go as follows = 內容如下。",
+    "payload": {
+      "segments": [
+        { "text": "My " },
+        { "text": "argument", "blank": true },
+        { "text": " for this view " },
+        { "text": "goes as follows", "blank": true },
+        { "text": "." }
+      ]
+    }
+  },
+  {
+    "type": "essay_pattern",
+    "front": "就我而言，我完全同意前者/後者。",
+    "back": "As far as I am concerned, I completely agree with the former / the latter.",
+    "note": "the former = 前者，the latter = 後者，兩個都必須加 the。",
+    "payload": {
+      "segments": [
+        { "text": "As far as I am concerned", "blank": true },
+        { "text": ", I completely agree with " },
+        { "text": "the former / the latter", "blank": true },
+        { "text": "." }
+      ]
+    }
+  },
+  {
+    "type": "essay_pattern",
+    "front": "在我看來，做………比做………更明智。",
+    "back": "In my point of view, it is more advisable to ...than to ...",
+    "note": "advisable = 明智的、可取的；more advisable to A than to B，兩邊都要有 to。",
+    "payload": {
+      "segments": [
+        { "text": "In my point of view", "blank": true },
+        { "text": ", it is more " },
+        { "text": "advisable", "blank": true },
+        { "text": " to ...than to ..." }
+      ]
+    }
+  },
+  {
+    "type": "essay_pattern",
+    "front": "有很多方法可以解決這個問題，但下面的可能是最有效的。",
+    "back": "Many ways can contribute to solving this problem, but the following ones may be most effective.",
+    "note": "★ contribute to 的 to 是介詞，後面必須接動名詞 solving，寫 solve 就錯了。",
+    "payload": {
+      "segments": [
+        { "text": "Many ways can " },
+        { "text": "contribute to solving", "blank": true },
+        { "text": " this problem, but the " },
+        { "text": "following", "blank": true },
+        { "text": " ones may be most " },
+        { "text": "effective", "blank": true },
+        { "text": "." }
+      ]
+    }
+  },
+  {
+    "type": "essay_pattern",
+    "front": "有兩條理由可以證明……分別是……",
+    "back": "There are two reasons contributing to..., which are ...",
+    "note": "現在分詞 contributing 作後置定語修飾 reasons（= 導致……的兩條理由）。",
+    "payload": {
+      "segments": [
+        { "text": "There are two reasons " },
+        { "text": "contributing to", "blank": true },
+        { "text": "..., which are ..." }
+      ]
+    }
+  }
+]
