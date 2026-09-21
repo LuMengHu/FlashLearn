@@ -25,7 +25,7 @@ function getDatabaseUrl(): string {
 
 // 创建 Neon serverless 驱动的 SQL 客户端
 const databaseUrl = getDatabaseUrl();
-const sql = neon(databaseUrl);
+export const sql = neon(databaseUrl);
 
 // 将 Drizzle ORM 连接到 SQL 客户端，并注入我们的 schema
 export const db = drizzle(sql, { schema });

@@ -73,6 +73,9 @@ export const words = pgTable('Words', {
   family: jsonb('family').$type<WordFamilyItem[]>().default([]),       // 词源家族变形
   confusables: jsonb('confusables').$type<ConfusableItem[]>().default([]), // 易混词
   etymology: text('etymology'),                                        // 词源说明
+  kind: text('kind', { enum: ['word', 'phrase'] }).notNull().default('word'),
+  source: text('source'),
+  sourceContext: text('source_context'),
   notes: text('notes'),                                                // 自己补充的笔记
   createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
   updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow(),
@@ -228,3 +231,39 @@ export type NewChineseItem = typeof chineseItems.$inferInsert;
 export type StudyProgress = typeof studyProgress.$inferSelect;
 export type EnglishItem = typeof englishItems.$inferSelect;
 export type NewEnglishItem = typeof englishItems.$inferInsert;
+
+
+// Personal English workspace; existing tables remain compatible.
+export const englishCollections = pgTable('EnglishCollections', {
+  id: bigserial('id', { mode: 'number' }).primaryKey(),
+  name: text('name').notNull(),
+  createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+});
+export const englishCollectionWords = pgTable('EnglishCollectionWords', {
+  collectionId: bigint('collection_id', { mode: 'number' }).notNull().references(() => englishCollections.id, { onDelete: 'cascade' }),
+  wordId: bigint('word_id', { mode: 'number' }).notNull().references(() => words.id, { onDelete: 'cascade' }),
+}, t => ({ memberUnique: uniqueIndex('EnglishCollectionWords_unique').on(t.collectionId, t.wordId) }));
+export const englishConfusions = pgTable('EnglishConfusions', {
+  id: bigserial('id', { mode: 'number' }).primaryKey(),
+  wordId: bigint('word_id', { mode: 'number' }).notNull().references(() => words.id, { onDelete: 'cascade' }),
+  otherWord: text('other_word').notNull(),
+  otherMeaning: text('other_meaning').notNull(),
+  tip: text('tip').notNull().default(''),
+  createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+}, t => ({ pairUnique: uniqueIndex('EnglishConfusions_pair_unique').on(t.wordId, t.otherWord) }));
+export const englishMemory = pgTable('EnglishMemory', {
+  key: text('key').primaryKey(),
+  state: jsonb('state').$type<import('./english/types').MemoryState>().notNull(),
+});
+export const englishReviewEvents = pgTable('EnglishReviewEvents', {
+  id: text('id').primaryKey(), itemKey: text('item_key').notNull(),
+  rating: text('rating').notNull(), channel: text('channel').notNull(),
+  previous: jsonb('previous').notNull(), result: jsonb('result').notNull(),
+  undone: integer('undone').notNull().default(0),
+  createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+});
+export const englishBotSessions = pgTable('EnglishBotSessions', {
+  peer: text('peer').primaryKey(), state: jsonb('state').notNull(),
+  revision: integer('revision').notNull().default(0),
+  updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
+});

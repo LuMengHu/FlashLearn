@@ -1,0 +1,16 @@
+{
+  "id": "flashlearn-study",
+  "name": "FlashLearn personal vocabulary",
+  "description": "Shared vocabulary and spaced review in WeChat via iLink.",
+  "contracts": { "tools": ["flashlearn_vocab"] },
+  "activation": { "onStartup": true },
+  "configSchema": {
+    "type": "object", "additionalProperties": false,
+    "properties": {
+      "baseUrl": { "type": "string", "default": "http://127.0.0.1:3000" },
+      "token": { "type": "string" },
+      "allowedSender": { "type": "string" }
+    }
+  },
+  "uiHints": { "token": { "sensitive": true } }
+}

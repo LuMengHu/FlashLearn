@@ -14,7 +14,10 @@
     "db:seed:english": "tsx scripts/seed-english.ts",
     "gen:chinese": "tsx scripts/generate-chinese.ts",
     "words:import": "tsx scripts/import-words.ts",
-    "words:export": "tsx scripts/export-words.ts"
+    "words:export": "tsx scripts/export-words.ts",
+    "test:english": "tsx --test tests/english-learning.test.ts",
+    "db:migrate:english": "tsx scripts/migrate-english.ts",
+    "import:english:html": "tsx scripts/import-english-html.ts"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.0.1",
