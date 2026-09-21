@@ -1,6 +1,7 @@
-export type Rating = 'again' | 'hard' | 'good';
+export type Rating = 'again' | 'good';
 export type VocabularyKind = 'word' | 'phrase';
-export type Mode = 'all' | VocabularyKind | 'confusion';
+export type CollectionKind = VocabularyKind | 'confusion';
+export type Mode = 'all' | CollectionKind;
 export type MemoryState = {
   revision: number;
   seen: number;
@@ -9,7 +10,7 @@ export type MemoryState = {
   dueAt: string | null;
   lastReviewedAt: string | null;
   lastAdvancedAt: string | null;
-  lastRating: Rating | null;
+  lastRating: Rating | 'hard' | null;
 };
 export type Vocabulary = {
   id: number;
@@ -25,7 +26,7 @@ export type Vocabulary = {
   etymology: string | null;
   createdAt: string | null;
 };
-export type Collection = { id: number; name: string; createdAt: string; wordIds: number[] };
+export type Collection = { id: number; name: string; kind: CollectionKind; createdAt: string; wordIds: number[] };
 export type Confusion = { id: string; wordId: number; otherWord: string; otherMeaning: string; tip: string; createdAt: string };
 export type Workspace = {
   words: Vocabulary[];
@@ -36,13 +37,14 @@ export type Workspace = {
 export type StudyItem = {
   key: string;
   wordId: number;
-  kind: VocabularyKind | 'confusion';
+  wordIds?: number[];
+  kind: CollectionKind;
   term: string;
   meaning: string;
   example?: string;
   translation?: string;
-  source?: string;
-  contrast?: { term: string; meaning: string; tip: string };
+  entries?: { term: string; meaning: string }[];
+  tip?: string;
 };
 export type ImportRow = {
   word: string;

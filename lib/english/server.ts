@@ -2,8 +2,8 @@ import { createHash } from 'node:crypto';
 import { eq, desc } from 'drizzle-orm';
 import { db, sql } from '@/lib/db';
 import { words } from '@/lib/schema';
-import { catalog, EMPTY_MEMORY, normalizeTerm, schedule } from './learning';
-import type { Confusion, ImportRow, MemoryState, Rating, Workspace } from './types';
+import { catalog, EMPTY_MEMORY, normalizeTerm, schedule, scopeItems } from './learning';
+import type { CollectionKind, Confusion, ImportRow, MemoryState, Rating, Workspace } from './types';
 
 export class RequestError extends Error {
   constructor(message: string, public status = 400) { super(message); }
@@ -28,10 +28,15 @@ export function positiveId(value: unknown): number {
   if (!Number.isSafeInteger(n) || n <= 0) throw new RequestError('条目编号不正确。');
   return n;
 }
+function collectionKind(value: unknown): CollectionKind {
+  if (!['word', 'confusion', 'phrase'].includes(String(value))) throw new RequestError('词表类别不正确。');
+  return value as CollectionKind;
+}
+
 export async function workspace(): Promise<Workspace> {
   const [vocabulary, collections, memberships, confusions, memory] = await Promise.all([
     db.select().from(words).orderBy(desc(words.createdAt)),
-    sql.query('SELECT id::int, name, created_at AS "createdAt" FROM "EnglishCollections" ORDER BY created_at DESC'),
+    sql.query('SELECT id::int, name, kind, created_at AS "createdAt" FROM "EnglishCollections" ORDER BY created_at DESC'),
     sql.query('SELECT collection_id::int AS "collectionId", word_id::int AS "wordId" FROM "EnglishCollectionWords"'),
     sql.query('SELECT id::int, word_id::int AS "wordId", other_word AS "otherWord", other_meaning AS "otherMeaning", tip, created_at AS "createdAt" FROM "EnglishConfusions"'),
     sql.query('SELECT key,state FROM "EnglishMemory"'),
@@ -50,9 +55,22 @@ export async function workspace(): Promise<Workspace> {
   }
   return JSON.parse(JSON.stringify({
     words: vocabulary,
-    collections: collections.map(c => ({ ...c, wordIds: memberships.filter(m => m.collectionId === c.id).map(m => m.wordId) })),
-    confusions: pairs, memory: Object.fromEntries(memory.map(m => [m.key, m.state])),
+    collections: collections.map(collection => ({ ...collection, wordIds: memberships.filter(member => member.collectionId === collection.id).map(member => member.wordId) })),
+    confusions: pairs, memory: Object.fromEntries(memory.map(item => [item.key, item.state])),
   }));
+}
+
+async function validateCollectionMembers(kind: CollectionKind, ids: number[]) {
+  if (!ids.length) return;
+  const rows = await sql.query('SELECT id::int, kind FROM "Words" WHERE id=ANY($1::bigint[])', [ids]);
+  if (rows.length !== ids.length) throw new RequestError('所选词条中有内容已不存在。');
+  if (kind === 'word' && rows.some(row => row.kind !== 'word')) throw new RequestError('单词词表只能加入单词。');
+  if (kind === 'phrase' && rows.some(row => row.kind !== 'phrase')) throw new RequestError('短语词表只能加入短语。');
+  if (kind === 'confusion') {
+    const data = await workspace();
+    const allowed = new Set(scopeItems(data, 'confusion').flatMap(item => item.wordIds ?? [item.wordId]));
+    if (ids.some(id => !allowed.has(id))) throw new RequestError('易混词表只能加入后台已有辨析关系的单词。');
+  }
 }
 
 export async function importVocabulary(input: unknown, name: unknown) {
@@ -72,17 +90,20 @@ export async function importVocabulary(input: unknown, name: unknown) {
       sourceContext: stringValue(row.sourceContext ?? '', '原句', 2000, false),
     });
   }
-  // Atomic import. Existing definitions and memory are preserved on duplicate terms.
+  const kinds = new Set([...unique.values()].map(row => row.kind));
+  if (kinds.size !== 1) throw new RequestError('单词和短语请分成两份词表导入。');
+  const kind = [...kinds][0];
+
   const result = await sql.query(`
     WITH input AS (SELECT * FROM jsonb_to_recordset($1::jsonb) AS x(word text, meaning text, kind text, example text, translation text, source text, "sourceContext" text)),
     saved AS (
       INSERT INTO "Words" (word, meaning, kind, senses, source, source_context)
       SELECT word, meaning, kind, CASE WHEN example <> '' THEN jsonb_build_array(jsonb_build_object('meaning',meaning,'example',example,'translation',translation)) ELSE '[]'::jsonb END, source, "sourceContext" FROM input
       ON CONFLICT (word) DO UPDATE SET word = EXCLUDED.word RETURNING id
-    ), collection AS (INSERT INTO "EnglishCollections" (name) VALUES ($2) RETURNING id),
+    ), collection AS (INSERT INTO "EnglishCollections" (name,kind) VALUES ($2,$3) RETURNING id),
     members AS (INSERT INTO "EnglishCollectionWords" (collection_id, word_id) SELECT collection.id, saved.id FROM collection CROSS JOIN saved RETURNING word_id)
-    SELECT collection.id::int, (SELECT count(*)::int FROM members) AS count FROM collection`, [JSON.stringify([...unique.values()]), title]);
-  return result[0];
+    SELECT collection.id::int, (SELECT count(*)::int FROM members) AS count FROM collection`, [JSON.stringify([...unique.values()]), title, kind]);
+  return { ...result[0], kind };
 }
 
 export async function mutateWorkspace(body: Record<string, unknown>) {
@@ -93,11 +114,9 @@ export async function mutateWorkspace(body: Record<string, unknown>) {
       const existing = await db.query.words.findFirst({ where: eq(words.id, id) });
       if (!existing) throw new RequestError('这个词已不存在。', 404);
       const wordKey = `word:${id}`;
-      const autoPattern = `confusion:auto:${id}:%`;
-      const related = `item_key=$2 OR item_key LIKE $3 OR EXISTS (SELECT 1 FROM "EnglishConfusions" c WHERE c.word_id=$1 AND item_key LIKE 'confusion:' || c.id || ':%')`;
       await sql.transaction([
-        sql.query(`DELETE FROM "EnglishReviewEvents" WHERE ${related}`, [id, wordKey, autoPattern]),
-        sql.query(`DELETE FROM "EnglishMemory" WHERE ${related.replaceAll('item_key', 'key')}`, [id, wordKey, autoPattern]),
+        sql.query('DELETE FROM "EnglishReviewEvents" WHERE item_key=$1 OR item_key LIKE $2', [wordKey, 'confusion-group:%']),
+        sql.query('DELETE FROM "EnglishMemory" WHERE key=$1 OR key LIKE $2', [wordKey, 'confusion-group:%']),
         sql.query('DELETE FROM "StudyProgress" WHERE item_type=$1 AND item_id=$2', ['word', id]),
         sql.query('DELETE FROM "Words" WHERE id=$1', [id]),
       ]);
@@ -114,19 +133,22 @@ export async function mutateWorkspace(body: Record<string, unknown>) {
       const translation = stringValue(body.translation ?? '', '翻译', 2000, false);
       if (senses.length || example) senses[0] = { ...senses[0], meaning, example, translation };
       await db.update(words).set({ word: normalizeTerm(stringValue(body.word, '词条', 120)), meaning, kind: body.kind, senses,
-        notes: stringValue(body.notes ?? '', '笔记', 8000, false),
-        source: stringValue(body.source ?? '', '来源', 200, false),
-        sourceContext: stringValue(body.sourceContext ?? '', '原句', 2000, false), updatedAt: new Date(),
+        notes: stringValue(body.notes ?? '', '笔记', 8000, false), updatedAt: new Date(),
       }).where(eq(words.id, id));
+      await sql.query(`DELETE FROM "EnglishCollectionWords" cw USING "EnglishCollections" c
+        WHERE cw.collection_id=c.id AND cw.word_id=$1
+          AND NOT (c.kind=$2 OR (c.kind='confusion' AND $2='word'))`, [id, body.kind]);
       return { id };
     }
     case 'collection': {
-      const name = stringValue(body.name, '清单名称', 100);
+      const name = stringValue(body.name, '词表名称', 100);
+      const kind = collectionKind(body.kind);
       const ids = Array.isArray(body.wordIds) ? [...new Set(body.wordIds.map(positiveId))] : [];
-      if (ids.length > 1000) throw new RequestError('清单最多选择 1000 条。');
-      const [row] = await sql.query(`WITH c AS (INSERT INTO "EnglishCollections" (name) VALUES ($1) RETURNING id),
-        members AS (INSERT INTO "EnglishCollectionWords" (collection_id, word_id) SELECT c.id,w.id FROM c CROSS JOIN "Words" w WHERE w.id = ANY($2::bigint[]) RETURNING word_id)
-        SELECT id::int FROM c`, [name, ids]);
+      if (ids.length > 1000) throw new RequestError('词表最多选择 1000 条。');
+      await validateCollectionMembers(kind, ids);
+      const [row] = await sql.query(`WITH c AS (INSERT INTO "EnglishCollections" (name,kind) VALUES ($1,$2) RETURNING id),
+        members AS (INSERT INTO "EnglishCollectionWords" (collection_id, word_id) SELECT c.id,w.id FROM c CROSS JOIN "Words" w WHERE w.id = ANY($3::bigint[]) RETURNING word_id)
+        SELECT id::int FROM c`, [name, kind, ids]);
       return row;
     }
     case 'renameCollection': {
@@ -141,8 +163,14 @@ export async function mutateWorkspace(body: Record<string, unknown>) {
       const id = positiveId(body.id);
       if (!Array.isArray(body.wordIds) || body.wordIds.length > 1000) throw new RequestError('请选择词条。');
       const ids = [...new Set(body.wordIds.map(positiveId))];
-      if (body.remove === true) await sql.query('DELETE FROM "EnglishCollectionWords" WHERE collection_id=$1 AND word_id=ANY($2::bigint[])', [id, ids]);
-      else await sql.query('INSERT INTO "EnglishCollectionWords" (collection_id,word_id) SELECT $1,id FROM "Words" WHERE id=ANY($2::bigint[]) ON CONFLICT DO NOTHING', [id, ids]);
+      if (body.remove === true) {
+        await sql.query('DELETE FROM "EnglishCollectionWords" WHERE collection_id=$1 AND word_id=ANY($2::bigint[])', [id, ids]);
+      } else {
+        const [collection] = await sql.query('SELECT kind FROM "EnglishCollections" WHERE id=$1', [id]);
+        if (!collection) throw new RequestError('这份词表已不存在。', 404);
+        await validateCollectionMembers(collectionKind(collection.kind), ids);
+        await sql.query('INSERT INTO "EnglishCollectionWords" (collection_id,word_id) SELECT $1,id FROM "Words" WHERE id=ANY($2::bigint[]) ON CONFLICT DO NOTHING', [id, ids]);
+      }
       return { ok: true };
     }
     case 'confusion': {
@@ -154,13 +182,14 @@ export async function mutateWorkspace(body: Record<string, unknown>) {
       const [saved] = await sql.query(`INSERT INTO "EnglishConfusions" (word_id,other_word,other_meaning,tip) VALUES ($1,$2,$3,$4)
         ON CONFLICT (word_id,other_word) DO UPDATE SET other_meaning=EXCLUDED.other_meaning,tip=EXCLUDED.tip RETURNING id::int`,
       [wordId, otherWord, stringValue(body.otherMeaning, '易混词释义', 1000), stringValue(body.tip ?? '', '辨析', 2000, false)]);
+      await sql.query('DELETE FROM "EnglishMemory" WHERE key LIKE $1', ['confusion-group:%']);
       return saved;
     }
     case 'deleteConfusion': {
       const id = positiveId(body.id);
       await sql.transaction([
         sql.query('DELETE FROM "EnglishConfusions" WHERE id=$1', [id]),
-        sql.query('DELETE FROM "EnglishMemory" WHERE key=ANY($1::text[])', [[`confusion:${id}:0`, `confusion:${id}:1`]]),
+        sql.query('DELETE FROM "EnglishMemory" WHERE key LIKE $1', ['confusion-group:%']),
       ]);
       return { ok: true };
     }
@@ -180,7 +209,7 @@ export async function review(input: Record<string, unknown>, channel = 'web') {
     return { eventId, key, state: existing[0].result };
   }
   const data = await workspace();
-  if (!catalog(data).some(i => i.key === key)) throw new RequestError('这个学习条目已不存在。', 404);
+  if (!catalog(data).some(item => item.key === key)) throw new RequestError('这个学习条目已不存在。', 404);
   const previous = data.memory[key] ?? { ...EMPTY_MEMORY };
   if (input.revision !== previous.revision) throw new RequestError('另一个页面或微信已更新这个词，请刷新进度后重试。', 409);
   const result = schedule(previous, rating as Rating);

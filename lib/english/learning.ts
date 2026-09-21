@@ -1,92 +1,183 @@
-import type { ImportRow, MemoryState, Mode, Rating, StudyItem, Workspace } from './types';
+import type { CollectionKind, ImportRow, MemoryState, Mode, Rating, StudyItem, Workspace } from './types';
 
 export const EMPTY_MEMORY: MemoryState = {
   revision: 0, seen: 0, lapses: 0, intervalDays: 0,
   dueAt: null, lastReviewedAt: null, lastAdvancedAt: null, lastRating: null,
 };
 const DAY = 86_400_000;
+const REVIEW_STEPS = [1, 3, 7] as const;
 
-// A transparent spacing policy, not a claim of an individually optimal memory model.
-// Early same-day practice cannot repeatedly multiply a long-term interval.
+export function isUnlearned(state: MemoryState | undefined) {
+  return !state || state.lastRating !== 'good';
+}
+
+// “认识”才进入 1、3、7 天复习链；“不认识”始终留在没学过。
 export function schedule(previous: MemoryState | undefined, rating: Rating, now = new Date()): MemoryState {
   const p = previous ?? EMPTY_MEMORY;
   const time = now.getTime();
+  if (rating === 'again') {
+    return {
+      revision: p.revision + 1,
+      seen: p.seen + 1,
+      lapses: p.lapses + 1,
+      intervalDays: 0,
+      dueAt: null,
+      lastAdvancedAt: p.lastAdvancedAt,
+      lastReviewedAt: now.toISOString(),
+      lastRating: 'again',
+    };
+  }
+
   const canAdvance = !p.lastAdvancedAt || time - Date.parse(p.lastAdvancedAt) >= 20 * 3_600_000;
   let intervalDays = p.intervalDays;
   let dueAt = p.dueAt;
   let lastAdvancedAt = p.lastAdvancedAt;
-  if (rating === 'again') {
-    intervalDays = 0;
-    dueAt = new Date(time + 10 * 60_000).toISOString();
-  } else if (rating === 'hard') {
-    intervalDays = Math.max(0.25, Math.min(1, p.intervalDays / 2));
-    dueAt = new Date(time + intervalDays * DAY).toISOString();
-  } else if (canAdvance || p.intervalDays === 0) {
-    intervalDays = canAdvance ? Math.min(90, Math.max(1, p.intervalDays * 2.2)) : 1;
+  if (p.lastRating !== 'good' || intervalDays < 1) {
+    intervalDays = REVIEW_STEPS[0];
     dueAt = new Date(time + intervalDays * DAY).toISOString();
     lastAdvancedAt = now.toISOString();
-  } else if (!dueAt || Date.parse(dueAt) < time) {
-    dueAt = new Date(time + Math.max(0.25, intervalDays) * DAY).toISOString();
+  } else if (canAdvance) {
+    intervalDays = intervalDays < 3 ? REVIEW_STEPS[1] : REVIEW_STEPS[2];
+    dueAt = new Date(time + intervalDays * DAY).toISOString();
+    lastAdvancedAt = now.toISOString();
+  } else if (!dueAt || Date.parse(dueAt) <= time) {
+    dueAt = new Date(time + intervalDays * DAY).toISOString();
   }
   return {
-    revision: p.revision + 1, seen: p.seen + 1,
-    lapses: p.lapses + (rating === 'again' ? 1 : 0), intervalDays,
-    dueAt, lastAdvancedAt, lastReviewedAt: now.toISOString(), lastRating: rating,
+    revision: p.revision + 1,
+    seen: p.seen + 1,
+    lapses: p.lapses,
+    intervalDays,
+    dueAt,
+    lastAdvancedAt,
+    lastReviewedAt: now.toISOString(),
+    lastRating: 'good',
   };
 }
 
-export function catalog(data: Workspace): StudyItem[] {
-  const result: StudyItem[] = data.words.map(w => ({
-    key: `word:${w.id}`, wordId: w.id, kind: w.kind, term: w.word, meaning: w.meaning,
-    example: w.sourceContext || w.senses?.[0]?.example || undefined,
-    translation: w.sourceContext ? undefined : w.senses?.[0]?.translation,
-    source: w.source || undefined,
-  }));
-  for (const pair of data.confusions) {
-    const word = data.words.find(w => w.id === pair.wordId);
-    if (!word) continue;
-    const sides = [{ term: word.word, meaning: word.meaning }, { term: pair.otherWord, meaning: pair.otherMeaning }];
-    sides.forEach((side, i) => result.push({
-      key: `confusion:${pair.id}:${i}`, wordId: word.id, kind: 'confusion', ...side,
-      contrast: { ...sides[1 - i], tip: pair.tip },
-    }));
+function stableHash(value: string) {
+  let hash = 2166136261;
+  for (let index = 0; index < value.length; index++) {
+    hash ^= value.charCodeAt(index);
+    hash = Math.imul(hash, 16777619);
   }
-  return result;
+  return (hash >>> 0).toString(36);
 }
 
-export function scopeItems(data: Workspace, mode: Mode = 'all', collection = '', ids?: number[]): StudyItem[] {
-  const list = data.collections.find(c => String(c.id) === collection);
-  let allowed = ids ? new Set(ids) : list ? new Set(list.wordIds) : null;
-  if (collection && !list && !['recent', 'difficult', 'unfiled'].includes(collection)) return [];
-  if (collection === 'unfiled') {
-    const filed = new Set(data.collections.flatMap(c => c.wordIds));
-    allowed = new Set(data.words.filter(w => !filed.has(w.id)).map(w => w.id));
+function confusionItems(data: Workspace): StudyItem[] {
+  const wordsByTerm = new Map(data.words.map(word => [normalizeTerm(word.word), word]));
+  const groups = new Map<string, { tip: string; entries: Map<string, { term: string; meaning: string }>; wordIds: Set<number> }>();
+
+  for (const pair of data.confusions) {
+    const original = data.words.find(word => word.id === pair.wordId);
+    if (!original) continue;
+    const tip = pair.tip.trim();
+    const groupKey = tip ? `tip:${tip}` : `pair:${pair.id}`;
+    const group = groups.get(groupKey) ?? { tip, entries: new Map(), wordIds: new Set<number>() };
+    group.entries.set(normalizeTerm(original.word), { term: original.word, meaning: original.meaning });
+    group.entries.set(normalizeTerm(pair.otherWord), { term: pair.otherWord, meaning: pair.otherMeaning });
+    group.wordIds.add(original.id);
+    const other = wordsByTerm.get(normalizeTerm(pair.otherWord));
+    if (other) group.wordIds.add(other.id);
+    groups.set(groupKey, group);
   }
-  if (collection === 'recent') allowed = new Set([...data.words].sort((a,b) => (b.createdAt || '').localeCompare(a.createdAt || '')).slice(0,30).map(w => w.id));
+
+  return [...groups.values()].map(group => {
+    const entries = [...group.entries.values()];
+    const identity = entries.map(entry => normalizeTerm(entry.term)).sort().join('|');
+    const wordIds = [...group.wordIds];
+    return {
+      key: `confusion-group:${stableHash(identity + '|' + group.tip)}`,
+      wordId: wordIds[0],
+      wordIds,
+      kind: 'confusion',
+      term: entries.map(entry => entry.term).join(' / '),
+      meaning: entries.map(entry => entry.meaning).join('；'),
+      entries,
+      tip: visibleTip(group.tip),
+    };
+  });
+}
+
+export function catalog(data: Workspace): StudyItem[] {
+  const vocabulary: StudyItem[] = data.words.map(word => ({
+    key: `word:${word.id}`,
+    wordId: word.id,
+    wordIds: [word.id],
+    kind: word.kind,
+    term: word.word,
+    meaning: word.meaning,
+    example: word.senses?.[0]?.example || undefined,
+    translation: word.senses?.[0]?.translation || undefined,
+  }));
+  return [...vocabulary, ...confusionItems(data)];
+}
+
+function itemMatchesIds(item: StudyItem, allowed: Set<number>) {
+  return (item.wordIds ?? [item.wordId]).some(id => allowed.has(id));
+}
+
+function collectionKindForMode(mode: Mode): CollectionKind | null {
+  return mode === 'all' ? null : mode;
+}
+
+export function scopeItems(data: Workspace, mode: Mode = 'word', collection = '', ids?: number[]): StudyItem[] {
+  const list = data.collections.find(item => String(item.id) === collection);
+  const expectedKind = collectionKindForMode(mode);
+  if (list && expectedKind && list.kind !== expectedKind) return [];
+  if (collection && !list && !['recent', 'difficult', 'unfiled'].includes(collection)) return [];
+
+  let allowed = ids ? new Set(ids) : list ? new Set(list.wordIds) : null;
+  if (collection === 'unfiled') {
+    const relevantKinds = mode === 'all' ? ['word', 'phrase'] : [mode];
+    const filed = new Set(data.collections.filter(item => relevantKinds.includes(item.kind)).flatMap(item => item.wordIds));
+    allowed = new Set(data.words.filter(word => !filed.has(word.id)).map(word => word.id));
+  }
+  if (collection === 'recent') {
+    const relevant = data.words.filter(word => mode === 'all' ? true : mode === 'confusion' ? word.kind === 'word' : word.kind === mode);
+    allowed = new Set([...relevant].sort((a, b) => (b.createdAt || '').localeCompare(a.createdAt || '')).slice(0, 30).map(word => word.id));
+  }
+
   return catalog(data).filter(item => {
     if (mode === 'all' ? item.kind === 'confusion' : item.kind !== mode) return false;
-    if (allowed && !allowed.has(item.wordId)) return false;
-    if (collection === 'difficult' && !['again', 'hard'].includes(data.memory[item.key]?.lastRating || '')) return false;
+    if (allowed && !itemMatchesIds(item, allowed)) return false;
+    if (collection === 'difficult' && data.memory[item.key]?.lastRating === 'good') return false;
     return true;
   });
 }
 
 export function chooseRound(items: StudyItem[], memory: Workspace['memory'], count: number, all = false, now = Date.now()): StudyItem[] {
-  const due = items.filter(i => memory[i.key]?.seen && Date.parse(memory[i.key].dueAt || '') <= now)
-    .sort((a,b) => (memory[a.key].dueAt || '').localeCompare(memory[b.key].dueAt || ''));
-  const fresh = items.filter(i => !memory[i.key]?.seen);
-  const future = items.filter(i => memory[i.key]?.seen && Date.parse(memory[i.key].dueAt || '') > now)
-    .sort((a,b) => (memory[a.key].lastReviewedAt || '').localeCompare(memory[b.key].lastReviewedAt || ''));
+  const due = items.filter(item => memory[item.key]?.lastRating === 'good' && Date.parse(memory[item.key].dueAt || '') <= now)
+    .sort((a, b) => (memory[a.key].dueAt || '').localeCompare(memory[b.key].dueAt || ''));
+  const fresh = items.filter(item => isUnlearned(memory[item.key]));
+  const future = items.filter(item => memory[item.key]?.lastRating === 'good' && Date.parse(memory[item.key].dueAt || '') > now)
+    .sort((a, b) => (memory[a.key].dueAt || '').localeCompare(memory[b.key].dueAt || ''));
   return [...due, ...fresh, ...(all ? future : [])].slice(0, Math.max(1, Math.min(100, count)));
 }
 
 export function stats(items: StudyItem[], memory: Workspace['memory'], now = Date.now()) {
   return {
     total: items.length,
-    fresh: items.filter(i => !memory[i.key]?.seen).length,
-    due: items.filter(i => memory[i.key]?.seen && Date.parse(memory[i.key].dueAt || '') <= now).length,
-    familiar: items.filter(i => memory[i.key]?.intervalDays >= 7 && memory[i.key]?.lastRating === 'good').length,
+    fresh: items.filter(item => isUnlearned(memory[item.key])).length,
+    due: items.filter(item => memory[item.key]?.lastRating === 'good' && Date.parse(memory[item.key].dueAt || '') <= now).length,
+    familiar: items.filter(item => memory[item.key]?.intervalDays >= 7 && memory[item.key]?.lastRating === 'good').length,
   };
+}
+
+export function visibleTip(tip: string | null | undefined) {
+  return (tip || '')
+    .replace(/第\s*\d+\s*题(?:考点|题干出现)?[：:]?/gi, '')
+    .replace(/试卷第?\s*\d+\s*(?:页|题|左|右)/gi, '')
+    .replace(/P\s*\d+\s*(?:页|左|右)?/gi, '')
+    .replace(/([：:])\s*[，,]/g, '$1')
+    .replace(/[：:]\s*[：:]/g, '：')
+    .replace(/^[，,；;：:\s]+|[，,；;：:\s]+$/g, '')
+    .trim();
+}
+export function visibleNote(note: string | null | undefined) {
+  return (note || '').split(/\r?\n/)
+    .filter(line => line.trim() && !/^导入材料[:：]/.test(line.trim()) && !/^原材料标记[:：]/.test(line.trim()) && !/第\s*\d+\s*题|题干出现|试卷第|P\s*\d+\s*(页|左|右)/i.test(line))
+    .join('\n');
 }
 
 export function normalizeTerm(term: string) { return term.trim().replace(/\s+/g, ' ').toLowerCase(); }

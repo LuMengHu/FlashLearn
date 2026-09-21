@@ -31,7 +31,6 @@ type ParsedRow = { word: string; meaning: string; usage: string; supplemental: b
 type ParsedGroup = { title: string; tip: string; rows: ParsedRow[] };
 
 const SOURCE = '英文生词整理 · Practice 2 ＋ 易混词表（p.133）';
-const SOURCE_MARKER = `导入材料：${SOURCE}`;
 const CONFUSION_LIST = 'Practice 2 · 易混词';
 const PHRASE_LIST = 'Practice 2 · 短语';
 
@@ -97,7 +96,7 @@ function parseDocument(html: string) {
   function ensure(row: ParsedRow, collection: string, forcePhrase: boolean, group: ParsedGroup) {
     const key = normalize(row.word);
     let item = words.get(key);
-    const groupNote = [group.title && `分组：${group.title}`, group.tip && `辨析：${group.tip}`, row.supplemental && '原材料标记：补充条目'].filter(Boolean).join('\n');
+    const groupNote = [group.title && `分组：${group.title}`, group.tip && `辨析：${group.tip}`].filter(Boolean).join('\n');
     if (!item) {
       item = {
         word: row.word.replace(/\s+/g, ' ').trim(), meaning: row.meaning, usages: [],
@@ -132,9 +131,9 @@ function parseDocument(html: string) {
 }
 
 function mergeNotes(existing: string | null, imported: ImportedWord) {
-  if (existing?.includes(SOURCE_MARKER)) return existing;
-  const block = [SOURCE_MARKER, ...imported.notes, imported.usages.length ? `材料搭配：${imported.usages.join('；')}` : ''].filter(Boolean).join('\n');
-  return existing?.trim() ? `${existing.trim()}\n\n${block}` : block;
+  const retained = (existing || '').split(/\r?\n/)
+    .filter(line => line.trim() && !/^导入材料[:：]/.test(line.trim()) && !/^原材料标记[:：]/.test(line.trim()) && !/第\s*\d+\s*题|题干出现|试卷第|P\s*\d+\s*(页|左|右)/i.test(line));
+  return [...new Set([...retained, ...imported.notes])].join('\n');
 }
 
 async function main() {
@@ -187,7 +186,7 @@ async function main() {
   const backupDir = path.join(process.cwd(), '.local', 'backups');
   fs.mkdirSync(backupDir, { recursive: true });
   const matchedExisting = existingRows.filter(row => parsed.words.has(normalize(row.word)));
-  const priorCollections = await sql.query(`SELECT c.id::int,c.name,c.created_at AS "createdAt",coalesce(json_agg(cw.word_id) FILTER (WHERE cw.word_id IS NOT NULL),'[]') AS "wordIds" FROM "EnglishCollections" c LEFT JOIN "EnglishCollectionWords" cw ON cw.collection_id=c.id WHERE c.name=ANY($1::text[]) GROUP BY c.id,c.name,c.created_at`, [[CONFUSION_LIST, PHRASE_LIST]]);
+  const priorCollections = await sql.query(`SELECT c.id::int,c.name,c.kind,c.created_at AS "createdAt",coalesce(json_agg(cw.word_id) FILTER (WHERE cw.word_id IS NOT NULL),'[]') AS "wordIds" FROM "EnglishCollections" c LEFT JOIN "EnglishCollectionWords" cw ON cw.collection_id=c.id WHERE c.name=ANY($1::text[]) GROUP BY c.id,c.name,c.created_at`, [[CONFUSION_LIST, PHRASE_LIST]]);
   const backupPath = path.join(backupDir, `practice2-before-${stamp}.json`);
   fs.writeFileSync(backupPath, JSON.stringify({ createdAt: new Date().toISOString(), sourceFile: file, words: matchedExisting, collections: priorCollections }, null, 2));
   await sql.transaction([
@@ -196,8 +195,9 @@ async function main() {
       FROM jsonb_to_recordset($1::jsonb) AS x(word text,meaning text,senses jsonb,family jsonb,confusables jsonb,etymology text,kind text,source text,"sourceContext" text,notes text)
       ON CONFLICT (word) DO UPDATE SET meaning=EXCLUDED.meaning,senses=EXCLUDED.senses,family=EXCLUDED.family,confusables=EXCLUDED.confusables,
       etymology=EXCLUDED.etymology,kind=EXCLUDED.kind,source=EXCLUDED.source,source_context=EXCLUDED.source_context,notes=EXCLUDED.notes,updated_at=now()`, [JSON.stringify(payload)]),
-    sql.query(`INSERT INTO "EnglishCollections" (name) SELECT name FROM unnest($1::text[]) AS name
-      WHERE NOT EXISTS (SELECT 1 FROM "EnglishCollections" c WHERE c.name=name)`, [[CONFUSION_LIST, PHRASE_LIST]]),
+    sql.query(`INSERT INTO "EnglishCollections" (name,kind)
+      SELECT name,CASE WHEN name=$2 THEN 'confusion' ELSE 'phrase' END FROM unnest($1::text[]) AS name
+      WHERE NOT EXISTS (SELECT 1 FROM "EnglishCollections" c WHERE c.name=name)`, [[CONFUSION_LIST, PHRASE_LIST], CONFUSION_LIST]),
     sql.query(`WITH memberships AS (SELECT * FROM jsonb_to_recordset($1::jsonb) AS x(collection text,word text))
       INSERT INTO "EnglishCollectionWords" (collection_id,word_id)
       SELECT c.id,w.id FROM memberships m JOIN "Words" w ON w.word=m.word

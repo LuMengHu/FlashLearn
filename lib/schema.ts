@@ -237,9 +237,9 @@ export type NewEnglishItem = typeof englishItems.$inferInsert;
 export const englishCollections = pgTable('EnglishCollections', {
   id: bigserial('id', { mode: 'number' }).primaryKey(),
   name: text('name').notNull(),
+  kind: text('kind', { enum: ['word', 'confusion', 'phrase'] }).notNull().default('word'),
   createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
-});
-export const englishCollectionWords = pgTable('EnglishCollectionWords', {
+});export const englishCollectionWords = pgTable('EnglishCollectionWords', {
   collectionId: bigint('collection_id', { mode: 'number' }).notNull().references(() => englishCollections.id, { onDelete: 'cascade' }),
   wordId: bigint('word_id', { mode: 'number' }).notNull().references(() => words.id, { onDelete: 'cascade' }),
 }, t => ({ memberUnique: uniqueIndex('EnglishCollectionWords_unique').on(t.collectionId, t.wordId) }));
