@@ -10,7 +10,7 @@ export default function Dashboard() {
   const { data } = useWorkspace();
   const [resume, setResume] = useState<{ mode: string; collection?: string } | null>(null);
   useEffect(() => {
-    try { const saved = JSON.parse(localStorage.getItem('flashlearn.english.session.v2') || 'null'); setResume(saved?.queue?.length ? { mode: saved.mode === 'phrase' ? 'phrase' : 'confusion', collection: saved.collection || '' } : null); }
+    try { const saved = JSON.parse(localStorage.getItem('flashlearn.english.session.v3') || 'null'); setResume(saved?.queue?.length ? { mode: saved.mode === 'phrase' ? 'phrase' : 'confusion', collection: saved.collection || '' } : null); }
     catch {}
   }, []);
   const kinds = [

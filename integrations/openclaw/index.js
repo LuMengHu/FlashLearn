@@ -44,7 +44,7 @@ export default {
     });
     api.registerTool(context=>({
       name:'flashlearn_vocab',
-      description:'Use the user’s FlashLearn vocabulary and shared memory in WeChat. Actions: start (default 5 items), reveal, next, rate (again/good after explicit self-assessment), continue, lists, status, help. Relay returned text faithfully. Never invent a question, definition or progress. For a free-text meaning answer, reveal the canonical answer and ask the user to self-assess; do not guess a rating. Use lists to resolve collection ids. Short replies 1/2 mean again/good during a review.',
+      description:'Use the user’s FlashLearn vocabulary and shared memory in WeChat. Actions: start (default 5 items), reveal, next, rate (again/good for the entire displayed group after explicit self-assessment), continue, lists, status, help. Relay returned text faithfully. Never invent a question, definition or progress. For a free-text meaning answer, reveal the canonical answer and ask the user to self-assess; do not guess a rating. Use lists to resolve collection ids. Short replies 1/2 mean again/good during a review.',
       parameters:{type:'object',properties:{action:{type:'string',enum:['start','reveal','next','rate','continue','lists','status','help']},rating:{type:'string',enum:['again','good']},mode:{type:'string',enum:['phrase','confusion']},collection:{type:'string'},count:{type:'integer',minimum:1,maximum:20}},required:['action'],additionalProperties:false},
       async execute(id,params){const text=await run(context.requesterSenderId||'owner',params,id);return {content:[{type:'text',text}]};},
     }));

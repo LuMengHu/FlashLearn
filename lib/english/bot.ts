@@ -1,5 +1,5 @@
 import { sql } from '@/lib/db';
-import { catalog, chooseRound, confusionGroups, scopeItems, stats } from './learning';
+import { catalog, chooseRound, confusionGroups, practiceBatch, scopeItems, stats } from './learning';
 import { RequestError, review, stringValue, workspace } from './server';
 import type { CollectionKind, Rating, StudyItem, Workspace } from './types';
 
@@ -13,20 +13,17 @@ type BotSession = {
   revealed: boolean;
   replies: Record<string, string>;
 };
-const HELP = '微信小复习\n\n/vocab 开始 5：学易混词\n/vocab 短语 5：学短语\n/vocab 词表：查看两类词表\n/vocab 词表编号 1 5：练指定词表\n/vocab 答案：揭晓\n/vocab 1 / 2：不认识 / 认识\n/vocab 继续：恢复';
+const HELP = '微信小复习\n\n/vocab 开始 5：学易混词\n/vocab 短语 5：学短语\n/vocab 词表：查看两类词表\n/vocab 词表编号 1 5：练指定词表\n/vocab 答案：揭晓\n/vocab 1 / 2：这一组都不认识 / 都认识\n/vocab 继续：恢复';
 
 function describe(state: BotSession, items: Map<string, StudyItem>, groups: Map<string, ReturnType<typeof confusionGroups>[number]>): string {
-  const item = items.get(state.queue[0]);
-  if (!item) return '这一轮完成：' + Object.values(state.ratings).filter(value => value === 'good').length + '/' + state.total + ' 项认识。进度已同步。';
+  const batch = practiceBatch(state.queue, items).map(key => items.get(key)!).filter(Boolean);
+  if (!batch.length) return '这一轮完成：' + Object.values(state.ratings).filter(value => value === 'good').length + '/' + state.total + ' 项认识。进度已同步。';
   const heading = state.title + ' · ' + Object.keys(state.ratings).length + '/' + state.total;
-  if (item.kind === 'confusion') {
-    const group = groups.get(item.groupKey || '');
-    const context = [item, ...(group?.entries || []).filter(entry => entry.key !== item.key)].slice(0, 4).map(entry => state.revealed ? entry.term + '｜' + entry.meaning : entry.term).join('\n');
-    return heading + '\n当前：' + item.term + '\n\n' + context +
-      (state.revealed && group?.tip ? '\n\n辨析：' + group.tip : '') +
-      (state.revealed ? '\n\n回复 /vocab 1 或 2，判断当前词。' : '\n\n回复 /vocab 答案。');
-  }
-  return heading + '\n\n' + item.term + (state.revealed ? '\n' + item.meaning + '\n\n回复 /vocab 1 或 2。' : '\n\n回复 /vocab 答案。');
+  const rows = batch.map(item => state.revealed ? item.term + '｜' + item.meaning : item.term).join('\n');
+  const group = batch[0].kind === 'confusion' ? groups.get(batch[0].groupKey || '') : undefined;
+  return heading + ' · 本组 ' + batch.length + ' 项\n\n' + rows +
+    (state.revealed && group?.tip ? '\n\n辨析：' + group.tip : '') +
+    (state.revealed ? '\n\n回复 /vocab 1（都不认识）或 2（都认识）。' : '\n\n先逐项回忆中文，再回复 /vocab 答案。');
 }
 
 export async function botCommand(input: Record<string, unknown>) {
@@ -74,21 +71,24 @@ export async function botCommand(input: Record<string, unknown>) {
   } else {
     if (!state) return { text: HELP };
     state = { ...state, queue: state.queue.filter(key => items.has(key)) };
-    const key = state.queue[0];
+    const batch = practiceBatch(state.queue, items);
     if (action === 'reveal' || action === 'next') {
       state.revealed = true;
     } else if (action === 'rate') {
-      if (!key) return { text: describe(state, items, groups) };
+      if (!batch.length) return { text: describe(state, items, groups) };
       if (!state.revealed) return { text: '先揭晓答案，再评价是否认识。\n\n' + describe(state, items, groups) };
       const rating = input.rating as Rating;
       if (rating !== 'again' && rating !== 'good') throw new RequestError('请选择认识或不认识。');
-      const result = await review({ eventId: `bot:${requestId}`, key, rating, revision: data.memory[key]?.revision || 0 }, 'wechat');
-      data.memory[key] = result.state;
-      state.ratings = { ...state.ratings, [key]: rating };
-      state.queue = state.queue.slice(1);
-      if (rating === 'again' && (state.repeats[key] || 0) < 2) {
-        state.repeats = { ...state.repeats, [key]: (state.repeats[key] || 0) + 1 };
-        state.queue.splice(Math.min(3, state.queue.length), 0, key);
+      for (let index = 0; index < batch.length; index++) {
+        const key = batch[index];
+        const result = await review({ eventId: 'bot:' + requestId + ':' + index, key, rating, revision: data.memory[key]?.revision || 0 }, 'wechat');
+        data.memory[key] = result.state;
+      }
+      state.ratings = { ...state.ratings, ...Object.fromEntries(batch.map(key => [key, rating])) };
+      state.queue = state.queue.filter(key => !batch.includes(key));
+      if (rating === 'again') for (const key of batch) if ((state.repeats[key] || 0) < 1) {
+        state.repeats = { ...state.repeats, [key]: 1 };
+        state.queue.push(key);
       }
       state.revealed = false;
     } else if (action !== 'continue') {

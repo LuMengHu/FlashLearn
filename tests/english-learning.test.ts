@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { catalog, chooseRound, confusionGroups, isUnlearned, parseImport, schedule, scopeItems, stats, visibleNote, visibleTip } from '../lib/english/learning';
+import { catalog, chooseRound, confusionGroups, isUnlearned, parseImport, practiceBatch, schedule, scopeItems, stats, studyFamily, visibleNote, visibleTip } from '../lib/english/learning';
 import type { Vocabulary, Workspace } from '../lib/english/types';
 
 const day0 = new Date('2026-09-20T08:00:00Z');
@@ -54,12 +54,38 @@ test('到期、新词和限定复习范围分开，四词组优先同组', () =>
     'word:4': schedule(undefined, 'good', new Date(+day0 + 2 * 86_400_000)),
   };
   const now = +day0 + 2 * 86_400_000;
-  assert.deepEqual(chooseRound(items, memory, 4, false, now).map(item => item.key), ['word:1','word:2','word:5']);
+  assert.deepEqual(chooseRound(items, memory, 4, false, now, 'mixed', { random: () => 0.999 }).map(item => item.key), ['word:1','word:2','word:5']);
   assert.deepEqual(chooseRound(items, memory, 4, false, now, 'review').map(item => item.key), ['word:1']);
-  assert.deepEqual(chooseRound(items, memory, 4, false, now, 'learn').map(item => item.key), ['word:2','word:5']);
+  assert.deepEqual(chooseRound(items, memory, 4, false, now, 'learn', { random: () => 0.999 }).map(item => item.key), ['word:2','word:5']);
   assert.deepEqual(stats(items, memory, now), { total: 4, fresh: 2, due: 1, familiar: 0 });
 });
 
+
+test('短语每表最多三个且不混合不同词头；新词轮换优先未展示家族', () => {
+  const phrases = ['take over', 'take after', 'take to', 'put up', 'put off', 'break down'].map((term, index) => ({
+    key: 'phrase:' + index, wordId: index + 10, kind: 'phrase' as const, term, meaning: '释义' + index,
+  }));
+  const map = new Map(phrases.map(item => [item.key, item]));
+  const queue = phrases.map(item => item.key);
+  assert.deepEqual(practiceBatch(queue, map), queue.slice(0, 3));
+  assert.deepEqual(practiceBatch(queue.slice(3), map), queue.slice(3, 5));
+  assert.equal(studyFamily(phrases[0]), 'phrase:take');
+  const original = chooseRound(phrases, {}, 3, false, +day0, 'learn', { random: () => 0.999 });
+  const rotated = chooseRound(phrases, {}, 3, false, +day0, 'learn', {
+    random: () => 0.999, avoidFamilies: new Set(['phrase:take']),
+  });
+  assert.equal(original[0].term, 'take over');
+  assert.equal(rotated[0].term.startsWith('take'), false);
+  assert.equal(practiceBatch(rotated.map(item => item.key), map).length, 2);
+  const shuffled = chooseRound(phrases, {}, 3, false, +day0, 'learn', { random: () => 0 });
+  assert.notEqual(shuffled[0].term, original[0].term);
+});
+
+test('易混大组拆成四词以内的表格', () => {
+  const items = scopeItems(data, 'confusion');
+  const map = new Map(items.map(item => [item.key, item]));
+  assert.deepEqual(practiceBatch(items.map(item => item.key), map), ['word:1', 'word:2', 'word:4', 'word:5']);
+});
 test('短语导入保留释义里的逗号与归一化去重', () => {
   const rows = parseImport('put up with | 忍受, 容忍\nTAKE AWAY | 拿走\nput   up with | 容忍');
   assert.equal(rows.length, 2);

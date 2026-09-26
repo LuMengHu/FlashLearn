@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useMemo, useState } from 'react';
-import { ArrowRight, Search, Volume2, Pencil, EyeOff, Undo2 } from 'lucide-react';
+import { ArrowRight, Search, Volume2, Pencil } from 'lucide-react';
 import { confusionGroups, visibleNote } from '@/lib/english/learning';
 import type { Vocabulary } from '@/lib/english/types';
 import { useSpeech } from '@/hooks/use-speech';
@@ -31,7 +31,6 @@ export default function Confusions() {
       return [group.name, group.tip, ...group.entries.map(item => item.meaning)].join(' ').toLowerCase().includes(query.trim().toLowerCase());
     });
   }, [data, collectionId, collection, query]);
-  const excluded = data?.words.filter(word => word.kind === 'word' && word.excluded) || [];
   const selectedIds = [...new Set(groups.filter(group => selected.includes(group.key)).flatMap(group => group.wordIds))];
   const matchingCollections = data?.collections.filter(item => item.kind === 'confusion') || [];
 
@@ -41,22 +40,19 @@ export default function Confusions() {
     catch (cause) { setError((cause as Error).message); return false; }
     finally { setBusy(false); }
   }
-  async function members(remove: boolean) {
-    const id = remove ? collection?.id : Number(addTo);
+  async function members() {
+    const id = Number(addTo);
     if (!id || !selectedIds.length) return;
-    if (await act({ action: 'members', id, wordIds: selectedIds, remove })) { setSelected([]); setAddTo(''); }
+    if (await act({ action: 'members', id, wordIds: selectedIds })) { setSelected([]); setAddTo(''); }
   }
   async function save() {
     if (!editing) return;
     if (await act({ action: 'save', id: editing.id, kind: 'word', word: editing.word, meaning: editing.meaning,
       notes: editing.notes || '', example: editing.senses?.[0]?.example || '', translation: editing.senses?.[0]?.translation || '' })) setEditing(null);
   }
-  async function exclude(id: number, value: boolean) {
-    if (await act({ action: 'setExcluded', id, excluded: value })) setEditing(null);
-  }
 
   return <>
-    <Heading eyebrow="CONFUSABLES" title={collection?.name || '易混词'} description={data ? groups.length + ' 组 · 逐词判断' : undefined}
+    <Heading eyebrow="CONFUSABLES" title={collection?.name || '易混词'} description={data ? groups.length + ' 组 · 整组判断' : undefined}
       action={<Link className="en-button en-primary" href={'/english/study?mode=confusion' + (collection ? '&collection=' + collection.id : '')}>开始练习<ArrowRight size={16} /></Link>} />
     <LoadGate>{data && <>
       <div className="en-list-tabs"><Link href="/english/confusions" className={!collectionId ? 'active' : ''}>全部</Link>
@@ -64,8 +60,7 @@ export default function Confusions() {
       <div className="en-search en-toolbar"><Search size={17} className="en-search-icon" /><input className="en-input" aria-label="搜索易混词" placeholder="搜索英文或中文" value={query} onChange={event => setQuery(event.target.value)} /></div>
       {!!selected.length && <div className="en-selection"><span>已选 {selected.length} 组</span>
         <Link className="en-button en-button-small en-primary" href={'/english/study?mode=confusion&ids=' + selectedIds.join(',') + '&all=1'}>练这些</Link>
-        {!collection && <><ChoiceSelect label="加入词表" value={addTo} options={[{ value: '', label: '加入词表…' }, ...matchingCollections.map(item => ({ value: String(item.id), label: item.name }))]} onChange={setAddTo} /><button className="en-button en-button-small" disabled={!addTo || busy} onClick={() => members(false)}>加入</button></>}
-        {collection && <button className="en-button en-button-small" disabled={busy} onClick={() => members(true)}>移出本词表</button>}
+        {!collection && <><ChoiceSelect label="加入词表" value={addTo} options={[{ value: '', label: '加入词表…' }, ...matchingCollections.map(item => ({ value: String(item.id), label: item.name }))]} onChange={setAddTo} /><button className="en-button en-button-small" disabled={!addTo || busy} onClick={members}>加入</button></>}
         <button className="en-inline-link" onClick={() => setSelected([])}>取消</button></div>}
       <ErrorMessage message={error} />
       <div className="en-deck-grid">{groups.map(group => <article className="en-panel en-confusion-library" key={group.key}>
@@ -78,16 +73,13 @@ export default function Confusions() {
         {group.tip && <div className="en-memory-highlight"><strong>辨析提示</strong><p><SpeakableText text={group.tip} /></p></div>}
       </article>)}</div>
       {!groups.length && <div className="en-empty"><h2>{query ? '没有找到匹配的词' : '这份词表暂无内容'}</h2><p>可从全部易混词中选择整组加入。</p></div>}
-      {!!excluded.length && !collectionId && <section className="en-panel en-excluded"><h2>已移出练习 · {excluded.length}</h2><p className="en-muted">误移出的词可以恢复。</p>
-        {excluded.map(word => <div className="en-list-row" key={word.id}><button className="en-speak-term" onClick={() => speak(word.word)}><Volume2 size={14} />{word.word}</button><span className="en-grow">{word.meaning}</span><button className="en-button en-button-small" disabled={busy} onClick={() => exclude(word.id, false)}><Undo2 size={15} />恢复</button></div>)}
-      </section>}
     </>}</LoadGate>
     {editing && <Dialog title="编辑易混词" onClose={() => !busy && setEditing(null)}><form className="en-form" onSubmit={event => { event.preventDefault(); save(); }}>
       <Field label="英文"><input className="en-input" required value={editing.word} maxLength={120} onChange={event => setEditing({ ...editing, word: event.target.value })} /></Field>
       <Field label="中文"><input className="en-input" required value={editing.meaning} maxLength={1000} onChange={event => setEditing({ ...editing, meaning: event.target.value })} /></Field>
       <Field label="自己的记忆笔记"><textarea className="en-textarea" rows={3} value={visibleNote(editing.notes)} onChange={event => setEditing({ ...editing, notes: event.target.value })} /></Field>
       <ErrorMessage message={error} />
-      <div className="en-actions"><button type="button" className="en-button en-danger-link" disabled={busy} onClick={() => exclude(editing.id, true)}><EyeOff size={15} />移出练习</button><button className="en-button en-primary" disabled={busy}>保存</button></div>
+      <div className="en-actions"><button className="en-button en-primary" disabled={busy}>保存</button></div>
     </form></Dialog>}
   </>;
 }

@@ -3,7 +3,7 @@
   "groups": [
     {
       "name": "angle / anger",
-      "tip": "字母差一点，意思差很远",
+      "tip": "angle 是几何或观点的角度；anger 是愤怒。遇到 from a different angle 看“角度”，遇到 feel anger 看“情绪”。",
       "source": "Practice 2 HTML p.133",
       "entries": [
         {
@@ -18,7 +18,7 @@
     },
     {
       "name": "appal / appeal",
-      "tip": "pal→pale 吓白脸；peal→钟声召唤",
+      "tip": "appal sb 表示使人惊恐或震惊；appeal to sb 表示吸引或呼吁某人，appeal 也可指上诉。",
       "source": "Practice 2 HTML p.133",
       "entries": [
         {
@@ -33,7 +33,7 @@
     },
     {
       "name": "area / arena",
-      "tip": "arena 多个 n，是竞技的场地",
+      "tip": "area 是区域或面积；arena 是竞技场，也可比喻活动舞台，如 political arena。",
       "source": "Practice 2 HTML p.133",
       "entries": [
         {
@@ -48,7 +48,7 @@
     },
     {
       "name": "arise / rise / raise",
-      "tip": "raise 后面必须带宾语，rise / arise 不带",
+      "tip": "raise 后接宾语：raise prices；rise 是自己上升：prices rise；arise 多指问题、机会等出现：problems arise。",
       "source": "Practice 2 HTML p.133",
       "entries": [
         {
@@ -67,7 +67,7 @@
     },
     {
       "name": "assemble / assembly / resemble",
-      "tip": "词根 sembl = 相似、聚合",
+      "tip": "assemble people/parts 是集合或组装；assembly 是集会或装配的名词；resemble sb/sth 是与……相似。",
       "source": "Practice 2 HTML p.133",
       "entries": [
         {
@@ -86,7 +86,7 @@
     },
     {
       "name": "assert / asset / assume / assure",
-      "tip": "as- 开头四兄弟，看后半截",
+      "tip": "assert a claim 是断言；asset 是资产；assume 是假定或承担；assure sb 是向某人保证。",
       "source": "Practice 2 HTML p.133",
       "entries": [
         {
@@ -109,7 +109,7 @@
     },
     {
       "name": "aural / rural",
-      "tip": "aural = ear 耳；rural = 乡下",
+      "tip": "aural 与耳朵、听觉有关；rural 与乡村有关。aural test 是听力测试，rural area 是农村地区。",
       "source": "Practice 2 HTML p.133",
       "entries": [
         {
@@ -124,7 +124,7 @@
     },
     {
       "name": "awake / wake",
-      "tip": "a- 开头表状态，只作表语",
+      "tip": "awake 在这里表示醒着的状态；wake 是醒来或唤醒的动作，如 wake up、wake sb。",
       "source": "Practice 2 HTML p.133",
       "entries": [
         {
@@ -139,7 +139,7 @@
     },
     {
       "name": "awe / owe",
-      "tip": "a-we 我们敬畏；O 像零，欠着",
+      "tip": "awe 是敬畏或惊叹；owe sb sth 是欠某人某物，owe ... to ... 也表示把……归功于……。",
       "source": "Practice 2 HTML p.133",
       "entries": [
         {
@@ -154,7 +154,7 @@
     },
     {
       "name": "meat / meet / melt / mend",
-      "tip": "me- 开头一串，逐个锁定尾巴",
+      "tip": "meat 是肉；meet 是会面；melt 是融化；mend 是修补。先看末尾 -at、-et、-lt、-nd。",
       "source": "Practice 2 HTML p.133",
       "entries": [
         {
@@ -177,7 +177,7 @@
     },
     {
       "name": "mingle / single",
-      "tip": "",
+      "tip": "mingle with 表示与人交往或混在一起；single 表示单个的、单身的。",
       "source": "Practice 2 HTML p.133",
       "entries": [
         {
@@ -192,7 +192,7 @@
     },
     {
       "name": "moral / mortal",
-      "tip": "mort = 死",
+      "tip": "moral 谈道德或品行；mortal 谈生命有限或致命，如 mortal danger。",
       "source": "Practice 2 HTML p.133",
       "entries": [
         {
@@ -207,7 +207,7 @@
     },
     {
       "name": "motion / notion",
-      "tip": "mot = 动，not = 知",
+      "tip": "motion 是运动、动作，也可指提议；notion 是观念或想法，如 the notion that ...。",
       "source": "Practice 2 HTML p.133",
       "entries": [
         {
@@ -222,7 +222,7 @@
     },
     {
       "name": "multiple / multiply",
-      "tip": "multi = 多",
+      "tip": "multiple 是形容词，表示多个的；multiply 是动词，表示相乘、繁殖或增加。",
       "source": "Practice 2 HTML p.133",
       "entries": [
         {
@@ -237,7 +237,7 @@
     },
     {
       "name": "naive / native",
-      "tip": "t = territory 本土",
+      "tip": "naive 表示天真、缺乏经验；native 表示本地出生或本地的，如 native language。",
       "source": "Practice 2 HTML p.133",
       "entries": [
         {
@@ -252,7 +252,7 @@
     },
     {
       "name": "national / rational",
-      "tip": "r = reason 理性",
+      "tip": "national 关乎国家；rational 关乎理性和合理判断，如 a rational decision。",
       "source": "Practice 2 HTML p.133",
       "entries": [
         {
@@ -267,7 +267,7 @@
     },
     {
       "name": "nearby / nearly",
-      "tip": "-by 表地点，-ly 表程度",
+      "tip": "nearby 指地点近：a nearby town；nearly 指程度接近：nearly finished。",
       "source": "Practice 2 HTML p.133",
       "entries": [
         {
@@ -282,7 +282,7 @@
     },
     {
       "name": "elastic / plastic",
-      "tip": "",
+      "tip": "elastic 强调受拉后能回弹；plastic 指塑料或塑料制品。判断是“弹性”还是“材料”。",
       "source": "Practice 2 HTML p.133",
       "entries": [
         {
@@ -297,7 +297,7 @@
     },
     {
       "name": "endure / ensure",
-      "tip": "dure = 持久；sure = 确定",
+      "tip": "endure 是忍受或持续存在；ensure 是确保某事发生，如 ensure safety。",
       "source": "Practice 2 HTML p.133",
       "entries": [
         {
@@ -312,7 +312,7 @@
     },
     {
       "name": "enquire / require",
-      "tip": "词根 quire = 寻求",
+      "tip": "enquire about 是询问、打听；require 表示需要或要求，如 require evidence。",
       "source": "Practice 2 HTML p.133",
       "entries": [
         {
@@ -327,7 +327,7 @@
     },
     {
       "name": "excel / expel",
-      "tip": "cel = 高出；pel = 推",
+      "tip": "excel at/in 表示擅长；expel sb from ... 表示驱逐或开除某人。",
       "source": "Practice 2 HTML p.133",
       "entries": [
         {
@@ -342,7 +342,7 @@
     },
     {
       "name": "exert / expert",
-      "tip": "p = professional 专业",
+      "tip": "exert pressure/influence 是施加压力或影响；expert 是专家，也可作形容词“熟练的”。",
       "source": "Practice 2 HTML p.133",
       "entries": [
         {
@@ -357,7 +357,7 @@
     },
     {
       "name": "exist / exit",
-      "tip": "exist 多个 s = still 还在",
+      "tip": "exist 表示存在；exit 表示离开或出口。existence 是存在，exit door 是出口门。",
       "source": "Practice 2 HTML p.133",
       "entries": [
         {
@@ -372,7 +372,7 @@
     },
     {
       "name": "expand / expend",
-      "tip": "a = air 充气变大；e = expense 花钱",
+      "tip": "expand 表示体积、规模或范围扩大；expend 表示花费时间、精力或金钱。",
       "source": "Practice 2 HTML p.133",
       "entries": [
         {
@@ -387,7 +387,7 @@
     },
     {
       "name": "expensive / extensive",
-      "tip": "pens(花费)贵；tens(伸展)广",
+      "tip": "expensive 说价格昂贵；extensive 说范围广、数量大，如 extensive research。",
       "source": "Practice 2 HTML p.133",
       "entries": [
         {
@@ -402,7 +402,7 @@
     },
     {
       "name": "explode / explore",
-      "tip": "lore = 学问，求知即探索",
+      "tip": "explode 是爆炸或猛增；explore 是探索、调查，如 explore an idea。",
       "source": "Practice 2 HTML p.133",
       "entries": [
         {
@@ -417,7 +417,7 @@
     },
     {
       "name": "extend / extent",
-      "tip": "extend 是动词，extent 是名词",
+      "tip": "extend 是动词：延长或扩展；extent 是名词：程度或范围，如 to some extent。",
       "source": "Practice 2 HTML p.133",
       "entries": [
         {
@@ -432,7 +432,7 @@
     },
     {
       "name": "fate / fade / fake / faint",
-      "tip": "fa- 四兄弟，看第三个字母",
+      "tip": "fate 是命运；fade 是逐渐褪色或消失；fake 是伪造的；faint 是微弱的或晕倒。",
       "source": "Practice 2 HTML p.133",
       "entries": [
         {
@@ -455,7 +455,7 @@
     },
     {
       "name": "faculty / faulty",
-      "tip": "faculty 多个 c = college 学院",
+      "tip": "faculty 可指大学教职员工，也可指能力；faulty 指有故障或有缺陷，如 faulty equipment。",
       "source": "Practice 2 HTML p.133",
       "entries": [
         {
@@ -470,7 +470,7 @@
     },
     {
       "name": "re- / pre- 名词组：评论、预演、修订、提议",
-      "tip": "第 8 题考点：看前缀 re-（再）与 pre-（预先）",
+      "tip": "review 是事后回顾或复习；preview 是事前预览；revision 是修订或复习这一名词。",
       "source": "Practice 2 HTML p.133",
       "entries": [
         {
@@ -489,7 +489,7 @@
     },
     {
       "name": "special 四兄弟（高频考点）",
-      "tip": "第 14 题考点：程度 / 目的 / 说清楚 / 名词",
+      "tip": "especially 表示尤其、特别强调；specially 表示专门为某目的；specifically 表示具体明确地；specialty 是名词“专长、特产”。",
       "source": "Practice 2 HTML p.133",
       "entries": [
         {
@@ -512,7 +512,7 @@
     },
     {
       "name": "aboard / abroad",
-      "tip": "",
+      "tip": "aboard 表示在船、飞机等交通工具上；abroad 表示在国外，如 go abroad。",
       "source": "132.pdf",
       "entries": [
         {
@@ -527,7 +527,7 @@
     },
     {
       "name": "abound / bound",
-      "tip": "",
+      "tip": "abound in/with 表示大量存在；bound 可表示被束缚，也见 be bound to（必定）。",
       "source": "132.pdf",
       "entries": [
         {
@@ -542,7 +542,7 @@
     },
     {
       "name": "ache / acre",
-      "tip": "",
+      "tip": "ache 是身体疼痛，可作名词或动词；acre 是面积单位“英亩”。",
       "source": "132.pdf",
       "entries": [
         {
@@ -557,7 +557,7 @@
     },
     {
       "name": "action / auction",
-      "tip": "",
+      "tip": "action 是行动或行为；auction 是拍卖，常见 at an auction。",
       "source": "132.pdf",
       "entries": [
         {
@@ -572,7 +572,7 @@
     },
     {
       "name": "adapt / adopt / adept",
-      "tip": "",
+      "tip": "adapt to 是适应；adopt a policy/child 是采用政策或收养孩子；adept at 是擅长。",
       "source": "132.pdf",
       "entries": [
         {
@@ -591,7 +591,7 @@
     },
     {
       "name": "advice / advise",
-      "tip": "",
+      "tip": "advice 是名词“建议”：give advice；advise 是动词“建议”：advise sb to do sth。",
       "source": "132.pdf",
       "entries": [
         {
@@ -606,7 +606,7 @@
     },
     {
       "name": "affect / effect",
-      "tip": "",
+      "tip": "affect 通常作动词“影响”：affect the result；effect 通常作名词“结果、效果”：have an effect on。",
       "source": "132.pdf",
       "entries": [
         {
@@ -621,7 +621,7 @@
     },
     {
       "name": "alert / avert",
-      "tip": "",
+      "tip": "alert 表示警觉，也可指警报；avert 表示防止坏事发生，如 avert a crisis。",
       "source": "132.pdf",
       "entries": [
         {
@@ -636,7 +636,7 @@
     },
     {
       "name": "alien / align",
-      "tip": "",
+      "tip": "alien 表示陌生的、外来的或外星人；align 表示对齐、使一致，如 align with。",
       "source": "132.pdf",
       "entries": [
         {
@@ -651,7 +651,7 @@
     },
     {
       "name": "alone / lonely",
-      "tip": "",
+      "tip": "alone 是客观上独自一人；lonely 是主观上感到孤独，人多时也可能 lonely。",
       "source": "132.pdf",
       "entries": [
         {
@@ -666,7 +666,7 @@
     },
     {
       "name": "revise / revive",
-      "tip": "",
+      "tip": "revise 是修订文字、计划；revive 是使衰弱或消失的事物恢复，如 revive interest。",
       "source": "132.pdf",
       "entries": [
         {
@@ -681,7 +681,7 @@
     },
     {
       "name": "aloud / loud",
-      "tip": "",
+      "tip": "aloud 是副词，常见 read aloud；loud 是形容词，常见 a loud voice。",
       "source": "132.pdf",
       "entries": [
         {
@@ -696,7 +696,7 @@
     },
     {
       "name": "altitude / latitude / attitude",
-      "tip": "",
+      "tip": "altitude 是海拔高度；latitude 是纬度；attitude 是态度或看法。",
       "source": "132.pdf",
       "entries": [
         {
@@ -715,7 +715,7 @@
     },
     {
       "name": "analyse / analysis",
-      "tip": "",
+      "tip": "analyse 是动词“分析”；analysis 是名词“分析”，常见 an analysis of ...。",
       "source": "132.pdf",
       "entries": [
         {
@@ -730,7 +730,7 @@
     },
     {
       "name": "angel / angle",
-      "tip": "",
+      "tip": "angel 是天使；angle 是角度。angel 的 -gel 与 angle 的 -gle 顺序不同。",
       "source": "132.pdf",
       "entries": [
         {
@@ -745,7 +745,7 @@
     },
     {
       "name": "evacuate / evaluate",
-      "tip": "",
+      "tip": "evacuate people 是疏散人群；evaluate evidence/results 是评估证据或结果。",
       "source": "132.pdf",
       "entries": [
         {
@@ -760,7 +760,7 @@
     },
     {
       "name": "literacy / literary / literally",
-      "tip": "",
+      "tip": "literacy 是读写能力；literary 是文学的；literally 表示按字面意思，或强调确实如此。",
       "source": "132.pdf",
       "entries": [
         {
@@ -779,7 +779,7 @@
     },
     {
       "name": "local / vocal",
-      "tip": "",
+      "tip": "local 关乎地点或当地；vocal 关乎声音，也可表示直言不讳的，如 vocal support。",
       "source": "132.pdf",
       "entries": [
         {
@@ -794,7 +794,7 @@
     },
     {
       "name": "vacation / vocation",
-      "tip": "",
+      "tip": "vacation 是假期；vocation 是职业或使命。a vocation 不等于 a vacation。",
       "source": "132.pdf",
       "entries": [
         {
@@ -809,7 +809,7 @@
     },
     {
       "name": "outlet / outset",
-      "tip": "",
+      "tip": "outlet 是出口、销路或插座；outset 是开端，常见 at the outset。",
       "source": "132.pdf",
       "entries": [
         {
@@ -824,7 +824,7 @@
     },
     {
       "name": "fixture / mixture",
-      "tip": "",
+      "tip": "fixture 是固定装置；mixture 是混合物。fixed 指固定，mixed 指混合。",
       "source": "132.pdf",
       "entries": [
         {
@@ -839,7 +839,7 @@
     },
     {
       "name": "fiction / friction",
-      "tip": "",
+      "tip": "fiction 是虚构作品或小说；friction 是摩擦，也可指人与人之间的冲突。",
       "source": "132.pdf",
       "entries": [
         {
@@ -854,7 +854,7 @@
     },
     {
       "name": "loyalty / royalty",
-      "tip": "",
+      "tip": "loyalty 是忠诚；royalty 可指王室，也可指作品的版税。",
       "source": "132.pdf",
       "entries": [
         {
@@ -869,7 +869,7 @@
     },
     {
       "name": "rebel / repel",
-      "tip": "",
+      "tip": "rebel 是反抗者或反叛；repel 是击退、排斥，如 repel an attack。",
       "source": "132.pdf",
       "entries": [
         {
@@ -884,7 +884,7 @@
     },
     {
       "name": "major / mayor",
-      "tip": "",
+      "tip": "major 表示主要的，也可指专业；mayor 是市长，指人而非程度。",
       "source": "132.pdf",
       "entries": [
         {
@@ -899,7 +899,7 @@
     },
     {
       "name": "fellow / follow",
-      "tip": "",
+      "tip": "fellow 是同伴、同事；follow 是跟随、遵循，如 follow instructions。",
       "source": "132.pdf",
       "entries": [
         {
@@ -914,7 +914,7 @@
     },
     {
       "name": "massive / passive",
-      "tip": "",
+      "tip": "massive 强调体积或规模巨大；passive 强调被动、不主动，如 passive voice。",
       "source": "132.pdf",
       "entries": [
         {
@@ -929,7 +929,7 @@
     },
     {
       "name": "mature / nature",
-      "tip": "",
+      "tip": "mature 表示成熟；nature 是自然或本质。mature 可形容人或事物，nature 是名词。",
       "source": "132.pdf",
       "entries": [
         {
@@ -944,7 +944,7 @@
     },
     {
       "name": "medal / metal",
-      "tip": "",
+      "tip": "medal 是获奖的奖牌；metal 是金属材料。赢得 medal，制品由 metal 制成。",
       "source": "132.pdf",
       "entries": [
         {
@@ -959,7 +959,7 @@
     },
     {
       "name": "mediate / meditate",
-      "tip": "",
+      "tip": "mediate between A and B 是在双方之间调解；meditate 是静心冥想或沉思。",
       "source": "132.pdf",
       "entries": [
         {
@@ -974,7 +974,7 @@
     },
     {
       "name": "except / excerpt",
-      "tip": "",
+      "tip": "except 表示排除在外：everyone except Tom；excerpt 是从文章中摘出的一段。",
       "source": "132.pdf",
       "entries": [
         {
@@ -989,7 +989,7 @@
     },
     {
       "name": "pasture / posture",
-      "tip": "",
+      "tip": "pasture 是供牲畜吃草的牧场；posture 是站坐时的姿势、体态。",
       "source": "132.pdf",
       "entries": [
         {
@@ -1004,7 +1004,7 @@
     },
     {
       "name": "craft / draft / drift",
-      "tip": "",
+      "tip": "craft 是手艺或制作；draft 是草稿、起草；drift 是随流漂移或逐渐偏离。",
       "source": "132.pdf",
       "entries": [
         {
@@ -1023,7 +1023,7 @@
     },
     {
       "name": "project / protect",
-      "tip": "",
+      "tip": "project 是计划或项目；protect 是保护、防护，常见 protect ... from ...。",
       "source": "132.pdf",
       "entries": [
         {
@@ -1038,7 +1038,7 @@
     },
     {
       "name": "employee / employer",
-      "tip": "",
+      "tip": "employee 是受雇的人；employer 是雇人的人。-ee 接受雇佣，-er 提供雇佣。",
       "source": "132.pdf",
       "entries": [
         {
@@ -1053,7 +1053,7 @@
     },
     {
       "name": "dumb / numb",
-      "tip": "",
+      "tip": "dumb 在这里表示哑的或说不出话；numb 表示身体或感情麻木、失去感觉。",
       "source": "132.pdf",
       "entries": [
         {
@@ -1068,7 +1068,7 @@
     },
     {
       "name": "dwell / swell",
-      "tip": "",
+      "tip": "dwell in 表示居住，dwell on 表示细想；swell 表示膨胀或肿胀。",
       "source": "132.pdf",
       "entries": [
         {
@@ -1083,7 +1083,7 @@
     },
     {
       "name": "ease / erase",
-      "tip": "",
+      "tip": "ease 是减轻疼痛或困难；erase 是擦掉文字、痕迹或记录。",
       "source": "132.pdf",
       "entries": [
         {
@@ -1098,7 +1098,7 @@
     },
     {
       "name": "reject / eject / elect / erect / select",
-      "tip": "",
+      "tip": "reject 是拒绝；eject 是向外逐出；elect 是投票选举；erect 是竖立；select 是从中挑选。",
       "source": "132.pdf",
       "entries": [
         {
@@ -1125,7 +1125,7 @@
     },
     {
       "name": "vary / various / varieties",
-      "tip": "",
+      "tip": "vary 是动词“变化”；various 是形容词“各种各样的”；varieties 是名词 variety 的复数“种类”。",
       "source": "Practice 1 2.2.pdf",
       "entries": [
         {
@@ -1144,7 +1144,7 @@
     },
     {
       "name": "dependently / independently",
-      "tip": "",
+      "tip": "dependently 表示依赖地；independently 前面多了否定前缀 in-，表示独立地。",
       "source": "Practice 1 2.2.pdf",
       "entries": [
         {
@@ -1159,7 +1159,7 @@
     },
     {
       "name": "accuse / accustom",
-      "tip": "accuse ... of；accustom ... to",
+      "tip": "accuse sb of sth 是指控某人某事；accustom sb to sth 是使某人习惯某事。注意 of / to。",
       "source": "Practice 1 2.2.pdf",
       "entries": [
         {

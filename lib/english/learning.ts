@@ -76,26 +76,51 @@ export function scopeItems(data: Workspace, mode: Mode = 'confusion', collection
   });
 }
 
-export function chooseRound(items: StudyItem[], memory: Workspace['memory'], count: number, all = false, now = Date.now(), focus: 'mixed' | 'review' | 'learn' = 'mixed'): StudyItem[] {
+export function studyFamily(item: StudyItem): string {
+  return item.kind === 'phrase' ? 'phrase:' + normalizeTerm(item.term).split(' ')[0] : 'confusion:' + (item.groupKey || item.key);
+}
+export function practiceBatch(queue: string[], items: Map<string, StudyItem>): string[] {
+  const first = items.get(queue[0]);
+  if (!first) return [];
+  const family = studyFamily(first);
+  return queue.filter(key => {
+    const item = items.get(key);
+    return item && item.kind === first.kind && studyFamily(item) === family;
+  }).slice(0, first.kind === 'phrase' ? 3 : 4);
+}
+function shuffle<T>(items: T[], random: () => number): T[] {
+  const result = [...items];
+  for (let index = result.length - 1; index > 0; index--) {
+    const other = Math.floor(random() * (index + 1));
+    [result[index], result[other]] = [result[other], result[index]];
+  }
+  return result;
+}
+function byFamily(items: StudyItem[], random: (() => number) | null, avoid?: ReadonlySet<string>): StudyItem[] {
+  const families = new Map<string, StudyItem[]>();
+  for (const item of items) {
+    const family = studyFamily(item);
+    families.set(family, [...(families.get(family) || []), item]);
+  }
+  const units = random ? shuffle([...families.entries()], random) : [...families.entries()];
+  const ordered = random ? units.sort((left, right) => {
+    const recent = Number(avoid?.has(left[0]) || false) - Number(avoid?.has(right[0]) || false);
+    if (recent) return recent;
+    const sparse = (entry: [string, StudyItem[]]) => Number(entry[1][0].kind === 'phrase' && entry[1].length < 2);
+    return sparse(left) - sparse(right);
+  }) : units;
+  return ordered.flatMap(([, entries]) => random ? shuffle(entries, random) : entries);
+}
+export function chooseRound(items: StudyItem[], memory: Workspace['memory'], count: number, all = false, now = Date.now(), focus: 'mixed' | 'review' | 'learn' = 'mixed', options: { random?: () => number; avoidFamilies?: ReadonlySet<string> } = {}): StudyItem[] {
   const due = items.filter(item => memory[item.key]?.lastRating === 'good' && Date.parse(memory[item.key].dueAt || '') <= now).sort((a,b) => (memory[a.key].dueAt || '').localeCompare(memory[b.key].dueAt || ''));
   const fresh = items.filter(item => isUnlearned(memory[item.key]));
   const future = items.filter(item => memory[item.key]?.lastRating === 'good' && Date.parse(memory[item.key].dueAt || '') > now).sort((a,b) => (memory[a.key].dueAt || '').localeCompare(memory[b.key].dueAt || ''));
-  const pool = focus === 'review' ? due : focus === 'learn' ? fresh : [...due, ...fresh, ...(all ? future : [])];
   const size = Math.max(1, Math.min(100, count));
-  const chosen: StudyItem[] = [];
-  const remaining = [...pool];
-  while (remaining.length && chosen.length < size) {
-    const first = remaining.shift()!;
-    chosen.push(first);
-    if (first.kind !== 'confusion') continue;
-    for (let i = 0; i < remaining.length && chosen.length < size && chosen.length % 4 !== 0;) {
-      if (remaining[i].groupKey === first.groupKey) chosen.push(remaining.splice(i,1)[0]);
-      else i++;
-    }
-  }
-  return chosen;
-}
-export function stats(items: StudyItem[], memory: Workspace['memory'], now = Date.now()) {
+  const random = options.random || Math.random;
+  if (focus === 'review') return byFamily(due, null).slice(0, size);
+  if (focus === 'learn') return byFamily(fresh, random, options.avoidFamilies).slice(0, size);
+  return [...byFamily(due, null), ...byFamily(fresh, random, options.avoidFamilies), ...(all ? byFamily(future, null) : [])].slice(0, size);
+}export function stats(items: StudyItem[], memory: Workspace['memory'], now = Date.now()) {
   return { total: items.length, fresh: items.filter(item => isUnlearned(memory[item.key])).length,
     due: items.filter(item => memory[item.key]?.lastRating === 'good' && Date.parse(memory[item.key].dueAt || '') <= now).length,
     familiar: items.filter(item => memory[item.key]?.intervalDays >= 7 && memory[item.key]?.lastRating === 'good').length };

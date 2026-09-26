@@ -289,6 +289,18 @@ LOW_VALUE_PHRASES = {
 }
 phrases = {key: value for key, value in phrases.items() if key not in LOW_VALUE_PHRASES}
 
+# Keep hand-reviewed distinction cues when refreshing from the same source sheets.
+# A changed membership gets a new identity and must be reviewed again.
+if OUTPUT.exists():
+    previous = json.loads(OUTPUT.read_text(encoding="utf-8"))
+    reviewed = {
+        tuple(sorted(key(entry["word"]) for entry in group["entries"])): group.get("tip", "")
+        for group in previous.get("groups", []) if group.get("tip")
+    }
+    for group in unique_groups:
+        identity = tuple(sorted(key(entry["word"]) for entry in group["entries"]))
+        if identity in reviewed:
+            group["tip"] = reviewed[identity]
 payload = {"version": 1, "groups": unique_groups, "phrases": list(phrases.values())}
 OUTPUT.parent.mkdir(parents=True, exist_ok=True)
 OUTPUT.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
