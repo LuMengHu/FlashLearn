@@ -1,3 +1,2 @@
-import Library from '@/components/english/library';
-import { Suspense } from 'react';
-export default function Page() { return <Suspense fallback={<div className="en-loading">Loading...</div>}><Library /></Suspense>; }
+import { redirect } from 'next/navigation';
+export default function Page() { redirect('/english/confusions'); }

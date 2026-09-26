@@ -12,7 +12,7 @@ export function parseCommand(args = '') {
   if(['继续','continue'].includes(command))return {action:'continue'};
   if(['1','不会','again'].includes(command))return {action:'rate',rating:'again'};
   if(['2','认识','good'].includes(command))return {action:'rate',rating:'good'};
-  if(['开始','start','单词','短语','易混'].includes(command))return {action:'start',mode:command==='短语'?'phrase':command==='易混'?'confusion':command==='单词'?'word':'all',count:Number(parts[1])||5};
+  if(['开始','start','单词','短语','易混'].includes(command))return {action:'start',mode:command==='短语'?'phrase':'confusion',count:Number(parts[1])||5};
   if(/^\d+$/.test(command)&&Number(command)>3)return {action:'start',collection:command,count:Number(parts[1])||5};
   if(['清单编号','词表编号'].includes(command)&&/^\d+$/.test(parts[1]))return {action:'start',collection:parts[1],count:Number(parts[2])||5};
   return {action:'help'};
@@ -36,7 +36,7 @@ export default {
       });
       queues.set(peer,job);try{return await job;}finally{if(queues.get(peer)===job)queues.delete(peer);}
     };
-    api.registerCommand({name:'vocab',description:'FlashLearn 词汇：开始 5 / 答案 / 1 / 2 / 词表',acceptsArgs:true,requireAuth:true,
+    api.registerCommand({name:'vocab',description:'FlashLearn 易混词与短语：易混 5 / 短语 5 / 答案 / 1 / 2 / 词表',acceptsArgs:true,requireAuth:true,
       handler:async(ctx)=>{
         try{return {text:await run(ctx.senderId||'owner',parseCommand(ctx.args),randomUUID())};}
         catch(e){return {text:`FlashLearn：${e.message}`};}
@@ -44,8 +44,8 @@ export default {
     });
     api.registerTool(context=>({
       name:'flashlearn_vocab',
-      description:'Use the user’s FlashLearn vocabulary and shared memory in WeChat. Actions: start (default 5 items), reveal, next (after introducing a new word), rate (again/good after explicit self-assessment), continue, lists, status, help. Relay returned text faithfully. Never invent a question, definition or progress. For a free-text meaning answer, reveal the canonical answer and ask the user to self-assess; do not guess a rating. Use lists to resolve collection ids. Short replies 1/2 mean again/good during a review.',
-      parameters:{type:'object',properties:{action:{type:'string',enum:['start','reveal','next','rate','continue','lists','status','help']},rating:{type:'string',enum:['again','good']},mode:{type:'string',enum:['all','word','phrase','confusion']},collection:{type:'string'},count:{type:'integer',minimum:1,maximum:20}},required:['action'],additionalProperties:false},
+      description:'Use the user’s FlashLearn vocabulary and shared memory in WeChat. Actions: start (default 5 items), reveal, next, rate (again/good after explicit self-assessment), continue, lists, status, help. Relay returned text faithfully. Never invent a question, definition or progress. For a free-text meaning answer, reveal the canonical answer and ask the user to self-assess; do not guess a rating. Use lists to resolve collection ids. Short replies 1/2 mean again/good during a review.',
+      parameters:{type:'object',properties:{action:{type:'string',enum:['start','reveal','next','rate','continue','lists','status','help']},rating:{type:'string',enum:['again','good']},mode:{type:'string',enum:['phrase','confusion']},collection:{type:'string'},count:{type:'integer',minimum:1,maximum:20}},required:['action'],additionalProperties:false},
       async execute(id,params){const text=await run(context.requesterSenderId||'owner',params,id);return {content:[{type:'text',text}]};},
     }));
   },

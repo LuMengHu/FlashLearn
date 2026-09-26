@@ -1,6 +1,6 @@
 # FlashLearn
 
-单人使用的考试学习网站。三个分类：**中文**（六类知识点）、**英文**（面向 Cloze / Reading 的词汇学习）、**外交知识**（选择题库）。英文部分提供单词和短语学习、按批清单、易混词辨认、间隔复习，并通过本机 OpenClaw 的微信 iLink 通道完成小复习。
+单人使用的考试学习网站。三个分类：**中文**（六类知识点）、**英文**（面向 Cloze / Reading 的词汇学习）、**外交知识**（选择题库）。英文部分只保留易混词与短语：表格揭晓、逐词认识判断、1/3/7 天复习和分类词表，并通过本机 OpenClaw 的微信 iLink 通道完成小复习。
 技术栈为 Next.js 15 App Router + Drizzle + Neon Postgres。英文微信连接在本机运行，不要求公开网站。详细设计与运行方法见 [英文学习区说明](docs/english-workspace.md)。
 
 ---
@@ -17,11 +17,11 @@ npx tsc --noEmit             # 只做类型检查，最快的自检方式
 # —— 灌数据（三块互不影响，可以单独跑）——
 npm run db:seed:banks        # 外交知识题库：清空 QuestionBanks/Questions 后按 bank-list.ts 重建
 npm run db:seed:chinese      # 中文条目：读 scripts/data/chinese/*.json，按 type+front 增量 upsert
-npm run db:seed:words        # 英文单词：读 scripts/data/words/words.json，按 word 增量 upsert
+npm run db:seed:words        # 旧版英文导入工具；当前两类词表请勿用它覆盖整理后的数据
 ```
 
 ```bash
-# —— 英文单词的两条录入路径 ——
+# —— 旧版英文单词工具（当前两类词表不使用）——
 npm run words:import              # 读 scripts/data/words/wordlist.txt（一行一个词），逐个调 AI 生成后入库
 npm run words:import -- --force   # 库里已有的也重新生成覆盖
 npm run words:export              # 把库里全部单词导出成 words.json，批量编辑后再 db:seed:words 灌回去
@@ -60,7 +60,7 @@ app/
   chinese/page.tsx        中文六入口
   chinese/[type]/         中文练习页（形式由 lib/chinese-meta.ts 决定）
   english/page.tsx        英文学习首页
-  english/study/          单词、短语、清单、易混词的复习流程
+  english/study/          易混词与短语的表格学习和复习
   english/new/            手动录入与批量导入
   english/list/           词库搜索与编辑
   english/collections/    自选清单
@@ -92,9 +92,9 @@ archive/ 停用的代码与数据，tsconfig 已 exclude，不参与构建
 | 表 | 内容 | 谁写 |
 | :--- | :--- | :--- |
 | `QuestionBanks` / `Questions` | 外交知识题库 | 只有 `db:seed:banks`（**会先清空整张表**） |
-| `Words` | 英文单词全部字段 | `words:import`、`db:seed:words`、录入页/总表的 API |
+| `Words` | 英文易混词与短语条目 | `words:import`、`db:seed:words`、录入页/总表的 API |
 | `ChineseItems` | 中文六类条目，靠 `type` 区分 | `db:seed:chinese` |
-| `StudyProgress` | 原有中文与旧版英文练习进度 | 旧练习 API；迁移时英文记录会复制到新记忆表 |
+| `StudyProgress` | 原有中文与旧版英文练习进度 | 旧练习 API；本次英文重建已清空旧英文进度 |
 | `EnglishCollections` / `EnglishCollectionWords` | 可重用的自选清单及词条关系 | 英文学习工作区 |
 | `EnglishConfusions` | 易混词组及辨析提示 | 英文学习工作区 |
 | `EnglishMemory` / `EnglishReviewEvents` | 共用的复习状态、幂等作答和撤销 | 网站与微信英文复习 |
@@ -123,7 +123,7 @@ archive/ 停用的代码与数据，tsconfig 已 exclude，不参与构建
 - Windows 这个 shell 打印中文会变乱码（`??????`），是控制台编码问题，**文件本身是好的**，用 Read 工具看就正常。
 
 **逻辑**
-- 中文与旧版英文练习的选题只看等级、**不看时间**。新英文工作区使用到期时间、新词引入、同轮再测与自评调度，详见 [英文学习区说明](docs/english-workspace.md)。
+- 中文与旧版英文练习的选题只看等级、**不看时间**。新英文工作区使用 1/3/7 天到期时间、同轮再测与逐词判断，详见 [英文学习区说明](docs/english-workspace.md)。
 - **外交知识不参与**这套机制，进去就是整套题库按原顺序。
 - `use-quiz-engine` 里那个 `attempt` 计数是用来当卡片 `key` 一部分的，别删：选择题选完答案后题目仍留在待答队列里（要点「下一题」才出队），此时撤销如果不特殊处理会把题目重复插进队列，且卡片因为 key 没变不会重新挂载 →「下一题」按钮消失、选项锁死。
 - AI 返回的 JSON 可能带 ```json 围栏，`lib/ai.ts` 的 `extractJson` 已经处理了，加新的 AI 调用记得复用。

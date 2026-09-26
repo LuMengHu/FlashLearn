@@ -1,4 +1,11 @@
 import Link from 'next/link';
-import { MessageCircle, ArrowRight } from 'lucide-react';
+import { ArrowRight, MessageCircle } from 'lucide-react';
 import { Heading } from '@/components/english/common';
-export default function ConnectPage(){return <><Heading eyebrow="A FEW WORDS, ANYWHERE" title="在微信，复习一小轮。" description="几分钟也能记住几个词，进度和网站相通。"/><div className="en-panel max-w-2xl"><MessageCircle size={34} className="text-[#557748] mb-6"/><ol className="en-steps"><li><span className="en-step-number">1</span><div>连接你的微信<p>在电脑上的 OpenClaw 完成 iLink 微信扫码，保持电脑与学习服务运行。</p></div></li><li><span className="en-step-number">2</span><div>发送「用 FlashLearn 复习 5 个词」<p>也可以直接发送 /vocab 开始 5，或 /vocab 短语 5。</p></div></li><li><span className="en-step-number">3</span><div>先回忆，再揭晓<p>/vocab 答案 查看意思；/vocab 1、2 分别代表不认识、认识。</p></div></li></ol><p className="en-notice">新词会先展示释义，回复 /vocab 下一题，稍后再测。用 /vocab 清单 查看你的清单。网站中的编辑和练习结果也会同步到微信。</p><Link href="/english/study" className="en-button en-primary">先在这里练一轮<ArrowRight size={16}/></Link></div></>;}
+export default function ConnectPage() {
+  return <><Heading eyebrow="WECHAT" title="微信小复习" description="与网站共用同一份进度。" />
+    <div className="en-panel max-w-2xl"><MessageCircle size={28} className="text-[#557748] mb-4" />
+      <p>向电脑上的 OpenClaw 发送 <strong>/vocab 易混 5</strong> 或 <strong>/vocab 短语 5</strong>，开始一小轮。</p>
+      <p className="en-notice">发送 /vocab 答案 揭晓中文；/vocab 1 表示不认识，/vocab 2 表示认识。发送 /vocab 词表 可查看两类词表。</p>
+      <Link href="/english" className="en-button en-primary">返回学习首页<ArrowRight size={16} /></Link>
+    </div></>;
+}

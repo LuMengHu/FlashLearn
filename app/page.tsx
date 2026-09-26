@@ -51,10 +51,10 @@ export default async function HomePage() {
       href: '/english',
       emoji: '🔤',
       title: '英文',
-      subtitle: 'AI 整理 + 背单词',
-      entries: ['背单词', '录入单词', '单词总表'],
+      subtitle: '易混词与短语',
+      entries: ['易混词', '短语', '到期复习'],
       count: wordCount,
-      unit: '个单词',
+      unit: '个词条',
       gradient: 'from-cyan-500/20 via-teal-500/5',
       glow: 'group-hover:border-cyan-600/60',
     },
@@ -90,7 +90,7 @@ export default async function HomePage() {
             </span>
             <span className="text-slate-700">·</span>
             <span>
-              <span className="font-semibold tabular-nums text-slate-300">{wordCount}</span> 个单词
+              <span className="font-semibold tabular-nums text-slate-300">{wordCount}</span> 个英文词条
             </span>
             <span className="text-slate-700">·</span>
             <span>

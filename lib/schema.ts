@@ -10,6 +10,7 @@ import {
   timestamp,
   jsonb,
   integer,
+  boolean,
   bigint,
   uniqueIndex,
 } from 'drizzle-orm/pg-core';
@@ -74,6 +75,7 @@ export const words = pgTable('Words', {
   confusables: jsonb('confusables').$type<ConfusableItem[]>().default([]), // 易混词
   etymology: text('etymology'),                                        // 词源说明
   kind: text('kind', { enum: ['word', 'phrase'] }).notNull().default('word'),
+  excluded: boolean('excluded').notNull().default(false),
   source: text('source'),
   sourceContext: text('source_context'),
   notes: text('notes'),                                                // 自己补充的笔记
@@ -249,6 +251,7 @@ export const englishConfusions = pgTable('EnglishConfusions', {
   otherWord: text('other_word').notNull(),
   otherMeaning: text('other_meaning').notNull(),
   tip: text('tip').notNull().default(''),
+  groupKey: text('group_key').notNull().default(''),
   createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
 }, t => ({ pairUnique: uniqueIndex('EnglishConfusions_pair_unique').on(t.wordId, t.otherWord) }));
 export const englishMemory = pgTable('EnglishMemory', {

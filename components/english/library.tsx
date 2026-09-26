@@ -2,13 +2,14 @@
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { ArrowRight, Plus, Search, Trash2, Volume2 } from 'lucide-react';
+import { ArrowRight, Plus, Search, Trash2, Volume2, Pencil, EyeOff, Undo2 } from 'lucide-react';
 import { visibleNote } from '@/lib/english/learning';
 import type { Vocabulary, VocabularyKind } from '@/lib/english/types';
 import { useSpeech } from '@/hooks/use-speech';
 import { requestJson, useWorkspace } from './workspace-provider';
 import { Dialog, Empty, ErrorMessage, Field, Heading, LoadGate } from './common';
 import ChoiceSelect from './choice-select';
+import SpeakableText from './speakable-text';
 
 export default function Library({ phrases = false }: { phrases?: boolean }) {
   const { data, refresh } = useWorkspace();
@@ -29,7 +30,7 @@ export default function Library({ phrases = false }: { phrases?: boolean }) {
   const [busy, setBusy] = useState(false);
 
   const filtered = useMemo(() => (data?.words || []).filter(word => {
-    if (word.kind !== activeKind) return false;
+    if (word.kind !== activeKind || word.excluded) return false;
     if (collectionId === 'unfiled' && data?.collections.some(item => item.kind === word.kind && item.wordIds.includes(word.id))) return false;
     if (collectionId && collectionId !== 'unfiled' && (!collection || collection.kind === 'confusion' || !collection.wordIds.includes(word.id))) return false;
     return [word.word, word.meaning, visibleNote(word.notes), ...(word.family || []).map(item => item.word), ...(word.confusables || []).map(item => item.word)]
@@ -37,6 +38,7 @@ export default function Library({ phrases = false }: { phrases?: boolean }) {
   }).sort((a, b) => sort === 'alpha' ? a.word.localeCompare(b.word) : (b.createdAt || '').localeCompare(a.createdAt || '')), [data, activeKind, collectionId, collection, query, sort]);
 
   const matchingCollections = data?.collections.filter(item => item.kind === activeKind) ?? [];
+  const excluded = data?.words.filter(word => word.kind === activeKind && word.excluded) ?? [];
 
   async function act(body: unknown) {
     setBusy(true);
@@ -67,6 +69,12 @@ export default function Library({ phrases = false }: { phrases?: boolean }) {
     if (result) setEditing(null);
   }
 
+  async function excludeEditing() {
+    if (!editing || busy) return;
+    const result = await act({ action: 'setExcluded', id: editing.id, excluded: true });
+    if (result) { setSelected(items => items.filter(id => id !== editing.id)); setEditing(null); }
+  }
+
   async function deleteEditing() {
     if (!editing || busy) return;
     if (!confirm(`把「${editing.word}」从词库彻底删除？它也会从所有词表和复习记录中移除。`)) return;
@@ -82,8 +90,8 @@ export default function Library({ phrases = false }: { phrases?: boolean }) {
     <LoadGate>{data && <>
       <div className="en-list-tabs">
         <Link href={activeKind === 'phrase' ? '/english/phrases' : '/english/list'} className={!collectionId ? 'active' : ''}>全部{activeKind === 'phrase' ? '短语' : '单词'}</Link>
-        <Link href={`/english/list?collection=unfiled&kind=${activeKind}`} className={collectionId === 'unfiled' ? 'active' : ''}>未归类</Link>
-        {matchingCollections.map(item => <Link key={item.id} href={`/english/list?collection=${item.id}`} className={collectionId === String(item.id) ? 'active' : ''}>{item.name}</Link>)}
+        <Link href={`/english/phrases?collection=unfiled&kind=${activeKind}`} className={collectionId === 'unfiled' ? 'active' : ''}>未归类</Link>
+        {matchingCollections.map(item => <Link key={item.id} href={`/english/phrases?collection=${item.id}`} className={collectionId === String(item.id) ? 'active' : ''}>{item.name}</Link>)}
       </div>
       {filtered.length > 0 && <div className="en-toolbar"><Link className="en-button en-primary" href={`/english/study?mode=${activeKind}${collection ? `&collection=${collection.id}` : ''}`}>开始{activeKind === 'phrase' ? '短语' : '单词'}练习<ArrowRight size={16} /></Link></div>}
       <div className="en-toolbar">
@@ -106,7 +114,7 @@ export default function Library({ phrases = false }: { phrases?: boolean }) {
             const memory = data.memory[`word:${word.id}`];
             return <tr key={word.id}>
               <td><input type="checkbox" aria-label={`选择${word.word}`} checked={selected.includes(word.id)} onChange={() => toggle(word.id)} /></td>
-              <td><button className="en-term" onClick={() => { setError(''); setEditing({ ...word, notes: visibleNote(word.notes) }); }}>{word.word}</button><div><span className="en-tag">{word.kind === 'phrase' ? '短语' : '单词'}</span></div></td>
+              <td><button className="en-term" onClick={() => speak(word.word)} title="点击朗读">{word.word}</button><div><span className="en-tag">{word.kind === 'phrase' ? '短语' : '单词'}</span></div></td>
               <td className="en-meaning">{word.meaning}</td>
               <td className="en-hide-mobile"><span className={`en-tag ${memory?.lastRating !== 'good' ? 'en-tag-amber' : ''}`}>{!memory || memory.lastRating !== 'good' ? '没学过' : '待复习'}</span></td>
               <td><button className="en-icon-button" aria-label={`朗读${word.word}`} onClick={() => speak(word.word)}><Volume2 size={16} /></button></td>
@@ -114,6 +122,7 @@ export default function Library({ phrases = false }: { phrases?: boolean }) {
           })}</tbody>
         </table>
       </div>}
+      {!!excluded.length && !collectionId && <section className="en-panel en-excluded"><h2>已移出练习 · {excluded.length}</h2>{excluded.map(word => <div className="en-list-row" key={word.id}><button className="en-speak-term" onClick={() => speak(word.word)}><Volume2 size={14} />{word.word}</button><span className="en-grow">{word.meaning}</span><button className="en-button en-button-small" disabled={busy} onClick={() => act({ action: 'setExcluded', id: word.id, excluded: false })}><Undo2 size={15} />恢复</button></div>)}</section>}
     </>}</LoadGate>
 
     {listName !== null && <Dialog title={`存成${activeKind === 'phrase' ? '短语' : '单词'}词表`} onClose={() => !busy && setListName(null)}>
@@ -123,7 +132,7 @@ export default function Library({ phrases = false }: { phrases?: boolean }) {
         if (result) {
           setListName(null);
           setSelected([]);
-          router.push(`/english/list?collection=${result.id}`);
+          router.push(`/english/phrases?collection=${result.id}`);
         }
       }}>
         <Field label="词表名称"><input className="en-input" required autoFocus maxLength={100} value={listName} onChange={event => setListName(event.target.value)} /></Field>
@@ -136,15 +145,15 @@ export default function Library({ phrases = false }: { phrases?: boolean }) {
       <form className="en-form" onSubmit={event => { event.preventDefault(); saveWord(); }}>
         <div className="en-form-grid">
           <Field label="英文"><input required className="en-input" value={editing.word} maxLength={120} onChange={event => setEditing({ ...editing, word: event.target.value })} /></Field>
-          <Field label="类型"><ChoiceSelect label="词汇类型" value={editing.kind} options={[{ value: 'word', label: '单词' }, { value: 'phrase', label: '短语' }]} onChange={value => setEditing({ ...editing, kind: value as Vocabulary['kind'] })} /></Field>
+
         </div>
         <Field label="核心释义"><input required className="en-input" value={editing.meaning} maxLength={1000} onChange={event => setEditing({ ...editing, meaning: event.target.value })} /></Field>
         <Field label="例句"><textarea rows={2} className="en-textarea" value={editing.senses?.[0]?.example || ''} onChange={event => setEditing({ ...editing, senses: [{ ...editing.senses?.[0], meaning: editing.meaning, example: event.target.value }, ...(editing.senses || []).slice(1)] })} /></Field>
         <Field label="例句翻译"><input className="en-input" value={editing.senses?.[0]?.translation || ''} onChange={event => setEditing({ ...editing, senses: [{ ...editing.senses?.[0], meaning: editing.meaning, translation: event.target.value }, ...(editing.senses || []).slice(1)] })} /></Field>
         <Field label="自己的记忆笔记"><textarea rows={3} className="en-textarea" value={editing.notes || ''} onChange={event => setEditing({ ...editing, notes: event.target.value })} /></Field>
-        <details className="en-details"><summary>完整释义、同族词和词源</summary>{editing.senses?.map((sense, index) => <p key={index}>{sense.pos} {sense.meaning}{sense.example && <><br />{sense.example}</>}</p>)}{editing.family?.map((item, index) => <p key={index}>{item.word} · {item.meaning}</p>)}<p>{editing.etymology}</p></details>
+        <details className="en-details"><summary>完整释义、同族词和词源</summary>{editing.senses?.map((sense, index) => <p key={index}>{sense.pos} {sense.meaning}{sense.example && <><br /><SpeakableText text={sense.example} /></>}</p>)}{editing.family?.map((item, index) => <p key={index}><SpeakableText text={item.word} /> · {item.meaning}</p>)}<p>{editing.etymology && <SpeakableText text={editing.etymology} />}</p></details>
         <ErrorMessage message={error} />
-        <div className="en-actions"><button type="button" className="en-button en-danger-link mr-auto" disabled={busy} onClick={deleteEditing}><Trash2 size={15} />删除词条</button><button type="button" className="en-button" disabled={busy} onClick={() => setEditing(null)}>取消</button><button className="en-button en-primary" disabled={busy}>{busy ? '保存中…' : '保存修改'}</button></div>
+        <div className="en-actions"><button type="button" className="en-button en-danger-link mr-auto" disabled={busy} onClick={excludeEditing}><EyeOff size={15} />移出练习</button><button type="button" className="en-button en-danger-link" disabled={busy} onClick={deleteEditing}><Trash2 size={15} />彻底删除</button><button type="button" className="en-button" disabled={busy} onClick={() => setEditing(null)}>取消</button><button className="en-button en-primary" disabled={busy}>{busy ? '保存中…' : '保存修改'}</button></div>
       </form>
     </Dialog>}
   </>;

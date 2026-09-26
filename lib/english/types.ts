@@ -17,6 +17,7 @@ export type Vocabulary = {
   word: string;
   meaning: string;
   kind: VocabularyKind;
+  excluded: boolean;
   source: string | null;
   sourceContext: string | null;
   notes: string | null;
@@ -27,7 +28,7 @@ export type Vocabulary = {
   createdAt: string | null;
 };
 export type Collection = { id: number; name: string; kind: CollectionKind; createdAt: string; wordIds: number[] };
-export type Confusion = { id: string; wordId: number; otherWord: string; otherMeaning: string; tip: string; createdAt: string };
+export type Confusion = { id: string; wordId: number; otherWord: string; otherMeaning: string; tip: string; groupKey: string; createdAt: string };
 export type Workspace = {
   words: Vocabulary[];
   collections: Collection[];
@@ -45,7 +46,9 @@ export type StudyItem = {
   translation?: string;
   entries?: { term: string; meaning: string }[];
   tip?: string;
+  groupKey?: string;
 };
+export type ConfusionGroup = { key: string; name: string; tip: string; entries: StudyItem[]; wordIds: number[] };
 export type ImportRow = {
   word: string;
   meaning: string;

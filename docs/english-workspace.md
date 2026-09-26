@@ -1,47 +1,24 @@
-# English workspace
+# 英文词汇学习
 
-This is a personal Cloze / Reading study tool. Recognition of unfamiliar words is the first priority. No public accounts or multi-user features are planned.
+此模块只服务个人 Cloze / Reading 备考。首页只有易混词、短语两类：分别显示「待复习」「没学过」，可以直接开始到期复习或新词学习。学习和复习共用表格：先看英文回忆中文，再揭晓；易混组每屏最多四词，短语每屏最多五条，每个词单独选择「认识／不认识」。点击英文词条、例句或辨析提示中的英文可调用浏览器 Web Speech API 朗读。
 
-## Learning
+「不认识」留在没学过并在本轮末尾再出现一次；「认识」进入 1、3、7 天的复习链。同一天重复作答不会跳过间隔。网页和微信使用同一份 EnglishMemory；撤销通过 EnglishReviewEvents 恢复上次状态。词表按易混词、短语分类，练习选择器仅显示当前类别。可在管理页搜索、编辑、按组挑选、把过于简单的词移出练习，并随时恢复。笔记与辨析提示不显示材料来源或试卷位置。
 
-- Recall the English meaning, reveal, then self-assess: again / good.
-- New items are introduced before testing. Failed items return after up to three other cards, at most twice per round.
-- The spacing policy is deliberately transparent: again 10 minutes, good initially 1 day with a 2.2 multiplier up to 90 days. The multiplier can advance only after 20 hours; early same-day practice does not repeatedly inflate the interval. These are initial product defaults, not a claim of individual optimality.
-- Recognition is shared across collections. Confusion sides have separate records from ordinary recognition.
-- Word/phrase content is in the existing Words table. Existing rich fields remain available. Imports attach existing entries without overwriting definitions or progress.
-- Collections are many-to-many playlists. Removing a collection never removes vocabulary.
-- Review events have request IDs, optimistic revisions and atomic SQL writes. Undo rejects a record superseded by later practice. Web progress is saved before advancing.
-- In-progress browser rounds persist in localStorage; review results and WeChat sessions persist in Postgres.
+## 数据来源与重建
 
-## Setup and verification
+`scripts/prepare-english-materials.py` 从用户提供的 Practice 2 HTML 解析词条，并结合对扫描版 132.pdf、Practice 1 2.1.pdf、Practice 1 2.2.pdf、Practice 3 2.1.pdf 的人工核对，生成 `scripts/data/english/curated-2026-09.json`。只保留真实易混关系、对 Cloze / Reading 有用的短语；基础拼写玩笑式对照与口语干扰项被排除。当前数据为 73 组（164 个独立易混词）与 146 条短语，共 310 条词条、7 份分类词表。
 
-1. `npm run db:migrate:english` backs up Words and legacy word progress to ignored `.local/backups`, then runs migration 0008 in one transaction. It preserves content and initializes existing recognition history as due for recalibration.
-2. `npm run test:english`
-3. `npx tsc --noEmit --incremental false`
-4. Stop the dev server before `npm run build` (Next dev/build share `.next`).
+先执行 `npm run db:migrate -- 0010_english_two_categories` 增加词条排除状态和易混组标识。`npx tsx scripts/rebuild-english.ts` 会先完整备份所有英文表及英文学习进度到忽略提交的 `.local/backups/`，再在单个数据库事务中清除旧英文数据并导入整理数据。它不删除中文和外交题库，也不改 `scripts/data/words/words.json`。这是用户已确认的一次性重建；再次执行会再次清空英文学习进度。
 
-The local JSON vocabulary file is not automatically imported: it can differ from the database and may contain uncommitted user edits.
+检查：`npm run test:english`、`npx tsc --noEmit --pretty false`、`npm run build`。本机生产服务由 `FlashLearn English Local` 计划任务或 `scripts/start-english-local.ps1` 在 127.0.0.1:3000 启动；开发时可用 `npm run dev`。手机端已用真实 390px 视口检查首页、揭晓后的表格及词表管理，无横向溢出。
 
-Structured vocabulary HTML can be previewed with `npm run import:english:html -- "path\to\list.html"`. Add `--apply` only after the preview counts are correct. The importer validates the expected 218 source rows, merges case-insensitive duplicates without replacing richer existing entries, creates separate confusing-word and phrase collections, and writes a pre-import backup under ignored `.local/backups`.
+## 微信 / OpenClaw
 
-## WeChat / iLink / OpenClaw
+腾讯的 `@tencent-weixin/openclaw-weixin` 插件管理 iLink 登录与消息收发；`integrations/openclaw` 把 `/vocab` 命令和 `flashlearn_vocab` 工具接到本站私有 `/api/english/bot`。插件不直接连接数据库。`FLASHLEARN_BOT_TOKEN` 应仅放在本机 `.env.local` 与 OpenClaw 私有配置，不能提交。两端网站与 Gateway 必须在电脑唤醒时运行。
 
-Tencent's official `@tencent-weixin/openclaw-weixin` plugin owns QR login, iLink polling, credentials and message delivery. `integrations/openclaw` supplies a small FlashLearn plugin with a deterministic `/vocab` command and the `flashlearn_vocab` agent tool. It does not read the database directly.
+- `/vocab 易混 5` 或 `/vocab 开始 5`：易混词小复习。
+- `/vocab 短语 5`：短语小复习。
+- `/vocab 词表`：查看两类词表；`/vocab 词表编号 18 5`：练指定词表（编号以当前列表为准）。
+- `/vocab 答案`：揭晓；`/vocab 1` 不认识；`/vocab 2` 认识；`/vocab 继续` 恢复。
 
-- Store a random `FLASHLEARN_BOT_TOKEN` (at least 32 characters) in ignored `.env.local`. Configure `plugins.entries.flashlearn-study.config` with `baseUrl: http://127.0.0.1:3000`, the matching `token`, and optionally `allowedSender` (the paired owner's sender ID). Never commit the token.
-- Install Tencent's channel plugin: `openclaw plugins install @tencent-weixin/openclaw-weixin --accept-capabilities`.
-- After reviewing the local plugin source, install it with `openclaw plugins install ./integrations/openclaw --link --accept-capabilities --force`.
-- Start or install the OpenClaw Gateway, then log in with `openclaw channels login --channel openclaw-weixin`. Check `openclaw channels status --channel openclaw-weixin --probe`. QR login requires the owner to scan with WeChat.
-- The website must stay running on this computer. `scripts/start-english-local.ps1` can start the production build manually on loopback only. On this machine, a `FlashLearn English Local` Scheduled Task runs Next.js directly at sign-in; OpenClaw Gateway has its own Scheduled Task. Rebuild with `npm run build` only after stopping the website task, then start it again. The computer must be awake and connected for WeChat review.
-- `/vocab 开始 5`, `/vocab 短语 5`, `/vocab 易混 5`, `/vocab 词表`, `/vocab 词表编号 12 5`, `/vocab 答案`, `/vocab 下一题`, `/vocab 1`, `/vocab 2`, `/vocab 继续`.
-- Plain-language review messages use the existing configured OpenClaw model and the agent tool. Free-text meaning answers are followed by the canonical meaning and explicit self-assessment rather than opaque AI grading.
-- The iLink channel probe verifies login and polling. A message round-trip from the owner's WeChat remains the final delivery check.
-
-Endpoint: authenticated `POST /api/english/bot`, JSON `{ peer, requestId, action, mode?, collection?, count?, rating? }`. Every submitted answer gets an idempotent review ID. Client credentials remain server-side in the local OpenClaw configuration.
-
-## Current boundaries
-
-- No full-passage Cloze generation or reading comprehension grader in this first recognition-focused version.
-- Additional senses remain in rich word data; independent per-sense scheduling is a future extension.
-- Browser rounds and WeChat rounds each have their own queue; they share the same vocabulary, lists and memory records.
-- The private bot endpoint requires a bearer token. Existing website access assumptions are unchanged; keep the deployment private.
+网站与微信共享词条的复习状态，但各自保存当前轮次。微信小复习用文本对照，网站提供完整表格与朗读。当前没有短文生成、Cloze 自动出题或 Reading 自动评分。

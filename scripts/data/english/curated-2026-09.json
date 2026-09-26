@@ -1,0 +1,2200 @@
+{
+  "version": 1,
+  "groups": [
+    {
+      "name": "angle / anger",
+      "tip": "字母差一点，意思差很远",
+      "source": "Practice 2 HTML p.133",
+      "entries": [
+        {
+          "word": "angle",
+          "meaning": "角度"
+        },
+        {
+          "word": "anger",
+          "meaning": "愤怒"
+        }
+      ]
+    },
+    {
+      "name": "appal / appeal",
+      "tip": "pal→pale 吓白脸；peal→钟声召唤",
+      "source": "Practice 2 HTML p.133",
+      "entries": [
+        {
+          "word": "appal",
+          "meaning": "使惊恐，使震惊"
+        },
+        {
+          "word": "appeal",
+          "meaning": "呼吁；吸引力；上诉"
+        }
+      ]
+    },
+    {
+      "name": "area / arena",
+      "tip": "arena 多个 n，是竞技的场地",
+      "source": "Practice 2 HTML p.133",
+      "entries": [
+        {
+          "word": "area",
+          "meaning": "区域，面积"
+        },
+        {
+          "word": "arena",
+          "meaning": "竞技场，舞台"
+        }
+      ]
+    },
+    {
+      "name": "arise / rise / raise",
+      "tip": "raise 后面必须带宾语，rise / arise 不带",
+      "source": "Practice 2 HTML p.133",
+      "entries": [
+        {
+          "word": "arise",
+          "meaning": "出现，产生（抽象事物）"
+        },
+        {
+          "word": "raise",
+          "meaning": "升起，举起；提高（及物）"
+        },
+        {
+          "word": "rise",
+          "meaning": "上升，升起（不及物）"
+        }
+      ]
+    },
+    {
+      "name": "assemble / assembly / resemble",
+      "tip": "词根 sembl = 相似、聚合",
+      "source": "Practice 2 HTML p.133",
+      "entries": [
+        {
+          "word": "assemble",
+          "meaning": "集合；组装"
+        },
+        {
+          "word": "assembly",
+          "meaning": "装配；集会"
+        },
+        {
+          "word": "resemble",
+          "meaning": "类似，像"
+        }
+      ]
+    },
+    {
+      "name": "assert / asset / assume / assure",
+      "tip": "as- 开头四兄弟，看后半截",
+      "source": "Practice 2 HTML p.133",
+      "entries": [
+        {
+          "word": "assert",
+          "meaning": "断言，主张"
+        },
+        {
+          "word": "asset",
+          "meaning": "资产，财产"
+        },
+        {
+          "word": "assume",
+          "meaning": "假定；承担"
+        },
+        {
+          "word": "assure",
+          "meaning": "保证，确保（对人说）"
+        }
+      ]
+    },
+    {
+      "name": "aural / rural",
+      "tip": "aural = ear 耳；rural = 乡下",
+      "source": "Practice 2 HTML p.133",
+      "entries": [
+        {
+          "word": "aural",
+          "meaning": "听觉的"
+        },
+        {
+          "word": "rural",
+          "meaning": "农村的"
+        }
+      ]
+    },
+    {
+      "name": "awake / wake",
+      "tip": "a- 开头表状态，只作表语",
+      "source": "Practice 2 HTML p.133",
+      "entries": [
+        {
+          "word": "awake",
+          "meaning": "醒着的（形容词）"
+        },
+        {
+          "word": "wake",
+          "meaning": "唤醒；醒来（动词）"
+        }
+      ]
+    },
+    {
+      "name": "awe / owe",
+      "tip": "a-we 我们敬畏；O 像零，欠着",
+      "source": "Practice 2 HTML p.133",
+      "entries": [
+        {
+          "word": "awe",
+          "meaning": "敬畏"
+        },
+        {
+          "word": "owe",
+          "meaning": "欠；归功于"
+        }
+      ]
+    },
+    {
+      "name": "meat / meet / melt / mend",
+      "tip": "me- 开头一串，逐个锁定尾巴",
+      "source": "Practice 2 HTML p.133",
+      "entries": [
+        {
+          "word": "meat",
+          "meaning": "肉"
+        },
+        {
+          "word": "meet",
+          "meaning": "遇见，会面"
+        },
+        {
+          "word": "melt",
+          "meaning": "融化"
+        },
+        {
+          "word": "mend",
+          "meaning": "修理，修补"
+        }
+      ]
+    },
+    {
+      "name": "mingle / single",
+      "tip": "",
+      "source": "Practice 2 HTML p.133",
+      "entries": [
+        {
+          "word": "mingle",
+          "meaning": "混合；交往，与人攀谈"
+        },
+        {
+          "word": "single",
+          "meaning": "单个的，单身的"
+        }
+      ]
+    },
+    {
+      "name": "moral / mortal",
+      "tip": "mort = 死",
+      "source": "Practice 2 HTML p.133",
+      "entries": [
+        {
+          "word": "moral",
+          "meaning": "道德的；道德准则"
+        },
+        {
+          "word": "mortal",
+          "meaning": "必死的；致命的"
+        }
+      ]
+    },
+    {
+      "name": "motion / notion",
+      "tip": "mot = 动，not = 知",
+      "source": "Practice 2 HTML p.133",
+      "entries": [
+        {
+          "word": "motion",
+          "meaning": "运动，动作；提议"
+        },
+        {
+          "word": "notion",
+          "meaning": "观念，概念"
+        }
+      ]
+    },
+    {
+      "name": "multiple / multiply",
+      "tip": "multi = 多",
+      "source": "Practice 2 HTML p.133",
+      "entries": [
+        {
+          "word": "multiple",
+          "meaning": "多样的，多个的"
+        },
+        {
+          "word": "multiply",
+          "meaning": "乘；繁殖，增加"
+        }
+      ]
+    },
+    {
+      "name": "naive / native",
+      "tip": "t = territory 本土",
+      "source": "Practice 2 HTML p.133",
+      "entries": [
+        {
+          "word": "naive",
+          "meaning": "天真的，幼稚的"
+        },
+        {
+          "word": "native",
+          "meaning": "本地的，土生土长的"
+        }
+      ]
+    },
+    {
+      "name": "national / rational",
+      "tip": "r = reason 理性",
+      "source": "Practice 2 HTML p.133",
+      "entries": [
+        {
+          "word": "national",
+          "meaning": "国家的，全国的"
+        },
+        {
+          "word": "rational",
+          "meaning": "理性的，合理的"
+        }
+      ]
+    },
+    {
+      "name": "nearby / nearly",
+      "tip": "-by 表地点，-ly 表程度",
+      "source": "Practice 2 HTML p.133",
+      "entries": [
+        {
+          "word": "nearby",
+          "meaning": "附近的"
+        },
+        {
+          "word": "nearly",
+          "meaning": "几乎，差不多"
+        }
+      ]
+    },
+    {
+      "name": "elastic / plastic",
+      "tip": "",
+      "source": "Practice 2 HTML p.133",
+      "entries": [
+        {
+          "word": "elastic",
+          "meaning": "有弹性的"
+        },
+        {
+          "word": "plastic",
+          "meaning": "塑料的；塑料"
+        }
+      ]
+    },
+    {
+      "name": "endure / ensure",
+      "tip": "dure = 持久；sure = 确定",
+      "source": "Practice 2 HTML p.133",
+      "entries": [
+        {
+          "word": "endure",
+          "meaning": "忍耐；持久"
+        },
+        {
+          "word": "ensure",
+          "meaning": "确保，保证（确保某事发生）"
+        }
+      ]
+    },
+    {
+      "name": "enquire / require",
+      "tip": "词根 quire = 寻求",
+      "source": "Practice 2 HTML p.133",
+      "entries": [
+        {
+          "word": "enquire",
+          "meaning": "询问，打听"
+        },
+        {
+          "word": "require",
+          "meaning": "需要，要求"
+        }
+      ]
+    },
+    {
+      "name": "excel / expel",
+      "tip": "cel = 高出；pel = 推",
+      "source": "Practice 2 HTML p.133",
+      "entries": [
+        {
+          "word": "excel",
+          "meaning": "优秀，胜过"
+        },
+        {
+          "word": "expel",
+          "meaning": "驱逐，开除"
+        }
+      ]
+    },
+    {
+      "name": "exert / expert",
+      "tip": "p = professional 专业",
+      "source": "Practice 2 HTML p.133",
+      "entries": [
+        {
+          "word": "exert",
+          "meaning": "施加，运用（力量、影响）"
+        },
+        {
+          "word": "expert",
+          "meaning": "专家；熟练的"
+        }
+      ]
+    },
+    {
+      "name": "exist / exit",
+      "tip": "exist 多个 s = still 还在",
+      "source": "Practice 2 HTML p.133",
+      "entries": [
+        {
+          "word": "exist",
+          "meaning": "存在"
+        },
+        {
+          "word": "exit",
+          "meaning": "退出，离开；出口"
+        }
+      ]
+    },
+    {
+      "name": "expand / expend",
+      "tip": "a = air 充气变大；e = expense 花钱",
+      "source": "Practice 2 HTML p.133",
+      "entries": [
+        {
+          "word": "expand",
+          "meaning": "扩大，扩展"
+        },
+        {
+          "word": "expend",
+          "meaning": "花费，消耗"
+        }
+      ]
+    },
+    {
+      "name": "expensive / extensive",
+      "tip": "pens(花费)贵；tens(伸展)广",
+      "source": "Practice 2 HTML p.133",
+      "entries": [
+        {
+          "word": "expensive",
+          "meaning": "昂贵的"
+        },
+        {
+          "word": "extensive",
+          "meaning": "广泛的，大量的"
+        }
+      ]
+    },
+    {
+      "name": "explode / explore",
+      "tip": "lore = 学问，求知即探索",
+      "source": "Practice 2 HTML p.133",
+      "entries": [
+        {
+          "word": "explode",
+          "meaning": "爆炸；激增"
+        },
+        {
+          "word": "explore",
+          "meaning": "探索，探险"
+        }
+      ]
+    },
+    {
+      "name": "extend / extent",
+      "tip": "extend 是动词，extent 是名词",
+      "source": "Practice 2 HTML p.133",
+      "entries": [
+        {
+          "word": "extend",
+          "meaning": "扩展，延伸；延长"
+        },
+        {
+          "word": "extent",
+          "meaning": "程度，范围"
+        }
+      ]
+    },
+    {
+      "name": "fate / fade / fake / faint",
+      "tip": "fa- 四兄弟，看第三个字母",
+      "source": "Practice 2 HTML p.133",
+      "entries": [
+        {
+          "word": "fate",
+          "meaning": "命运"
+        },
+        {
+          "word": "fade",
+          "meaning": "褪色，逐渐消失"
+        },
+        {
+          "word": "fake",
+          "meaning": "假的，伪造的"
+        },
+        {
+          "word": "faint",
+          "meaning": "晕倒；微弱的"
+        }
+      ]
+    },
+    {
+      "name": "faculty / faulty",
+      "tip": "faculty 多个 c = college 学院",
+      "source": "Practice 2 HTML p.133",
+      "entries": [
+        {
+          "word": "faculty",
+          "meaning": "教职员工；能力，官能"
+        },
+        {
+          "word": "faulty",
+          "meaning": "有缺陷的，错误的"
+        }
+      ]
+    },
+    {
+      "name": "re- / pre- 名词组：评论、预演、修订、提议",
+      "tip": "第 8 题考点：看前缀 re-（再）与 pre-（预先）",
+      "source": "Practice 2 HTML p.133",
+      "entries": [
+        {
+          "word": "review",
+          "meaning": "评论；复习；回顾"
+        },
+        {
+          "word": "preview",
+          "meaning": "预演，预映；预览"
+        },
+        {
+          "word": "revision",
+          "meaning": "修订；复习"
+        }
+      ]
+    },
+    {
+      "name": "special 四兄弟（高频考点）",
+      "tip": "第 14 题考点：程度 / 目的 / 说清楚 / 名词",
+      "source": "Practice 2 HTML p.133",
+      "entries": [
+        {
+          "word": "especially",
+          "meaning": "尤其；特别（强调程度，进一步强调）"
+        },
+        {
+          "word": "specially",
+          "meaning": "专门地；特意地（强调目的，为了某事）"
+        },
+        {
+          "word": "specifically",
+          "meaning": "具体地；明确地"
+        },
+        {
+          "word": "specialty",
+          "meaning": "特产；专长（名词）"
+        }
+      ]
+    },
+    {
+      "name": "aboard / abroad",
+      "tip": "",
+      "source": "132.pdf",
+      "entries": [
+        {
+          "word": "aboard",
+          "meaning": "在船上；在飞机上"
+        },
+        {
+          "word": "abroad",
+          "meaning": "在国外"
+        }
+      ]
+    },
+    {
+      "name": "abound / bound",
+      "tip": "",
+      "source": "132.pdf",
+      "entries": [
+        {
+          "word": "abound",
+          "meaning": "大量存在"
+        },
+        {
+          "word": "bound",
+          "meaning": "被束缚的；必定的"
+        }
+      ]
+    },
+    {
+      "name": "ache / acre",
+      "tip": "",
+      "source": "132.pdf",
+      "entries": [
+        {
+          "word": "ache",
+          "meaning": "疼痛"
+        },
+        {
+          "word": "acre",
+          "meaning": "英亩"
+        }
+      ]
+    },
+    {
+      "name": "action / auction",
+      "tip": "",
+      "source": "132.pdf",
+      "entries": [
+        {
+          "word": "action",
+          "meaning": "行动；行为"
+        },
+        {
+          "word": "auction",
+          "meaning": "拍卖"
+        }
+      ]
+    },
+    {
+      "name": "adapt / adopt / adept",
+      "tip": "",
+      "source": "132.pdf",
+      "entries": [
+        {
+          "word": "adapt",
+          "meaning": "适应"
+        },
+        {
+          "word": "adopt",
+          "meaning": "采用；收养"
+        },
+        {
+          "word": "adept",
+          "meaning": "熟练的；擅长的"
+        }
+      ]
+    },
+    {
+      "name": "advice / advise",
+      "tip": "",
+      "source": "132.pdf",
+      "entries": [
+        {
+          "word": "advice",
+          "meaning": "建议；忠告"
+        },
+        {
+          "word": "advise",
+          "meaning": "建议；劝告"
+        }
+      ]
+    },
+    {
+      "name": "affect / effect",
+      "tip": "",
+      "source": "132.pdf",
+      "entries": [
+        {
+          "word": "affect",
+          "meaning": "影响（动词）"
+        },
+        {
+          "word": "effect",
+          "meaning": "效果；影响（名词）"
+        }
+      ]
+    },
+    {
+      "name": "alert / avert",
+      "tip": "",
+      "source": "132.pdf",
+      "entries": [
+        {
+          "word": "alert",
+          "meaning": "警惕的；警报"
+        },
+        {
+          "word": "avert",
+          "meaning": "避免；防止"
+        }
+      ]
+    },
+    {
+      "name": "alien / align",
+      "tip": "",
+      "source": "132.pdf",
+      "entries": [
+        {
+          "word": "alien",
+          "meaning": "外星人；陌生的"
+        },
+        {
+          "word": "align",
+          "meaning": "对齐；调整"
+        }
+      ]
+    },
+    {
+      "name": "alone / lonely",
+      "tip": "",
+      "source": "132.pdf",
+      "entries": [
+        {
+          "word": "alone",
+          "meaning": "独自的"
+        },
+        {
+          "word": "lonely",
+          "meaning": "孤独的"
+        }
+      ]
+    },
+    {
+      "name": "revise / revive",
+      "tip": "",
+      "source": "132.pdf",
+      "entries": [
+        {
+          "word": "revise",
+          "meaning": "修订；修改"
+        },
+        {
+          "word": "revive",
+          "meaning": "复活；恢复"
+        }
+      ]
+    },
+    {
+      "name": "aloud / loud",
+      "tip": "",
+      "source": "132.pdf",
+      "entries": [
+        {
+          "word": "aloud",
+          "meaning": "大声地"
+        },
+        {
+          "word": "loud",
+          "meaning": "大声的"
+        }
+      ]
+    },
+    {
+      "name": "altitude / latitude / attitude",
+      "tip": "",
+      "source": "132.pdf",
+      "entries": [
+        {
+          "word": "altitude",
+          "meaning": "高度；海拔"
+        },
+        {
+          "word": "latitude",
+          "meaning": "纬度"
+        },
+        {
+          "word": "attitude",
+          "meaning": "态度"
+        }
+      ]
+    },
+    {
+      "name": "analyse / analysis",
+      "tip": "",
+      "source": "132.pdf",
+      "entries": [
+        {
+          "word": "analyse",
+          "meaning": "分析（动词）"
+        },
+        {
+          "word": "analysis",
+          "meaning": "分析（名词）"
+        }
+      ]
+    },
+    {
+      "name": "angel / angle",
+      "tip": "",
+      "source": "132.pdf",
+      "entries": [
+        {
+          "word": "angel",
+          "meaning": "天使"
+        },
+        {
+          "word": "angle",
+          "meaning": "角度"
+        }
+      ]
+    },
+    {
+      "name": "evacuate / evaluate",
+      "tip": "",
+      "source": "132.pdf",
+      "entries": [
+        {
+          "word": "evacuate",
+          "meaning": "疏散；撤离"
+        },
+        {
+          "word": "evaluate",
+          "meaning": "评估；评价"
+        }
+      ]
+    },
+    {
+      "name": "literacy / literary / literally",
+      "tip": "",
+      "source": "132.pdf",
+      "entries": [
+        {
+          "word": "literacy",
+          "meaning": "读写能力"
+        },
+        {
+          "word": "literary",
+          "meaning": "文学的"
+        },
+        {
+          "word": "literally",
+          "meaning": "字面上；确实地"
+        }
+      ]
+    },
+    {
+      "name": "local / vocal",
+      "tip": "",
+      "source": "132.pdf",
+      "entries": [
+        {
+          "word": "local",
+          "meaning": "当地的；局部的"
+        },
+        {
+          "word": "vocal",
+          "meaning": "声音的；嗓音的"
+        }
+      ]
+    },
+    {
+      "name": "vacation / vocation",
+      "tip": "",
+      "source": "132.pdf",
+      "entries": [
+        {
+          "word": "vacation",
+          "meaning": "假期；度假"
+        },
+        {
+          "word": "vocation",
+          "meaning": "职业；使命"
+        }
+      ]
+    },
+    {
+      "name": "outlet / outset",
+      "tip": "",
+      "source": "132.pdf",
+      "entries": [
+        {
+          "word": "outlet",
+          "meaning": "出口；插座"
+        },
+        {
+          "word": "outset",
+          "meaning": "开始；开端"
+        }
+      ]
+    },
+    {
+      "name": "fixture / mixture",
+      "tip": "",
+      "source": "132.pdf",
+      "entries": [
+        {
+          "word": "fixture",
+          "meaning": "固定装置"
+        },
+        {
+          "word": "mixture",
+          "meaning": "混合物"
+        }
+      ]
+    },
+    {
+      "name": "fiction / friction",
+      "tip": "",
+      "source": "132.pdf",
+      "entries": [
+        {
+          "word": "fiction",
+          "meaning": "小说；虚构"
+        },
+        {
+          "word": "friction",
+          "meaning": "摩擦"
+        }
+      ]
+    },
+    {
+      "name": "loyalty / royalty",
+      "tip": "",
+      "source": "132.pdf",
+      "entries": [
+        {
+          "word": "loyalty",
+          "meaning": "忠诚"
+        },
+        {
+          "word": "royalty",
+          "meaning": "王室；版税"
+        }
+      ]
+    },
+    {
+      "name": "rebel / repel",
+      "tip": "",
+      "source": "132.pdf",
+      "entries": [
+        {
+          "word": "rebel",
+          "meaning": "反叛者；反抗"
+        },
+        {
+          "word": "repel",
+          "meaning": "击退；驱逐"
+        }
+      ]
+    },
+    {
+      "name": "major / mayor",
+      "tip": "",
+      "source": "132.pdf",
+      "entries": [
+        {
+          "word": "major",
+          "meaning": "主要的；重要的"
+        },
+        {
+          "word": "mayor",
+          "meaning": "市长"
+        }
+      ]
+    },
+    {
+      "name": "fellow / follow",
+      "tip": "",
+      "source": "132.pdf",
+      "entries": [
+        {
+          "word": "fellow",
+          "meaning": "同伴；同事"
+        },
+        {
+          "word": "follow",
+          "meaning": "跟随"
+        }
+      ]
+    },
+    {
+      "name": "massive / passive",
+      "tip": "",
+      "source": "132.pdf",
+      "entries": [
+        {
+          "word": "massive",
+          "meaning": "大规模的"
+        },
+        {
+          "word": "passive",
+          "meaning": "被动的；消极的"
+        }
+      ]
+    },
+    {
+      "name": "mature / nature",
+      "tip": "",
+      "source": "132.pdf",
+      "entries": [
+        {
+          "word": "mature",
+          "meaning": "成熟的"
+        },
+        {
+          "word": "nature",
+          "meaning": "自然；性质"
+        }
+      ]
+    },
+    {
+      "name": "medal / metal",
+      "tip": "",
+      "source": "132.pdf",
+      "entries": [
+        {
+          "word": "medal",
+          "meaning": "奖牌；勋章"
+        },
+        {
+          "word": "metal",
+          "meaning": "金属"
+        }
+      ]
+    },
+    {
+      "name": "mediate / meditate",
+      "tip": "",
+      "source": "132.pdf",
+      "entries": [
+        {
+          "word": "mediate",
+          "meaning": "调解；调停"
+        },
+        {
+          "word": "meditate",
+          "meaning": "冥想；沉思"
+        }
+      ]
+    },
+    {
+      "name": "except / excerpt",
+      "tip": "",
+      "source": "132.pdf",
+      "entries": [
+        {
+          "word": "except",
+          "meaning": "除了"
+        },
+        {
+          "word": "excerpt",
+          "meaning": "摘录；节选"
+        }
+      ]
+    },
+    {
+      "name": "pasture / posture",
+      "tip": "",
+      "source": "132.pdf",
+      "entries": [
+        {
+          "word": "pasture",
+          "meaning": "牧场"
+        },
+        {
+          "word": "posture",
+          "meaning": "姿势；体态"
+        }
+      ]
+    },
+    {
+      "name": "craft / draft / drift",
+      "tip": "",
+      "source": "132.pdf",
+      "entries": [
+        {
+          "word": "craft",
+          "meaning": "手艺；工艺"
+        },
+        {
+          "word": "draft",
+          "meaning": "草稿；起草"
+        },
+        {
+          "word": "drift",
+          "meaning": "漂流；漂移"
+        }
+      ]
+    },
+    {
+      "name": "project / protect",
+      "tip": "",
+      "source": "132.pdf",
+      "entries": [
+        {
+          "word": "project",
+          "meaning": "项目；计划"
+        },
+        {
+          "word": "protect",
+          "meaning": "保护；防护"
+        }
+      ]
+    },
+    {
+      "name": "employee / employer",
+      "tip": "",
+      "source": "132.pdf",
+      "entries": [
+        {
+          "word": "employee",
+          "meaning": "雇员"
+        },
+        {
+          "word": "employer",
+          "meaning": "雇主"
+        }
+      ]
+    },
+    {
+      "name": "dumb / numb",
+      "tip": "",
+      "source": "132.pdf",
+      "entries": [
+        {
+          "word": "dumb",
+          "meaning": "哑的；无言的"
+        },
+        {
+          "word": "numb",
+          "meaning": "麻木的"
+        }
+      ]
+    },
+    {
+      "name": "dwell / swell",
+      "tip": "",
+      "source": "132.pdf",
+      "entries": [
+        {
+          "word": "dwell",
+          "meaning": "居住；细想"
+        },
+        {
+          "word": "swell",
+          "meaning": "膨胀；肿胀"
+        }
+      ]
+    },
+    {
+      "name": "ease / erase",
+      "tip": "",
+      "source": "132.pdf",
+      "entries": [
+        {
+          "word": "ease",
+          "meaning": "缓解；减轻"
+        },
+        {
+          "word": "erase",
+          "meaning": "擦掉；抹去"
+        }
+      ]
+    },
+    {
+      "name": "reject / eject / elect / erect / select",
+      "tip": "",
+      "source": "132.pdf",
+      "entries": [
+        {
+          "word": "reject",
+          "meaning": "拒绝；排斥"
+        },
+        {
+          "word": "eject",
+          "meaning": "逐出；弹出"
+        },
+        {
+          "word": "elect",
+          "meaning": "选举；当选"
+        },
+        {
+          "word": "erect",
+          "meaning": "直立的；竖立"
+        },
+        {
+          "word": "select",
+          "meaning": "选择；挑选"
+        }
+      ]
+    },
+    {
+      "name": "vary / various / varieties",
+      "tip": "",
+      "source": "Practice 1 2.2.pdf",
+      "entries": [
+        {
+          "word": "vary",
+          "meaning": "变化；不同"
+        },
+        {
+          "word": "various",
+          "meaning": "各种各样的"
+        },
+        {
+          "word": "varieties",
+          "meaning": "种类（variety 的复数）"
+        }
+      ]
+    },
+    {
+      "name": "dependently / independently",
+      "tip": "",
+      "source": "Practice 1 2.2.pdf",
+      "entries": [
+        {
+          "word": "dependently",
+          "meaning": "依赖地"
+        },
+        {
+          "word": "independently",
+          "meaning": "独立地"
+        }
+      ]
+    },
+    {
+      "name": "accuse / accustom",
+      "tip": "accuse ... of；accustom ... to",
+      "source": "Practice 1 2.2.pdf",
+      "entries": [
+        {
+          "word": "accuse",
+          "meaning": "指控；控告"
+        },
+        {
+          "word": "accustom",
+          "meaning": "使习惯"
+        }
+      ]
+    }
+  ],
+  "phrases": [
+    {
+      "word": "take up",
+      "meaning": "开始从事；选…作为职业/爱好；占用（时间、空间）；接受（挑战）",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "take 家族（9 个）",
+      "example": "take up teaching as a career 选择教学为职业；It takes up too much space."
+    },
+    {
+      "word": "take on",
+      "meaning": "承担；雇用；呈现（面貌）",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "take 家族（9 个）",
+      "example": "take on responsibilities 承担责任；take on a new look 呈现新面貌"
+    },
+    {
+      "word": "take off",
+      "meaning": "（事业、产品）突然成功；起飞；脱下；休假",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "take 家族（9 个）",
+      "example": "The business simply took off. 业务一下子就火了；take off your coat"
+    },
+    {
+      "word": "take in",
+      "meaning": "吸收；领会；欺骗；包含",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "take 家族（9 个）",
+      "example": "take in information 吸收资讯；be taken in by a lie 被谎言骗了"
+    },
+    {
+      "word": "take out",
+      "meaning": "取出；删除；申请（贷款、保险）",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "take 家族（9 个）",
+      "example": "take out a loan 申请贷款"
+    },
+    {
+      "word": "take over",
+      "meaning": "接管；控制",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "take 家族（9 个）",
+      "example": "take over a company 接管公司"
+    },
+    {
+      "word": "take after",
+      "meaning": "（性格、长相）像（长辈）",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "take 家族（9 个）",
+      "example": "She takes after her mother. 注意：像长辈用 take after，不用 like"
+    },
+    {
+      "word": "take to",
+      "meaning": "喜欢上；养成…的习惯",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "take 家族（9 个）",
+      "example": "take to reading 喜欢上阅读"
+    },
+    {
+      "word": "take back",
+      "meaning": "收回（言论）；退还",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "take 家族（9 个）",
+      "example": "take back what you said 收回你说的话"
+    },
+    {
+      "word": "put up",
+      "meaning": "张贴；搭建；提供（资金）；提高（价格）；留宿",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "put 家族（6 个）",
+      "example": "put up a poster/tent；put up the prices"
+    },
+    {
+      "word": "put away",
+      "meaning": "收好，放好；把…关进监狱",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "put 家族（6 个）",
+      "example": "put away your toys 把玩具收好"
+    },
+    {
+      "word": "put off",
+      "meaning": "推迟，拖延；使反感，使失去兴趣",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "put 家族（6 个）",
+      "example": "put off the meeting；Don't be put off by criticism. 别被批评浇了冷水"
+    },
+    {
+      "word": "put through",
+      "meaning": "为…接通电话；使遭受（不愉快的经历）",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "put 家族（6 个）",
+      "example": "Put me through to the manager."
+    },
+    {
+      "word": "put out",
+      "meaning": "熄灭；发表，发布；生产；激怒",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "put 家族（6 个）",
+      "example": "put out a fire 灭火"
+    },
+    {
+      "word": "put forward",
+      "meaning": "提出（计划、建议）",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "put 家族（6 个）",
+      "example": "the plan put forward at the conference 会上提出的计划"
+    },
+    {
+      "word": "break out",
+      "meaning": "（战争、火灾、疫情）爆发；（囚犯）逃脱",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "break 家族（4 个）",
+      "example": "War/A fire broke out. 主语是灾难本身，不用被动"
+    },
+    {
+      "word": "break in",
+      "meaning": "非法侵入；插嘴，打断",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "break 家族（4 个）",
+      "example": "break in through the window 破窗而入"
+    },
+    {
+      "word": "break down",
+      "meaning": "（机器）出故障；（计划、谈判）失败，破产；（人）崩溃",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "break 家族（4 个）",
+      "example": "The plan broke down. 计划泡汤了"
+    },
+    {
+      "word": "break up",
+      "meaning": "分裂；解散；结束；分手",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "break 家族（4 个）",
+      "example": "break up with sb 与某人分手"
+    },
+    {
+      "word": "turn out",
+      "meaning": "结果是，原来是；生产；关掉（灯、煤气）；出席",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "「动词 + out」家族（10 个）",
+      "example": "It turned out (that) he was right.；turn out the light"
+    },
+    {
+      "word": "make out",
+      "meaning": "辨认出；理解；填写（支票）",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "「动词 + out」家族（10 个）",
+      "example": "make out a word in the dark 在暗处辨认出一个词"
+    },
+    {
+      "word": "work out",
+      "meaning": "算出；想出（办法）；进展顺利；健身",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "「动词 + out」家族（10 个）",
+      "example": "work out a problem 解题；Things worked out well."
+    },
+    {
+      "word": "figure out",
+      "meaning": "想出；弄清楚，理解",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "「动词 + out」家族（10 个）",
+      "example": "figure out how to do it 弄明白怎么做"
+    },
+    {
+      "word": "hold out",
+      "meaning": "抱有（希望）；坚持，维持；伸出",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "「动词 + out」家族（10 个）",
+      "example": "I'm still holding out hope. 我还抱着希望"
+    },
+    {
+      "word": "set out",
+      "meaning": "动身，出发；着手；（有条理地）陈述，阐述",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "「动词 + out」家族（10 个）",
+      "example": "set out on a journey；set out the reasons 逐条说明理由"
+    },
+    {
+      "word": "bring out",
+      "meaning": "使显露；激发（品质）；出版，推出",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "「动词 + out」家族（10 个）",
+      "example": "Difficulties bring out our best qualities. 困难能激发我们最好的品质"
+    },
+    {
+      "word": "leave out",
+      "meaning": "遗漏，省略；不包括",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "「动词 + out」家族（10 个）",
+      "example": "leave out a name 漏掉一个名字"
+    },
+    {
+      "word": "let out",
+      "meaning": "放出，释放；发出（声音）；出租（房屋）",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "「动词 + out」家族（10 个）",
+      "example": "let out a cry 发出一声叫喊"
+    },
+    {
+      "word": "carry out",
+      "meaning": "执行，实施",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "「动词 + out」家族（10 个）",
+      "example": "carry out a plan/an experiment 执行计划/做实验"
+    },
+    {
+      "word": "look back",
+      "meaning": "回顾；回头看",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "「动词 + back」家族（4 个）",
+      "example": "look back on the past 回顾过去"
+    },
+    {
+      "word": "turn back",
+      "meaning": "折回，往回走；阻止",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "「动词 + back」家族（4 个）",
+      "example": "turn back halfway 半路折返"
+    },
+    {
+      "word": "get back",
+      "meaning": "返回；恢复；取回",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "「动词 + back」家族（4 个）",
+      "example": "get back home 回到家"
+    },
+    {
+      "word": "settle for",
+      "meaning": "勉强接受，无奈接受",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "「动词 + for」家族（4 个）",
+      "example": "settle for what they offered 接受他们开的条件"
+    },
+    {
+      "word": "stand for",
+      "meaning": "代表；支持，主张",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "「动词 + for」家族（4 个）",
+      "example": "What does UN stand for? UN 代表什么？"
+    },
+    {
+      "word": "allow for",
+      "meaning": "考虑到，留出余地",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "「动词 + for」家族（4 个）",
+      "example": "allow for delays 把延误算进去"
+    },
+    {
+      "word": "answer for",
+      "meaning": "对…负责；为…付出代价",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "「动词 + for」家族（4 个）",
+      "example": "answer for your actions 为自己的行为负责"
+    },
+    {
+      "word": "live up to",
+      "meaning": "达到（标准）；不辜负（期望）",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "三词短语（4 个）",
+      "example": "live up to the boss's expectations 不辜负老板的期望"
+    },
+    {
+      "word": "look up to",
+      "meaning": "尊敬，钦佩",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "三词短语（4 个）",
+      "example": "look up to a teacher 尊敬老师（反义 look down on 看不起）"
+    },
+    {
+      "word": "keep up with",
+      "meaning": "跟上，赶上（进度、潮流）",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "三词短语（4 个）",
+      "example": "keep up with the trend 跟上潮流"
+    },
+    {
+      "word": "come up with",
+      "meaning": "提出；想出（主意、办法）",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "三词短语（4 个）",
+      "example": "come up with an idea 想出一个主意"
+    },
+    {
+      "word": "carry on",
+      "meaning": "继续（做）",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "「动词 + on」家族（5 个）",
+      "example": "carry on working 继续工作"
+    },
+    {
+      "word": "call on",
+      "meaning": "要求，号召；（短暂）拜访，探望",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "「动词 + on」家族（5 个）",
+      "example": "call on sb to do sth 号召某人做某事"
+    },
+    {
+      "word": "count on",
+      "meaning": "依靠，指望",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "「动词 + on」家族（5 个）",
+      "example": "You can count on me. 你可以指望我"
+    },
+    {
+      "word": "catch on",
+      "meaning": "明白，懂得；流行，时兴",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "「动词 + on」家族（5 个）",
+      "example": "The style soon caught on. 这款式很快就流行起来"
+    },
+    {
+      "word": "kick off",
+      "meaning": "开始，启动（源自足球开球）",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "off / up / to 及其他（9 个）",
+      "example": "kick off a new round of consultation 掀起新一轮咨询"
+    },
+    {
+      "word": "leave off",
+      "meaning": "停止，中断",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "off / up / to 及其他（9 个）",
+      "example": "leave off talking 停止说话"
+    },
+    {
+      "word": "let off",
+      "meaning": "宽恕，放过；放（烟花）；排放",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "off / up / to 及其他（9 个）",
+      "example": "let sb off 放过某人；let off fireworks 放烟花"
+    },
+    {
+      "word": "build up",
+      "meaning": "逐步增强，积累；（为某活动）造势宣传",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "off / up / to 及其他（9 个）",
+      "example": "build up confidence/strength 积累信心/体力"
+    },
+    {
+      "word": "make up",
+      "meaning": "编造；组成；化妆；和好",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "off / up / to 及其他（9 个）",
+      "example": "make up a story 编故事；be made up of 由…组成"
+    },
+    {
+      "word": "stick to",
+      "meaning": "坚持（诺言、决定、原则）；遵循（规则）；紧跟",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "off / up / to 及其他（9 个）",
+      "example": "stick to the plan 坚持原计划"
+    },
+    {
+      "word": "lead to",
+      "meaning": "导致；通向",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "off / up / to 及其他（9 个）",
+      "example": "lead to success；后面接名词或动名词"
+    },
+    {
+      "word": "go against",
+      "meaning": "违背；与…作对",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "off / up / to 及其他（9 个）",
+      "example": "go against the rules 违反规定"
+    },
+    {
+      "word": "lie in",
+      "meaning": "在于（优势、原因等）",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "off / up / to 及其他（9 个）",
+      "example": "His advantage lies in his English. 他的优势在于英文"
+    },
+    {
+      "word": "get a frog in one's throat",
+      "meaning": "嗓子哑了，说不出话",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "⑦ 身体与状态类习语",
+      "example": "字面「喉咙里有只青蛙」"
+    },
+    {
+      "word": "pull one's weight",
+      "meaning": "尽本分，出力，尽力",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "⑦ 身体与状态类习语",
+      "example": "团队中各自出力"
+    },
+    {
+      "word": "throw in the towel",
+      "meaning": "认输，放弃",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "⑦ 身体与状态类习语",
+      "example": "拳击手扔毛巾认输"
+    },
+    {
+      "word": "be a wet blanket",
+      "meaning": "扫兴的人，泼冷水的人",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "⑦ 身体与状态类习语",
+      "example": "Don't be such a wet blanket. 别这么扫兴"
+    },
+    {
+      "word": "work around the clock",
+      "meaning": "夜以继日地工作",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "⑦ 身体与状态类习语",
+      "example": "clock 转一圈不停，第 3 题题干出现"
+    },
+    {
+      "word": "keep a good eye on sb",
+      "meaning": "好好照看某人",
+      "source": "Practice 2 HTML p.133",
+      "cluster": "⑦ 身体与状态类习语",
+      "example": "第 9 题题干出现"
+    },
+    {
+      "word": "give up",
+      "meaning": "放弃",
+      "source": "Practice 1 2.1.pdf",
+      "cluster": "give",
+      "example": ""
+    },
+    {
+      "word": "hold up",
+      "meaning": "耽搁；阻碍；支撑",
+      "source": "Practice 1 2.1.pdf",
+      "cluster": "hold",
+      "example": ""
+    },
+    {
+      "word": "be carried away",
+      "meaning": "激动得失去自制",
+      "source": "Practice 1 2.1.pdf",
+      "cluster": "be",
+      "example": ""
+    },
+    {
+      "word": "drive away",
+      "meaning": "赶走",
+      "source": "Practice 1 2.1.pdf",
+      "cluster": "drive",
+      "example": ""
+    },
+    {
+      "word": "fall through",
+      "meaning": "落空；失败",
+      "source": "Practice 1 2.1.pdf",
+      "cluster": "fall",
+      "example": ""
+    },
+    {
+      "word": "get through",
+      "meaning": "完成；通过；接通电话",
+      "source": "Practice 1 2.1.pdf",
+      "cluster": "get",
+      "example": ""
+    },
+    {
+      "word": "clear up",
+      "meaning": "澄清；解决；转晴",
+      "source": "Practice 1 2.1.pdf",
+      "cluster": "clear",
+      "example": ""
+    },
+    {
+      "word": "look up",
+      "meaning": "查阅；好转",
+      "source": "Practice 1 2.1.pdf",
+      "cluster": "look",
+      "example": ""
+    },
+    {
+      "word": "bring in",
+      "meaning": "引入；带来；赚得",
+      "source": "Practice 1 2.1.pdf",
+      "cluster": "bring",
+      "example": ""
+    },
+    {
+      "word": "wipe away",
+      "meaning": "擦掉；消除",
+      "source": "Practice 1 2.1.pdf",
+      "cluster": "wipe",
+      "example": ""
+    },
+    {
+      "word": "bring about",
+      "meaning": "引起；导致",
+      "source": "Practice 1 2.1.pdf",
+      "cluster": "bring",
+      "example": ""
+    },
+    {
+      "word": "worry about",
+      "meaning": "担心",
+      "source": "Practice 1 2.1.pdf",
+      "cluster": "worry",
+      "example": ""
+    },
+    {
+      "word": "care about",
+      "meaning": "关心；在意",
+      "source": "Practice 1 2.1.pdf",
+      "cluster": "care",
+      "example": ""
+    },
+    {
+      "word": "go about",
+      "meaning": "着手做；继续做",
+      "source": "Practice 1 2.1.pdf",
+      "cluster": "go",
+      "example": ""
+    },
+    {
+      "word": "make into",
+      "meaning": "把……变成",
+      "source": "Practice 1 2.1.pdf",
+      "cluster": "make",
+      "example": ""
+    },
+    {
+      "word": "make for",
+      "meaning": "促成；导致；朝……走去",
+      "source": "Practice 1 2.1.pdf",
+      "cluster": "make",
+      "example": ""
+    },
+    {
+      "word": "shake off",
+      "meaning": "摆脱；甩掉",
+      "source": "Practice 1 2.1.pdf",
+      "cluster": "shake",
+      "example": ""
+    },
+    {
+      "word": "pay off",
+      "meaning": "还清；取得回报",
+      "source": "Practice 1 2.1.pdf",
+      "cluster": "pay",
+      "example": ""
+    },
+    {
+      "word": "roll out",
+      "meaning": "推出；发布",
+      "source": "Practice 1 2.1.pdf",
+      "cluster": "roll",
+      "example": ""
+    },
+    {
+      "word": "reach out",
+      "meaning": "伸出手；主动联系",
+      "source": "Practice 1 2.1.pdf",
+      "cluster": "reach",
+      "example": ""
+    },
+    {
+      "word": "give rise to",
+      "meaning": "引起；导致",
+      "source": "Practice 1 2.1.pdf",
+      "cluster": "give",
+      "example": ""
+    },
+    {
+      "word": "make way for",
+      "meaning": "给……让路",
+      "source": "Practice 1 2.1.pdf",
+      "cluster": "make",
+      "example": ""
+    },
+    {
+      "word": "take part in",
+      "meaning": "参加",
+      "source": "Practice 1 2.1.pdf",
+      "cluster": "take",
+      "example": ""
+    },
+    {
+      "word": "keep pace with",
+      "meaning": "跟上……的步伐",
+      "source": "Practice 1 2.1.pdf",
+      "cluster": "keep",
+      "example": ""
+    },
+    {
+      "word": "break into",
+      "meaning": "闯入；突然开始",
+      "source": "Practice 1 2.1.pdf",
+      "cluster": "break",
+      "example": ""
+    },
+    {
+      "word": "turn into",
+      "meaning": "变成",
+      "source": "Practice 1 2.1.pdf",
+      "cluster": "turn",
+      "example": ""
+    },
+    {
+      "word": "dive into",
+      "meaning": "全身心投入；跳入",
+      "source": "Practice 1 2.1.pdf",
+      "cluster": "dive",
+      "example": ""
+    },
+    {
+      "word": "fit into",
+      "meaning": "适应；与……相协调",
+      "source": "Practice 1 2.1.pdf",
+      "cluster": "fit",
+      "example": ""
+    },
+    {
+      "word": "pick up",
+      "meaning": "拾起；接人；学会；好转",
+      "source": "Practice 1 2.1.pdf",
+      "cluster": "pick",
+      "example": ""
+    },
+    {
+      "word": "split up",
+      "meaning": "分开；解散",
+      "source": "Practice 1 2.1.pdf",
+      "cluster": "split",
+      "example": ""
+    },
+    {
+      "word": "spring up",
+      "meaning": "突然出现",
+      "source": "Practice 1 2.1.pdf",
+      "cluster": "spring",
+      "example": ""
+    },
+    {
+      "word": "cut back on",
+      "meaning": "削减",
+      "source": "Practice 1 2.1.pdf",
+      "cluster": "cut",
+      "example": ""
+    },
+    {
+      "word": "crack down on",
+      "meaning": "严厉打击",
+      "source": "Practice 1 2.1.pdf",
+      "cluster": "crack",
+      "example": ""
+    },
+    {
+      "word": "follow up on",
+      "meaning": "跟进",
+      "source": "Practice 1 2.1.pdf",
+      "cluster": "follow",
+      "example": ""
+    },
+    {
+      "word": "hold out on",
+      "meaning": "隐瞒；不给予",
+      "source": "Practice 1 2.1.pdf",
+      "cluster": "hold",
+      "example": ""
+    },
+    {
+      "word": "dive in",
+      "meaning": "开始投入",
+      "source": "Practice 1 2.1.pdf",
+      "cluster": "dive",
+      "example": ""
+    },
+    {
+      "word": "switch off",
+      "meaning": "不再关注；关掉",
+      "source": "Practice 1 2.1.pdf",
+      "cluster": "switch",
+      "example": ""
+    },
+    {
+      "word": "pull out",
+      "meaning": "退出；撤离",
+      "source": "Practice 1 2.1.pdf",
+      "cluster": "pull",
+      "example": ""
+    },
+    {
+      "word": "push on",
+      "meaning": "继续前进",
+      "source": "Practice 1 2.1.pdf",
+      "cluster": "push",
+      "example": ""
+    },
+    {
+      "word": "relate to",
+      "meaning": "理解；与……有关",
+      "source": "Practice 1 2.1.pdf",
+      "cluster": "relate",
+      "example": ""
+    },
+    {
+      "word": "live with",
+      "meaning": "忍受；与……同住",
+      "source": "Practice 1 2.1.pdf",
+      "cluster": "live",
+      "example": ""
+    },
+    {
+      "word": "pull through",
+      "meaning": "渡过难关；康复",
+      "source": "Practice 1 2.1.pdf",
+      "cluster": "pull",
+      "example": ""
+    },
+    {
+      "word": "lay out",
+      "meaning": "布置；规划；陈列",
+      "source": "Practice 1 2.1.pdf",
+      "cluster": "lay",
+      "example": ""
+    },
+    {
+      "word": "call up",
+      "meaning": "打电话；召集；使想起",
+      "source": "Practice 1 2.1.pdf",
+      "cluster": "call",
+      "example": ""
+    },
+    {
+      "word": "give away",
+      "meaning": "赠送；泄露",
+      "source": "Practice 1 2.1.pdf",
+      "cluster": "give",
+      "example": ""
+    },
+    {
+      "word": "count in",
+      "meaning": "把……算进去",
+      "source": "Practice 3 2.1.pdf",
+      "cluster": "count",
+      "example": ""
+    },
+    {
+      "word": "count up",
+      "meaning": "加起来；数出总数",
+      "source": "Practice 3 2.1.pdf",
+      "cluster": "count",
+      "example": ""
+    },
+    {
+      "word": "count out",
+      "meaning": "不把……算在内",
+      "source": "Practice 3 2.1.pdf",
+      "cluster": "count",
+      "example": ""
+    },
+    {
+      "word": "put down",
+      "meaning": "放下；记下",
+      "source": "Practice 3 2.1.pdf",
+      "cluster": "put",
+      "example": ""
+    },
+    {
+      "word": "put on",
+      "meaning": "穿上；上演",
+      "source": "Practice 3 2.1.pdf",
+      "cluster": "put",
+      "example": ""
+    },
+    {
+      "word": "take down",
+      "meaning": "取下；记下",
+      "source": "Practice 3 2.1.pdf",
+      "cluster": "take",
+      "example": ""
+    },
+    {
+      "word": "get one's way",
+      "meaning": "如愿以偿",
+      "source": "Practice 3 2.1.pdf",
+      "cluster": "get",
+      "example": ""
+    },
+    {
+      "word": "get away with",
+      "meaning": "做错事而未受惩罚",
+      "source": "Practice 3 2.1.pdf",
+      "cluster": "get",
+      "example": ""
+    },
+    {
+      "word": "keep away from",
+      "meaning": "远离",
+      "source": "Practice 3 2.1.pdf",
+      "cluster": "keep",
+      "example": ""
+    },
+    {
+      "word": "have power over",
+      "meaning": "控制；对……有权力",
+      "source": "Practice 3 2.1.pdf",
+      "cluster": "have",
+      "example": ""
+    },
+    {
+      "word": "turn to",
+      "meaning": "求助于；转向",
+      "source": "Practice 3 2.1.pdf",
+      "cluster": "turn",
+      "example": ""
+    },
+    {
+      "word": "adapt to",
+      "meaning": "适应",
+      "source": "Practice 3 2.1.pdf",
+      "cluster": "adapt",
+      "example": ""
+    },
+    {
+      "word": "occur to",
+      "meaning": "被想到；突然想到",
+      "source": "Practice 3 2.1.pdf",
+      "cluster": "occur",
+      "example": ""
+    },
+    {
+      "word": "contribute to",
+      "meaning": "促成；有助于",
+      "source": "Practice 3 2.1.pdf",
+      "cluster": "contribute",
+      "example": ""
+    },
+    {
+      "word": "come down to",
+      "meaning": "归结为",
+      "source": "Practice 3 2.1.pdf",
+      "cluster": "come",
+      "example": ""
+    },
+    {
+      "word": "come down with",
+      "meaning": "染上疾病",
+      "source": "Practice 3 2.1.pdf",
+      "cluster": "come",
+      "example": ""
+    },
+    {
+      "word": "come up against",
+      "meaning": "遭遇困难",
+      "source": "Practice 3 2.1.pdf",
+      "cluster": "come",
+      "example": ""
+    },
+    {
+      "word": "bring up",
+      "meaning": "抚养；提出",
+      "source": "Practice 3 2.1.pdf",
+      "cluster": "bring",
+      "example": ""
+    },
+    {
+      "word": "hold back",
+      "meaning": "阻止；抑制",
+      "source": "Practice 3 2.1.pdf",
+      "cluster": "hold",
+      "example": ""
+    },
+    {
+      "word": "set down",
+      "meaning": "写下；放下",
+      "source": "Practice 3 2.1.pdf",
+      "cluster": "set",
+      "example": ""
+    },
+    {
+      "word": "set off",
+      "meaning": "出发；引发",
+      "source": "Practice 3 2.1.pdf",
+      "cluster": "set",
+      "example": ""
+    },
+    {
+      "word": "set about",
+      "meaning": "着手做",
+      "source": "Practice 3 2.1.pdf",
+      "cluster": "set",
+      "example": ""
+    },
+    {
+      "word": "set on",
+      "meaning": "袭击；使攻击",
+      "source": "Practice 3 2.1.pdf",
+      "cluster": "set",
+      "example": ""
+    },
+    {
+      "word": "rise up",
+      "meaning": "起义；升起",
+      "source": "Practice 3 2.1.pdf",
+      "cluster": "rise",
+      "example": ""
+    },
+    {
+      "word": "break away",
+      "meaning": "脱离",
+      "source": "Practice 3 2.1.pdf",
+      "cluster": "break",
+      "example": ""
+    },
+    {
+      "word": "keep away",
+      "meaning": "远离",
+      "source": "Practice 3 2.1.pdf",
+      "cluster": "keep",
+      "example": ""
+    },
+    {
+      "word": "take away",
+      "meaning": "拿走",
+      "source": "Practice 3 2.1.pdf",
+      "cluster": "take",
+      "example": ""
+    },
+    {
+      "word": "turn up",
+      "meaning": "出现；调高",
+      "source": "Practice 3 2.1.pdf",
+      "cluster": "turn",
+      "example": ""
+    },
+    {
+      "word": "hang up",
+      "meaning": "挂断电话",
+      "source": "Practice 3 2.1.pdf",
+      "cluster": "hang",
+      "example": ""
+    },
+    {
+      "word": "hang down",
+      "meaning": "垂下",
+      "source": "Practice 3 2.1.pdf",
+      "cluster": "hang",
+      "example": ""
+    },
+    {
+      "word": "hang on",
+      "meaning": "坚持；稍等",
+      "source": "Practice 3 2.1.pdf",
+      "cluster": "hang",
+      "example": ""
+    },
+    {
+      "word": "hang out",
+      "meaning": "闲逛",
+      "source": "Practice 3 2.1.pdf",
+      "cluster": "hang",
+      "example": ""
+    },
+    {
+      "word": "leave for",
+      "meaning": "动身前往",
+      "source": "Practice 3 2.1.pdf",
+      "cluster": "leave",
+      "example": ""
+    },
+    {
+      "word": "account for",
+      "meaning": "解释；说明原因",
+      "source": "Practice 3 2.1.pdf",
+      "cluster": "account",
+      "example": ""
+    },
+    {
+      "word": "care for",
+      "meaning": "照顾；喜欢",
+      "source": "Practice 3 2.1.pdf",
+      "cluster": "care",
+      "example": ""
+    },
+    {
+      "word": "in one's own right",
+      "meaning": "凭自身资格",
+      "source": "Practice 1 2.2.pdf",
+      "cluster": "in",
+      "example": ""
+    },
+    {
+      "word": "tick all the right boxes",
+      "meaning": "符合所有要求",
+      "source": "Practice 1 2.2.pdf",
+      "cluster": "tick",
+      "example": ""
+    },
+    {
+      "word": "the other way round",
+      "meaning": "反过来；相反",
+      "source": "Practice 1 2.2.pdf",
+      "cluster": "the",
+      "example": ""
+    },
+    {
+      "word": "within reach",
+      "meaning": "够得着；可实现",
+      "source": "Practice 1 2.2.pdf",
+      "cluster": "within",
+      "example": ""
+    },
+    {
+      "word": "beyond one's range",
+      "meaning": "超出能力或价格范围",
+      "source": "Practice 1 2.2.pdf",
+      "cluster": "beyond",
+      "example": ""
+    },
+    {
+      "word": "in the lead",
+      "meaning": "领先",
+      "source": "Practice 1 2.2.pdf",
+      "cluster": "in",
+      "example": ""
+    },
+    {
+      "word": "under discussion",
+      "meaning": "正在讨论中",
+      "source": "Practice 1 2.2.pdf",
+      "cluster": "under",
+      "example": ""
+    }
+  ]
+}

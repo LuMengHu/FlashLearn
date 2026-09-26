@@ -9,7 +9,6 @@ import { requestJson, useWorkspace } from './workspace-provider';
 import { Dialog, Empty, ErrorMessage, Field, Heading, labelForKind, LoadGate } from './common';
 
 const KINDS: { value: CollectionKind; label: string }[] = [
-  { value: 'word', label: '单词词表' },
   { value: 'confusion', label: '易混词词表' },
   { value: 'phrase', label: '短语词表' },
 ];
@@ -18,7 +17,7 @@ export default function Collections() {
   const { data, refresh } = useWorkspace();
   const params = useSearchParams();
   const rawKind = params.get('kind');
-  const kind = (['word', 'confusion', 'phrase'].includes(rawKind || '') ? rawKind : 'word') as CollectionKind;
+  const kind = (['confusion', 'phrase'].includes(rawKind || '') ? rawKind : 'confusion') as CollectionKind;
   const [editing, setEditing] = useState<{ id?: number; name: string; kind: CollectionKind } | null>(null);
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
@@ -52,7 +51,7 @@ export default function Collections() {
   const unfiled = data ? scopeItems(data, kind, 'unfiled') : [];
   const manageHref = (id: number | 'unfiled') => kind === 'confusion'
     ? `/english/confusions?collection=${id}`
-    : `/english/list?collection=${id}`;
+    : `/english/phrases?collection=${id}`;
 
   return <>
     <Heading
@@ -89,7 +88,7 @@ export default function Collections() {
             </div>
           </section>;
         })}
-      </div> : <Empty title={`还没有${labelForKind[kind]}词表。`} text={kind === 'confusion' ? '易混关系由后台资料提供；新建词表后可以按批次练习。' : '新建一份词表，之后练习时只会看到这一类别的词表。'} href={kind === 'confusion' ? '/english/confusions' : '/english/new'} label={kind === 'confusion' ? '查看易混词' : '添加内容'} />}
+      </div> : <Empty title={`还没有${labelForKind[kind]}词表。`} text="可以新建词表，或从已有内容选择一批来练习。" href={kind === 'confusion' ? '/english/confusions' : '/english/new'} label={kind === 'confusion' ? '查看易混词' : '添加内容'} />}
     </>}</LoadGate>
     {editing && <Dialog title={editing.id ? '重命名词表' : `新建${labelForKind[editing.kind]}词表`} onClose={() => !busy && setEditing(null)}>
       <form onSubmit={event => { event.preventDefault(); save(); }}>
